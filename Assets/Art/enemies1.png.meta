@@ -1,0 +1,450 @@
+fileFormatVersion: 2
+guid: db06c2c3a740ea94089d748677918c44
+timeCreated: 1557613782
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_shot2
+    21300002: leg_R
+    21300004: diver_bod
+    21300006: leg_L
+    21300008: 54432955_575676812954655_7220913762105032704_n_4
+    21300010: mouth_R
+    21300012: mouth_L
+    21300014: back_legR
+    21300016: carrier_bod
+    21300018: back_legL
+    21300020: mid_legR
+    21300022: mid_legL
+    21300024: carrier_crystal
+    21300026: front_legR
+    21300028: 54432955_575676812954655_7220913762105032704_n_14
+    21300030: front_legL
+    21300032: 54432955_575676812954655_7220913762105032704_n_16
+    21300034: 54432955_575676812954655_7220913762105032704_n_17
+    21300036: 54432955_575676812954655_7220913762105032704_n_18
+    21300038: shooter_legR
+    21300040: 54432955_575676812954655_7220913762105032704_n_20
+    21300042: shooter_bod
+    21300044: 54432955_575676812954655_7220913762105032704_n_22
+    21300046: shooter_legL
+    21300048: shooter_armR
+    21300050: shooter_armL
+    21300052: enemy_shot1
+    21300054: shooter_crystal
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 120
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: leg_R
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 2138
+        width: 15
+        height: 59
+      alignment: 9
+      pivot: {x: 0.75, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: diver_bod
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 2037
+        width: 55
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: leg_L
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 2123
+        width: 16
+        height: 61
+      alignment: 9
+      pivot: {x: 0.25, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mouth_R
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1978
+        width: 34
+        height: 82
+      alignment: 9
+      pivot: {x: 0.7, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mouth_L
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1968
+        width: 34
+        height: 83
+      alignment: 9
+      pivot: {x: 0.3, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_legR
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1251
+        width: 118
+        height: 161
+      alignment: 9
+      pivot: {x: 0.9, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: carrier_bod
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 883
+        width: 223
+        height: 497
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_legL
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 1293
+        width: 113
+        height: 157
+      alignment: 9
+      pivot: {x: 0.1, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mid_legR
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 991
+        width: 197
+        height: 133
+      alignment: 9
+      pivot: {x: 0.9, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mid_legL
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 1046
+        width: 189
+        height: 129
+      alignment: 9
+      pivot: {x: 0.1, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: carrier_crystal
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 989
+        width: 170
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_legR
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 659
+        width: 110
+        height: 196
+      alignment: 9
+      pivot: {x: 0.8, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 54432955_575676812954655_7220913762105032704_n_14
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 743
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_legL
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 661
+        width: 118
+        height: 193
+      alignment: 9
+      pivot: {x: 0.2, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 54432955_575676812954655_7220913762105032704_n_17
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 428
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 54432955_575676812954655_7220913762105032704_n_18
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 417
+        width: 29
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shooter_legR
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 351
+        width: 37
+        height: 57
+      alignment: 9
+      pivot: {x: 0.9, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 54432955_575676812954655_7220913762105032704_n_20
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 390
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shooter_bod
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 256
+        width: 66
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 54432955_575676812954655_7220913762105032704_n_22
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 395
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shooter_legL
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 357
+        width: 40
+        height: 59
+      alignment: 9
+      pivot: {x: 0.1, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shooter_armR
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 242
+        width: 66
+        height: 86
+      alignment: 9
+      pivot: {x: 0.8, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shooter_armL
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 236
+        width: 76
+        height: 89
+      alignment: 9
+      pivot: {x: 0.2, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_shot1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 403
+        width: 78
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shooter_crystal
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 146
+        width: 59
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemy_shot2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 394
+        width: 78
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

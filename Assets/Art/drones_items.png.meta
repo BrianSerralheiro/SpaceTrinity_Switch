@@ -1,0 +1,491 @@
+fileFormatVersion: 2
+guid: 7a320699bbfeec7449884128bc0631c3
+timeCreated: 1565014406
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: drone_red
+    21300002: drone_blue
+    21300004: drone_green
+    21300006: 56248046_818265655201724_5374516714648109056_n_3
+    21300008: 56248046_818265655201724_5374516714648109056_n_4
+    21300010: shield
+    21300012: thunder
+    21300014: special
+    21300016: ice
+    21300018: fire
+    21300020: 56248046_818265655201724_5374516714648109056_n_10
+    21300022: 56248046_818265655201724_5374516714648109056_n_11
+    21300024: 56248046_818265655201724_5374516714648109056_n_12
+    21300026: 56248046_818265655201724_5374516714648109056_n_13
+    21300028: 56248046_818265655201724_5374516714648109056_n_14
+    21300030: 56248046_818265655201724_5374516714648109056_n_15
+    21300032: 56248046_818265655201724_5374516714648109056_n_16
+    21300034: 56248046_818265655201724_5374516714648109056_n_17
+    21300036: 56248046_818265655201724_5374516714648109056_n_18
+    21300038: 56248046_818265655201724_5374516714648109056_n_19
+    21300040: 56248046_818265655201724_5374516714648109056_n_20
+    21300042: 56248046_818265655201724_5374516714648109056_n_21
+    21300044: drone_yellow
+    21300046: slash
+    21300048: shield2
+    21300050: thunder2
+    21300052: special2
+    21300054: ice2
+    21300056: fire2
+    21300058: slash2
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 170
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: drone_red
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1969
+        width: 278
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drone_blue
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 1971
+        width: 277
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drone_green
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1959
+        width: 282
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_3
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1932
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_4
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1897
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shield
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1529
+        width: 108
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: thunder
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 1529
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: special
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1529
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ice
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1528
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fire
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 1529
+        width: 108
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1194
+        width: 74
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_11
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1194
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_12
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1192
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1192
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_14
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1193
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_15
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1190
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_17
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1193
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_18
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1191
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_19
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 1192
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_20
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1193
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 56248046_818265655201724_5374516714648109056_n_21
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 1193
+        width: 74
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drone_yellow
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 1962
+        width: 282
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slash
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 1535
+        width: 115
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shield2
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1764
+        width: 113
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: thunder2
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1770
+        width: 116
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: special2
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1772
+        width: 105
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ice2
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1769
+        width: 107
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fire2
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 1769
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slash2
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1756
+        width: 112
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

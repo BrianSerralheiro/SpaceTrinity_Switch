@@ -1,0 +1,331 @@
+fileFormatVersion: 2
+guid: b91db77fc0b7d514ca34e8a5999b8930
+timeCreated: 1561909928
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: orange_shot2
+    21300002: grabber_bod
+    21300004: grabber_eye
+    21300006: clawR
+    21300008: clawL
+    21300010: enemies2_5
+    21300012: round
+    21300014: enemies2_7
+    21300016: orange_shot1
+    21300018: enemies2_9
+    21300020: enemies2_10
+    21300022: missile
+    21300024: enemies2_12
+    21300026: missile_burst
+    21300028: enemies2_14
+    21300030: enemies2_15
+    21300032: launcher_core
+    21300034: launcher_bod
+    21300036: enemies2_18
+    21300038: lasor_lights
+    21300040: enemies2_20
+    21300042: lasor_bod
+    21300044: enemies2_22
+    21300046: redlaser_base
+    21300048: lasor_charge
+    21300050: laserbody
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 250
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grabber_bod
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1972
+        width: 193
+        height: 309
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grabber_eye
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2200
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clawR
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1845
+        width: 129
+        height: 275
+      alignment: 9
+      pivot: {x: 0.9, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clawL
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1837
+        width: 125
+        height: 283
+      alignment: 9
+      pivot: {x: 0.1, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: round
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 1457
+        width: 286
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemies2_7
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 1636
+        width: 53
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: orange_shot1
+      rect:
+        serializedVersion: 2
+        x: 1286
+        y: 1517
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: missile
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1211
+        width: 143
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: missile_burst
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 1143
+        width: 148
+        height: 64
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: launcher_core
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 1064
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: launcher_bod
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 816
+        width: 347
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lasor_lights
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 498
+        width: 255
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lasor_bod
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 310
+        width: 277
+        height: 305
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: redlaser_base
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 435
+        width: 140
+        height: 96
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lasor_charge
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 243
+        width: 153
+        height: 50
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: laserbody
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 386
+        width: 140
+        height: 78
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: orange_shot2
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 1536
+        width: 104
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
