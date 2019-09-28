@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WorldSelect : MonoBehaviour
 {
 	[SerializeField]
 	Graphic[] options;
+	[SerializeField]
+	WorldInfo[] worlds;
 	[SerializeField]
 	int rowCount=3;
 	[SerializeField]
@@ -34,5 +37,11 @@ public class WorldSelect : MonoBehaviour
 			selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 			selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
 		}
+		if(Input.GetKeyDown(KeyCode.KeypadEnter)){
+			EnemySpawner.world=worlds[selectionID];
+			if(EnemySpawner.world)SceneManager.LoadSceneAsync("cen");
+			enabled=false;
+		}
+
 	}
 }

@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField]
 	private GameObject credits;
 
-	
+	public static WorldInfo world;
 	
 	/*
 	Level Design
@@ -72,13 +72,13 @@ public class EnemySpawner : MonoBehaviour {
 		if(merc && points>15000 && timer>7)merc.SetActive(true);
 		do
 		{
-			if(timer<=0 && counter<wave.Length && !boss)
+			if(timer<=0 && counter<world.wave.Length && !boss)
 			{
-				Chose(wave.Substring(counter,2));
+				Chose2(world.wave.Substring(counter,2));
 				counter+=2;
 			}
 		}
-		while(timer<=0 && counter<wave.Length && !boss);
+		while(timer<=0 && counter<world.wave.Length && !boss);
 		if(counter>=wave.Length && !boss)credits.SetActive(true);
 		if(timer>0 && !boss) timer-=Time.deltaTime;
 		Vector2 v= bg.mainTextureOffset;
@@ -102,6 +102,22 @@ public class EnemySpawner : MonoBehaviour {
 		
 	}
 
+	public void Chose2(string s)
+	{
+		int i;
+		if(int.TryParse(s.Substring(0,1),out i)){
+			print(i);
+			EnemyBase en = Spawn(world.enemies[i]);
+			if(en)
+			{
+				en.Position(s[1]-48);
+			}
+			else{
+				Debug.LogError("No script found for "+world.enemies[i].name);
+			}
+		}else if(s[0]=='t')timer+=int.Parse(s.Substring(1,1))/10;
+			else if(s[0]=='T')timer+=int.Parse(s.Substring(1,1));
+	}
 	void Chose(string s)
 	{
 		EnemyBase en=null;
@@ -186,6 +202,16 @@ public class EnemySpawner : MonoBehaviour {
 				break;
 		}
 		if(en) en.Position(s[1]-48);
+	}
+	EnemyBase Spawn(EnemyInfo en){
+
+		GameObject go = new GameObject("enemy");
+		go.AddComponent<SpriteRenderer>().sprite=en.sprites[0];
+		go.AddComponent<BoxCollider2D>();
+		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
+		r.isKinematic=true;
+		r.useFullKinematicContacts=true;
+		return go.AddComponent(en.GetScript())as EnemyBase;
 	}
 	EnemyBase Spawn<t>(Sprite sp)where t :EnemyBase
 	{

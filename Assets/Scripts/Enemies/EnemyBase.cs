@@ -59,15 +59,8 @@ public class EnemyBase : MonoBehaviour {
 	}
 	public virtual void Position(int i)
 	{
-		if(i<8)
-		{
-			float f= Scaler.sizeX/10f;
-			transform.position=new Vector3(i*f-f*3.5f,Scaler.sizeY+2,0);
-		}
-		else
-		{
-			transform.position=new Vector3(i==8?-Scaler.sizeX/2f-1:Scaler.sizeX/2+1,Scaler.sizeY-2,0);
-		}
+		float f= Scaler.sizeX/20;
+		transform.position=new Vector3(i*f-f*9f,Scaler.sizeY+2,0);
 	}
 	private void OnDestroy()
 	{
