@@ -59,14 +59,14 @@ public class WaveEditor : EditorWindow
 		GUILayout.EndArea();
 		GUILayout.BeginArea(new Rect(x*5.4f,y/2,x*1.2f,y*2f));
 			GUILayout.BeginHorizontal();
-				if(GUILayout.RepeatButton("+0.1"))currentEntry.timer++;
-				if(GUILayout.RepeatButton("+1"))currentEntry.timer+=10;
-				if(GUILayout.RepeatButton("+5"))currentEntry.timer+=50;
+				if(GUILayout.Button("+0.1"))currentEntry.timer++;
+				if(GUILayout.Button("+1"))currentEntry.timer+=10;
+				if(GUILayout.Button("+5"))currentEntry.timer+=50;
 			GUILayout.EndHorizontal();
 			GUILayout.BeginHorizontal();
-				if(GUILayout.RepeatButton("-0.1"))currentEntry.timer--;
-				if(GUILayout.RepeatButton("-1"))currentEntry.timer-=10;
-				if(GUILayout.RepeatButton("-5"))currentEntry.timer-=50;
+				if(GUILayout.Button("-0.1"))currentEntry.timer--;
+				if(GUILayout.Button("-1"))currentEntry.timer-=10;
+				if(GUILayout.Button("-5"))currentEntry.timer-=50;
 				if(currentEntry.timer<1) currentEntry.timer=1;
 			GUILayout.EndHorizontal();
 
@@ -98,11 +98,11 @@ public class WaveEditor : EditorWindow
 		if(currentEnemy==null)return;
 		GUILayout.BeginArea(new Rect(x*5.5f,y*3,x,y*1.5f));
 			GUILayout.BeginHorizontal();
-				if(GUILayout.RepeatButton("<")){
+				if(GUILayout.Button("<")){
 					currentEnemy.position--;
 					if(currentEnemy.position<0) currentEnemy.position=19;
 				}
-				if(GUILayout.RepeatButton(">")){
+				if(GUILayout.Button(">")){
 					currentEnemy.position++;
 					if(currentEnemy.position>19) currentEnemy.position=0;
 				}
