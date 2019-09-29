@@ -28,6 +28,8 @@ public class WaveEditor : EditorWindow
 		if(world==null)return;
 		x=Screen.width/10;
 		y=Screen.height/10;
+		if(entries.Count==0 && !string.IsNullOrEmpty(world.wave))
+			Revert(world.wave);
 		if(currentEntry==null)
 		{
 			if(entries.Count==0) entries.Add(new Entry());
@@ -65,12 +67,13 @@ public class WaveEditor : EditorWindow
 				if(GUILayout.RepeatButton("-0.1"))currentEntry.timer--;
 				if(GUILayout.RepeatButton("-1"))currentEntry.timer-=10;
 				if(GUILayout.RepeatButton("-5"))currentEntry.timer-=50;
-				if(currentEntry.timer<=0) currentEntry.timer=0;
+				if(currentEntry.timer<1) currentEntry.timer=1;
 			GUILayout.EndHorizontal();
 
 		if(GUILayout.Button("Addd entry")){
 			counter=entries.IndexOf(currentEntry)+1;
 			currentEntry=new Entry();
+			currentEntry.timer=5;
 			entries.Insert(counter,currentEntry);
 		}
 		if(entries.Count>1 && GUILayout.Button("Remove entry")){
@@ -225,6 +228,7 @@ public class WaveEditor : EditorWindow
 				entry.enemies.Add(enemy);
 				enemy.sprite=world.enemies[j].sprites[0];
 				enemy.position=s[i+1]-48;
+				enemy.id=j;
 				i+=2;
 			}
 		}

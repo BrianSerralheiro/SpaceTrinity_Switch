@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyInfo : ScriptableObject
 {
 	public Sprite[] sprites;
+	System.Type script;
 	public System.Type GetScript()
 	{
-		return System.Type.GetType(name);
+		if(script==null)script=System.Type.GetType(name);
+		return script;
 	}
 }
