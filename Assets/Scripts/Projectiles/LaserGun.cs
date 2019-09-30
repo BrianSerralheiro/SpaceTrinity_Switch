@@ -6,12 +6,11 @@ public class LaserGun : Gun {
 	[SerializeField]
 	private Sprite[] lasersprites;
 	private Sprite[] lasersprite=new Sprite[4];
-	private Transform laser;
 	private float timer;
-	private Collider2D col;
-	private SpriteRenderer ren;
+	private BoxCollider2D col;
 	[SerializeField]
 	private AudioSource source;
+	private LineRenderer line;
 	
 
 	void Start () {
@@ -22,42 +21,40 @@ public class LaserGun : Gun {
 			lasersprite[i]=lasersprites[f+i];
 		}
 		lasersprites=null;
-		GameObject go=new GameObject("laser");
-		laser=go.transform;
-		laser.position=transform.position;
-		laser.parent=transform;
-		laser.localScale=new Vector3(1,7);
-		ren=go.AddComponent<SpriteRenderer>();
-		ren.sprite=lasersprite[(Bullet.blink ? 0 : 1)];
-		col=go.AddComponent<BoxCollider2D>();
-		source=GetComponent<AudioSource>();
-		ren.enabled=false;
+		line=GetComponent<LineRenderer>();
+		col=gameObject.AddComponent<BoxCollider2D>();
+		col.offset=new Vector2(0,10);
+		col.size=new Vector2(1,20);
 	}
 	public override void Shoot()
 	{
 		col.enabled=!col.enabled;
+		if(col.enabled){
+			line.enabled=true;
+			float f=4.5f/line.positionCount;
+			float f1=40f;
+			float t=Time.time*10;
+			float t1=Time.time*40;
+			for(int i = 1; i<line.positionCount-1; i++)
+			{
+				Vector3 v=line.GetPosition(i);
+				v.x=Mathf.Sin(t+f*i)*0.6f+Mathf.Cos(t1+f1*i)*0.4f;
+				line.SetPosition(i,v);
+			}
+		}
 		timer+=Time.deltaTime*10;
-		if(timer>2)timer=2;
+		if(timer>1)timer=1;
 		if(timer<0)timer=0;
-		ren.sprite=lasersprite[(timer>1?2:0)+(Bullet.blink ? 0 : 1)];
-		ParticleManager.Emit(6, transform.position, 1);
 	}
 	public override void Level(int i)
 	{
-		if(i<4) laser.localScale=Vector3.up*7 +Vector3.right*i;
+		if(i<4) line.widthMultiplier=i;
 	}
 	void Update()
 	{
-		ren.enabled=timer>0;
-		if(enabled!=source.isPlaying)
-			if(source.isPlaying)source.Stop();
-				else source.Play();
-		ren.sprite=lasersprite[(timer>1 ? 2 : 0)+(Bullet.blink ? 0 : 1)];
 		if(timer>0)
-		{
-			source.volume=timer/2f*SoundManager.GetVolumeSFX();
-			timer-=Time.deltaTime*5f;
-		}else source.volume=0;
+			timer-=Time.deltaTime*6f;
+		if(timer<0)line.enabled=false;
 
 	}
 }

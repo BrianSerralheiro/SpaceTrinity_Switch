@@ -36,15 +36,11 @@ public class Carrier : EnemyBase {
 		crystal.transform.parent=transform;
 		crystal.transform.rotation=transform.rotation;
 		crystal.transform.localPosition=new Vector3(0,3.1f);
-	}
+	}/*
 	public override void Position(int i)
 	{
 		base.Position(i);
-		if(i>=8)
-		{
-			transform.Rotate(0,0,i==8?90:-90);
-		}
-	}
+	}*/
 
 	new void Update()
 	{

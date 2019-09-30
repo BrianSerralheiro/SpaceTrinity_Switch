@@ -23,8 +23,9 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField]
 	private GameObject credits;
 
+	public WorldInfo world1;
 	public static WorldInfo world;
-	
+
 	/*
 	Level Design
 	World 1: 
@@ -51,6 +52,7 @@ public class EnemySpawner : MonoBehaviour {
 	 */
 	void Start()
 	{
+		if(!world)world=world1;
 		boss = false;
 		Boss4.last=false;
 		SoundManager.Play(1);
