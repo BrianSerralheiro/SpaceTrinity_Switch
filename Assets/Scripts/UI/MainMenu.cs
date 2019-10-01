@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
 	private AsyncOperation loading;
 	
 	void Start () 
-	{
+	{Locks.UnlockAll();
 		//PlayerPrefs.DeleteAll();
 	}
 	
