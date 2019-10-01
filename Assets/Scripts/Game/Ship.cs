@@ -18,10 +18,6 @@ public class Ship : MonoBehaviour {
 	[SerializeField]
 	private int maxhp = 1;
 	private int hp;
-	private float width=Screen.width;
-	private float height=Screen.height;
-	[SerializeField]
-	private Vector3 moveto;
 	[SerializeField]
 	private string[] falas;
 	[SerializeField]
@@ -171,7 +167,7 @@ public class Ship : MonoBehaviour {
 				burst.gameObject.SetActive(true);
 				_renderer.enabled=true;
 				GameObject go = new GameObject("playerbullet");
-				go.AddComponent<BoxCollider2D>().size=new Vector2(10,20);
+				go.AddComponent<BoxCollider2D>().size=new Vector2(Scaler.sizeX,Scaler.sizeY);
 				Bullet bu= go.AddComponent<Bullet>();
 				bu.damage=200;
 				bu.pierce=true;
@@ -181,6 +177,8 @@ public class Ship : MonoBehaviour {
 			}
 			return;
 		}
+		if(shielded) shield.Add(Time.deltaTime);
+		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
 		{
 			Bullet.bulletTime=0.1f;
@@ -192,48 +190,23 @@ public class Ship : MonoBehaviour {
 			damageTimer -= Time.deltaTime;
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
-		moveto.Set(Input.mousePosition.x/width*Scaler.sizeX-Scaler.x,Input.mousePosition.y/height*Scaler.sizeY*2f-Scaler.sizeY,-0.1f);
-		if(shielded)shield.Add(Time.deltaTime);
-		else shield.Min(Time.deltaTime);
-		if(Input.GetMouseButtonDown(0))
+		Vector3 v =new Vector3(Input.GetAxis("Horizontal")*speed*Time.deltaTime,Input.GetAxis("Vertical")*speed*Time.deltaTime,0);
+		if(transform.position.x+v.x>Scaler.sizeX/2)v.x=Scaler.sizeX/2-transform.position.x;
+		if(transform.position.x+v.x<-Scaler.sizeX/2)v.x=-Scaler.sizeX/2-transform.position.x;
+		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
+		if(transform.position.y+v.y<-Scaler.sizeY)v.y=-Scaler.sizeY-transform.position.y;
+		transform.Translate(v);
+		if(Input.GetAxis("Jump")>0 && shoottimer<=0)
 		{
-			if(Time.time<clickTime+0.5f && InGame_HUD._special >= 1)
+			if(id!=2) SoundManager.PlayEffects(2 + id,0.1f,0.5f);
+			shoottimer=firerate;
+			foreach(Gun gun in guns)
 			{
-				InGame_HUD._special=0;
-				Special();
+				gun.Shoot();
 			}
-			clickTime=Time.time;
 		}
 		if(shoottimer>0) shoottimer-=Time.deltaTime;
-		if(Input.GetMouseButton(0))
-		{
-			if(shoottimer<=0)
-			{
-				if(id!=2)SoundManager.PlayEffects(2 + id, 0.1f, 0.5f);
-				shoottimer=firerate;
-				foreach(Gun gun in guns)
-				{
-					gun.Shoot();
-				}
-			}
-			float f= moveto.y+offset.y-transform.position.y;
-			Vector3 v= burst.localScale;
-			v.Set(1,f>0.1?5:f<-0.1?1:3,1);
-			burst.localScale=v;
-			f = moveto.x-transform.position.x;
-			v = transform.localEulerAngles;
-			v.Set(0,f>0.5 ? -35f : f<-0.5 ? 35f : 0,0);
-			transform.localEulerAngles=v;
-			if(Mathf.Abs(moveto.x-transform.position.x)>0.8f || Mathf.Abs(moveto.y+offset.y-transform.position.y)>0.8f)
-				transform.Translate((moveto+offset-transform.position).normalized*speed*Time.deltaTime);
-			else
-				transform.position=moveto+offset;
-			v=transform.position;
-			v.z=-0.1f;
-			v.x=Mathf.Clamp(v.x,-Scaler.sizeX/2+0.5f,Scaler.sizeX/2-0.5f);
-			v.y=Mathf.Clamp(v.y,-Scaler.sizeY+1f,Scaler.sizeY-1f);
-			transform.position=v;
-		}
+		
 	}
 	void OnLevel(int i)
 	{
