@@ -17,11 +17,11 @@ public class Header : EnemyBase {
 		GameObject go=new GameObject("eyes");
 		eyes=go.AddComponent<Core>().Set(SpriteBase.I.header[1],new Color(0.4f,0f,0f));
 		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3(0,-0.14f);
+		go.transform.localPosition=new Vector3(0,-0.28f);
 		go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(SpriteBase.I.header[2],new Color(0.4f,0f,0f));
 		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3(0,0.21f);
+		go.transform.localPosition=new Vector3(0,0.42f);
 	}
 	
 	new void Update () {

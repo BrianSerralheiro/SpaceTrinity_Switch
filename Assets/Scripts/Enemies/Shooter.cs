@@ -39,11 +39,11 @@ public class Shooter : EnemyBase
 		go=new GameObject("crystal");
 		crystal=go.AddComponent<Core>().Set(SpriteBase.I.shooter[5],new Color(0.4f,0f,0.4f));
 		crystal.transform.parent=armL.parent=armR.parent=legL.parent=legR.parent=transform;
-		armL.localPosition=new Vector3(-0.2f,0.6f,0.1f);
-		armR.localPosition=new Vector3(0.2f,0.6f,0.1f);
-		legL.localPosition=new Vector3(0,-0.5f,0.1f);
-		legR.localPosition=new Vector3(0,-0.5f,0.1f);
-		crystal.transform.localPosition=new Vector3(0,0.6f);
+		armL.localPosition=new Vector3(-0.4f,1.2f,0.1f);
+		armR.localPosition=new Vector3(0.4f,1.2f,0.1f);
+		legL.localPosition=new Vector3(0,-1f,0.1f);
+		legR.localPosition=new Vector3(0,-1f,0.1f);
+		crystal.transform.localPosition=new Vector3(0,1.2f);
 	}
 
 	public override void Position(int i)

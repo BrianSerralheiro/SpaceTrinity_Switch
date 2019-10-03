@@ -19,6 +19,7 @@ public class WorldSelect : MonoBehaviour
 	void Start()
     {
         if(rowCount<2)rowCount=2;
+		Locks.Load();
     }
 	private void OnEnable()
 	{

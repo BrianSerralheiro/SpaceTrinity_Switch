@@ -20,7 +20,7 @@ public class Launcher : EnemyBase {
 		GameObject go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(SpriteBase.I.launcher[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
-		core.transform.localPosition=new Vector3(0,0.11f);
+		core.transform.localPosition=new Vector3(0,0.22f);
 	}
 	private void Create()
 	{
@@ -39,7 +39,7 @@ public class Launcher : EnemyBase {
 		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.launcher[2];
 		burst=go.transform;
 		burst.parent=rocket;
-		burst.localPosition=new Vector3(0,-0.5f);
+		burst.localPosition=new Vector3(0,-1f);
 		scale.y=0;
 		burst.localScale=scale;
 	}

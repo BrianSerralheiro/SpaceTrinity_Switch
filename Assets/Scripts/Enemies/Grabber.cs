@@ -20,12 +20,12 @@ public class Grabber : EnemyBase {
 		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.grabber[2];
 		armR=go.transform;
 		armL.parent=armR.parent=transform;
-		armL.localPosition=new Vector3(0.3f,-0.3f,-0.1f);
-		armR.localPosition=new Vector3(-0.3f,-0.3f,-0.1f);
+		armL.localPosition=new Vector3(0.6f,-0.6f,-0.1f);
+		armR.localPosition=new Vector3(-0.6f,-0.6f,-0.1f);
 		go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(SpriteBase.I.grabber[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
-		core.transform.localPosition=new Vector3(0,-0.09f);
+		core.transform.localPosition=new Vector3(0,-0.18f);
 	}
 	
 	new void Update(){

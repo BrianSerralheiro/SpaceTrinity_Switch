@@ -108,7 +108,6 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		int i;
 		if(int.TryParse(s.Substring(0,1),out i)){
-			print(i);
 			EnemyBase en = Spawn(world.enemies[i]);
 			if(en)
 			{

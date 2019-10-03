@@ -32,12 +32,12 @@ public class Lasor : EnemyBase
 		collider=go.AddComponent<BoxCollider2D>();
 		collider.enabled=false;
 		go.transform.parent=laser;
-		go.transform.localPosition=new Vector3(0,-0.55f,0);
+		go.transform.localPosition=new Vector3(0,-1.1f,0);
 		go.transform.localScale=Vector3.right+Vector3.up*38;
 		go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(SpriteBase.I.Lasor[4],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
-		core.transform.localPosition=new Vector3(0,0.93f);
+		core.transform.localPosition=new Vector3(0,1.86f);
 	}
 	public override void Position(int i)
 	{

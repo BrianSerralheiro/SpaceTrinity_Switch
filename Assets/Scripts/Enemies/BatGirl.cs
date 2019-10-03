@@ -10,7 +10,7 @@ public class BatGirl : EnemyBase {
 	private Sprite left;
 	private Sprite closed;
 	private Vector3 vector = new Vector3();
-	private Vector3 pos = new Vector3(0.35f,0.66f,0.1f);
+	private Vector3 pos = new Vector3(0.7f,1.32f,0.1f);
 	private Vector3[] poses={new Vector3(-1,-1,0).normalized,new Vector3(0,-1,0).normalized,new Vector3(1,-1,0).normalized };
 	private float timer=3;
 	new void Start () {
@@ -28,16 +28,12 @@ public class BatGirl : EnemyBase {
 		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.batgirl[3];
 		wingR=go.transform;
 		wingL.parent=wingR.parent=transform;
-		wingL.localPosition=new Vector3(0.35f,0.66f,0.1f);
-		wingR.localPosition=new Vector3(-0.35f,0.66f,0.1f);
+		wingL.localPosition=new Vector3(0.7f,1.32f,0.1f);
+		wingR.localPosition=new Vector3(-0.7f,1.32f,0.1f);
 		go = new GameObject("head");
 		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.batgirl[1];
 		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3(0f,0.9f,-0.1f);
-	}
-	public override void Position(int i)
-	{
-		base.Position(i%8);
+		go.transform.localPosition=new Vector3(0f,1.8f,-0.1f);
 	}
 	new void Update(){
 		if(Ship.paused) return;

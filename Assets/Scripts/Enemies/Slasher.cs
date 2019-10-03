@@ -5,7 +5,7 @@ using UnityEngine;
 public class Slasher : EnemyBase {
 
 	private float timer = 3;
-	private Vector3 mod =new Vector3(0,-0.5f,0.1f);
+	private Vector3 mod =new Vector3(0,-1f,0.1f);
 	new void Start () {
 		base.Start();
 		points = 120;

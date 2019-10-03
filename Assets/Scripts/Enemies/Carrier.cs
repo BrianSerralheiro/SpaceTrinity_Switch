@@ -27,15 +27,15 @@ public class Carrier : EnemyBase {
 			go.transform.parent=transform;
 			go.transform.rotation=transform.rotation;
 		}
-		legs[0].localPosition=new Vector3(0.45f,0.3f,0.1f);
-		legs[1].localPosition=new Vector3(-0.45f,0.3f,0.1f);
-		legs[2].localPosition=new Vector3(0.7f,1.7f,0.1f);
-		legs[3].localPosition=new Vector3(-0.7f,1.7f,0.1f);
-		legs[4].localPosition=new Vector3(0.9f,2.9f,0.1f);
-		legs[5].localPosition=new Vector3(-0.9f,2.9f,0.1f);
+		legs[0].localPosition=new Vector3(0.9f,0.6f,0.1f);
+		legs[1].localPosition=new Vector3(-0.9f,0.6f,0.1f);
+		legs[2].localPosition=new Vector3(1.4f,3.4f,0.1f);
+		legs[3].localPosition=new Vector3(-1.4f,3.4f,0.1f);
+		legs[4].localPosition=new Vector3(1.8f,5.8f,0.1f);
+		legs[5].localPosition=new Vector3(-1.8f,5.8f,0.1f);
 		crystal.transform.parent=transform;
 		crystal.transform.rotation=transform.rotation;
-		crystal.transform.localPosition=new Vector3(0,3.1f);
+		crystal.transform.localPosition=new Vector3(0,6.2f);
 	}/*
 	public override void Position(int i)
 	{

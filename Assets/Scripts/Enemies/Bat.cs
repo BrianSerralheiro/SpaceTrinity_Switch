@@ -23,8 +23,8 @@ public class Bat : EnemyBase
 		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bat[2];
 		wingR=go.transform;
 		wingL.parent=wingR.parent=transform;
-		wingL.localPosition=new Vector3(0.1f,-0.1f,0.1f);
-		wingR.localPosition=new Vector3(-0.1f,-0.1f,0.1f);
+		wingL.localPosition=new Vector3(0.2f,-0.2f,0.1f);
+		wingR.localPosition=new Vector3(-0.2f,-0.2f,0.1f);
 	}
 	public override void Position(int i)
 	{

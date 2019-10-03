@@ -32,10 +32,10 @@ public class Diver : EnemyBase
 		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.diver[4];
 		mouthR=go.transform;
 		mouthL.parent=mouthR.parent=legL.parent=legR.parent=transform;
-		mouthL.localPosition=new Vector3(0.2f,-0.5f,0.1f);
-		mouthR.localPosition=new Vector3(-0.2f,-0.5f,0.1f);
-		legL.localPosition=new Vector3(0.05f,0.5f,0.1f);
-		legR.localPosition=new Vector3(-0.05f,0.5f,0.1f);
+		mouthL.localPosition=new Vector3(0.4f,-1f,0.1f);
+		mouthR.localPosition=new Vector3(-0.4f,-1f,0.1f);
+		legL.localPosition=new Vector3(0.1f,1f,0.1f);
+		legR.localPosition=new Vector3(-0.1f,1f,0.1f);
 	}
 	new void Update()
 	{

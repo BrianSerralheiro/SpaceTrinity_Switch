@@ -20,14 +20,14 @@ public class Zapper : EnemyBase {
 		col.size=new Vector2(0.7f,4);
 		col.offset=new Vector2(0,2.2f);
 		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3(0,1,0.1f);
+		go.transform.localPosition=new Vector3(0,2,0.1f);
 		go.transform.localScale=new Vector3(1,4);
 		go.SetActive(false);
 		go=new GameObject("energy");
 		energy=go.AddComponent<SpriteRenderer>();
 		energy.sprite=SpriteBase.I.zapper[3];
 		energy.transform.parent=transform;
-		energy.transform.localPosition=new Vector3(0,1,-0.1f);
+		energy.transform.localPosition=new Vector3(0,2,-0.1f);
 		energy.gameObject.SetActive(false);
 	}
 	new void OnCollisionEnter2D(Collision2D col)
