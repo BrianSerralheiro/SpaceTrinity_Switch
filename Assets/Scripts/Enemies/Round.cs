@@ -14,10 +14,6 @@ public class Round : EnemyBase
 		points = 150;
 	}
 
-	public override void Position(int i)
-	{
-		base.Position(i%8);
-	}
 	new void Update()
 	{
 		if(Ship.paused) return;

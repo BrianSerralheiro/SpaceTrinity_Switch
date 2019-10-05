@@ -84,7 +84,7 @@ public class WaveEditor : EditorWindow
 		lastH=(int)GUILayoutUtility.GetLastRect().height;
 		fullY=FullSize();
 		GUILayout.BeginArea(new Rect(x*0.8f,y/2,x*4.5f,y*5.5f));
-			GUI.Box(new Rect(x*0.6f,0,x*3.7f,y*5.5f),"");
+			GUI.Box(new Rect(x/2,0,x*3.8f,y*5.5f),"");
 			pos=GUI.BeginScrollView(new Rect(0,0,x*4.5f,y*5.5f),pos,new Rect(new Rect(0,0,x*4f,fullY+lastH)),false,true);
 				counter=0;
 				tempY=0;
@@ -127,12 +127,14 @@ public class WaveEditor : EditorWindow
 	void DrawEntry(Entry en)
 	{
 
-		int w =x/2;
-		int h = lastH;
-		GUI.Label(new Rect(0,fullY-tempY,w,h),en.timer/10+"."+(en.timer%10));
+		float x2 =x/2f;
+		float x10 =x/10f;
+		float y2=y/2;
+		float xw=x*0.19f;
+		GUI.Label(new Rect(0,fullY-tempY,x2,lastH),en.timer/10+"."+(en.timer%10));
 		tempY+=en.timer*y/10;
 		if(currentEntry==en) GUI.color=Color.green;
-		if(GUI.Button(new Rect(0,fullY-tempY,w,h), "Entry "+counter++))
+		if(GUI.Button(new Rect(0,fullY-tempY,x2,lastH), "Entry "+counter++))
 		{
 			currentEntry=en;
 			currentEnemy=null;
@@ -140,16 +142,16 @@ public class WaveEditor : EditorWindow
 		GUI.color=Color.white;
 		foreach(EnemyHelper eh in en.enemies)
 		{
-			if(GUI.Button(new Rect(eh.position*x/5+x*0.6f,fullY-tempY,x/10,y/2),""))
+			if(GUI.Button(new Rect(eh.position*xw+x2,fullY-tempY,xw,y2),""))
 			{
 				currentEnemy=eh;
 				currentEntry=en;
 			}
 			GUI.color=Color.cyan;
-			if(eh==currentEnemy) GUI.Box(new Rect(eh.position*x/5+x*0.6f,fullY-tempY,x/10,y/2),"");
+			if(eh==currentEnemy) GUI.Box(new Rect(eh.position*xw+x2,fullY-tempY,xw,y2),"");
 			GUI.color=Color.white;
 
-			ShowSprite(new Rect(eh.position*x/5+x*0.6f,fullY-tempY,x/10,y/2),eh.sprite.rect,eh.sprite.texture);
+			ShowSprite(new Rect(eh.position*xw+x2,fullY-tempY,xw,y2),eh.sprite.rect,eh.sprite.texture);
 		}
 		tempY+=lastH;
 		return;

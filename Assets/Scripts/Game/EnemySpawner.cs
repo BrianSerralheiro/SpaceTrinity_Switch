@@ -116,7 +116,7 @@ public class EnemySpawner : MonoBehaviour {
 			else{
 				Debug.LogError("No script found for "+world.enemies[i].name);
 			}
-		}else if(s[0]=='t')timer+=int.Parse(s.Substring(1,1))/10;
+		}else if(s[0]=='t')timer+=float.Parse(s.Substring(1,1))/10f;
 			else if(s[0]=='T')timer+=int.Parse(s.Substring(1,1));
 	}
 	void Chose(string s)
