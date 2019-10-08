@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class WorldSelect : MonoBehaviour
 {
@@ -61,7 +60,7 @@ public class WorldSelect : MonoBehaviour
 		}
 		if(Input.GetKeyDown(KeyCode.Space)){
 			EnemySpawner.world=worlds[selectionID];
-			if(EnemySpawner.world)SceneManager.LoadSceneAsync("cen");
+			if(EnemySpawner.world)Loader.Scene("cen");
 			enabled=false;
 		}
 		if(Input.GetKeyDown(KeyCode.Q))

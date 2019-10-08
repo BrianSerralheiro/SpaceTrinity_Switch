@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	private float timer;
+	protected float timer;
 	public string owner;
 	public int damage;
 	public bool pierce;
@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour {
 	public static bool blink;
 	public int spriteID;
 	public int particleID = 2;
-	new private SpriteRenderer renderer;
+	new protected SpriteRenderer renderer;
 	private void Start()
 	{
 		renderer=GetComponent<SpriteRenderer>();
