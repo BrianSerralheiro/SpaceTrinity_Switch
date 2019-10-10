@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 [CustomEditor(typeof(RectTransformHelper))]
 public class RectEditor : Editor

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 [CreateAssetMenu(fileName ="World",menuName ="Wolrd Info")]
 public class WorldInfo : ScriptableObject
@@ -7,8 +6,10 @@ public class WorldInfo : ScriptableObject
 	public string wave;
     public EnemyInfo[] enemies;
 	public Texture[] bgs;
-	public AudioClip Song;
+	[HideInInspector]
+	public string songName;
 	public EnemyInfo Boss;
-	public AudioClip BossSong;
+	[HideInInspector]
+	public string bossSong;
 
 }

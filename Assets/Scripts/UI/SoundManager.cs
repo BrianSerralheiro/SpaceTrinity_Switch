@@ -14,7 +14,8 @@ public class SoundManager : MonoBehaviour
 	private string[] _names;
 	[SerializeField]
 	private string[] fx_names;
-
+	private static AudioClip _music;
+	private static AudioClip _bossmusic;
 	private AudioSource soundPlayer;
 	private AudioSource songPlayer;
 
@@ -28,13 +29,6 @@ public class SoundManager : MonoBehaviour
 	private void Update()
 	{
 		if(weight>0)weight-=Time.deltaTime;
-		if(request!=null)
-		{
-			if(request.isDone){
-				preloaded =request.asset as AudioClip;
-				request=null;
-			}
-		}
 		if(loadId<_sounds.Length && autorequest.isDone)
 		{
 			_sounds[loadId]=autorequest.asset as AudioClip;
@@ -58,6 +52,8 @@ public class SoundManager : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
+		WorldLoader.BGSong(SetBGSong);
+		WorldLoader.BossSong(SetBossSong);
 		songPlayer = gameObject.AddComponent<AudioSource>();
 		soundPlayer = gameObject.AddComponent<AudioSource>();
 		songPlayer.loop = true;
@@ -66,24 +62,21 @@ public class SoundManager : MonoBehaviour
 		
 		autorequest=Resources.LoadAsync<AudioClip>("Audio/"+ fx_names[loadId]);
 	}
-
-	public static void Play (int i)
+	private static void SetBossSong(AudioClip a){
+		_bossmusic=a;
+	}
+	private static void SetBGSong(AudioClip a){
+		_music=a;
+	}
+	public static void Play(int i)
 	{
-		if(_soundManager == null)
-		{
-			Debug.LogWarning("SoundManager nao inicializado");
-			return;
+		switch(i){
+			case 1:
+				_soundManager.songPlayer.clip =_music;
+				break;
 		}
-		if(i==0)
-		{
-			_soundManager.songPlayer.clip =_soundManager.menu;
-		}
-		else
-			_soundManager.songPlayer.clip =_soundManager.preloaded;
-
 		_soundManager.songPlayer.volume=0f;
 		_soundManager.songPlayer.Play();
-		request=Resources.LoadAsync<AudioClip>("Audio/"+ _soundManager._names[(i+1)%_soundManager._names.Length]);
 	}
 
 	public static void PlayEffects (int i)

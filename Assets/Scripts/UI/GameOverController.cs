@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using ADs;
 
 public class GameOverController : MonoBehaviour 
 {
@@ -143,6 +139,6 @@ public class GameOverController : MonoBehaviour
 	{
 		SoundManager.PlayEffects(0);
 		Ship.paused = false;
-		SceneManager.LoadScene("MainMenu");
+		Loader.Scene("SelectionTest");
 	}
 }

@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using ADs;
 
 public class Continue : MonoBehaviour 
 {
@@ -17,7 +13,7 @@ public class Continue : MonoBehaviour
 	private int continues;
 	private void Update()
 	{
-		button.interactable = adsManager.LoadedVideo();
+		button.interactable = false;
 		if(!Ship.paused)
 		{
 			gameObject.SetActive(false);
@@ -36,10 +32,6 @@ public class Continue : MonoBehaviour
 	{
 		SoundManager.PlayEffects(0);
 		continues--;
-		if(adsManager.LoadedVideo())
-		{
-			adsManager.ShowAd(true);
-		}
 	}
 	public bool HasContinue()
 	{
@@ -47,8 +39,7 @@ public class Continue : MonoBehaviour
 	}
 	public void buyContinue()
 	{
-		if(Cash.totalCash>=5){
-			Cash.totalCash-=5;
+		if(Cash.totalCash>=0){
 			Cash.Save();
 			SoundManager.PlayEffects(0);
 			continues--;

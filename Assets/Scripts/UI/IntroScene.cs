@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using ADs;
 
@@ -26,12 +23,6 @@ public class IntroScene : MonoBehaviour
 	
 	void Update () 
 	{
-		if(loading != null)
-		{
-			tapStart.text = Mathf.Round((loading.progress + 0.1f) * 1000) / 10f + "%";
-			tapStartOutline.text = tapStart.text;
-			audioHandler.volume = 1f - loading.progress;
-		}
 		  introColor = tapStart.color;
 		  introColor.a = Mathf.Abs(Mathf.Cos(Time.time * 2));
 		  tapStart.color = introColor;
@@ -42,9 +33,6 @@ public class IntroScene : MonoBehaviour
 
 	public void OnTap()
 	{
-		if(loading == null)
-		{
-			loading = SceneManager.LoadSceneAsync("MainMenu");
-		} 
+		Loader.Scene("SelectionTest");
 	}
 }

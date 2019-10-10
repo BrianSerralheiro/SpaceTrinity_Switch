@@ -60,7 +60,7 @@ public class WorldSelect : MonoBehaviour
 		}
 		if(Input.GetKeyDown(KeyCode.Space)){
 			EnemySpawner.world=worlds[selectionID];
-			if(EnemySpawner.world)Loader.Scene("cen");
+			if(EnemySpawner.world)Loader.Scene("WorldLoader");
 			enabled=false;
 		}
 		if(Input.GetKeyDown(KeyCode.Q))

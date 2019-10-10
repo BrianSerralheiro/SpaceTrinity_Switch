@@ -25,6 +25,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	public WorldInfo world1;
 	public static WorldInfo world;
+	public static Texture mundo;
 
 	/*
 	Level Design
