@@ -7,9 +7,8 @@ public class Round : EnemyBase
 
 	private float shoottimer = 2;
 	private Vector3 vector=new Vector3();
-	protected new void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
-		base.Start();
 		hp=52;
 		points = 150;
 	}

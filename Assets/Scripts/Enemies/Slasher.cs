@@ -6,8 +6,8 @@ public class Slasher : EnemyBase {
 
 	private float timer = 3;
 	private Vector3 mod =new Vector3(0,-1f,0.1f);
-	new void Start () {
-		base.Start();
+	public override void SetSprites(EnemyInfo ei)
+	{
 		points = 120;
 		explosionID = 10;
 		hp=90;

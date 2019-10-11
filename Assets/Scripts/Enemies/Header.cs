@@ -9,17 +9,17 @@ public class Header : EnemyBase {
 	private float timer;
 	private Core eyes;
 	private Core core;
-	new void Start () {
-		base.Start();
+	public override void SetSprites(EnemyInfo ei)
+	{
 		explosionID = 9;
 		hp=70;
 		points=180;
 		GameObject go=new GameObject("eyes");
-		eyes=go.AddComponent<Core>().Set(SpriteBase.I.header[1],new Color(0.4f,0f,0f));
+		eyes=go.AddComponent<Core>().Set(ei.sprites[1],new Color(0.4f,0f,0f));
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,-0.28f);
 		go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(SpriteBase.I.header[2],new Color(0.4f,0f,0f));
+		core=go.AddComponent<Core>().Set(ei.sprites[2],new Color(0.4f,0f,0f));
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,0.42f);
 	}

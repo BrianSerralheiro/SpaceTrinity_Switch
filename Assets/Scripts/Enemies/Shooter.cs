@@ -16,28 +16,25 @@ public class Shooter : EnemyBase
 	private Core crystal;
 	private Vector3 vector = new Vector3();
 	private Vector3 rot = new Vector3();
-	protected new void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
-		base.Start();
 		points = 100;
 		explosionID=8;
-		_renderer.flipY=true;
 		lifetimer=5;
-		if(legL) return;
 		GameObject go = new GameObject("legL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.shooter[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		legL=go.transform;
 		go=new GameObject("legR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.shooter[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		legR=go.transform;
 		go=new GameObject("armL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.shooter[3];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		armL=go.transform;
 		go=new GameObject("armR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.shooter[4];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
 		armR=go.transform;
 		go=new GameObject("crystal");
-		crystal=go.AddComponent<Core>().Set(SpriteBase.I.shooter[5],new Color(0.4f,0f,0.4f));
+		crystal=go.AddComponent<Core>().Set(ei.sprites[5],new Color(0.4f,0f,0.4f));
 		crystal.transform.parent=armL.parent=armR.parent=legL.parent=legR.parent=transform;
 		armL.localPosition=new Vector3(-0.4f,1.2f,0.1f);
 		armR.localPosition=new Vector3(0.4f,1.2f,0.1f);

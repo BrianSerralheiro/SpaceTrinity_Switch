@@ -11,25 +11,23 @@ public class Diver : EnemyBase
 	private Transform legR;
 	private Vector3 vector = new Vector3();
 
-	new public void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
-		if(Ship.paused) return;
-		base.Start();
 		explosionID=8;
 		hp=12;
 		points = 50;
 		if(legL)return;
 		GameObject go = new GameObject("legL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.diver[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		legL=go.transform;
 		go=new GameObject("legR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.diver[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		legR=go.transform;
 		go=new GameObject("mouthL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.diver[3];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		mouthL=go.transform;
 		go=new GameObject("mouthR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.diver[4];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
 		mouthR=go.transform;
 		mouthL.parent=mouthR.parent=legL.parent=legR.parent=transform;
 		mouthL.localPosition=new Vector3(0.4f,-1f,0.1f);

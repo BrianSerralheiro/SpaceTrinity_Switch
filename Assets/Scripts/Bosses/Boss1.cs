@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss1 : EnemyBase {
 
@@ -20,22 +18,21 @@ public class Boss1 : EnemyBase {
 	}
 	State state;
 	private Vector3 vector = new Vector3();
-	public new void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
 		SoundManager.Play(2);
 		damageEffect = true;
-		base.Start();
 		EnemySpawner.boss=true;
 		hp=1000;
 		GameObject go = new GameObject("wingL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss1[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
 		box.size = new Vector2(1.2f,4);
 		box.offset = new Vector2(0,-2f);
 		wingL=go.transform;
 		go = new GameObject("wingR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss1[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		box = go.AddComponent<BoxCollider2D>();
 		box.size = new Vector2(1.2f,4);
 		box.offset = new Vector2(0,-2f);
@@ -45,11 +42,11 @@ public class Boss1 : EnemyBase {
 		wingR.localPosition=new Vector3(-0.7f,1.9f,-0.1f);
 		legs=new Transform[12];
 		go = new GameObject("crystal");
-		crystal=go.AddComponent<Core>().Set(SpriteBase.I.boss1[15],new Color(0.4f,0f,0.4f));
+		crystal=go.AddComponent<Core>().Set(ei.sprites[15],new Color(0.4f,0f,0.4f));
 		for(int i = 3; i<15; i++)
 		{
 			go = new GameObject("leg"+(i-3));
-			go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss1[i];
+			go.AddComponent<SpriteRenderer>().sprite=ei.sprites[i];
 			legs[i-3]=go.transform;
 			go.transform.parent=transform;
 		}

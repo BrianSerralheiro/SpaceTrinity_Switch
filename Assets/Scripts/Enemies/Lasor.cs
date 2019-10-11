@@ -10,38 +10,33 @@ public class Lasor : EnemyBase
 	private SpriteRenderer charge;
 	private new BoxCollider2D collider;
 	private Core core;
-	protected new void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
-		base.Start();
 		hp=40;
 		points = 120;
 		GameObject go = new GameObject("charge");
 		go.transform.localScale=new Vector3();
 		charge=go.AddComponent<SpriteRenderer>();
-		charge.sprite=SpriteBase.I.Lasor[1];
+		charge.sprite=ei.sprites[1];
 		go.transform.parent=transform;
 		go.transform.localScale=new Vector3();
 		go = new GameObject("laserbase");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.Lasor[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		go.transform.parent=transform;
 		go.transform.localScale=new Vector3();
 		laser=go.transform;
 		laser.localPosition=charge.transform.localPosition=new Vector3();
 		go = new GameObject("laserbody");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.Lasor[3];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		collider=go.AddComponent<BoxCollider2D>();
 		collider.enabled=false;
 		go.transform.parent=laser;
 		go.transform.localPosition=new Vector3(0,-1.1f,0);
 		go.transform.localScale=Vector3.right+Vector3.up*38;
 		go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(SpriteBase.I.Lasor[4],new Color(0.5f,0.1f,0.05f));
+		core=go.AddComponent<Core>().Set(ei.sprites[4],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,1.86f);
-	}
-	public override void Position(int i)
-	{
-		base.Position(i%8);
 	}
 
 	new void OnCollisionEnter2D(Collision2D col)

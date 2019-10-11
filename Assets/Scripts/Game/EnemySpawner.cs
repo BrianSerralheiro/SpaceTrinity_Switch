@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using ADs;
-
+﻿using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
 	public Material bg;
 	[TextArea]
@@ -213,7 +208,9 @@ public class EnemySpawner : MonoBehaviour {
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
-		return go.AddComponent(en.GetScript())as EnemyBase;
+		EnemyBase e=go.AddComponent(en.GetScript())as EnemyBase;
+		e.SetSprites(en);
+		return e;
 	}
 	EnemyBase Spawn<t>(Sprite sp)where t :EnemyBase
 	{

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss3 : EnemyBase {
 	private Transform body;
@@ -17,6 +15,7 @@ public class Boss3 : EnemyBase {
 	private float time=0;
 	private Vector3 left=new Vector3(-0.64f,0.24f,-0.2f);
 	private Vector3 right=new Vector3(0.64f,0.24f,-0.2f);
+	private EnemyInfo bat;
 	enum State
 	{
 		intro,
@@ -27,34 +26,33 @@ public class Boss3 : EnemyBase {
 		dead
 	}
 	State state;
-	new void Start () 
+	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
-		SoundManager.Play(6);
+		SoundManager.Play(2);
 		damageEffect = true;
-		base.Start();
 		EnemySpawner.boss=true;
 		hp=1800;
 		GameObject go=new GameObject("body");
 		_renderer=go.AddComponent<SpriteRenderer>();
-		_renderer.sprite=SpriteBase.I.boss3[1];
+		_renderer.sprite=ei.sprites[1];
 		body=go.transform;
 		go=new GameObject("head");
 		henderer=go.AddComponent<SpriteRenderer>();
-		henderer.sprite=SpriteBase.I.boss3[2];
+		henderer.sprite=ei.sprites[2];
 		head=go.transform;
 		body.parent=head.parent=transform;
 		go=new GameObject("eyes");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss3[5];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[5];
 		go.transform.parent=head;
 		body.parent=head.parent=transform;
 		go.transform.localPosition=new Vector3(0,-0.29f,-0.1f);
 		go=new GameObject("wingL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss3[3];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		go.transform.parent=transform;
 		wingL=go.transform;
 		go=new GameObject("wingR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss3[4];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
 		go.transform.parent=transform;
 		wingR=go.transform;
 		wingL.localPosition=new Vector3(-0.95f,1);
@@ -77,6 +75,7 @@ public class Boss3 : EnemyBase {
 		dark.white=new Color(0f,0f,0f,1f);
 		go.transform.localScale=new Vector3(1600,1600);
 		go.transform.position=new Vector3(0,0,-0.09f);
+		bat=(ei as CarrierInfo).spawnable;
 	}
 	
 	new void Update () {
@@ -226,8 +225,10 @@ public class Boss3 : EnemyBase {
 	void Bat()
 	{
 		GameObject go = new GameObject("enemy");
-		go.AddComponent<Bat>().target=head.position+(player.position-head.position)*5f;
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bat[0];
+		Bat b=go.AddComponent<Bat>();
+		b.target=head.position+(player.position-head.position)*5f;
+		b.SetSprites(bat);
+		go.AddComponent<SpriteRenderer>().sprite=bat.sprites[0];
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;

@@ -6,8 +6,8 @@ public class Bomb : EnemyBase {
 	private Vector3 pos;
 	private Vector3 aim;
 	private float speed=2;
-	new void Start () {
-		base.Start();
+	public override void SetSprites(EnemyInfo ei)
+	{
 		hp=5;
 		pos=transform.position;
 		aim=(player.position-pos).normalized*20+pos;

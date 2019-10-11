@@ -10,17 +10,16 @@ public class Bat : EnemyBase
 	public Vector3 target=new Vector3();
 
 
-	new void Start () 
+	public override void SetSprites(EnemyInfo ei)
 	{
-		base.Start();
 		explosionID = 9;
 		hp=10;
 		points=20;
 		GameObject go=new GameObject("wingL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bat[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		wingL=go.transform;
 		go = new GameObject("wingR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bat[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		wingR=go.transform;
 		wingL.parent=wingR.parent=transform;
 		wingL.localPosition=new Vector3(0.2f,-0.2f,0.1f);

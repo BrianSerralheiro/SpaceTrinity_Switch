@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MFBat : EnemyBase {
 	private float timer=5;
 	private float sprite;
 	private Vector2 dir;
-	new void Start () {
-		base.Start();
+	private static Sprite[] bats;
+	public override void SetSprites(EnemyInfo ei)
+	{
 		dir=new Vector3(Random.Range(-1f,1f),-0.5f);
 		explosionID = 10;
 		hp=50;
 		points=100;
+		if(bats==null)bats=ei.sprites;
 	}
 	
 	new void Update ()
@@ -28,7 +28,7 @@ public class MFBat : EnemyBase {
 		if(transform.position.y>Scaler.sizeY-2)dir.y=-Mathf.Abs(dir.y);
 		if(transform.position.y<-Scaler.sizeY-2)Die();
 		transform.Translate(dir.x*Time.deltaTime,dir.y*Time.deltaTime,0);
-		if(sprite<=0)_renderer.sprite=SpriteBase.I.MFBat[Mathf.RoundToInt(Mathf.PingPong(Time.time*3,1f))];
+		if(sprite<=0)_renderer.sprite=bats[Mathf.RoundToInt(Mathf.PingPong(Time.time*3,1f))];
 		
 	}
 	void Shoot()
@@ -43,7 +43,7 @@ public class MFBat : EnemyBase {
 		go.transform.position=transform.position;
 		go.transform.localScale=Vector3.right*3+Vector3.up*2;
 		sprite=0.3f;
-		_renderer.sprite=SpriteBase.I.MFBat[2];
+		_renderer.sprite=bats[2];
 		timer=1.2f;
 		//go.transform.localScale=Vector3.one*2;
 	}

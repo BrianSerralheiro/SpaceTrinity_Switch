@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour 
 {
@@ -13,6 +10,6 @@ public class PauseMenu : MonoBehaviour
 	public void Exit()
 	{	
 		Ship.paused = false;
-		SceneManager.LoadScene("MainMenu");
+		Loader.Scene("SelectionTest");
 	}
 }

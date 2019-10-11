@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss2 : EnemyBase {
 	private EnemyBase clawL;
@@ -27,6 +25,7 @@ public class Boss2 : EnemyBase {
 	private Vector3 vectorT=new Vector3(0,-0.17f,0.1f);
 	private Vector3 left=new Vector3(1.8f,-1.5f,0);
 	private Vector3 right = new Vector3(-1.8f,-1.5f,0);
+	private Sprite round;
 	enum State
 	{
 		intro,
@@ -36,12 +35,11 @@ public class Boss2 : EnemyBase {
 		dead
 	}
 	State state;
-	new void Start () 
+	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
-		SoundManager.Play(4);
+		SoundManager.Play(2);
 		damageEffect = true;
-		base.Start();
 		EnemySpawner.boss=true;
 		hp=1200;
 		GameObject go = new GameObject("enemy");
@@ -52,16 +50,16 @@ public class Boss2 : EnemyBase {
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss2[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		go.AddComponent<BoxCollider2D>();
 		go=new GameObject("lightL");
-		lightL=go.AddComponent<Core>().Set(SpriteBase.I.boss2[7],new Color(0.5f,0.5f,0.5f));
+		lightL=go.AddComponent<Core>().Set(ei.sprites[7],new Color(0.5f,0.5f,0.5f));
 		go.transform.parent=clawL.transform;
 		go.transform.localPosition=new Vector3(0.25f,0.1f);
 		go = new GameObject("elbowL");
 		lineelbowL=go.AddComponent<LineRenderer>();
 		Config(lineelbowL);
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss2[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		elbowL=go.transform;
 		go = new GameObject("enemy");
 		lineclawR=go.AddComponent<LineRenderer>();
@@ -72,39 +70,40 @@ public class Boss2 : EnemyBase {
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
 		SpriteRenderer sr= go.AddComponent<SpriteRenderer>();
-		sr.sprite=SpriteBase.I.boss2[1];
+		sr.sprite=ei.sprites[1];
 		sr.flipX=true;
 		go.AddComponent<BoxCollider2D>();
 		go=new GameObject("lightR");
-		lightR=go.AddComponent<Core>().Set(SpriteBase.I.boss2[7],new Color(0.5f,0.5f,0.5f)).Flip();
+		lightR=go.AddComponent<Core>().Set(ei.sprites[7],new Color(0.5f,0.5f,0.5f)).Flip();
 		go.transform.parent=clawR.transform;
 		go.transform.localPosition=new Vector3(-0.25f,0.1f);
 		go = new GameObject("elbowR");
 		lineelbowR=go.AddComponent<LineRenderer>();
 		Config(lineelbowR);
 		sr=go.AddComponent<SpriteRenderer>();
-		sr.sprite=SpriteBase.I.boss2[2];
+		sr.sprite=ei.sprites[2];
 		sr.flipX=true;
 		elbowR=go.transform;
 		clawL.transform.position=transform.position+left;
 		clawR.transform.position=transform.position+right;
 		go = new GameObject("lidB");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss2[3];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		lidB=go.transform;
 		go = new GameObject("lidT");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss2[4];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
 		lidT=go.transform;
 		lidB.parent=lidT.parent=transform;
 		lidT.localPosition=vectorT;
 		lidB.localPosition=vectorB;
 		go = new GameObject("eye");
-		eye=go.AddComponent<Core>().Set(SpriteBase.I.boss2[5],new Color(0.5f,0.5f,0.5f));
+		eye=go.AddComponent<Core>().Set(ei.sprites[5],new Color(0.5f,0.5f,0.5f));
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,-0.47f,0.2f);
 		go = new GameObject("eyes");
-		eyes=go.AddComponent<Core>().Set(SpriteBase.I.boss2[6],new Color(0.5f,0.1f,0.05f));
+		eyes=go.AddComponent<Core>().Set(ei.sprites[6],new Color(0.5f,0.1f,0.05f));
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,0.7f,0);
+		round=ei.sprites[7];
 	}
 	
 	protected new void Update(){
@@ -281,7 +280,7 @@ public class Boss2 : EnemyBase {
 	void Shoot(int i)
 	{
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[10];
+		go.AddComponent<SpriteRenderer>().sprite=round;
 		go.AddComponent<BoxCollider2D>();
 		Bullet bu=go.AddComponent<Bullet>();
 		bu.owner=name;

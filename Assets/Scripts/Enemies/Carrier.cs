@@ -9,20 +9,19 @@ public class Carrier : EnemyBase {
 	private Transform[] legs;
 	private Core crystal;
 	private Vector3 vector = new Vector3();
-
-	public new void Start()
+	private EnemyInfo div;
+	public override void SetSprites(EnemyInfo ei)
 	{
-		base.Start();
 		explosionID=8;
 		hp=100;
 		points = 150;
 		legs=new Transform[6];
 		GameObject go = new GameObject("crystal");
-		crystal=go.AddComponent<Core>().Set(SpriteBase.I.carrier[7],new Color(0.4f,0f,0.4f));
+		crystal=go.AddComponent<Core>().Set(ei.sprites[7],new Color(0.4f,0f,0.4f));
 		for(int i = 1; i<7; i++)
 		{
 			go = new GameObject("leg"+i);
-			go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.carrier[i];
+			go.AddComponent<SpriteRenderer>().sprite=ei.sprites[i];
 			legs[i-1]=go.transform;
 			go.transform.parent=transform;
 			go.transform.rotation=transform.rotation;
@@ -36,12 +35,8 @@ public class Carrier : EnemyBase {
 		crystal.transform.parent=transform;
 		crystal.transform.rotation=transform.rotation;
 		crystal.transform.localPosition=new Vector3(0,6.2f);
-	}/*
-	public override void Position(int i)
-	{
-		base.Position(i);
-	}*/
-
+		div=(ei as CarrierInfo).spawnable;
+	}
 	new void Update()
 	{
 		if(Ship.paused) return;
@@ -75,14 +70,14 @@ public class Carrier : EnemyBase {
 	void Spawn()
 	{
 		GameObject go=new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.diver[0];
+		go.AddComponent<SpriteRenderer>().sprite=div.sprites[0];
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
 		diver =go.AddComponent<Diver>();
 		diver.enabled=false;
-		diver.Start();
+		diver.SetSprites(div);
 		diver.transform.position=transform.position;
 		diver.transform.rotation=transform.rotation;
 		diver.transform.parent=transform;

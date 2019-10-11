@@ -13,27 +13,29 @@ public class BatGirl : EnemyBase {
 	private Vector3 pos = new Vector3(0.7f,1.32f,0.1f);
 	private Vector3[] poses={new Vector3(-1,-1,0).normalized,new Vector3(0,-1,0).normalized,new Vector3(1,-1,0).normalized };
 	private float timer=3;
-	new void Start () {
-		base.Start();
+	private EnemyInfo bat;
+	public override void SetSprites(EnemyInfo ei)
+	{
 		explosionID = 9;
 		hp=180;
 		points=150;
 		GameObject go = new GameObject("wingL");
 		render=go.AddComponent<SpriteRenderer>();
-		left=SpriteBase.I.batgirl[2];
-		closed=SpriteBase.I.batgirl[4];
+		left=ei.sprites[2];
+		closed=ei.sprites[4];
 		render.sprite=left;
 		wingL=go.transform;
 		go = new GameObject("wingR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.batgirl[3];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		wingR=go.transform;
 		wingL.parent=wingR.parent=transform;
 		wingL.localPosition=new Vector3(0.7f,1.32f,0.1f);
 		wingR.localPosition=new Vector3(-0.7f,1.32f,0.1f);
 		go = new GameObject("head");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.batgirl[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0f,1.8f,-0.1f);
+		bat=(ei as CarrierInfo).spawnable;
 	}
 	new void Update(){
 		if(Ship.paused) return;
@@ -66,8 +68,10 @@ public class BatGirl : EnemyBase {
 	void Bat(int i)
 	{
 		GameObject go=new GameObject("enemy");
-		go.AddComponent<Bat>().target=transform.position+poses[i]*3f;
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bat[0];
+		Bat b=go.AddComponent<Bat>();
+		b.target=transform.position+poses[i]*3f;
+		b.SetSprites(bat);
+		go.AddComponent<SpriteRenderer>().sprite=bat.sprites[0];
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;

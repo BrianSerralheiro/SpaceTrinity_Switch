@@ -8,14 +8,21 @@ public class Zapper : EnemyBase {
 	private float timer = 5;
 	private Vector3 rot = new Vector3();
 	private Vector3 scale = Vector3.one;
-	new void Start () {
-		base.Start();
+	private static Sprite[] sprites;
+	public override void SetSprites(EnemyInfo ei)
+	{
 		points = 150;
 		explosionID = 10;
 		hp=80;
-		GameObject go=new GameObject("zap");
+		GameObject go=new GameObject("zap");if(sprites==null){
+			sprites=new Sprite[4];
+			sprites[0]=ei.sprites[1];
+			sprites[1]=ei.sprites[2];
+			sprites[2]=ei.sprites[3];
+			sprites[3]=ei.sprites[4];
+		}
 		zap=go.AddComponent<SpriteRenderer>();
-		zap.sprite=SpriteBase.I.zapper[1];
+		zap.sprite=ei.sprites[1];
 		BoxCollider2D col = go.AddComponent<BoxCollider2D>();
 		col.size=new Vector2(0.7f,4);
 		col.offset=new Vector2(0,2.2f);
@@ -25,10 +32,11 @@ public class Zapper : EnemyBase {
 		go.SetActive(false);
 		go=new GameObject("energy");
 		energy=go.AddComponent<SpriteRenderer>();
-		energy.sprite=SpriteBase.I.zapper[3];
+		energy.sprite=sprites[2];
 		energy.transform.parent=transform;
 		energy.transform.localPosition=new Vector3(0,2,-0.1f);
 		energy.gameObject.SetActive(false);
+		
 	}
 	new void OnCollisionEnter2D(Collision2D col)
 	{
@@ -46,15 +54,15 @@ public class Zapper : EnemyBase {
 			transform.eulerAngles=rot;
 		}else if(timer >0.1f)
 		{
-			energy.sprite=Bullet.blink? SpriteBase.I.zapper[3]:SpriteBase.I.zapper[4];
+			energy.sprite=Bullet.blink? sprites[2]:sprites[3];
 			energy.gameObject.SetActive(true);
 			scale.x=scale.y=0.9f-timer;
 			energy.transform.localScale=scale;
 		}else if(timer >0)
 		{
 			zap.gameObject.SetActive(true);
-			energy.sprite=Bullet.blink ? SpriteBase.I.zapper[3] : SpriteBase.I.zapper[4];
-			zap.sprite=Bullet.blink ? SpriteBase.I.zapper[1] : SpriteBase.I.zapper[2];
+			energy.sprite=Bullet.blink ? sprites[2] : sprites[3];
+			zap.sprite=Bullet.blink ? sprites[0] : sprites[1];
 		}
 		else
 		{

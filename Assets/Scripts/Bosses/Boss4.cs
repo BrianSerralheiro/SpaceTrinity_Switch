@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss4 : EnemyBase {
 	enum State
@@ -36,12 +34,11 @@ public class Boss4 : EnemyBase {
 	private float screentimer;
 
 	public static bool last;
-	new void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
-		SoundManager.Play(last?9:8);
+		SoundManager.Play(last?2:3);
 		BossWarning.Show();
 		damageEffect = true;
-		base.Start();
 		EnemySpawner.boss=true;
 		hp=1600;
 		screens=SpriteBase.I.screens;
@@ -74,7 +71,7 @@ public class Boss4 : EnemyBase {
 			screenren.sprite=screens[4];
 			screen=null;
 			go = new GameObject("enemy");
-			go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss4[1];
+			go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 			BoxCollider2D c = go.AddComponent<BoxCollider2D>();
 			c.size=new Vector2(11,2);
 			c.offset=new Vector2(0,-1f);
@@ -82,11 +79,11 @@ public class Boss4 : EnemyBase {
 			final.position=new Vector3(0,Scaler.sizeY+5,0.1f);
 			go=new GameObject("overlay");
 			overlay=go.AddComponent<SpriteRenderer>();
-			overlay.sprite=SpriteBase.I.boss4[2];
+			overlay.sprite=ei.sprites[2];
 			go.transform.parent=final;
 			go.transform.localPosition=new Vector3(0,0,-0.12f);
 			go=new GameObject("fill");
-			go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.boss4[3];
+			go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 			go.transform.parent=final;
 			go.transform.localPosition=new Vector3(0,-1.3f);
 			energy.transform.localScale=Vector3.zero;

@@ -8,8 +8,8 @@ public class Invader : EnemyBase {
 	private Vector3 mod=Vector3.forward/10;
 	private float shoottimer = 1;
 
-	new void Start () {
-		base.Start();
+	public override void SetSprites(EnemyInfo ei)
+	{
 		points = 50;
 		explosionID = 10;
 		hp=30;

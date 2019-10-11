@@ -9,8 +9,8 @@ public class Drone : EnemyBase {
 	private bool dropped;
 
 	private bool _right;
-	new void Start () {
-		base.Start();
+	public override void SetSprites(EnemyInfo ei)
+	{
 		hp=40;
 	}
 	

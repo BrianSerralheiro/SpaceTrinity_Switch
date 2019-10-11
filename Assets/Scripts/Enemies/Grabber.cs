@@ -8,22 +8,21 @@ public class Grabber : EnemyBase {
 	private Transform armR;
 	private Core core;
 	private Vector3 vector = new Vector3();
-	new public void Start()
+	public override void SetSprites(EnemyInfo ei)
 	{
-		base.Start();
 		hp=40;
 		points = 120;
 		GameObject go = new GameObject("armL");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.grabber[1];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		armL=go.transform;
 		go=new GameObject("armR");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.grabber[2];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		armR=go.transform;
 		armL.parent=armR.parent=transform;
 		armL.localPosition=new Vector3(0.6f,-0.6f,-0.1f);
 		armR.localPosition=new Vector3(-0.6f,-0.6f,-0.1f);
 		go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(SpriteBase.I.grabber[3],new Color(0.5f,0.1f,0.05f));
+		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,-0.18f);
 	}

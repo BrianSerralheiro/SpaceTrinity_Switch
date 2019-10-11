@@ -9,6 +9,7 @@ public class Loader : MonoBehaviour
         if(string.IsNullOrEmpty(sceneToLoad)){
             SceneManager.LoadSceneAsync("SelectionTest");
         }else SceneManager.LoadSceneAsync(sceneToLoad);
+        sceneToLoad=null;
     }
     void Update()
     {

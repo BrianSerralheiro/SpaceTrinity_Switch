@@ -11,14 +11,18 @@ public class Launcher : EnemyBase {
 	private Vector3 scale=Vector3.one;
 	private Vector3 pos=new Vector3(0,0.4f,0.1f);
 	private Core core;
-	new void Start () {
-		base.Start();
+	private static Sprite rocketSprite;
+	private static Sprite burstSprite;
+	public override void SetSprites(EnemyInfo ei)
+	{
 		points = 100;
 		hp=40;
 		Create();
 		timer=5;
+		rocketSprite=ei.sprites[1];
+		burstSprite=ei.sprites[2];
 		GameObject go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(SpriteBase.I.launcher[3],new Color(0.5f,0.1f,0.05f));
+		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,0.22f);
 	}
@@ -27,7 +31,7 @@ public class Launcher : EnemyBase {
 		timer=3;
 		spd=0;
 		GameObject go = new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.launcher[1];
+		go.AddComponent<SpriteRenderer>().sprite=rocketSprite;
 		go.AddComponent<Missile>().SetHP(30);
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
@@ -36,7 +40,7 @@ public class Launcher : EnemyBase {
 		rocket=go.transform;
 		rocket.position=transform.position;
 		go = new GameObject("burst");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.launcher[2];
+		go.AddComponent<SpriteRenderer>().sprite=burstSprite;
 		burst=go.transform;
 		burst.parent=rocket;
 		burst.localPosition=new Vector3(0,-1f);

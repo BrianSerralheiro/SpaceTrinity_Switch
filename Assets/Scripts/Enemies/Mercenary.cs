@@ -8,8 +8,8 @@ public class Mercenary : EnemyBase {
 	private bool low;
 	private bool defeat;
 	private Vector3[] dir={(Vector3.left/5+Vector3.down).normalized,Vector3.down,(Vector3.down+Vector3.right/5).normalized};
-	new void Start () {
-		base.Start();
+	public override void SetSprites(EnemyInfo ei)
+	{
 		hp=500;
 		BossDialog.Open(1,"Oh! Let's see if you have what it takes to protect our planet! ò.ó");
 		EnemySpawner.boss=true;

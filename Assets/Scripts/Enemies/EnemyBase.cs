@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyBase : MonoBehaviour {
+public abstract class EnemyBase : MonoBehaviour {
 	protected int points;
 	protected int hp=8;
 	public static Transform player;
@@ -13,8 +11,8 @@ public class EnemyBase : MonoBehaviour {
 
 	protected int explosionID;
 
-	protected void Start()
-	{
+	public abstract void SetSprites(EnemyInfo ei);
+	void Start(){
 		_renderer = GetComponent<SpriteRenderer>();
 	}
 	public void SetHP(int i)
