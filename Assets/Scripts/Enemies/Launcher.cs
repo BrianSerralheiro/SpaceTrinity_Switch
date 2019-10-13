@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Launcher : EnemyBase {
 	private float timer=5;
@@ -17,10 +15,10 @@ public class Launcher : EnemyBase {
 	{
 		points = 100;
 		hp=40;
-		Create();
 		timer=5;
 		rocketSprite=ei.sprites[1];
 		burstSprite=ei.sprites[2];
+		Create();
 		GameObject go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;

@@ -15,6 +15,7 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	MenuTransition[] menus;
 	int selectionID;
+	[SerializeField]
 	int skinId;
 	Vector3 outVector;
 	private delegate void Del();
@@ -26,7 +27,7 @@ public class MenuSelect : MonoBehaviour
 		Locks.Load();
 		update=MovingIn;
 		Check=CheckSelection;
-		if(opt.selection==0)Check+=CheckSkins;
+		if(opt.selection==Menuoptions.SelectionType.Character)Check+=CheckSkins;
     }
 	void OnEnable()
 	{
@@ -58,10 +59,10 @@ public class MenuSelect : MonoBehaviour
 		update();
 	}
 	void UpdateInput(){
-		if(Input.GetKeyDown(KeyCode.UpArrow))if(opt.selection==0)selectionID-=rowCount;else skinId++;
-        if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==0)selectionID+=rowCount;else skinId--;
-        if(Input.GetKeyDown(KeyCode.RightArrow))selectionID++;
-        if(Input.GetKeyDown(KeyCode.LeftArrow))selectionID--;
+		if(Input.GetKeyDown(KeyCode.UpArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId++;else selectionID-=rowCount;
+        if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId--;else selectionID+=rowCount;
+        if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
+        if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
 		Check();
 
 		if(options[selectionID])
@@ -71,7 +72,7 @@ public class MenuSelect : MonoBehaviour
 			selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 			selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
 		}
-		if(Input.GetKeyDown(confirmKey)){
+		if(confirmKey==KeyCode.None || Input.GetKeyDown(confirmKey)){
 			opt.Select(selectionID,skinId-1);
 		}
 		for(int i=0;i<menus.Length;i++){
@@ -105,7 +106,7 @@ public struct Menuoptions
 {
 	public enum SelectionType
 	{
-		World=0,Character=1,Weapon=2
+		World,Character,Weapon
 	}
 	public SelectionType selection;
 	public WorldInfo[] worlds;
@@ -113,11 +114,11 @@ public struct Menuoptions
 		switch(selection){
 			case SelectionType.World:
 				EnemySpawner.world=worlds[i];
-				if(EnemySpawner.world)Loader.Scene("WorldLoader");
 				return;
 			case SelectionType.Character:
 				Ship.playerID=i;
 				Ship.skinID=j;
+				if(EnemySpawner.world)Loader.Scene("WorldLoader");
 				return;
 			case SelectionType.Weapon:
 				//implementar equips
