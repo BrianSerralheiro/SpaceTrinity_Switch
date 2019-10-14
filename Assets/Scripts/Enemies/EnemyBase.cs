@@ -8,7 +8,7 @@ public abstract class EnemyBase : MonoBehaviour {
 	protected SpriteRenderer _renderer;
 
 	protected bool damageEffect;
-
+	protected delegate void Del();
 	protected int explosionID;
 
 	public abstract void SetSprites(EnemyInfo ei);

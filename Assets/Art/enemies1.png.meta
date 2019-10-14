@@ -565,7 +565,7 @@ TextureImporter:
         serializedVersion: 2
         x: 976
         y: 256
-        width: 66
+        width: 59
         height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -689,10 +689,10 @@ TextureImporter:
       name: shooter_crystal
       rect:
         serializedVersion: 2
-        x: 974
-        y: 146
-        width: 59
-        height: 58
+        x: 975
+        y: 147
+        width: 55
+        height: 55
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -730,7 +730,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2f364563da2f0c84ab50724784ee7a9e
     internalID: 0
     vertices: []
     indices: 

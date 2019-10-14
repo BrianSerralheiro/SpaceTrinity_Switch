@@ -36,11 +36,11 @@ public class Shooter : EnemyBase
 		go=new GameObject("crystal");
 		crystal=go.AddComponent<Core>().Set(ei.sprites[5],new Color(0.4f,0f,0.4f));
 		crystal.transform.parent=armL.parent=armR.parent=legL.parent=legR.parent=transform;
-		armL.localPosition=new Vector3(-0.4f,1.2f,0.1f);
-		armR.localPosition=new Vector3(0.4f,1.2f,0.1f);
-		legL.localPosition=new Vector3(0,-1f,0.1f);
-		legR.localPosition=new Vector3(0,-1f,0.1f);
-		crystal.transform.localPosition=new Vector3(0,1.2f);
+		armL.localPosition=new Vector3(0.4f,-1f,0.1f);
+		armR.localPosition=new Vector3(-0.4f,-1f,0.1f);
+		legL.localPosition=new Vector3(0,1.2f,0.1f);
+		legR.localPosition=new Vector3(0,1.2f,0.1f);
+		crystal.transform.localPosition=new Vector3(0,-1.27f);
 	}
 
 	public override void Position(int i)
@@ -56,7 +56,7 @@ public class Shooter : EnemyBase
 		if(position>=0)
 		{
 			transform.Translate((finalpoint-transform.position).normalized*4*Time.deltaTime,Space.World);
-			transform.up=finalpoint-transform.position;
+			transform.up=transform.position-finalpoint;
 			if((finalpoint-transform.position).sqrMagnitude<0.005f)
 			{
 				transform.position=finalpoint;
@@ -65,8 +65,10 @@ public class Shooter : EnemyBase
 		}
 		else
 		{
-			rot.Set(0,0,Mathf.Atan2(transform.position.x-player.position.x,player.position.y-transform.position.y)*Mathf.Rad2Deg);
-			transform.eulerAngles=rot;
+			Vector3 v=transform.position-player.position;
+			v.z=0;
+			v.Normalize();
+			transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*90f);
 			if(shoottimer>0) shoottimer-=Time.deltaTime;
 			else
 			{
@@ -75,7 +77,7 @@ public class Shooter : EnemyBase
 			}
 			crystal.Set(Mathf.Lerp(0,1,shoottimer-0.5f));
 		}
-		vector.Set(0,0,180+Mathf.PingPong(Time.time*100,35f));
+		vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
 		armL.localEulerAngles=vector;
 		armR.localEulerAngles=-vector;
 		legL.localEulerAngles=-vector;
@@ -91,6 +93,6 @@ public class Shooter : EnemyBase
 		bu.owner=transform.name;
 		bu.spriteID=8;
 		go.transform.position=crystal.transform.position;
-		go.transform.rotation=transform.rotation;
+		go.transform.up=-transform.up;
 	}
 }

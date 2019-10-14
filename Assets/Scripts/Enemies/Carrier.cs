@@ -65,7 +65,7 @@ public class Carrier : EnemyBase {
 		legs[4].localEulerAngles=vector;
 		legs[5].localEulerAngles=-vector;
 
-		if(transform.position.x<-Scaler.sizeX/2f-4.2F || transform.position.x>Scaler.sizeX/2f+4.2F || transform.position.y<-Scaler.sizeY-4.2F) Die();
+		if(transform.position.x<-Scaler.sizeX/2f-4.2F || transform.position.x>Scaler.sizeX/2f+4.2F || transform.position.y<-Scaler.sizeY-8.2F) Die();
 	}
 	void Spawn()
 	{

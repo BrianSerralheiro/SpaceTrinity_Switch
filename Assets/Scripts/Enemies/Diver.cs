@@ -10,7 +10,7 @@ public class Diver : EnemyBase
 	private Transform legL;
 	private Transform legR;
 	private Vector3 vector = new Vector3();
-
+	Del movement;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		explosionID=8;
@@ -34,19 +34,36 @@ public class Diver : EnemyBase
 		mouthR.localPosition=new Vector3(-0.4f,-1f,0.1f);
 		legL.localPosition=new Vector3(0.1f,1f,0.1f);
 		legR.localPosition=new Vector3(-0.1f,1f,0.1f);
+		movement=SlowFall;
 	}
 	new void Update()
 	{
 		base.Update();
 		if(Ship.paused) return;
-		rotation.z=Mathf.Atan2(transform.position.x-player.position.x,player.position.y-transform.position.y)*Mathf.Rad2Deg+180;
-		transform.eulerAngles=rotation;
-		transform.Translate(0,-3*Time.deltaTime,0);
-
-		vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
+		movement();
 		mouthL.localEulerAngles=vector;
 		mouthR.localEulerAngles=-vector;
 		legL.localEulerAngles=-vector*2;
 		legR.localEulerAngles=vector*2;
+	}
+	void SlowFall(){
+		transform.Translate(0,-2*Time.deltaTime,0,Space.World);
+		Vector3 v=transform.position-player.position;
+		v.z=0;
+		v.Normalize();
+		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*270f);
+		vector.Set(0,0,Mathf.PingPong(Time.time*50,45f));
+		if(transform.position.y<Scaler.sizeY/2)movement=Follow;
+	}
+	void Follow(){
+		if(transform.position.y>player.position.y){
+			Vector3 v=transform.position-player.position;
+			v.z=0;
+			v.Normalize();
+			transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*90f);
+		}
+		transform.Translate(0,-12*Time.deltaTime,0);
+		vector.Set(0,0,Mathf.PingPong(Time.time*150,45f));
+		if(transform.position.y<-Scaler.sizeY)Die();
 	}
 }
