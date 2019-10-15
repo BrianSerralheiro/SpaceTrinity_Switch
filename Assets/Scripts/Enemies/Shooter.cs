@@ -7,7 +7,7 @@ public class Shooter : EnemyBase
 	private int position;
 	private Vector3 finalpoint;
 	private float shoottimer=1;
-	private float lifetimer;
+	bool shot;
 
 	private Transform armL;
 	private Transform armR;
@@ -16,11 +16,11 @@ public class Shooter : EnemyBase
 	private Core crystal;
 	private Vector3 vector = new Vector3();
 	private Vector3 rot = new Vector3();
+	Del movement;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
 		explosionID=8;
-		lifetimer=5;
 		GameObject go = new GameObject("legL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		legL=go.transform;
@@ -41,6 +41,8 @@ public class Shooter : EnemyBase
 		legL.localPosition=new Vector3(0,1.2f,0.1f);
 		legR.localPosition=new Vector3(0,1.2f,0.1f);
 		crystal.transform.localPosition=new Vector3(0,-1.27f);
+		fallSpeed=-9;
+		movement=Moving;
 	}
 
 	public override void Position(int i)
@@ -53,35 +55,43 @@ public class Shooter : EnemyBase
 	{
 		if(Ship.paused) return;
 		base.Update();
-		if(position>=0)
-		{
-			transform.Translate((finalpoint-transform.position).normalized*4*Time.deltaTime,Space.World);
-			transform.up=transform.position-finalpoint;
-			if((finalpoint-transform.position).sqrMagnitude<0.005f)
-			{
-				transform.position=finalpoint;
-				position=-1;
-			}
-		}
-		else
-		{
-			Vector3 v=transform.position-player.position;
-			v.z=0;
-			v.Normalize();
-			transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*90f);
-			if(shoottimer>0) shoottimer-=Time.deltaTime;
-			else
-			{
-				shoottimer=1.5f;
-				Shoot();
-			}
-			crystal.Set(Mathf.Lerp(0,1,shoottimer-0.5f));
-		}
-		vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
+		movement();
 		armL.localEulerAngles=vector;
 		armR.localEulerAngles=-vector;
 		legL.localEulerAngles=-vector;
 		legR.localEulerAngles=vector;
+	}
+	void Moving(){
+		transform.Translate((finalpoint-transform.position).normalized*4*Time.deltaTime,Space.World);
+		transform.up=transform.position-finalpoint;
+		if((finalpoint-transform.position).sqrMagnitude<0.01f)
+		{
+			transform.position=finalpoint;
+			movement=Shooting;
+		}
+		vector.Set(0,0,Mathf.PingPong(Time.time*80,45f));
+	}
+	void Shooting(){
+		Vector3 v=transform.position-player.position;
+		v.z=0;
+		v.Normalize();
+		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*90f);
+		if(shoottimer>0) shoottimer-=Time.deltaTime;
+		else
+		{
+			shoottimer=1.5f;
+			Shoot();
+			if(shot)movement=SlowFall;
+			shot=true;
+		}
+		crystal.Set(Mathf.Lerp(0,1,shoottimer-0.5f));
+		vector.Set(0,0,Mathf.PingPong(Time.time*67.5f,45f));
+	}
+	protected override void SlowFall(){
+		base.SlowFall();
+		transform.Rotate(Vector3.Cross(Vector3.down,transform.up)*Time.deltaTime*190f);
+		crystal.Min(Time.deltaTime);
+		vector.Set(0,0,Mathf.PingPong(Time.time*200,45f));
 	}
 	void Shoot()
 	{

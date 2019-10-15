@@ -4,7 +4,7 @@ public abstract class EnemyBase : MonoBehaviour {
 	protected int points;
 	protected int hp=8;
 	public static Transform player;
-	protected float damageTimer;
+	protected float damageTimer,fallSpeed=-1;
 	protected SpriteRenderer _renderer;
 
 	protected bool damageEffect;
@@ -18,6 +18,10 @@ public abstract class EnemyBase : MonoBehaviour {
 	public void SetHP(int i)
 	{
 		hp=i;
+	}
+	protected virtual void SlowFall(){
+		transform.Translate(0,fallSpeed*Time.deltaTime,0,Space.World);
+		if(transform.position.y<-Scaler.sizeY-2)Die();
 	}
 	public void Update()
 	{

@@ -35,6 +35,7 @@ public class Diver : EnemyBase
 		legL.localPosition=new Vector3(0.1f,1f,0.1f);
 		legR.localPosition=new Vector3(-0.1f,1f,0.1f);
 		movement=SlowFall;
+		fallSpeed=-2;
 	}
 	new void Update()
 	{
@@ -46,8 +47,8 @@ public class Diver : EnemyBase
 		legL.localEulerAngles=-vector*2;
 		legR.localEulerAngles=vector*2;
 	}
-	void SlowFall(){
-		transform.Translate(0,-2*Time.deltaTime,0,Space.World);
+	protected override void SlowFall(){
+		base.SlowFall();
 		Vector3 v=transform.position-player.position;
 		v.z=0;
 		v.Normalize();
