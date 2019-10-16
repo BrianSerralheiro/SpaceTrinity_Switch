@@ -9,6 +9,7 @@ public class Header : EnemyBase {
 	private float timer;
 	private Core eyes;
 	private Core core;
+	Del movement;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		explosionID = 9;
@@ -22,26 +23,34 @@ public class Header : EnemyBase {
 		core=go.AddComponent<Core>().Set(ei.sprites[2],new Color(0.4f,0f,0f));
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,0.42f);
+		movement=Shooting;
 	}
-	
-	new void Update () {
-		if(Ship.paused) return;
-		base.Update();
+	void Shooting(){
 		timer+=Time.deltaTime;
 		core.Min(Time.deltaTime);
 		eyes.Set(Mathf.PingPong(Time.time/2,1));
 		if(timer>1)
 		{
 			timer=0;
-			do
-			{
-				prev=Random.Range(0,3);
-			}while((prev==0 && transform.position.x>3) ||(prev==2 && transform.position.x<-3));
 			Shoot();
 			core.Set(1);
 		}
-		transform.Translate(dir[prev]*Time.deltaTime*2);
-		if(transform.position.y<-Scaler.sizeY-2)Destroy(gameObject);
+		transform.Translate(0,-4*Time.deltaTime,0);
+		if(transform.position.y<Scaler.sizeY/2)movement=Moving;
+	}
+	void Moving(){
+		core.Min(Time.deltaTime);
+		eyes.Set(Mathf.PingPong(Time.time/2,1));
+		if(transform.position.x>0)
+			transform.Translate(2*Time.deltaTime,-2*Time.deltaTime,0);
+		else
+			transform.Translate(-2*Time.deltaTime,-2*Time.deltaTime,0);
+		if(transform.position.y<-Scaler.sizeY-2)Die();
+	}
+	new void Update () {
+		if(Ship.paused) return;
+		base.Update();
+		movement();
 	}
 	void Shoot()
 	{
