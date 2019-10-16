@@ -39,6 +39,8 @@ public class MenuSelect : MonoBehaviour
 		selector.rectTransform.anchoredPosition=options[selectionID].rectTransform.anchoredPosition;
 		selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 		selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
+		selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
+		selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
 	}
 	void MovingIn(){
 		Vector3 vector=new Vector3(Screen.width/2,Screen.height/2);
@@ -71,6 +73,8 @@ public class MenuSelect : MonoBehaviour
 			selector.rectTransform.anchoredPosition=options[selectionID].rectTransform.anchoredPosition;
 			selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 			selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
+			selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
+			selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
 		}
 		if(confirmKey==KeyCode.None || Input.GetKeyDown(confirmKey)){
 			opt.Select(selectionID,skinId-1);
