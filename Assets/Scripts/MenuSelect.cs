@@ -10,6 +10,12 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	Graphic selector;
 	[SerializeField]
+	Text displayText;
+	[SerializeField]
+	Image displayImage;
+	[SerializeField]
+	Sprite[] sprites;
+	[SerializeField]
 	KeyCode confirmKey;
 	public Menuoptions opt;
 	[SerializeField]
@@ -41,6 +47,8 @@ public class MenuSelect : MonoBehaviour
 		selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
 		selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
 		selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
+		if(displayText)displayText.text=options[selectionID].name;
+		if(displayImage)displayImage.sprite=sprites[selectionID];
 	}
 	void MovingIn(){
 		Vector3 vector=new Vector3(Screen.width/2,Screen.height/2);
@@ -75,14 +83,21 @@ public class MenuSelect : MonoBehaviour
 			selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
 			selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
 			selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
+			if(displayText){
+				displayText.text=options[selectionID].name;
+				displayText.color=options[selectionID].color;
+			}
+			if(displayImage)displayImage.sprite=sprites[selectionID];
 		}
-		if(confirmKey==KeyCode.None || Input.GetKeyDown(confirmKey)){
+		if(Input.GetKeyDown(confirmKey)){
 			opt.Select(selectionID,skinId-1);
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
 				menus[i].Open();
 				menus[i].Close(this);
+				if(confirmKey==KeyCode.None)
+					opt.Select(selectionID,skinId-1);
 			}
 		}
 	}
