@@ -27,27 +27,30 @@ public class MenuSelect : MonoBehaviour
 	private delegate void Del();
 	private Del update;
 	private Del Check;
-	void Start()
+	void Awake()
     {
         if(rowCount<2)rowCount=2;
 		Locks.Load();
 		update=MovingIn;
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character)Check+=CheckSkins;
+		if(opt.selection==Menuoptions.SelectionType.Character){
+			selectionID=Ship.playerID;
+			skinId=Ship.skinID+1;
+		}
     }
 	void OnEnable()
 	{
-		if(opt.selection==Menuoptions.SelectionType.Character){
-			selectionID=Ship.playerID;
-			skinId=Ship.skinID;
-		}
 		selector.rectTransform.position=options[selectionID].rectTransform.position;
 		selector.rectTransform.anchoredPosition=options[selectionID].rectTransform.anchoredPosition;
 		selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 		selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
 		selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
 		selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
-		if(displayText)displayText.text=options[selectionID].name;
+		if(displayText){
+				displayText.text=options[selectionID].name;
+				displayText.color=options[selectionID].color;
+		}
 		if(displayImage)displayImage.sprite=sprites[selectionID];
 	}
 	void MovingIn(){
