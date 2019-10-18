@@ -45,7 +45,6 @@ public class MenuSelect : MonoBehaviour
 		selector.rectTransform.anchoredPosition=options[selectionID].rectTransform.anchoredPosition;
 		selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 		selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
-		selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
 		selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
 		if(displayText){
 				displayText.text=options[selectionID].name;
@@ -84,7 +83,6 @@ public class MenuSelect : MonoBehaviour
 			selector.rectTransform.anchoredPosition=options[selectionID].rectTransform.anchoredPosition;
 			selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 			selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
-			selector.rectTransform.localScale=options[selectionID].rectTransform.localScale;
 			selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
 			if(displayText){
 				displayText.text=options[selectionID].name;
