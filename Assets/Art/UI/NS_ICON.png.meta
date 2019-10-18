@@ -1,0 +1,1219 @@
+fileFormatVersion: 2
+guid: 3a5e3000b17161241ba8415dc7159866
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2835872754853200103
+    second: NS_ICON_0
+  - first:
+      213: -5095969835535042205
+    second: NS_ICON_1
+  - first:
+      213: -1178238925633341979
+    second: NS_ICON_2
+  - first:
+      213: 4673439401513944165
+    second: NS_ICON_3
+  - first:
+      213: -8558600706319101807
+    second: NS_ICON_4
+  - first:
+      213: -8228504608033815607
+    second: NS_ICON_5
+  - first:
+      213: -3135434204071790548
+    second: NS_ICON_6
+  - first:
+      213: 2355254865432990537
+    second: NS_ICON_7
+  - first:
+      213: -8379172988192324568
+    second: NS_ICON_8
+  - first:
+      213: -962379319322503827
+    second: NS_ICON_9
+  - first:
+      213: -5939654244653893095
+    second: NS_ICON_10
+  - first:
+      213: -8149146770908783522
+    second: NS_ICON_11
+  - first:
+      213: 1509864948334214877
+    second: NS_ICON_12
+  - first:
+      213: -376916651504991629
+    second: NS_ICON_13
+  - first:
+      213: -3290683378029120784
+    second: NS_ICON_14
+  - first:
+      213: -6641485710639397382
+    second: NS_ICON_15
+  - first:
+      213: 2528507657742172981
+    second: NS_ICON_16
+  - first:
+      213: -2427792100330584508
+    second: NS_ICON_17
+  - first:
+      213: 2997674397018709607
+    second: NS_ICON_18
+  - first:
+      213: -1364587800507211667
+    second: NS_ICON_19
+  - first:
+      213: 6299806814797072892
+    second: NS_ICON_20
+  - first:
+      213: 4484613947903721460
+    second: NS_ICON_21
+  - first:
+      213: -2703768722537693631
+    second: NS_ICON_22
+  - first:
+      213: -3386409663592431872
+    second: NS_ICON_23
+  - first:
+      213: -3211211446185280848
+    second: NS_ICON_24
+  - first:
+      213: 8847028579375511718
+    second: NS_ICON_25
+  - first:
+      213: 1966283002317318946
+    second: NS_ICON_26
+  - first:
+      213: -9095804948834003689
+    second: NS_ICON_27
+  - first:
+      213: -5328718886460522346
+    second: NS_ICON_28
+  - first:
+      213: 7116481898310659487
+    second: NS_ICON_29
+  - first:
+      213: 615782854611563092
+    second: NS_ICON_30
+  - first:
+      213: 5070248490622554447
+    second: NS_ICON_31
+  - first:
+      213: 6556029196774621421
+    second: NS_ICON_32
+  - first:
+      213: 4901531217391973990
+    second: NS_ICON_33
+  - first:
+      213: -8341515487814097743
+    second: NS_ICON_34
+  - first:
+      213: 1267748617450085788
+    second: NS_ICON_35
+  - first:
+      213: -1795664708606695690
+    second: NS_ICON_36
+  - first:
+      213: -2027426904737759007
+    second: NS_ICON_37
+  - first:
+      213: 7386703106774943895
+    second: NS_ICON_38
+  - first:
+      213: 4982770624690962132
+    second: NS_ICON_39
+  - first:
+      213: -47648163838163127
+    second: NS_ICON_40
+  - first:
+      213: -2850980933637817463
+    second: NS_ICON_41
+  - first:
+      213: 5251500079406510757
+    second: NS_ICON_42
+  - first:
+      213: -1581414096080985301
+    second: NS_ICON_43
+  - first:
+      213: -4015338424763610638
+    second: NS_ICON_44
+  - first:
+      213: 1756755884292597795
+    second: NS_ICON_45
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NS_ICON_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 484
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b13bd4d8894eec46b1484528351ba5d
+      internalID: 2835872754853200103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 484
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50697c797f1939442b5ade22bfb558ff
+      internalID: -5095969835535042205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 506
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186a95787ca5281448baed7ce6488c6b
+      internalID: -1178238925633341979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 526
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d38498dc7a67e4e42887bedbb4e3821b
+      internalID: 4673439401513944165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_4
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 506
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d13dfc25f6e054bad1221416f975e0
+      internalID: -8558600706319101807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_5
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 506
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4612c8575c75e541a2b758792e3a917
+      internalID: -8228504608033815607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_6
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 526
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 122e00520be1c3b4b9fdebbdd94a9038
+      internalID: -3135434204071790548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_7
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 506
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258d7dbd81294ef4f8a19873b455514f
+      internalID: 2355254865432990537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_8
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 497
+        width: 145
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8fa1602010de944bc4f3231c4c28ae
+      internalID: -8379172988192324568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 485
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7785f24cd2201244c9ceed39aeb60081
+      internalID: -962379319322503827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_10
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 485
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e7c86f26be54047ac25b3f40dee59e
+      internalID: -5939654244653893095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_11
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 380
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378c89e15f6d129429cee911d5f1c606
+      internalID: -8149146770908783522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_12
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 380
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5bfa279ca432f469681bde0712f97e
+      internalID: 1509864948334214877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_13
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 429
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0349ea98e9a07a647b32c2c6efe5c647
+      internalID: -376916651504991629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 449
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2b9449bf66cbe84eb429a5600e7c0f6
+      internalID: -3290683378029120784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_15
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 429
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82d486626e8b6b42838d4db19e53150
+      internalID: -6641485710639397382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_16
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 429
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a809cfe82a7b742929bcb0a534b99b
+      internalID: 2528507657742172981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_17
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 449
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7abd8444a23424ca9c021304b76165
+      internalID: -2427792100330584508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_18
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 429
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a86e389641757649b025ed7b5884a0d
+      internalID: 2997674397018709607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_19
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 408
+        width: 145
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977d044857855fb40b3f4755b66bbd30
+      internalID: -1364587800507211667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_20
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 408
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 015c0c1d7f083874cb3c308c5e882777
+      internalID: 6299806814797072892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_21
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 408
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8aafaf7d7d7f94d968d527fb71d0cc
+      internalID: 4484613947903721460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_22
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 252
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af7e6df81bc05e4bab94217b3eb75cf
+      internalID: -2703768722537693631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_23
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 293
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa255fc2ef04fb642a658a9f3e4799e4
+      internalID: -3386409663592431872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_24
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 252
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed67f8992a47c94479e627b08492dfbd
+      internalID: -3211211446185280848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_25
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 288
+        width: 142
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef61731e919250544b027e6891534f88
+      internalID: 8847028579375511718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_26
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 246
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400cd787f857c5f4183f8f8d9932a80e
+      internalID: 1966283002317318946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_27
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 210
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a7e94fd6783d845acd7bf2ffb65a09
+      internalID: -9095804948834003689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_28
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 223
+        width: 142
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b349f7cda0ffd47b2cfadee9e24a80
+      internalID: -5328718886460522346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_29
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 169
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a440d9505323645a645de31c5c5363
+      internalID: 7116481898310659487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_30
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 191
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1666b9ec77904dd4590c635694a07728
+      internalID: 615782854611563092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_31
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 232
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba4227abb0404549b4acb057b857c64
+      internalID: 5070248490622554447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_32
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 191
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f5c039a3dfb8049bdd5637342910c6
+      internalID: 6556029196774621421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_33
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 106
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e06d18ccd2cd2248b8304a5e06aa2a4
+      internalID: 4901531217391973990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_34
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 106
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83da135ced2fe714894d2326c3e60d6d
+      internalID: -8341515487814097743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_35
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 92
+        width: 75
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a3bcdd37bf8d144a6aae0572c914bd
+      internalID: 1267748617450085788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_36
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 150
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d470a0bd0b41fd4fbe1b549aa5a044f
+      internalID: -1795664708606695690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_37
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 0
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6837d1d4819fa7f40b65e013ca5ed31d
+      internalID: -2027426904737759007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_38
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 71
+        width: 69
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5646afe9fe3897949ac1446abd1197ea
+      internalID: 7386703106774943895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_39
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a92529b22b0d842b3783e2ea440097
+      internalID: 4982770624690962132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_40
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 16
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7113976ee778a1946be9ace9dfb65e38
+      internalID: -47648163838163127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_41
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 47
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844c135d61c1396488d588f0cc38c1c3
+      internalID: -2850980933637817463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_42
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 88
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 371b8f30159153248818f1ff4419808b
+      internalID: 5251500079406510757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_43
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 47
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a238b2c433b95942babe249cb34aaa7
+      internalID: -1581414096080985301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_44
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 16
+        width: 74
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f18604f58bec84aab632cbf45b4cd1
+      internalID: -4015338424763610638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NS_ICON_45
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 5
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c7bd8b85a6d3b408168e3904c812a9
+      internalID: 1756755884292597795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
