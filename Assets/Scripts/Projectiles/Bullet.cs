@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour {
 	public int spriteID;
 	public int particleID = 2;
 	new protected SpriteRenderer renderer;
-	private void Start()
+	protected virtual void Start()
 	{
 		renderer=GetComponent<SpriteRenderer>();
 		timer=2;

@@ -23,7 +23,7 @@ public class DialogBox : MonoBehaviour {
 		portrait=GetComponentsInChildren<Image>()[0];
 		image=GetComponentsInChildren<Image>()[1];
 		if(!text || !image)Debug.LogError("Dialog box needs both image and text components in children");
-		image.sprite=box[Ship.playerID];
+		// DESCOMENTAR image.sprite=box[Ship.playerID];
 		box=null;
 		on=On;
 		gameObject.SetActive(false);

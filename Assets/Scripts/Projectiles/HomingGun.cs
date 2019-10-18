@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HomingGun : Gun
 {
@@ -13,7 +11,7 @@ public class HomingGun : Gun
 		go.AddComponent<BoxCollider2D>();
 		CircleCollider2D col=go.AddComponent<CircleCollider2D>();
         col.isTrigger=true;
-        col.radius=5;
+        col.radius=10;
 		Homing bull= go.AddComponent<Homing>();
 		bull.owner=transform.parent.name;
 		bull.damage=damage;
