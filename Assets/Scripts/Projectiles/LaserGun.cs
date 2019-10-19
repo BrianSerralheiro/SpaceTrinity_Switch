@@ -42,9 +42,7 @@ public class LaserGun : Gun {
 				line.SetPosition(i,v);
 			}
 		}
-		timer+=Time.deltaTime*10;
-		if(timer>1)timer=1;
-		if(timer<0)timer=0;
+		timer=0.1f;
 	}
 	public override void Level(int i)
 	{
@@ -53,8 +51,11 @@ public class LaserGun : Gun {
 	void Update()
 	{
 		if(timer>0)
-			timer-=Time.deltaTime*6f;
-		if(timer<0)line.enabled=false;
+			timer-=Time.deltaTime;
+		if(timer<0){
+			line.enabled=false;
+			col.enabled=false;
+		}
 
 	}
 }

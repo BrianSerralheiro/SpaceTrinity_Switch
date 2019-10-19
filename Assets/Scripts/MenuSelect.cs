@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class MenuSelect : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	MenuTransition[] menus;
 	int selectionID;
-	[SerializeField]
 	int skinId;
 	Vector3 outVector;
 	private delegate void Del();
@@ -30,7 +30,7 @@ public class MenuSelect : MonoBehaviour
 	void Awake()
     {
         if(rowCount<2)rowCount=2;
-		Locks.Load();
+		//Locks.Load();
 		update=MovingIn;
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character)Check+=CheckSkins;
@@ -126,9 +126,10 @@ public struct Menuoptions
 {
 	public enum SelectionType
 	{
-		World,Character,Weapon
+		World,Character,Weapon,Shop
 	}
 	public SelectionType selection;
+	public UnityEvent comand;
 	public WorldInfo[] worlds;
 	public void Select(int i,int  j){
 		switch(selection){
@@ -142,6 +143,11 @@ public struct Menuoptions
 				return;
 			case SelectionType.Weapon:
 				//implementar equips
+				return;
+			case SelectionType.Shop:
+				//implementar shop
+				ShopManager.buyID=i;
+				comand?.Invoke();
 				return;
 		}
 	}

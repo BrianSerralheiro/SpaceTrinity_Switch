@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class Locks {
 	
-	private static string skins="000000000000";
-	private static string chars="000";
+	private static string skins="000000000000000000000";
+	private static string chars="0000000";
 	private static bool premium;
 
 	public static void Load()
@@ -26,7 +26,7 @@ public static class Locks {
 	}
 	public static void Skin(int i,bool b)
 	{
-		skins=skins.Substring(0,i)+"1"+skins.Substring(i+1,11-i);
+		skins=skins.Substring(0,i)+"1"+skins.Substring(i+1,skins.Length-1-i);
 		Save();
 	}
 	public static bool Char(int i)
@@ -35,7 +35,7 @@ public static class Locks {
 	}
 	public static void Char(int i,bool b)
 	{
-		chars=chars.Substring(0,i)+"1"+chars.Substring(i+1,2-i);
+		chars=chars.Substring(0,i)+"1"+chars.Substring(i+1,chars.Length-1-i);
 		Save();
 	}
 	public static void UnlockAll()

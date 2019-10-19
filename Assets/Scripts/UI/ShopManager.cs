@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using IAP;
 public class ShopManager : MonoBehaviour 
 {
 
 	[SerializeField]
-	private IAPManager manager;
-	[SerializeField]
 	private PopUp pop;
 	[SerializeField]
-	private PopUp ppop;
+	private MenuSelect menu;
 	[SerializeField]
 	private int[] skinPrices;
 	[SerializeField]
@@ -21,22 +16,20 @@ public class ShopManager : MonoBehaviour
 	[SerializeField]
 	private string[] charNames;
 	private int price;
-	private int id;
-	private bool cha;
-	public void BuySkin(int i)
+	public static int buyID;
+	public void BuySkin()
 	{
-		if(skinPrices[i]<=Cash.totalCash)
+		if(skinPrices[buyID]<=Cash.totalCash)
 		{
-			price=skinPrices[i];
-			cha=false;
-			id=i;
-			pop.Open("Buy skin "+skinNames[i]+" for "+price+" stars?",Confirm);
+			price=skinPrices[buyID];
+			pop.Open("Buy skin "+skinNames[buyID]+" for "+price+" stars?",Confirm,menu);
 		}
 		else
 		{
-			Warning.Open("You need "+skinPrices[i]+" stars to buy this skin!");
+			Warning.Open("You need "+skinPrices[buyID]+" stars to buy this skin!");
 		}
 	}
+	/*reusar caso preciso
 	public void BuyChar(int i)
 	{
 		if(charPrices[i]<=Cash.totalCash)
@@ -51,17 +44,16 @@ public class ShopManager : MonoBehaviour
 			Warning.Open("You need "+charPrices[i]+" stars to buy this pilot!");
 		}
 	}
+	*/
 	public void Premium()
 	{
-		manager.InitializePurchasing();
-		ppop.Open("Buy the Premium Pack: Unlock all characters, 15+ skins, remove all ads, play with 4 continues!" ,IAPManager.Premium);
+		pop.Open("Buy the Premium Pack: Unlock all characters, 15+ skins, remove all ads, play with 4 continues!" ,Confirm,menu);
 	}
 	public void Confirm()
 	{
-		Cash.totalCash-=price;
-		Cash.Save();
-		if(cha)Locks.Char(id,true);
-		else Locks.Skin(id,true);
+		//Cash.totalCash-=price;
+		//Cash.Save();
+		Locks.Skin(buyID,true);
 		gameObject.BroadcastMessage("OnEnable");
 	}
 }
