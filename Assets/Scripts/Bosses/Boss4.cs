@@ -48,13 +48,13 @@ public class Boss4 : EnemyBase {
 		go.transform.localPosition=new Vector3(0.01f,-0.05f,-0.01f);
 		go=new GameObject("energy");
 		energy=go.AddComponent<SpriteRenderer>();
-		energy.sprite=SpriteBase.I.zapper[3];
+		//energy.sprite=SpriteBase.I.zapper[3];
 		energy.transform.parent=transform;
 		energy.transform.localPosition=local;
 		energy.gameObject.SetActive(false);
 		go = new GameObject("zap");
 		zap=go.AddComponent<SpriteRenderer>();
-		zap.sprite=SpriteBase.I.zapper[1];
+		//zap.sprite=SpriteBase.I.zapper[1];
 		BoxCollider2D col = go.AddComponent<BoxCollider2D>();
 		col.size=new Vector2(0.7f,8);
 		col.offset=new Vector2(0,2.2f);
@@ -271,7 +271,7 @@ public class Boss4 : EnemyBase {
 			else if(timer >0.1f)
 			{
 				energy.gameObject.SetActive(true);
-				energy.sprite=Bullet.blink ? SpriteBase.I.zapper[3] : SpriteBase.I.zapper[4];
+				//energy.sprite=Bullet.blink ? SpriteBase.I.zapper[3] : SpriteBase.I.zapper[4];
 				scale.x=scale.y=1.1f-timer;
 				energy.transform.localScale=scale;
 				Screen(5,1);
@@ -279,8 +279,8 @@ public class Boss4 : EnemyBase {
 			else if(timer >0)
 			{
 				zap.gameObject.SetActive(true);
-				energy.sprite=Bullet.blink ? SpriteBase.I.zapper[3] : SpriteBase.I.zapper[4];
-				zap.sprite=Bullet.blink ? SpriteBase.I.zapper[1] : SpriteBase.I.zapper[2];
+				//energy.sprite=Bullet.blink ? SpriteBase.I.zapper[3] : SpriteBase.I.zapper[4];
+				//zap.sprite=Bullet.blink ? SpriteBase.I.zapper[1] : SpriteBase.I.zapper[2];
 			}
 			else
 			{
@@ -351,7 +351,7 @@ public class Boss4 : EnemyBase {
 	void Bomb()
 	{
 		GameObject go = new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bomber[1];
+		//go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bomber[1];
 		go.AddComponent<Bomb>();
 		go.transform.position=transform.position+vec*(left ? 1 : -1)+mod;
 		left=!left;

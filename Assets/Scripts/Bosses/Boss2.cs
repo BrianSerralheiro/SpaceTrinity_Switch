@@ -249,7 +249,7 @@ public class Boss2 : EnemyBase {
 	private void Round(Vector3 v)
 	{
 		GameObject go = new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.round[0];
+		go.AddComponent<SpriteRenderer>().sprite=round;
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;

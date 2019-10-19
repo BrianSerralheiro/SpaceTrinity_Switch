@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour {
 		{
 			if(timer<=0 && counter<world.wave.Length && !boss)
 			{
-				Chose2(world.wave.Substring(counter,2));
+				Chose(world.wave.Substring(counter,2));
 				counter+=2;
 			}
 		}
@@ -100,7 +100,7 @@ public class EnemySpawner : MonoBehaviour {
 		
 	}
 
-	public void Chose2(string s)
+	public void Chose(string s)
 	{
 		int i;
 		if(int.TryParse(s.Substring(0,1),out i)){
@@ -115,91 +115,7 @@ public class EnemySpawner : MonoBehaviour {
 		}else if(s[0]=='t')timer+=float.Parse(s.Substring(1,1))/10f;
 			else if(s[0]=='T')timer+=int.Parse(s.Substring(1,1));
 	}
-	void Chose(string s)
-	{
-		EnemyBase en=null;
-		switch(s[0])
-		{
-			case 'A':
-				en=Spawn<Shooter>(SpriteBase.I.shooter[0]);
-				break;
-			case 'B':
-				en=Spawn<Diver>(SpriteBase.I.diver[0]);
-				break;
-			case 'C':
-				en=Spawn<Carrier>(SpriteBase.I.carrier[0]);
-				break;
-			case 'D':
-				en=Spawn<Boss1>(SpriteBase.I.boss1[0]);
-				break;
-			case 'E':
-				en=Spawn<Grabber>(SpriteBase.I.grabber[0]);
-				break;
-			case 'F':
-				en=Spawn<Round>(SpriteBase.I.round[0]);
-				break;
-			case 'G':
-				en=Spawn<Lasor>(SpriteBase.I.Lasor[0]);
-				break;
-			case 'H':
-				en=Spawn<Launcher>(SpriteBase.I.launcher[0]);
-				break;
-			case 'I':
-				en=Spawn<Boss2>(SpriteBase.I.boss2[0]);
-				break;
-			case 'J':
-				en=Spawn<Bat>(SpriteBase.I.bat[0]);
-				break;
-			case 'K':
-				en=Spawn<BatGirl>(SpriteBase.I.batgirl[0]);
-				break;
-			case 'L':
-				en=Spawn<Header>(SpriteBase.I.header[0]);
-				break;
-			case 'M':
-				en=Spawn<Boss3>(SpriteBase.I.boss3[0]);
-				break;
-			case 'N':
-				en=Spawn<Invader>(SpriteBase.I.invader[0]);
-				break;
-			case 'O':
-				en=Spawn<Slasher>(SpriteBase.I.slasher[0]);
-				break;
-			case 'P':
-				en=Spawn<Bomber>(SpriteBase.I.bomber[0]);
-				break;
-			case 'Q':
-				en=Spawn<Zapper>(SpriteBase.I.zapper[0]);
-				break;
-			case 'R':
-				en=Spawn<Boss4>(SpriteBase.I.boss4[0]);
-				break;
-			case 'S':
-				en=Spawn<Drone>(SpriteBase.I.drone[Ship.playerID]);
-				break;
-			case 'U':
-				SoundManager.PlayEffects(22);
-				Transition.Timer = 5;
-				Transition.worldID = s[1]-48;
-				if(worldID!=Transition.worldID/3 && worldID != 3)
-				{
-					worldID=Transition.worldID/3;
-					transfer-=Time.deltaTime;
-					scroll=worldID==2?scroll=300:60;
-				}
-				break;
-			case 'V':
-				DialogBox.Text(s[1]-48);
-				break;
-			case 'a':
-				en=Spawn<MFBat>(SpriteBase.I.MFBat[0]);
-				break;
-			default :
-				timer=s[1]-48;
-				break;
-		}
-		if(en) en.Position(s[1]-48);
-	}
+	
 	EnemyBase Spawn(EnemyInfo en){
 
 		GameObject go = new GameObject("enemy");
