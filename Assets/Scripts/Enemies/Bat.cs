@@ -8,7 +8,7 @@ public class Bat : EnemyBase
 	private Transform wingR;
 	private Vector3 vector=new Vector3();
 	public Vector3 target=new Vector3();
-
+	int count=3;
 
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -28,14 +28,7 @@ public class Bat : EnemyBase
 	public override void Position(int i)
 	{
 		base.Position(i);
-		if(i<8)
-		{
-			target.Set(transform.position.x,transform.position.y-5,0);
-		}
-		else
-		{
-			target.Set(transform.position.x+(i==8 ? 5: -5),transform.position.y,0);
-		}
+		target.Set(transform.position.x,transform.position.y-5,0);
 	}
 	new void Update () 
 	{
@@ -46,7 +39,13 @@ public class Bat : EnemyBase
 		wingR.eulerAngles=-vector;
 		Vector3 pos=transform.position;
 		pos=Vector3.MoveTowards(pos,target,Time.deltaTime*3);
-		if((target-pos).sqrMagnitude<0.2f)target=pos+(player.position-pos).normalized*8;
+		if((target-pos).sqrMagnitude<0.2f){
+			if(count--==0)
+			target=new Vector3(pos.x,Scaler.sizeY+4,pos.z);
+			else
+			target=pos+(player.position-pos).normalized*8;
+		}
+		if(transform.position.y>Scaler.sizeY+3)Die();
 		transform.position=pos;
 	}
 }

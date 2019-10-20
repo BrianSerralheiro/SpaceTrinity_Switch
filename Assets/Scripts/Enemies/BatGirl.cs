@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BatGirl : EnemyBase {
 
@@ -11,9 +9,11 @@ public class BatGirl : EnemyBase {
 	private Sprite closed;
 	private Vector3 vector = new Vector3();
 	private Vector3 pos = new Vector3(0.7f,1.32f,0.1f);
-	private Vector3[] poses={new Vector3(-1,-1,0).normalized,new Vector3(0,-1,0).normalized,new Vector3(1,-1,0).normalized };
+	private static Vector3[] poses={new Vector3(-1,-1,0).normalized,new Vector3(0,-1,0).normalized,new Vector3(1,-1,0).normalized };
 	private float timer=3;
 	private EnemyInfo bat;
+	private Del movement;
+	private int count;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		explosionID = 9;
@@ -36,13 +36,19 @@ public class BatGirl : EnemyBase {
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0f,1.8f,-0.1f);
 		bat=(ei as CarrierInfo).spawnable;
+		movement=Fall;
+		movement+=UpdateSpawn;
 	}
-	new void Update(){
-		if(Ship.paused) return;
-		base.Update();
+	void Fall(){
+		transform.Translate(0,-Time.deltaTime*2,0);
+		if(transform.position.y<0 && movement.GetInvocationList().Length>1){
+			movement=UpdateSpawn;
+			count=2;
+		}
+		else if(transform.position.y<-Scaler.sizeY-2)Die();
+	}
+	void UpdateSpawn(){
 		timer-=Time.deltaTime;
-		vector.Set(0,0,Mathf.PingPong(Time.time*300,-45f)+60f);
-		if(transform.position.y>0)transform.Translate(0,-Time.deltaTime*2,0);
 		if(timer<2)
 		{
 			render.sprite=closed;
@@ -60,10 +66,20 @@ public class BatGirl : EnemyBase {
 				Bat(i);
 			}
 			timer=5;
+			if(count>0){
+				count--;
+				if(count==0)movement=Fall;
+			}
 		}
+	}
+	new void Update(){
+		if(Ship.paused) return;
+		base.Update();
+		vector.Set(0,0,Mathf.PingPong(Time.time*100,60f)-45f);
+		movement();
 		wingL.localPosition=pos;
-		wingL.localEulerAngles=vector;
-		wingR.localEulerAngles=-vector;
+		wingL.eulerAngles=vector;
+		wingR.eulerAngles=-vector;
 	}
 	void Bat(int i)
 	{

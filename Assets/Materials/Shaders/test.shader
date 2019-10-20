@@ -39,8 +39,8 @@
         Lighting Off
 
         ZWrite Off
-
-        //Blend One OneMinusSrcAlpha
+        ZTest Always
+        Blend SrcAlpha OneMinusSrcAlpha
 
         GrabPass
         {
@@ -59,7 +59,7 @@
 
             #pragma fragment frag
 
-            #pragma target 2.0
+            #pragma target 4.0
 
             #pragma multi_compile_instancing
 
@@ -67,7 +67,7 @@
 
             #pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 
-            #include "UnitySprites.cginc"
+			#include "UnityCG.cginc"
             
 
             struct appdata
@@ -77,30 +77,38 @@
                 float2 uv : TEXCOORD0;
             };
             
-            struct vf
+            struct v2f
             {
 				float2 uv : TEXCOORD0;
 				float4 position : TEXCOORD1;
+				float4 render : TEXCOORD2;
 				float4 vertex : SV_POSITION;
 				float4 color : COLOR;
             };
             
             sampler2D _BackgroundTexture;
-            vf vert (appdata v)
+            float4 _BackgroundTexture_ST;
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            v2f vert (appdata v)
             {
-                vf o;
-                o.vertex=v.vertex;
-                o.position = ComputeGrabScreenPos(o.vertex);
-                float2 f=UnityObjectToViewPos(v.vertex);
-                o.position+=float4(f,0,0);
+                v2f o;
+                float4 originInViewSpace = mul(UNITY_MATRIX_MV, float4(0, 0, 0, 1));
+                o.position=v.vertex;
+				o.vertex = UnityObjectToClipPos(o.position);
+				o.uv = TRANSFORM_TEX(v.uv, _BackgroundTexture);
+                o.uv.y=1-o.uv.y;
+				o.color = v.color;
+                o.render=ComputeGrabScreenPos(originInViewSpace);
+                o.uv.x=sin(_Time.y);
+                o.uv.y=cos(_Time.y);
                 return o;
             }
-            fixed4 frag (vf i) : SV_Target
+            fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 f=tex2D(_MainTex, i.uv);
-                if(f.a<1)
-                return tex2D(_BackgroundTexture, i.position);
-                return f;
+                fixed f=tex2D(_MainTex, i.uv).a;
+                if(f==1)return tex2Dproj(_BackgroundTexture,i.render)+0.5;
+                return fixed4(1,1,1,0);
             }
 
         ENDCG
