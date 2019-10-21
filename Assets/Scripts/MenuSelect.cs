@@ -90,7 +90,7 @@ public class MenuSelect : MonoBehaviour
 			}
 			if(displayImage)displayImage.sprite=sprites[selectionID];
 		}
-		if(Input.GetKeyDown(confirmKey)){
+		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
 			opt.Select(selectionID,skinId-1);
 		}
 		for(int i=0;i<menus.Length;i++){
@@ -107,9 +107,11 @@ public class MenuSelect : MonoBehaviour
 		if(selectionID<0)selectionID+=options.Length;
 	}
 	void CheckSkins(){
-		if(skinId>0 && !Locks.Skin(selectionID*3+skinId-1))skinId++;
+		//if(skinId>0 && !Locks.Skin(selectionID*3+skinId-1))skinId++;
 		if(skinId>3)skinId=0;
 		if(skinId<0)skinId=3;
+		SkinSwitch.selectedChar=selectionID;
+		SkinSwitch.selectedSkin=skinId;
 	}
 	public void Open(Vector3 vector){
 		transform.position=vector;

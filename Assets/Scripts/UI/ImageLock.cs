@@ -9,6 +9,8 @@ public class ImageLock : MonoBehaviour {
 	private int skinId;
 	[SerializeField]
 	private Color color=Color.black;
+	[SerializeField]
+	private bool unlock;
 	void Start () {
 		
 	}
@@ -17,7 +19,7 @@ public class ImageLock : MonoBehaviour {
 		Image i = GetComponent<Image>();
 		if(i)
 		{
-			i.color=Locks.Skin(skinId)?Color.white:color;
+			i.color=Locks.Skin(skinId)==unlock?Color.white:color;
 		}
 		else Debug.LogError("ImageLock needs an image or a button to work");
 	}

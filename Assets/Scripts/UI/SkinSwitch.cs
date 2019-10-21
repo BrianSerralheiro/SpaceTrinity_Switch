@@ -1,13 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkinSwitch : MonoBehaviour {
 	[SerializeField]
 	private GameObject[] skins=new GameObject[4];
-	private int id=-1;
 	[SerializeField]
 	private int charID;
+	private int skinID;
+	public static int selectedChar,selectedSkin;
+	void Update()
+	{
+		if(selectedChar==charID){
+			if(skinID!=selectedSkin)Set();
+		}
+	}/*
 	public void Next()
 	{
 		id++;
@@ -26,13 +31,13 @@ public class SkinSwitch : MonoBehaviour {
 	{
 		id=PlayerPrefs.GetInt("char"+charID)-1;
 		Set();
-	}
+	}*/
 	void Set() {
-		Ship.skinID=id;
+		skinID=selectedSkin;
 		for(int i = 0; i<skins.Length; i++)
 		{
-			skins[i].SetActive(i==id+1);
+			skins[i].SetActive(i==skinID);
 		}
-		PlayerPrefs.SetInt("char"+charID,id+1);
+		PlayerPrefs.SetInt("char"+charID,skinID+1);
 	}
 }

@@ -9,7 +9,7 @@ public class PopUp : MonoBehaviour {
 	KeyCode confirmKey;
 	[SerializeField]
 	KeyCode cancelKey;
-	UnityAction action;
+	UnityAction action,cancel;
 	MenuSelect menu;
 
 	public void Close() {
@@ -18,15 +18,19 @@ public class PopUp : MonoBehaviour {
 	}
 	void Update()
 	{
-		if(Input.GetKeyDown(cancelKey))Close();
+		if(Input.GetKeyDown(cancelKey)){
+			cancel?.Invoke();
+			Close();
+		}
 		if(Input.GetKeyDown(confirmKey)){
 			action?.Invoke();
 			Close();
 		}
 	}
-	public void Open (string s, UnityAction act,MenuSelect m) {
+	public void Open (string s, UnityAction act,UnityAction can,MenuSelect m) {
 		gameObject.SetActive(true);
 		action=act;
+		cancel=can;
 		menu=m;
 		menu.enabled=false;
 		text.text=s;
