@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Round : EnemyBase
 {
 
 	private float shoottimer = 2;
 	private Vector3 vector=new Vector3();
+	private static int shootId;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=52;
 		points = 150;
+		shootId=ei.bulletsID[0];
 	}
 
 	new void Update()
@@ -34,11 +34,11 @@ public class Round : EnemyBase
 	void Shoot(int i)
 	{
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[10];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
 		Bullet bu = go.AddComponent<Bullet>();
 		bu.owner=transform.name;
-		bu.spriteID=10;
+		bu.spriteID=shootId;
 		Vector3 v= new Vector3(i%2,i/2,0)-Vector3.one*0.5f;
 		go.transform.position=transform.position+v;
 		go.transform.eulerAngles=new Vector3(0,0,135+i*90)*(i<2?1:-1);

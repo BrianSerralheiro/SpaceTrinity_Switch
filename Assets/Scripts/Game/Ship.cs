@@ -26,10 +26,6 @@ public class Ship : MonoBehaviour {
 	private float speed=5f;
 	[SerializeField]
 	private Sprite[] skins;
-	[SerializeField]
-	private int[] ids;
-	[SerializeField]
-	private Sprite[] shotSkins;
 	public static bool paused;
 	[SerializeField]
 	private Core shield;
@@ -77,14 +73,9 @@ public class Ship : MonoBehaviour {
 			_renderer.sprite=skins[skinID];
 			ParticleSystem.MainModule main = trail.main;
 			main.startColor=colors[skinID];
-			for(int i = 0; i<ids.Length; i++)
-			{
-				SpriteBase.I.bullets[ids[i]]=shotSkins[skinID*ids.Length+i];
-			}
 			specialMat.mainTexture=specials[skinID+1];
 			specialMat=null;
 			specials=null;
-			shotSkins=null;
 			skins=null;
 			colors=null;
 		}

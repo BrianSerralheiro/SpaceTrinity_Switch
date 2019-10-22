@@ -7,7 +7,7 @@ public class HomingGun : Gun
         if(!gameObject.activeSelf)return;
 		ParticleManager.Emit(17,transform.position,1);
 		GameObject go=new GameObject("playerbullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[spriteID+(Bullet.blink ? 0 : 1)];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId+(Bullet.blink ? 0 : 1)];
 		go.AddComponent<BoxCollider2D>();
 		CircleCollider2D col=go.AddComponent<CircleCollider2D>();
         col.isTrigger=true;
@@ -17,7 +17,7 @@ public class HomingGun : Gun
 		bull.damage=damage;
 		bull.pierce=pierce;
 		bull.particleID=particleID;
-		bull.spriteID=spriteID;
+		bull.spriteID=shotId;
 
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;

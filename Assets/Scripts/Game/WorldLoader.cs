@@ -55,6 +55,16 @@ public class WorldLoader : MonoBehaviour
         }
     }
     void Step4(){
+        WorldInfo worldInfo=EnemySpawner.world;
+        Bullet.sprites.Clear();
+        if(worldInfo){
+            foreach(EnemyInfo ei in worldInfo.enemies){
+                ei.Register();
+            }
+        }
+        update=Step5;
+    }
+    void Step5(){
         text.text="Loading Scene";
         SceneManager.LoadSceneAsync("cen");
         update=null;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Header : EnemyBase {
 	private Vector3[] dir={Vector3.right,Vector3.down,Vector3.left};
@@ -10,6 +8,7 @@ public class Header : EnemyBase {
 	private Core eyes;
 	private Core core;
 	Del movement;
+	private static int shootId;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		explosionID = 9;
@@ -24,6 +23,7 @@ public class Header : EnemyBase {
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,0.42f);
 		movement=Shooting;
+		shootId=ei.bulletsID[0];
 	}
 	void Shooting(){
 		timer+=Time.deltaTime;
@@ -56,11 +56,11 @@ public class Header : EnemyBase {
 	{
 		SoundManager.PlayEffects(12, 0.5f, 0.8f);
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[12];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
 		Bullet bu=go.AddComponent<Bullet>();
 		bu.owner=name;
-		bu.spriteID=12;
+		bu.spriteID=shootId;
 		go.transform.position=transform.position;
 		Vector3 rotation = new Vector3(0,0,Mathf.Atan2(transform.position.x-player.position.x,player.position.y-transform.position.y)*Mathf.Rad2Deg);
 		go.transform.eulerAngles=rotation;

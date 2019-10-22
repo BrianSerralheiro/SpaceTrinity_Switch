@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shooter : EnemyBase
 {
@@ -17,6 +15,7 @@ public class Shooter : EnemyBase
 	private Vector3 vector = new Vector3();
 	private Vector3 rot = new Vector3();
 	Del movement;
+	private static int shootId;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
@@ -43,6 +42,7 @@ public class Shooter : EnemyBase
 		crystal.transform.localPosition=new Vector3(0,-1.27f);
 		fallSpeed=-9;
 		movement=Moving;
+		shootId=ei.bulletsID[0];
 	}
 
 	public override void Position(int i)
@@ -97,11 +97,11 @@ public class Shooter : EnemyBase
 	{
 		SoundManager.PlayEffects(12, 0.5f, 0.8f);
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[8];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
 		Bullet bu=go.AddComponent<Bullet>();
 		bu.owner=transform.name;
-		bu.spriteID=8;
+		bu.spriteID=shootId;
 		go.transform.position=crystal.transform.position;
 		go.transform.up=-transform.up;
 	}
