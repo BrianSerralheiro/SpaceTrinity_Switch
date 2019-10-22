@@ -41,16 +41,7 @@ public class MenuSelect : MonoBehaviour
     }
 	void OnEnable()
 	{
-		selector.rectTransform.position=options[selectionID].rectTransform.position;
-		selector.rectTransform.anchoredPosition=options[selectionID].rectTransform.anchoredPosition;
-		selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
-		selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
-		selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
-		if(displayText){
-				displayText.text=options[selectionID].name;
-				displayText.color=options[selectionID].color;
-		}
-		if(displayImage)displayImage.sprite=sprites[selectionID];
+		OnValueChanged();
 	}
 	void MovingIn(){
 		Vector3 vector=new Vector3(Screen.width/2,Screen.height/2);
@@ -70,13 +61,7 @@ public class MenuSelect : MonoBehaviour
     {
 		update();
 	}
-	void UpdateInput(){
-		if(Input.GetKeyDown(KeyCode.UpArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId++;else selectionID-=rowCount;
-        if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId--;else selectionID+=rowCount;
-        if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
-        if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
-		Check();
-
+	void OnValueChanged(){
 		if(options[selectionID])
 		{
 			selector.rectTransform.position=options[selectionID].rectTransform.position;
@@ -84,12 +69,23 @@ public class MenuSelect : MonoBehaviour
 			selector.rectTransform.anchorMin=options[selectionID].rectTransform.anchorMin;
 			selector.rectTransform.anchorMax=options[selectionID].rectTransform.anchorMax;
 			selector.rectTransform.rotation=options[selectionID].rectTransform.rotation;
+			selector.color=options[selectionID].color;
 			if(displayText){
 				displayText.text=options[selectionID].name;
 				displayText.color=options[selectionID].color;
 			}
 			if(displayImage)displayImage.sprite=sprites[selectionID];
 		}
+	}
+	void UpdateInput(){
+		int id=selectionID;
+		if(Input.GetKeyDown(KeyCode.UpArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId++;else selectionID-=rowCount;
+        if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId--;else selectionID+=rowCount;
+        if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
+        if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
+		Check();
+		if(id!=selectionID)OnValueChanged();
+		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
 			opt.Select(selectionID,skinId-1);
 		}

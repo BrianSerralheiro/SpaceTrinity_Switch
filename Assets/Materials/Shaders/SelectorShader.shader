@@ -72,7 +72,7 @@
 					if (col.a<f && col.a>f - _Thicc)col.a = _Alpha;
 					else col.a = 0;
 				}
-                return col;
+                return col*i.color;
             }
             ENDCG
         }
