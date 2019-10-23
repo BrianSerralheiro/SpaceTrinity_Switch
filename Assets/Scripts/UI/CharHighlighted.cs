@@ -1,24 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CharHighlighted : MonoBehaviour
 {
     [SerializeField]
     private Graphic selector;
+    [SerializeField]
+    float glowSpeed=2;
+    private Graphic graphic;
 
     private RectTransform rect;
 
-    // Start is called before the first frame update
     void Start()
     {
-        rect.GetComponent<RectTransform>();        
+        rect=GetComponent<RectTransform>();   
+        graphic=GetComponent<Graphic>();     
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        rect.anchoredPosition=selector.rectTransform.anchoredPosition;
+		rect.anchorMin=selector.rectTransform.anchorMin;
+		rect.anchorMax=selector.rectTransform.anchorMax;
+        rect.rotation=selector.rectTransform.rotation;
+        Color color= graphic.color;
+        color.a=Mathf.PingPong(Time.time,glowSpeed)/glowSpeed;
+        graphic.color=color;
     }
 }
