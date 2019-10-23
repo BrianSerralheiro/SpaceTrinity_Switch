@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class MenuSelect : MonoBehaviour
 {
 	[SerializeField]
+	private bool submenu;
+	[SerializeField]
 	Graphic[] options;
 	[SerializeField]
 	int rowCount=3;
@@ -29,9 +31,10 @@ public class MenuSelect : MonoBehaviour
 	private Del Check;
 	void Awake()
     {
-        if(rowCount<2)rowCount=2;
+        //if(rowCount<2)rowCount=2;
 		//Locks.Load();
-		update=MovingIn;
+		if(submenu)update=UpdateInput;
+		else update=MovingIn;
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character)Check+=CheckSkins;
 		if(opt.selection==Menuoptions.SelectionType.Character){
@@ -124,7 +127,7 @@ public struct Menuoptions
 {
 	public enum SelectionType
 	{
-		World,Character,Weapon,Shop
+		World,Character,Weapon,Shop,None
 	}
 	public SelectionType selection;
 	public UnityEvent comand;

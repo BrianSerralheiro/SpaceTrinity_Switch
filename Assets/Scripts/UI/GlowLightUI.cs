@@ -7,26 +7,21 @@ public class GlowLightUI : MonoBehaviour
     float cicleTime;
     [SerializeField]
     float offTime;
+    float amount;
     [SerializeField]
-    float timer;
-    Color color;
+    Color color1;
+    [SerializeField]
+    Color color2;
     private Graphic graphic;
     void Start()
     {
         graphic=GetComponent<Graphic>();
         if(!graphic)Destroy(this);
-        timer =Time.time;
-        color=graphic.color;
     }
 
     void Update()
     {
-        float d=Time.deltaTime;
-        if(timer<offTime)color.a-=d;
-        else color.a+=d;
-        color.a=Mathf.Clamp01(color.a);
-        graphic.color=color;
-        timer+=d;
-        if(timer>=cicleTime)timer-=cicleTime;
+        float d=Time.time%cicleTime;
+         graphic.color=Color.Lerp(color1,color2,d-offTime);
     }
 }
