@@ -62,7 +62,7 @@
             {
 				half4 col = tex2D(_MainTex, i.uv);
                 ///col+=_Color;
-                col+=i.color;
+                col.rgb+=i.color.rgb;
                 return col;
             }
             ENDCG
