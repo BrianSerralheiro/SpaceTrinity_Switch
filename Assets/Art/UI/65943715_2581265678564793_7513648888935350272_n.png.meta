@@ -5,6 +5,99 @@ TextureImporter:
   - first:
       213: -7655147337733748613
     second: ship_orange
+  - first:
+      213: -4939123326441487775
+    second: ship_purple
+  - first:
+      213: 5014063118090450870
+    second: 65943715_2581265678564793_7513648888935350272_n_1
+  - first:
+      213: -3369891126261311453
+    second: 65943715_2581265678564793_7513648888935350272_n_2
+  - first:
+      213: 5027547260228782214
+    second: 65943715_2581265678564793_7513648888935350272_n_4
+  - first:
+      213: -6114718636576860457
+    second: grav_shot6
+  - first:
+      213: -4925187180632118336
+    second: grav_shot12
+  - first:
+      213: 8675186404801519524
+    second: grav_shot5
+  - first:
+      213: 2769591909194569966
+    second: 65943715_2581265678564793_7513648888935350272_n_12
+  - first:
+      213: -4523960579805534469
+    second: 65943715_2581265678564793_7513648888935350272_n_13
+  - first:
+      213: -6859715858358037839
+    second: grav_shot0
+  - first:
+      213: 2291673010432916927
+    second: grav_shot4
+  - first:
+      213: 3905374666379021834
+    second: grav_shot11
+  - first:
+      213: 2270141721641027449
+    second: homing_shot1
+  - first:
+      213: -3040358893376669186
+    second: homing_shot2
+  - first:
+      213: -4178798278428163544
+    second: homing_shot3
+  - first:
+      213: 6357891736376607858
+    second: homing_shot4
+  - first:
+      213: -5638841678413201624
+    second: 65943715_2581265678564793_7513648888935350272_n_21
+  - first:
+      213: 5224461184404625411
+    second: grav_shot1
+  - first:
+      213: -7273714798269135446
+    second: grav_shot10
+  - first:
+      213: -9086640412639131376
+    second: 65943715_2581265678564793_7513648888935350272_n_24
+  - first:
+      213: 2905670003554455217
+    second: grav_shot9
+  - first:
+      213: 5039494698320987889
+    second: 65943715_2581265678564793_7513648888935350272_n_26
+  - first:
+      213: 1167568847347159354
+    second: 65943715_2581265678564793_7513648888935350272_n_27
+  - first:
+      213: 5682025401110918453
+    second: grav_shot8
+  - first:
+      213: -7895245384515237505
+    second: 65943715_2581265678564793_7513648888935350272_n_29
+  - first:
+      213: -8934876119547875285
+    second: 65943715_2581265678564793_7513648888935350272_n_30
+  - first:
+      213: -5632661133083429395
+    second: 65943715_2581265678564793_7513648888935350272_n_31
+  - first:
+      213: -2615919106615636281
+    second: grav_shot7
+  - first:
+      213: 6722127099997866036
+    second: grav_shot2
+  - first:
+      213: 5624101640257136598
+    second: grav_shot3
+  - first:
+      213: 8688887712527598379
+    second: purple_burst
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,12 +197,12 @@ TextureImporter:
       name: ship_orange
       rect:
         serializedVersion: 2
-        x: 307
-        y: 2330
-        width: 184
-        height: 192
+        x: 320
+        y: 2340
+        width: 168
+        height: 179
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +210,594 @@ TextureImporter:
       bones: []
       spriteID: 420ea46cde4220a44ab76f1952f9c810
       internalID: -7655147337733748613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship_purple
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2322
+        width: 273
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b54f0e9e947004bab9346ddccd62ee
+      internalID: -4939123326441487775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_1
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 2316
+        width: 169
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd9980e0ae297044b10822f585af486
+      internalID: 5014063118090450870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 2310
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79d0e9da867fb544b817d3d86214aee
+      internalID: -3369891126261311453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot6
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1898
+        width: 225
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c5442a80ca9104b961ab0f6fd8c228
+      internalID: -6114718636576860457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot12
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1800
+        width: 308
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cc0d890dd506b46903ed5ba1e20920
+      internalID: -4925187180632118336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot5
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1678
+        width: 245
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb3c8d528e390d4eb8096cdb1895d86
+      internalID: 8675186404801519524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1362
+        width: 127
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea2f42e3c1d6b141bc4ae6f8d44096c
+      internalID: -6859715858358037839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot4
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1479
+        width: 250
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ccc4e8809c231044a7d0c4f0295d270
+      internalID: 2291673010432916927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot11
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 1486
+        width: 336
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a86e31ae4807d1d41be04bb5593357d9
+      internalID: 3905374666379021834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homing_shot1
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 1508
+        width: 58
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a0654c444a9b74abcc04cef826a553
+      internalID: 2270141721641027449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homing_shot2
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 1503
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 185ae30d0807b5e419d3b9c04e1fdb5e
+      internalID: -3040358893376669186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homing_shot3
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 1507
+        width: 57
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac2b8b7e82c12d478456ee71fa22c3b
+      internalID: -4178798278428163544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homing_shot4
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1514
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea906516759b16479103b2c0be52436
+      internalID: 6357891736376607858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_21
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1486
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e3f236125568d94980ddce269588247
+      internalID: -5638841678413201624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot1
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 774
+        width: 240
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377a03ab929d5334697f17e6fe9bf756
+      internalID: 5224461184404625411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot10
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1160
+        width: 350
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034cc5d3403990f46b8b69a7d59ef3d8
+      internalID: -7273714798269135446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_24
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 974
+        width: 137
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f26a5c4c44df54eaf6927dfe1ea089
+      internalID: -9086640412639131376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot9
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 838
+        width: 302
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b625e489bf70bc24882eef064891d924
+      internalID: 2905670003554455217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_26
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 797
+        width: 34
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f0bc2c89dddf14d992c553646b2c67
+      internalID: 5039494698320987889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_27
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 835
+        width: 47
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d502af9c6ec5d5446899872b184c436f
+      internalID: 1167568847347159354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot8
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 528
+        width: 326
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e40863a108ffa4e90f19fddc3d5d22
+      internalID: 5682025401110918453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_29
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 725
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cf0e604cc709e45966151f958a2ed6
+      internalID: -7895245384515237505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_30
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 729
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08f396e280deef46866fe689240ed85
+      internalID: -8934876119547875285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 65943715_2581265678564793_7513648888935350272_n_31
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 595
+        width: 89
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0c0dedf04a9974ebc66d9431674f5a
+      internalID: -5632661133083429395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot7
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 185
+        width: 302
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22329297194d9b646a174a0c4abc2f39
+      internalID: -2615919106615636281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot2
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 1002
+        width: 232
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3220e9c95942d144ad527288d204910
+      internalID: 6722127099997866036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grav_shot3
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1231
+        width: 209
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14eaca3579712d47a7d49c282703aaa
+      internalID: 5624101640257136598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_burst
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 2258
+        width: 57
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7136368c289ac314f9bc7ddf5d887b5c
+      internalID: 8688887712527598379
       vertices: []
       indices: 
       edges: []

@@ -38,7 +38,7 @@ public class LaserGun : Gun {
 			for(int i = 1; i<line.positionCount-1; i++)
 			{
 				Vector3 v=line.GetPosition(i);
-				v.x=Mathf.Sin(t+f*i)*0.6f+Mathf.Cos(t1+f1*i)*0.4f;
+				v.x=Mathf.Sin(t+f*i)*level*0.6f+Mathf.Cos(t1+f1*i)*0.4f;
 				line.SetPosition(i,v);
 			}
 		}
@@ -46,7 +46,10 @@ public class LaserGun : Gun {
 	}
 	public override void Level(int i)
 	{
-		if(i<4) line.widthMultiplier=i;
+		if(i<4){
+			line.widthMultiplier=i;
+			level=i;
+		}
 	}
 	void Update()
 	{

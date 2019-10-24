@@ -13,7 +13,7 @@ public class Homing : Bullet
     {
         if(Ship.paused) return;
 		ParticleManager.Emit(particleID,transform.position,1);
-		if(bulletTime<=0)renderer.sprite=SpriteBase.I.bullets[spriteID+(blink?0:1)];
+		if(bulletTime<=0)renderer.sprite=Bullet.sprites[spriteID+((int)Time.time%4)];
         if(target){
             timer=2;
             Vector3 v=transform.position-target.position;
@@ -25,7 +25,11 @@ public class Homing : Bullet
             timer-=Time.deltaTime;
         }
 		transform.Translate(0,Time.deltaTime*10,0);
-		if(timer<=0) Destroy(gameObject);
+		if(timer<=0 || transform.position.x<-Scaler.sizeX-4 || transform.position.x>Scaler.sizeX+4 || transform.position.y<-Scaler.sizeY-4 || transform.position.y>Scaler.sizeY+4) Destroy(gameObject);
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.transform==target)target=null;
     }
     private void OnTriggerStay2D(Collider2D col) {
         if(col.name=="enemy"){

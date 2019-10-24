@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIRotate : MonoBehaviour
 {
@@ -10,6 +8,6 @@ public class UIRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,0, rotationSpeed * 360 * Time.deltaTime);
+        transform.Rotate(0,0,Mathf.PingPong(Time.time, rotationSpeed) * 360 * Time.deltaTime);
     }
 }

@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour {
 		timer-=Time.deltaTime;
 		if(timer<=0) Destroy(gameObject);
 	}
-	void OnCollisionEnter2D(Collision2D col)
+	protected void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.collider.name!="laser" && col.gameObject.name!=owner && !pierce){
 			Destroy(gameObject);

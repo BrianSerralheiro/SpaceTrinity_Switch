@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour {
 	protected int particleID;
 
 	public bool minusPower;
-	void Awake()
+	protected virtual void Awake()
 	{
 		shotId=Bullet.Register(shots[(Ship.skinID+1)*2+0]);
 		Bullet.Register(shots[(Ship.skinID+1)*2+1]);

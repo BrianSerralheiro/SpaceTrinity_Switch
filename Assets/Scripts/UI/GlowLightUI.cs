@@ -9,8 +9,10 @@ public class GlowLightUI : MonoBehaviour
     float offTime;
     float amount;
     [SerializeField]
+    [ColorUsageAttribute(true, true)]
     Color color1;
     [SerializeField]
+    [ColorUsageAttribute(true, true)]
     Color color2;
     private Graphic graphic;
     void Start()
@@ -21,7 +23,6 @@ public class GlowLightUI : MonoBehaviour
 
     void Update()
     {
-        float d=Time.time%cicleTime;
-         graphic.color=Color.Lerp(color1,color2,d-offTime);
+        graphic.color=Color.Lerp(color1,color2,Time.time%cicleTime-offTime);
     }
 }
