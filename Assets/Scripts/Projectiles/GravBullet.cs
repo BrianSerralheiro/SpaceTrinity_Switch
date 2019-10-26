@@ -37,11 +37,11 @@ public class GravBullet : Bullet
         c.size=v2;
     }
     void UpdateSprite0(){
-        renderer.sprite=Bullet.sprites[spriteID];
+        renderer.sprite=Bullet.sprites[spriteID+(int)(Time.deltaTime%2)];
     }void UpdateSprite1(){
-       renderer.sprite=Bullet.sprites[spriteID+1+(int)(Time.time*16%count)];
+       renderer.sprite=Bullet.sprites[spriteID+2+(int)(Time.time*16%count)];
     }void UpdateSprite2(){
-       renderer.sprite=Bullet.sprites[spriteID+1+count+(int)(Time.time*16%count)];
+       renderer.sprite=Bullet.sprites[spriteID+2+count+(int)(Time.time*16%count)];
     }
 	new void OnCollisionEnter2D(Collision2D col)
 	{

@@ -4,7 +4,7 @@ public class GravGun : Gun
 {
     [SerializeField]
     private Material material;
-    private int count=13;
+    private int count=14;
     [SerializeField]
     private float timer;
     protected override void Awake()
