@@ -20,10 +20,14 @@ public class WorldLoader : MonoBehaviour
     void Update()
     {
         update?.Invoke();
+        text.text = "Loading";
+        for (int i = 0; i < Mathf.CeilToInt(Time.time * 3 % 3); i++)
+        {
+            text.text += ".";
+        }
     }
     void Step1(){
         if(request==null){
-            text.text="Loading Level Song.";
             request=Resources.LoadAsync<AudioClip>("Audio/"+ EnemySpawner.world.songName);
         }
         else if(request.isDone){
@@ -34,7 +38,6 @@ public class WorldLoader : MonoBehaviour
     }
     void Step2(){
         if(request==null){
-            text.text="Loading Level BackGround.";
             request=Resources.LoadAsync<AudioClip>("Art/"+ EnemySpawner.world.bgs[0].name);
         }
         else if(request.isDone){
@@ -45,7 +48,6 @@ public class WorldLoader : MonoBehaviour
     }
     void Step3(){
         if(request==null){
-            text.text="Loading Boss Song.";
             request=Resources.LoadAsync<AudioClip>("Audio/"+ EnemySpawner.world.bossSong);
         }
         else if(request.isDone){
@@ -65,7 +67,6 @@ public class WorldLoader : MonoBehaviour
         update=Step5;
     }
     void Step5(){
-        text.text="Loading Scene";
         SceneManager.LoadSceneAsync("cen");
         update=null;
     }
