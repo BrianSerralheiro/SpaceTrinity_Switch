@@ -9,7 +9,11 @@ public class ShopManager : MonoBehaviour
 	private MenuSelect menu;
 	[SerializeField]
 	private Text sellerDialog;
+	[SerializeField]
+	private Scrollbar slider;
 	float timer=2;
+	[SerializeField]
+	private RectTransform selector;
 	[SerializeField]
 	private int[] skinPrices;
 	[SerializeField]
@@ -18,6 +22,10 @@ public class ShopManager : MonoBehaviour
 	private int[] charPrices;
 	[SerializeField]
 	private string[] charNames;
+	[SerializeField]
+	private Image[] slots;
+	[SerializeField]
+	private Sprite[] chibis;
 	private int price;
 	public static int buyID;
 	void Update()
@@ -26,12 +34,19 @@ public class ShopManager : MonoBehaviour
 			timer-=Time.deltaTime;
 			if(timer<=0){
 				sellerDialog.text="Chose the pattern you want to buy.";
+				int i=buyID/6;
+				if(slots[i])slots[i].sprite=chibis[i*2];
 			}
 		}
+		if(slider)slider.value=selector.anchorMin.y/0.8f;
 	}
 	void OnEnable()
 	{
 		sellerDialog.text="Welcome!";
+		for (int i = 0; i < slots.Length; i++)
+		{
+			if(slots[i])slots[i].sprite=chibis[i/6*2];
+		}
 		timer=2;
 	}
 	public void BuySkin()
@@ -79,6 +94,8 @@ public class ShopManager : MonoBehaviour
 		Locks.Skin(buyID,true);
 		gameObject.BroadcastMessage("OnEnable");
 		sellerDialog.text="Thank you for your buy.";
+		int i=buyID/6;
+		if(slots[i])slots[i].sprite=chibis[i*2+1];
 		timer=2;
 	}
 }
