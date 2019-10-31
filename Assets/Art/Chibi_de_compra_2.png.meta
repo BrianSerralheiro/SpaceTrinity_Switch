@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 6333337dd71cc4245ab775c87d79b11a
+guid: f1a21eb4ef4705f45bda6e31d39d91b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4088891161404584358
-    second: Chibi_de_compra_1_0
+      213: -4459794649203600848
+    second: Chibi_de_compra_2_0
   - first:
-      213: 482016829078452456
-    second: Chibi_de_compra_1_1
+      213: -8020187462652723183
+    second: Chibi_de_compra_2_1
   - first:
-      213: -1323423411591954282
-    second: Chibi_de_compra_1_2
+      213: 4429845937592073424
+    second: Chibi_de_compra_2_2
   - first:
-      213: -141747109190524514
-    second: Chibi_de_compra_1_3
+      213: 5804117789891643177
+    second: Chibi_de_compra_2_3
   - first:
-      213: -3399248945144064254
-    second: Chibi_de_compra_1_4
+      213: 3160252136928069463
+    second: Chibi_de_compra_2_4
   - first:
-      213: 8842687664856839156
-    second: Chibi_de_compra_1_5
+      213: -3118804638985793447
+    second: Chibi_de_compra_2_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chibi_de_compra_1_0
+      name: Chibi_de_compra_2_0
       rect:
         serializedVersion: 2
         x: 291
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fe942a05e820f249b4e10ceac16a97f
-      internalID: -4088891161404584358
+      spriteID: 77fafdefad903894a96248ec1e7e3e6c
+      internalID: -4459794649203600848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chibi_de_compra_1_1
+      name: Chibi_de_compra_2_1
       rect:
         serializedVersion: 2
         x: 707
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd36fc617f53c0f4fb5776eb4a1b3045
-      internalID: 482016829078452456
+      spriteID: ad890be42e1c79140bc1294da20cff5f
+      internalID: -8020187462652723183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chibi_de_compra_1_2
+      name: Chibi_de_compra_2_2
       rect:
         serializedVersion: 2
         x: 1107
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1909a8b2b023a404c993e47ba126114f
-      internalID: -1323423411591954282
+      spriteID: b272525e835fead44a33de7c8a6ca4e5
+      internalID: 4429845937592073424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chibi_de_compra_1_3
+      name: Chibi_de_compra_2_3
       rect:
         serializedVersion: 2
         x: 291
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b149f13367a7cc43b85df4b783913b0
-      internalID: -141747109190524514
+      spriteID: 0635799a580bd114cae61a17633860ef
+      internalID: 5804117789891643177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chibi_de_compra_1_4
+      name: Chibi_de_compra_2_4
       rect:
         serializedVersion: 2
         x: 713
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90edff6f629611646bd97bf02c8d35a8
-      internalID: -3399248945144064254
+      spriteID: 66a204342f1da944daaafa975e78f7a6
+      internalID: 3160252136928069463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chibi_de_compra_1_5
+      name: Chibi_de_compra_2_5
       rect:
         serializedVersion: 2
         x: 1107
@@ -235,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77ae354964b2fa5499043fc54843252c
-      internalID: 8842687664856839156
+      spriteID: 1250af11852396f45941dfd3f7fbac3e
+      internalID: -3118804638985793447
       vertices: []
       indices: 
       edges: []

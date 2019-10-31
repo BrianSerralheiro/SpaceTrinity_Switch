@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour {
 			return sprites.IndexOf(sp);
 		}
 		sprites.Add(sp);
-		Debug.Log(sprites.Count-1);
 		return sprites.Count-1;
 	}
 	void Update()
