@@ -2,14 +2,16 @@
 
 public class Barata : EnemyBase {
 
-	private Transform wingL;
-	private Transform wingR;
-	private float speed=4;
+	private Transform wingL, wingR;
+	private float speed=4,timer;
 	private Vector3 dir=Vector3.right+Vector3.up;
 	private Transform[] legs;
 	private Core crystal;
-	private Vector3 rot = new Vector3();
+	private Vector3 rot = Vector3.zero,vector=Vector3.zero,mouthRot=Vector3.zero;
     Del update;
+	int charges,spawns;
+	private Diver diver;
+	private EnemyInfo div;
 	enum State
 	{
 		intro,
@@ -18,7 +20,6 @@ public class Barata : EnemyBase {
 		dead
 	}
 	State state;
-	private Vector3 vector = new Vector3();
 	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
@@ -67,21 +68,43 @@ public class Barata : EnemyBase {
 		crystal.transform.parent=transform;
 		crystal.transform.localPosition=new Vector3(0,0.1f);
         update=Intro;
+		div=(ei as CarrierInfo).spawnable;
 	}
     void Intro(){
         transform.Translate(0,-Time.deltaTime*2,0);
-		if(transform.position.y<0)update=null;
+		rot.z=Mathf.Cos(Time.time);
+		if(transform.position.y<0)update=Charge1;
     }
     void Charge1(){
-        if(vector.z>45)transform.Translate(0,Time.deltaTime*speed,0);
-		crystal.Add(Time.deltaTime);
-		if(transform.position.y>Scaler.sizeY){
-	    	state=State.moving;
-			float f=Random.value*(hp<200?4:2);
-			dir.y=Mathf.Max(f,2f-f);
-			dir.x=2f-dir.y;
+        if(transform.position.y<-Scaler.sizeY-2)transform.Translate(0,Time.deltaTime,0);
+        else if(mouthRot.z<45)mouthRot.z+=30*Time.deltaTime;
+			else {
+				transform.Translate(0,Time.deltaTime*speed,0);
+				crystal.Add(Time.deltaTime);
+			}
+		if(transform.position.y>Scaler.sizeY+8){
+			if(charges++==5){
+				update=Spawning;
+			}
+	    	else {
+				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX),-Scaler.sizeY-5);
+				crystal.Set(0);
+				mouthRot.z=0;
+			}
 		}
     }
+	void Spawning(){
+		timer+=Time.deltaTime;
+		if(timer>2 && !diver)Spawn();
+		if(transform.position.x>Scaler.sizeX/2-2)speed=-Mathf.Abs(speed);
+		if(transform.position.x<-Scaler.sizeX/2+2)speed=Mathf.Abs(speed);
+		transform.Translate(Time.deltaTime*speed/2,0,0);
+		crystal.Set(timer/3);
+		if(spawns>3)update=Charge2;
+	}
+	void Charge2(){
+		transform.Translate(0,speed*Time.deltaTime,0);
+	}
 	new void Update()
 	{
 		if(Ship.paused) return;
@@ -131,10 +154,10 @@ public class Barata : EnemyBase {
 			wingL.localEulerAngles=vector;
 			wingR.localEulerAngles=-vector;
 			
-			legs[0].localEulerAngles=vector/4;
-			legs[1].localEulerAngles=-vector/4;
-			legs[2].localEulerAngles=vector;
-			legs[3].localEulerAngles=-vector;
+			legs[0].localEulerAngles=mouthRot/4;
+			legs[1].localEulerAngles=-mouthRot/4;
+			legs[2].localEulerAngles=mouthRot;
+			legs[3].localEulerAngles=-mouthRot;
 			legs[4].localEulerAngles=rot;
 			legs[5].localEulerAngles=-rot;
 			legs[6].localEulerAngles=rot;
@@ -148,11 +171,26 @@ public class Barata : EnemyBase {
 	protected override void Die()
 	{
 		state=State.dead;
-		EnemySpawner.points+=1000;
+		EnemySpawner.points+=500;
 	}
 	public override void Position(int i)
 	{
 		transform.position=new Vector3(0,Scaler.sizeY+5,0);
+	}
+	void Spawn()
+	{
+		spawns++;
+		timer=0;
+		GameObject go=new GameObject("enemy");
+		go.AddComponent<SpriteRenderer>().sprite=div.sprites[0];
+		go.AddComponent<BoxCollider2D>();
+		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
+		r.isKinematic=true;
+		r.useFullKinematicContacts=true;
+		diver=go.AddComponent<Diver>();
+		diver.SetSprites(div);
+		diver.transform.position=transform.position;
+		diver.transform.rotation=transform.rotation;
 	}
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
