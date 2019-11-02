@@ -7,8 +7,8 @@ public class WaveEditor : EditorWindow
 {
 	WorldInfo world;
 	List<Entry> entries=new List<Entry>();
-	Entry currentEntry;
-	EnemyHelper currentEnemy;
+	Entry currentEntry,subEntry;
+	EnemyHelper currentEnemy,subBossHelper;
 	int x,y;
 	int counter;
 	int fullY;
@@ -57,6 +57,32 @@ public class WaveEditor : EditorWindow
 			counter++;
 		}
 		GUILayout.EndArea();
+#region SubBoss
+		EnemyInfo sub=world.subBoss;
+		if(sub){
+		subBossHelper.position=10;
+		GUILayout.BeginArea(new Rect(x/10,y*5,x/2,y*2));
+			GUILayout.BeginHorizontal();
+			ShowSprite(GUILayoutUtility.GetRect(x/5,y),sub.sprites[0].rect,sub.sprites[0].texture);
+				GUILayout.BeginVertical();
+					GUILayout.Space(y/2);
+					if(GUILayout.Button("+",GUILayout.Width(y/2),GUILayout.Height(y/2)))
+					{
+						if(subBossHelper==null){
+							subBossHelper=new EnemyHelper();
+							subBossHelper.id=-1;
+							subBossHelper.sprite=sub.sprites[0];
+						}
+						if(subEntry!=null)subEntry.enemies.Remove(subBossHelper);
+						currentEntry.enemies.Add(subBossHelper);
+						subEntry=currentEntry;
+						currentEnemy=subBossHelper;
+					}
+				GUILayout.EndVertical();
+			GUILayout.EndHorizontal();
+		GUILayout.EndArea();
+		}
+#endregion
 		GUILayout.BeginArea(new Rect(x*5.4f,y/2,x*1.2f,y*2f));
 			GUILayout.BeginHorizontal();
 				if(GUILayout.Button("+0.1"))currentEntry.timer++;
@@ -154,8 +180,7 @@ public class WaveEditor : EditorWindow
 			ShowSprite(new Rect(eh.position*xw+x2,fullY-tempY,xw,y2),eh.sprite.rect,eh.sprite.texture);
 		}
 		tempY+=lastH;
-		return;
-
+/*
 		if(currentEntry==en) GUI.color=Color.green;
 		if(GUILayout.Button("Entry "+counter++,GUILayout.Width(x/2))){
 			currentEntry=en;
@@ -176,7 +201,7 @@ public class WaveEditor : EditorWindow
 		}
 		GUILayout.Space(en.timer*y/10);
 		GUILayout.Label(en.timer/10+"."+(en.timer%10));
-
+*/
 	}
 	int FullSize()
 	{
@@ -203,7 +228,7 @@ public class WaveEditor : EditorWindow
 
 			foreach(EnemyHelper enemy in entry.enemies)
 			{
-				s+=enemy.id.ToString();
+				s+=(char)(enemy.id+48);
 				s+=(char)(enemy.position+48);
 			}
 		}
@@ -214,23 +239,32 @@ public class WaveEditor : EditorWindow
 		entries.Clear();
 		currentEntry=null;
 		currentEntry=null;
+		subEntry=null;
+		subBossHelper=null;
 		int j;
 		int i=0;
 		do
 		{
 			Entry entry=new Entry();
 			entries.Add(entry);
-			while(i<s.Length && !int.TryParse(s.Substring(i,1),out j)){
+			while(i<s.Length && !int.TryParse(s.Substring(i,1),out j) && s[i]!='/'){
 				if(s[i]=='T')entry.timer+=int.Parse(s.Substring(i+1,1))*10;
 				if(s[i]=='t')entry.timer+=int.Parse(s.Substring(i+1,1));
 				i+=2;
 			}
-			while(i<s.Length && int.TryParse(s.Substring(i,1),out j)){
+			while(i<s.Length && (int.TryParse(s.Substring(i,1),out j)|| s[i]=='/')){
 				EnemyHelper enemy=new EnemyHelper();
 				entry.enemies.Add(enemy);
-				enemy.sprite=world.enemies[j].sprites[0];
+				if(s[i]=='/'){
+					enemy.sprite=world.subBoss.sprites[0];
+					enemy.id=-1;
+					subBossHelper=enemy;
+					subEntry=entry;
+				}else{
+					enemy.sprite=world.enemies[j].sprites[0];
+					enemy.id=j;
+				}
 				enemy.position=s[i+1]-48;
-				enemy.id=j;
 				i+=2;
 			}
 		}

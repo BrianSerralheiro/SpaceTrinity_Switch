@@ -3,14 +3,12 @@
 public class Barata : EnemyBase {
 
 	private Transform wingL, wingR;
-	private float speed=4,timer;
-	private Vector3 dir=Vector3.right+Vector3.up;
+	private float speed=4,timer,dir=0.5f;
 	private Transform[] legs;
 	private Core crystal;
 	private Vector3 rot = Vector3.zero,vector=Vector3.zero,mouthRot=Vector3.zero;
     Del update;
 	int charges,spawns;
-	private Diver diver;
 	private EnemyInfo div;
 	enum State
 	{
@@ -66,77 +64,62 @@ public class Barata : EnemyBase {
 		legs[11].localPosition=new Vector3(0.4f,-2.4f,0.1f);
 
 		crystal.transform.parent=transform;
-		crystal.transform.localPosition=new Vector3(0,0.1f);
+		crystal.transform.localPosition=new Vector3(0,0.1f,-0.01f);
         update=Intro;
 		div=(ei as CarrierInfo).spawnable;
 	}
     void Intro(){
         transform.Translate(0,-Time.deltaTime*2,0);
-		rot.z=Mathf.Cos(Time.time);
-		if(transform.position.y<0)update=Charge1;
+		rot.z=Mathf.Cos(Time.time*2)*25-15;
+		if(transform.position.y<0)update=Charge;
     }
-    void Charge1(){
-        if(transform.position.y<-Scaler.sizeY-2)transform.Translate(0,Time.deltaTime,0);
+    void Charge(){
+        if(transform.position.y<-Scaler.sizeY-1)transform.Translate(0,Time.deltaTime,0);
         else if(mouthRot.z<45)mouthRot.z+=30*Time.deltaTime;
 			else {
 				transform.Translate(0,Time.deltaTime*speed,0);
 				crystal.Add(Time.deltaTime);
+				rot.z=crystal.Value()*30;
 			}
-		if(transform.position.y>Scaler.sizeY+8){
-			if(charges++==5){
+		if(transform.position.y>Scaler.sizeY+3){
+			if(charges++>=5){
 				update=Spawning;
 			}
 	    	else {
-				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX),-Scaler.sizeY-5);
+				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
 				crystal.Set(0);
-				mouthRot.z=0;
+				mouthRot.z=rot.z=0;
 			}
 		}
     }
 	void Spawning(){
-		timer+=Time.deltaTime;
-		if(timer>2 && !diver)Spawn();
-		if(transform.position.x>Scaler.sizeX/2-2)speed=-Mathf.Abs(speed);
-		if(transform.position.x<-Scaler.sizeX/2+2)speed=Mathf.Abs(speed);
-		transform.Translate(Time.deltaTime*speed/2,0,0);
-		crystal.Set(timer/3);
-		if(spawns>3)update=Charge2;
-	}
-	void Charge2(){
-		transform.Translate(0,speed*Time.deltaTime,0);
+		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime*2,0);
+		if(vector.z<45)vector.z+=Time.deltaTime*30;
+		if(spawns<3){
+			timer+=Time.deltaTime;
+			rot.z=Mathf.PingPong(timer,1)*25;
+			if(timer>2)Spawn();
+			if(transform.position.x>Scaler.sizeX/2-2)dir=-Mathf.Abs(dir);
+			if(transform.position.x<-Scaler.sizeX/2+2)dir=Mathf.Abs(dir);
+			transform.Translate(Time.deltaTime*speed*dir,0,0);
+			crystal.Set(timer/2);
+		}else if(transform.position.y>Scaler.sizeY+3){
+				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
+				crystal.Set(0);
+				mouthRot.z=vector.z=0;
+				spawns=0;
+				update=Charge;
+			}else {
+				transform.Translate(0,Time.deltaTime*speed,0);
+				if(rot.z>-30)rot.z-=Time.deltaTime*30;
+			}
 	}
 	new void Update()
 	{
 		if(Ship.paused) return;
 		base.Update();
         update?.Invoke();
-		if(state==State.moving)
-		{
-			if(transform.position.y>Scaler.sizeY-4)dir.y=-Mathf.Abs(dir.y);
-			if(transform.position.x>Scaler.sizeX/2f-2)dir.x=-Mathf.Abs(dir.x);
-			if(transform.position.x<-Scaler.sizeX/2f+2)dir.x=Mathf.Abs(dir.x);
-			transform.Translate(dir*Time.deltaTime*(speed/4));
-			crystal.Min(Time.deltaTime);
-			rot.Set(0,0,Mathf.PingPong(Time.time*50,45f));
-			if(transform.position.y<-Scaler.sizeY+2)
-			{
-				state=State.charging;
-				SoundManager.PlayEffects(16);
-				rot.Set(0,0,0);
-			}
-		}
-		else if(state==State.charging)
-		{
-			if(vector.z>45)transform.Translate(0,Time.deltaTime*speed,0);
-			crystal.Add(Time.deltaTime);
-			if(transform.position.y>Scaler.sizeY){
-				state=State.moving;
-				float f=Random.value*(hp<200?4:2);
-				dir.y=Mathf.Max(f,2f-f);
-				dir.x=2f-dir.y;
-			}
-		}
-		else if(state==State.dead)
+		if(state==State.dead)
 		{
 			crystal.Set(0);
 			transform.Translate(0,-Time.deltaTime*3,0,Space.World);
@@ -148,9 +131,7 @@ public class Barata : EnemyBase {
 				SoundManager.Play(3);
 			}
 		}
-		if(state==State.charging && vector.z<45)vector.z+=Time.deltaTime*90;
-		if(state!=State.charging && vector.z>0)vector.z-=Time.deltaTime*20;
-		if(state!=State.dead){
+		if(hp>0){
 			wingL.localEulerAngles=vector;
 			wingR.localEulerAngles=-vector;
 			
@@ -187,7 +168,7 @@ public class Barata : EnemyBase {
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
-		diver=go.AddComponent<Diver>();
+		Diver diver=go.AddComponent<Diver>();
 		diver.SetSprites(div);
 		diver.transform.position=transform.position;
 		diver.transform.rotation=transform.rotation;

@@ -14,7 +14,7 @@ public class EnemyInfo : ScriptableObject
 		return script;
 	}
 	public void Register(){
-		if(bullets==null)return;
+		if(bullets==null || bullets.Length==0)return;
 		bulletsID=new int[bullets.Length];
 		for(int i=0;i<bullets.Length;i++){
 			bulletsID[i]=Bullet.Register(bullets[i]);

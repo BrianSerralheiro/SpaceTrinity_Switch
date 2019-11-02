@@ -46,7 +46,7 @@ public class Carrier : EnemyBase {
 		if(timer>=1 && !diver)Spawn();
 		if(diver && timer<2)
 		{
-			diver.transform.localPosition=Vector3.up+Vector3.up*4f*(timer-1)+Vector3.forward*0.1f;
+			diver.transform.localPosition=Vector3.up*1.3f+Vector3.up*4f*(timer-1)+Vector3.forward*0.1f;
 			crystal.Set(Mathf.Clamp(timer-1,0,1));
 		}
 		if(timer>2)

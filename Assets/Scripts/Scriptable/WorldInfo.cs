@@ -8,6 +8,7 @@ public class WorldInfo : ScriptableObject
 	public Texture[] bgs;
 	[HideInInspector]
 	public string songName;
+	public EnemyInfo subBoss;
 	public EnemyInfo Boss;
 	[HideInInspector]
 	public string bossSong;

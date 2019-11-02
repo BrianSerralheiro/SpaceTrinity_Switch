@@ -103,8 +103,10 @@ public class EnemySpawner : MonoBehaviour {
 	public void Chose(string s)
 	{
 		int i;
-		if(int.TryParse(s.Substring(0,1),out i)){
-			EnemyBase en = Spawn(world.enemies[i]);
+		if(int.TryParse(s.Substring(0,1),out i)|| s[0]=='/'){
+			EnemyBase en;
+			if(s[0]=='/')en=Spawn(world.subBoss);
+			else en=Spawn(world.enemies[i]);
 			if(en)
 			{
 				en.Position(s[1]-48);

@@ -40,6 +40,9 @@ public class Core : MonoBehaviour {
 			render.color=Color.Lerp(color,white,value);
 		}
 	}
+	public float Value(){
+		return value;
+	}
 	public void Set(float f)
 	{
 		if(f!=value)

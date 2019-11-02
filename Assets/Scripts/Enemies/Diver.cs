@@ -10,6 +10,7 @@ public class Diver : EnemyBase
 	private Transform legL;
 	private Transform legR;
 	private Vector3 vector = new Vector3();
+	private float time;
 	Del movement;
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -36,6 +37,7 @@ public class Diver : EnemyBase
 		legR.localPosition=new Vector3(-0.1f,1f,0.1f);
 		movement=SlowFall;
 		fallSpeed=-2;
+		time=Time.time+3;
 	}
 	new void Update()
 	{
@@ -54,7 +56,7 @@ public class Diver : EnemyBase
 		v.Normalize();
 		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*270f);
 		vector.Set(0,0,Mathf.PingPong(Time.time*50,45f));
-		if(transform.position.y<Scaler.sizeY/2)movement=Follow;
+		if(time<Time.time)movement=Follow;
 	}
 	void Follow(){
 		if(transform.position.y>player.position.y){
