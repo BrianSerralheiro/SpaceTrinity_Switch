@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour
 				if(slots[i])slots[i].sprite=chibis[i*2];
 			}
 		}
-		if(slider)slider.value=selector.anchorMin.y/0.8f;
+		if(slider)slider.value=selector.anchorMin.y/0.81f;
 	}
 	void OnEnable()
 	{
