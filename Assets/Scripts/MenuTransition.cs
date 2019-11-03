@@ -11,9 +11,9 @@ public struct MenuTransition
         return Input.GetKeyDown(key);
     }
     public void Open(){
-        menu?.Open(new Vector3((flow.x+0.5f)*Screen.width,(flow.y+0.5f)*Screen.height));
+        menu?.Open(new Vector3(flow.x*9,flow.y*10));
     }
     public void Close(MenuSelect m){
-        m.Close(new Vector3((-flow.x+0.5f)*Screen.width,(-flow.y+0.5f)*Screen.height));
+        m.Close(new Vector3(-flow.x*9,-flow.y*10));
     }
 }
