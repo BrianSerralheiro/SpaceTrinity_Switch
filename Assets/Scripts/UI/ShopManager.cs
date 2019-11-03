@@ -34,18 +34,18 @@ public class ShopManager : MonoBehaviour
 			timer-=Time.deltaTime;
 			if(timer<=0){
 				sellerDialog.text="Chose the pattern you want to buy.";
-				int i=buyID/6;
+				int i=buyID/3;
 				if(slots[i])slots[i].sprite=chibis[i*2];
 			}
 		}
-		if(slider)slider.value=selector.anchorMin.y/0.81f;
+		if(slider)slider.value=selector.anchorMin.y/0.83f;
 	}
 	void OnEnable()
 	{
 		sellerDialog.text="Welcome!";
 		for (int i = 0; i < slots.Length; i++)
 		{
-			if(slots[i])slots[i].sprite=chibis[i/6*2];
+			if(slots[i])slots[i].sprite=chibis[i*2];
 		}
 		timer=2;
 	}
@@ -94,7 +94,7 @@ public class ShopManager : MonoBehaviour
 		Locks.Skin(buyID,true);
 		gameObject.BroadcastMessage("OnEnable");
 		sellerDialog.text="Thank you for your buy.";
-		int i=buyID/6;
+		int i=buyID/3;
 		if(slots[i])slots[i].sprite=chibis[i*2+1];
 		timer=2;
 	}
