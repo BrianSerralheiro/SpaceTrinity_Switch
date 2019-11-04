@@ -55,7 +55,7 @@ public abstract class EnemyBase : MonoBehaviour {
 		{
 			SoundManager.PlayEffects(15, 0.8f, 1.2f);
 			EnemySpawner.points+=points;
-			InGame_HUD._special += 0.01f;
+			InGame_HUD.special += 0.01f;
 			ParticleManager.Emit(explosionID, transform.position,1);
 		}
 	}

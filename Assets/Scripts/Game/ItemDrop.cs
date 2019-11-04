@@ -49,7 +49,7 @@ public class ItemDrop : MonoBehaviour
 			}
 			else if(id == 1)
 			{
-				InGame_HUD._special=1;
+				InGame_HUD.special=1;
 			}
 			else if(id == 2)
 			{

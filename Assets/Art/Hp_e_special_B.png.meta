@@ -113,10 +113,10 @@ TextureImporter:
       name: fill_blue
       rect:
         serializedVersion: 2
-        x: 817
-        y: 3729
-        width: 1671
-        height: 167
+        x: 986
+        y: 3732
+        width: 1502
+        height: 164
       alignment: 4
       pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: Fill_green
       rect:
         serializedVersion: 2
-        x: 878
+        x: 988
         y: 2659
-        width: 1618
-        height: 171
+        width: 1508
+        height: 170
       alignment: 4
       pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,9 +155,9 @@ TextureImporter:
       name: fil_reed
       rect:
         serializedVersion: 2
-        x: 868
+        x: 986
         y: 1592
-        width: 1623
+        width: 1504
         height: 163
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -176,12 +176,12 @@ TextureImporter:
       name: fill_Yellow
       rect:
         serializedVersion: 2
-        x: 862
+        x: 986
         y: 520
-        width: 1631
+        width: 1504
         height: 163
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ffd4d9e4c8b10904b9c24f97a77bfd25
     internalID: 0
     vertices: []
     indices: 

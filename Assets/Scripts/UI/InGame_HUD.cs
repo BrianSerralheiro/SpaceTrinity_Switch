@@ -6,43 +6,36 @@ using UnityEngine.UI;
 public class InGame_HUD : MonoBehaviour 
 {
 	[SerializeField]
-	private Text scoreHUD;
+	private Text scoreHUD,pilotName;
 
-	public static float shipHealth = 1;
-
-	[SerializeField]
-	private RectTransform fillMask;
-	private RectTransform lifeFill;
-
-	public static float _special;
+	public static float shipHealth = 1,special;
 
 	[SerializeField]
-	private RectTransform specialFill;
-	private Image bar;
+	private Image lifeBar,lifeFill,specialFill,pilotPic;
+
 	private Color color;
 	private Color otherColor=Color.white;
 	Vector3 helper=Vector3.one;
-	
+	public static HUDInfo HUD;
 	void Start()
 	{
-		lifeFill=fillMask.GetChild(0) as RectTransform;
-		bar=specialFill.GetComponentInChildren<Image>();
-		color=bar.color;
+		color=specialFill.color;
+		lifeBar.sprite=HUD.lifeBar;
+		lifeFill.sprite=HUD.lifeFill;
+		pilotName.text=HUD.name;
+		pilotPic.sprite=HUD.picture;
+		lifeFill.color=lifeBar.color=pilotName.color=HUD.color;
 	}
 	
 	void Update()
 	{
-		helper.x=shipHealth;
-		fillMask.localScale =helper;
-		helper.x=1f/shipHealth;
-		lifeFill.localScale=helper;
+		lifeFill.fillAmount=shipHealth;
 		scoreHUD.text = EnemySpawner.points.ToString();
-		if(_special >=1)
+		if(special >=1)
 		{
-			_special = 1;
-			bar.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.time*8));
-		}else bar.color=color;
-		helper.x=_special;
-		specialFill.localScale =helper;
+			special = 1;
+			specialFill.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.time*8));
+		}else specialFill.color=color;
+		specialFill.fillAmount=special;
 	}
 }

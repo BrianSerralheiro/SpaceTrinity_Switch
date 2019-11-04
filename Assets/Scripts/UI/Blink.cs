@@ -13,7 +13,7 @@ public class Blink : MonoBehaviour
 	}
 	void Update()
 	{
-		if(InGame_HUD._special>=1)color.a=Mathf.Sin(Time.time*5);
+		if(InGame_HUD.special>=1)color.a=Mathf.Sin(Time.time*5);
 		else color.a=0;
 		text.color=color;
 	}

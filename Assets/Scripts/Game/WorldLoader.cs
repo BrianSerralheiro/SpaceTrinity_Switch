@@ -12,10 +12,13 @@ public class WorldLoader : MonoBehaviour
     private Dele update;
     [SerializeField]
     private Text text;
+    [SerializeField]
+    private HUDInfo[] HUDs;
 	private ResourceRequest request;
     void Start()
     {
         update=Step1;
+        InGame_HUD.HUD=HUDs[Ship.playerID];
     }
     void Update()
     {
