@@ -48,14 +48,14 @@ public class MenuSelect : MonoBehaviour
 	}
 	void MovingIn(){
 		Vector3 vector=Vector3.zero;
-		transform.position=Vector3.MoveTowards(transform.position,vector,Time.deltaTime*5);
+		transform.position=Vector3.MoveTowards(transform.position,vector,Time.deltaTime*20);
 		if((transform.position-vector).sqrMagnitude<0.1f){
 			transform.position=vector;
 			update=UpdateInput;
 		}
 	}
 	void MovingOut(){
-		transform.position=Vector3.MoveTowards(transform.position,outVector,Time.deltaTime*5);
+		transform.position=Vector3.MoveTowards(transform.position,outVector,Time.deltaTime*20);
 		if((transform.position-outVector).sqrMagnitude<0.1f){
 			gameObject.SetActive(false);
 		}
