@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class LaserGun : Gun {
 	[SerializeField]
-	private Sprite[] lasersprites;
-	private Sprite[] lasersprite=new Sprite[4];
+	private Texture[] lasers;
+	[SerializeField]
+	private Material lasermaterial;
 	private float timer;
 	private BoxCollider2D col;
 	[SerializeField]
 	private AudioSource source;
 	private LineRenderer line;
 	
-
+	protected override void Awake()
+	{
+	}
 	void Start () {
-		int f=0;
-		if(Ship.skinID!=-1 && Locks.Skin(6+Ship.skinID))f=(Ship.skinID+1)*4;
-		for(int i = 0; i<lasersprite.Length; i++)
-		{
-			lasersprite[i]=lasersprites[f+i];
-		}
-		lasersprites=null;
+		if(Ship.skinID!=-1 && Locks.Skin(6+Ship.skinID))lasermaterial.mainTexture=lasers[Ship.skinID+1];
+		else lasermaterial.mainTexture=lasers[0];
+		lasers=null;
 		line=GetComponent<LineRenderer>();
 		col=gameObject.AddComponent<BoxCollider2D>();
 		col.offset=new Vector2(0,10);

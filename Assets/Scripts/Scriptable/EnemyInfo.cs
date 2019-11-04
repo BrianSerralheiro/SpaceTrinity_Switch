@@ -7,7 +7,7 @@ public class EnemyInfo : ScriptableObject
 	System.Type script;
 	[HideInInspector]
 	public int[] bulletsID;
-	//public EnemyInfo copy;
+	public EnemyInfo copy;
 	public System.Type GetScript()
 	{
 		if(script==null)script=System.Type.GetType(name);
@@ -20,8 +20,8 @@ public class EnemyInfo : ScriptableObject
 			bulletsID[i]=Bullet.Register(bullets[i]);
 		}
 	}
-	/*void OnValidate()
+	void OnValidate()
 	{
 		if(copy!=null)copy.sprites=sprites;
-	}*/
+	}
 }

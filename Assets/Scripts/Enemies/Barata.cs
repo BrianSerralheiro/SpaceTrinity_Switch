@@ -20,11 +20,9 @@ public class Barata : EnemyBase {
 	State state;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		BossWarning.Show();
-		SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;
-		hp=1000;
+		hp=500;
 		GameObject go = new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
@@ -152,6 +150,7 @@ public class Barata : EnemyBase {
 	protected override void Die()
 	{
 		state=State.dead;
+		update=null;
 		EnemySpawner.points+=500;
 	}
 	public override void Position(int i)
