@@ -5,7 +5,6 @@ public struct MenuTransition
 {
     public KeyCode key;
     public MenuSelect menu, closing;
-    public bool scaler;
     public Vector3 flow;
     public Image expander;
     private float timer;
