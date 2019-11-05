@@ -26,15 +26,16 @@ public class MenuSelect : MonoBehaviour
 	int selectionID;
 	int skinId;
 	Vector3 outVector;
-	private delegate void Del();
+	public delegate void Del();
 	private Del update;
 	private Del Check;
+	private RectTransform rect;
+	private Vector2 min,max;
 	void Awake()
     {
         //if(rowCount<2)rowCount=2;
 		//Locks.Load();
-		if(submenu)update=UpdateInput;
-		else update=MovingIn;
+		if(update==null)update=UpdateInput;
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character)Check+=CheckSkins;
 		if(opt.selection==Menuoptions.SelectionType.Character){
@@ -60,11 +61,28 @@ public class MenuSelect : MonoBehaviour
 			gameObject.SetActive(false);
 		}
 	}
+	void Shrinking(){
+		rect.anchorMin=Vector2.MoveTowards(rect.anchorMin,min,Time.deltaTime);
+		rect.anchorMax=Vector2.MoveTowards(rect.anchorMax,max,Time.deltaTime);
+		if(rect.anchorMax==max && rect.anchorMin==min)gameObject.SetActive(false);
+	}
+	void Expanding(){
+		rect.anchorMin=Vector2.MoveTowards(rect.anchorMin,Vector2.zero,Time.deltaTime);
+		rect.anchorMax=Vector2.MoveTowards(rect.anchorMax,Vector2.one,Time.deltaTime);
+		if(rect.anchorMax.x==1)update=UpdateInput;
+	}
+	public void Open(Del d){
+		update=d;
+	}
 	void Update()
     {
-		update();
+		update?.Invoke();
+	}
+	public void GetInput(){
+		update=UpdateInput;
 	}
 	void OnValueChanged(){
+		Check();
 		if(options[selectionID])
 		{
 			selector.rectTransform.position=options[selectionID].rectTransform.position;
@@ -86,7 +104,6 @@ public class MenuSelect : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId--;else selectionID+=rowCount;
         if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
         if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
-		Check();
 		if(id!=selectionID)OnValueChanged();
 		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
@@ -94,8 +111,8 @@ public class MenuSelect : MonoBehaviour
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
-				menus[i].Open();
 				menus[i].Close(this);
+				menus[i].Open();
 				if(confirmKey==KeyCode.None)
 					opt.Select(selectionID,skinId-1);
 			}
@@ -120,6 +137,22 @@ public class MenuSelect : MonoBehaviour
 	public void Close(Vector3 vector){
 		outVector=vector;
 		update=MovingOut;
+	}
+	public void Expand(Image i){
+		rect=transform as RectTransform;
+		rect.anchorMin=i.rectTransform.anchorMin;
+		rect.anchorMax=i.rectTransform.anchorMax;
+		GetComponent<Image>().sprite=i.sprite;
+		update=Expanding;
+		gameObject.SetActive(true);
+	}
+	public void Shrink(RectTransform rt){
+		rect=transform as RectTransform;
+		rect.anchorMin=Vector2.zero;
+		rect.anchorMax=Vector2.one;
+		min=rt.anchorMin;
+		max=rt.anchorMax;
+		update=Shrinking;
 	}
 }
 [System.Serializable]
