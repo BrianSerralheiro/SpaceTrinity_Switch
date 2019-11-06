@@ -22,11 +22,23 @@ public class RectEditor
 			RectTransform rect = (go as GameObject).GetComponent<RectTransform>();
 			if(!rect)continue;
 			Rect selfRect = rect.rect;
+			if(!rect.parent)continue;
 			Rect parentRect = (rect.parent as RectTransform).rect;
 			rect.anchorMin=(new Vector2(rect.localPosition.x,rect.localPosition.y)+parentRect.size/2-rect.pivot*selfRect.size)/parentRect.size;
 			rect.anchorMax=rect.anchorMin+selfRect.size/parentRect.size;
 			rect.sizeDelta=Vector2.zero;
 			rect.anchoredPosition=Vector2.zero;
+		}
+	}
+	[MenuItem("UI/Recenter")]
+	static void Recenter(){
+		foreach(GameObject go in Selection.gameObjects){	
+			RectTransform rect = (go as GameObject).GetComponent<RectTransform>();
+			if(!rect || !rect.parent)continue;
+			Rect selfRect = rect.rect;
+			Vector2 size=rect.anchorMax-rect.anchorMin;
+			Vector2 offset=Vector2.one/2-rect.anchorMin;
+			rect.pivot=size*offset*5;
 		}
 	}
 	[MenuItem("UI/Clear Missing Scripts")]
