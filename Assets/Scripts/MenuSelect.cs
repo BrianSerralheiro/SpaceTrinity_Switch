@@ -13,13 +13,17 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	Graphic selector;
 	[SerializeField]
-	Text displayText;
+	Text displayText,displayName;
 	[SerializeField]
 	Image displayImage;
 	[SerializeField]
 	Sprite[] sprites;
 	[SerializeField]
 	KeyCode confirmKey;
+	[SerializeField]
+	private string analog,A,B,X,Y,L,R;
+	[SerializeField]
+	private Text analogDisplay,Adisplay,Bdisplay,Xdisplay,Ydisplay,Ldisplay,Rdisplay;
 	public Menuoptions opt;
 	[SerializeField]
 	MenuTransition[] menus;
@@ -46,6 +50,21 @@ public class MenuSelect : MonoBehaviour
 	void OnEnable()
 	{
 		OnValueChanged();
+		if(displayName)displayName.text=name;
+		analogDisplay.gameObject.SetActive(!string.IsNullOrEmpty(analog));
+		analogDisplay.text=analog;
+		Adisplay.gameObject.SetActive(!string.IsNullOrEmpty(A));
+		Adisplay.text=A;
+		Bdisplay.gameObject.SetActive(!string.IsNullOrEmpty(B));
+		Bdisplay.text=B;
+		Xdisplay.gameObject.SetActive(!string.IsNullOrEmpty(X));
+		Xdisplay.text=X;
+		Ydisplay.gameObject.SetActive(!string.IsNullOrEmpty(Y));
+		Ydisplay.text=Y;
+		Ldisplay.gameObject.SetActive(!string.IsNullOrEmpty(L));
+		Ldisplay.text=L;
+		Rdisplay.gameObject.SetActive(!string.IsNullOrEmpty(R));
+		Rdisplay.text=R;
 	}
 	void MovingIn(){
 		Vector3 vector=Vector3.zero;

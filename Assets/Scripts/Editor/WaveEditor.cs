@@ -60,7 +60,7 @@ public class WaveEditor : EditorWindow
 #region SubBoss
 		EnemyInfo sub=world.subBoss;
 		if(sub){
-		subBossHelper.position=10;
+		if(subBossHelper!=null)subBossHelper.position=10;
 		GUILayout.BeginArea(new Rect(x/10,y*5,x/2,y*2));
 			GUILayout.BeginHorizontal();
 			ShowSprite(GUILayoutUtility.GetRect(x/5,y),sub.sprites[0].rect,sub.sprites[0].texture);

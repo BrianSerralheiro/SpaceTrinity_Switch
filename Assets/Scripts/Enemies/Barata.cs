@@ -80,7 +80,7 @@ public class Barata : EnemyBase {
 				rot.z=crystal.Value()*30;
 			}
 		if(transform.position.y>Scaler.sizeY+3){
-			if(charges++>=5){
+			if(charges++>2){
 				update=Spawning;
 			}
 	    	else {
