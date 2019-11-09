@@ -39,6 +39,9 @@ public class Diver : EnemyBase
 		fallSpeed=-2;
 		time=Time.time+3;
 	}
+	public void Fall(float f){
+		fallSpeed=f;
+	}
 	new void Update()
 	{
 		base.Update();

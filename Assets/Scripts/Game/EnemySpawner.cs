@@ -67,7 +67,6 @@ public class EnemySpawner : MonoBehaviour {
 	void Update()
 	{
 		if(Ship.paused) return;
-		if(merc && points>15000 && timer>7)merc.SetActive(true);
 		do
 		{
 			if(timer<=0 && counter<world.wave.Length && !boss)
@@ -77,7 +76,7 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 		while(timer<=0 && counter<world.wave.Length && !boss);
-		if(counter>=wave.Length && !boss)credits.SetActive(true);
+		if(counter>=world.wave.Length && !boss)Spawn(world.Boss).Position(0);
 		if(timer>0 && !boss) timer-=Time.deltaTime;
 		Vector2 v= bg.mainTextureOffset;
 		v.y+=Time.deltaTime/scroll;
