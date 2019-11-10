@@ -30,7 +30,8 @@ public class GravGun : Gun
 		bull.pierce=false;
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
-        bull.Size((int)(timer/2));
+        Debug.Log(timer+","+level);
+        bull.Size((int)(timer/(level/2f)));
 
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
@@ -38,10 +39,10 @@ public class GravGun : Gun
     }
     void Update()
     {
-        if(timer<4)timer+=Time.deltaTime;
+        if(timer<level)timer+=Time.deltaTime;
     }
 	public override void Level(int i)
 	{
-        if(i<4)level=i;
+        if(i<4)level=4-i;
     }
 }

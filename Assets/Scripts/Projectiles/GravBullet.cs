@@ -17,27 +17,28 @@ public class GravBullet : Bullet
     }
     public void Size(int i){
         size=i;
+        Debug.Log(i);
         pierce=i>0;
-        damage+=i*50;
+        damage+=i*20;
         BoxCollider2D c=GetComponent<BoxCollider2D>();
         Vector2 v2=c.size;
         switch(i){
-            case 1:
-                update=UpdateSprite1;
+            case 0:
+                update=UpdateSprite0;
                 v2.x=2;
                 break;
-            case 2:
-                update=UpdateSprite2;
+            case 1:
+                update=UpdateSprite1;
                 v2.x=3;
                 break;
             default:
-                update=UpdateSprite0;
+                update=UpdateSprite2;
                 break;
         }
         c.size=v2;
     }
     void UpdateSprite0(){
-        renderer.sprite=Bullet.sprites[spriteID+(int)(Time.deltaTime%2)];
+        renderer.sprite=Bullet.sprites[spriteID+(int)(Time.time%2)];
     }void UpdateSprite1(){
        renderer.sprite=Bullet.sprites[spriteID+2+(int)(Time.time*16%count)];
     }void UpdateSprite2(){

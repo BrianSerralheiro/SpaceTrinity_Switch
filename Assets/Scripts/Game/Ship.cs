@@ -165,6 +165,9 @@ public class Ship : MonoBehaviour {
 			}
 			return;
 		}
+		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
+		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
+		if(Input.GetKeyDown(KeyCode.Alpha3))OnLevel(3);
 		if(shielded) shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
