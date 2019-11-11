@@ -9,7 +9,7 @@ public class Boss3 : EnemyBase {
 	private Core slash;
 	private Core dark;
 	private BoxCollider2D slashcod;
-	private Vector3 slashscl=new Vector3(2000,0,0);
+	private Vector3 slashscl=new Vector3(5000,0,0);
 	private Vector3 slashrot=new Vector3(0,0,0);
 	private float timer=1.5f;
 	private float time=0;
@@ -73,7 +73,7 @@ public class Boss3 : EnemyBase {
 		t.Apply(false);
 		dark=go.AddComponent<Core>().Set(Sprite.Create(t,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(0f,0f,0f,0f));
 		dark.white=new Color(0f,0f,0f,1f);
-		go.transform.localScale=new Vector3(1600,1600);
+		go.transform.localScale=new Vector3(5000,5000);
 		go.transform.position=new Vector3(0,0,-0.09f);
 		bat=(ei as CarrierInfo).spawnable;
 	}

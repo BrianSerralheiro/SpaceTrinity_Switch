@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class EnemyBase : MonoBehaviour {
+public class EnemyBase : MonoBehaviour {
 	protected int points;
 	protected int hp=8;
 	public static Transform player;
@@ -11,7 +11,7 @@ public abstract class EnemyBase : MonoBehaviour {
 	protected delegate void Del();
 	protected int explosionID;
 
-	public abstract void SetSprites(EnemyInfo ei);
+	public virtual void SetSprites(EnemyInfo ei){}
 	void Start(){
 		_renderer = GetComponent<SpriteRenderer>();
 	}
