@@ -198,7 +198,6 @@ public struct Menuoptions
 				//implementar equips
 				return;
 			case SelectionType.Shop:
-				//implementar shop
 				ShopManager.buyID=i;
 				comand?.Invoke();
 				return;

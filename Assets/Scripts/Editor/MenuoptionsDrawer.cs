@@ -6,7 +6,6 @@ public class MenuOptionsDrawer:PropertyDrawer
     
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        //position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
         SerializedProperty selection=property.FindPropertyRelative("selection");
         Rect pos=new Rect(position.x,position.y,position.width,EditorGUIUtility.singleLineHeight);
         EditorGUI.PropertyField(pos,selection);

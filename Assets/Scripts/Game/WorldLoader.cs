@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class WorldLoader : MonoBehaviour
@@ -14,11 +12,14 @@ public class WorldLoader : MonoBehaviour
     private Text text;
     [SerializeField]
     private HUDInfo[] HUDs;
+    [SerializeField]
+    private PilotInfo[] pilots;
 	private ResourceRequest request;
     void Start()
     {
         update=Step1;
         InGame_HUD.HUD=HUDs[Ship.playerID];
+        PilotInfo.pilot=pilots[Ship.playerID];
     }
     void Update()
     {
