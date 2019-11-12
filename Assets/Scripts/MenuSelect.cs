@@ -66,7 +66,8 @@ public class MenuSelect : MonoBehaviour
 		Rdisplay.gameObject.SetActive(!string.IsNullOrEmpty(R));
 		Rdisplay.text=R;
 	}
-	void MovingIn(){
+	void MovingIn()
+	{
 		Vector3 vector=Vector3.zero;
 		transform.position=Vector3.MoveTowards(transform.position,vector,Time.deltaTime*20);
 		if((transform.position-vector).sqrMagnitude<0.1f){
@@ -74,33 +75,56 @@ public class MenuSelect : MonoBehaviour
 			update=UpdateInput;
 		}
 	}
-	void MovingOut(){
+	void MovingOut()
+	{
 		transform.position=Vector3.MoveTowards(transform.position,outVector,Time.deltaTime*20);
 		if((transform.position-outVector).sqrMagnitude<0.1f){
 			gameObject.SetActive(false);
 		}
 	}
-	void Shrinking(){
+	void Shrinking()
+	{
 		rect.anchorMin=Vector2.MoveTowards(rect.anchorMin,min,Time.deltaTime);
 		rect.anchorMax=Vector2.MoveTowards(rect.anchorMax,max,Time.deltaTime);
 		if(rect.anchorMax==max && rect.anchorMin==min)gameObject.SetActive(false);
 	}
-	void Expanding(){
+	void Expanding()
+	{
 		rect.anchorMin=Vector2.MoveTowards(rect.anchorMin,Vector2.zero,Time.deltaTime);
 		rect.anchorMax=Vector2.MoveTowards(rect.anchorMax,Vector2.one,Time.deltaTime);
 		if(rect.anchorMax.x==1)update=UpdateInput;
 	}
-	public void Open(Del d){
+	public void Open(Del d)
+	{
 		update=d;
 	}
 	void Update()
     {
 		update?.Invoke();
 	}
-	public void GetInput(){
+	public void GetInput()
+	{
 		update=UpdateInput;
 	}
-	void OnValueChanged(){
+	void lightsUP(int i, float f)
+	{
+		if (opt.selection == Menuoptions.SelectionType.Character && options[i])
+		{
+			int b = 0;
+			foreach (Graphic graphic in options[i].GetComponentsInChildren<Graphic>())
+			{
+				if(b++ == 1)
+				{
+					continue;
+				}
+				Color c = graphic.color;
+				c.a = f;
+				graphic.color = c;
+			}
+		}
+	}
+	void OnValueChanged()
+	{
 		Check();
 		if(options[selectionID])
 		{
@@ -116,14 +140,21 @@ public class MenuSelect : MonoBehaviour
 			}
 			if(displayImage)displayImage.sprite=sprites[selectionID];
 		}
+		
 	}
-	void UpdateInput(){
+	void UpdateInput()
+	{
 		int id=selectionID;
 		if(Input.GetKeyDown(KeyCode.UpArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId++;else selectionID-=rowCount;
         if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId--;else selectionID+=rowCount;
         if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
         if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
-		if(id!=selectionID)OnValueChanged();
+		if(id!=selectionID)
+		{
+			lightsUP(id, 0.5f);
+			lightsUP(selectionID, 1);
+			OnValueChanged();
+		}
 		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
 			opt.Select(selectionID,skinId-1);
@@ -137,27 +168,32 @@ public class MenuSelect : MonoBehaviour
 			}
 		}
 	}
-	void CheckSelection(){
+	void CheckSelection()
+	{
 		if(selectionID>=options.Length)selectionID-=options.Length;
 		if(selectionID<0)selectionID+=options.Length;
 	}
-	void CheckSkins(){
+	void CheckSkins()
+	{
 		//if(skinId>0 && !Locks.Skin(selectionID*3+skinId-1))skinId++;
 		if(skinId>3)skinId=0;
 		if(skinId<0)skinId=3;
 		SkinSwitch.selectedChar=selectionID;
 		SkinSwitch.selectedSkin=skinId;
 	}
-	public void Open(Vector3 vector){
+	public void Open(Vector3 vector)
+	{
 		transform.position=vector;
 		update=MovingIn;
 		gameObject.SetActive(true);
 	}
-	public void Close(Vector3 vector){
+	public void Close(Vector3 vector)
+	{
 		outVector=vector;
 		update=MovingOut;
 	}
-	public void Expand(Image i){
+	public void Expand(Image i)
+	{
 		rect=transform as RectTransform;
 		rect.anchorMin=i.rectTransform.anchorMin;
 		rect.anchorMax=i.rectTransform.anchorMax;
@@ -165,7 +201,8 @@ public class MenuSelect : MonoBehaviour
 		update=Expanding;
 		gameObject.SetActive(true);
 	}
-	public void Shrink(RectTransform rt){
+	public void Shrink(RectTransform rt)
+	{
 		rect=transform as RectTransform;
 		rect.anchorMin=Vector2.zero;
 		rect.anchorMax=Vector2.one;
@@ -184,7 +221,8 @@ public struct Menuoptions
 	public SelectionType selection;
 	public UnityEvent comand;
 	public WorldInfo[] worlds;
-	public void Select(int i,int  j){
+	public void Select(int i,int  j)
+	{
 		switch(selection){
 			case SelectionType.World:
 				EnemySpawner.world=worlds[i];
