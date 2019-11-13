@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class MenuSelect : MonoBehaviour
 {
-	[SerializeField]
-	private bool submenu;
 	[SerializeField]
 	Graphic[] options;
 	[SerializeField]
@@ -29,23 +28,28 @@ public class MenuSelect : MonoBehaviour
 	MenuTransition[] menus;
 	int selectionID;
 	int skinId;
+	HashSet<Transform> slots=new HashSet<Transform>();
+	Transform selected;
 	Vector3 outVector;
 	public delegate void Del();
 	private Del update;
 	private Del Check;
 	private RectTransform rect;
 	private Vector2 min,max;
+	bool p1confirm;
 	void Awake()
     {
         //if(rowCount<2)rowCount=2;
 		//Locks.Load();
-		if(update==null)update=UpdateInput;
+		if(update==null)update=UpdateInputWorld;
 		Check=CheckSelection;
-		if(opt.selection==Menuoptions.SelectionType.Character)Check+=CheckSkins;
 		if(opt.selection==Menuoptions.SelectionType.Character){
 			selectionID=Ship.playerID;
 			skinId=Ship.skinID+1;
+			update=UpdateInputPilot;
+			Check+=CheckSkins;
 		}
+		if(update==null)update=UpdateInputWorld;
     }
 	void OnEnable()
 	{
@@ -72,7 +76,8 @@ public class MenuSelect : MonoBehaviour
 		transform.position=Vector3.MoveTowards(transform.position,vector,Time.deltaTime*20);
 		if((transform.position-vector).sqrMagnitude<0.1f){
 			transform.position=vector;
-			update=UpdateInput;
+			if(opt.selection==Menuoptions.SelectionType.Character)update=UpdateInputPilot;
+			else update=UpdateInputWorld;
 		}
 	}
 	void MovingOut()
@@ -92,7 +97,10 @@ public class MenuSelect : MonoBehaviour
 	{
 		rect.anchorMin=Vector2.MoveTowards(rect.anchorMin,Vector2.zero,Time.deltaTime);
 		rect.anchorMax=Vector2.MoveTowards(rect.anchorMax,Vector2.one,Time.deltaTime);
-		if(rect.anchorMax.x==1)update=UpdateInput;
+		if(rect.anchorMax.x==1){
+			if(opt.selection==Menuoptions.SelectionType.Character)update=UpdateInputPilot;
+			else update=UpdateInputWorld;
+		}
 	}
 	public void Open(Del d)
 	{
@@ -104,7 +112,7 @@ public class MenuSelect : MonoBehaviour
 	}
 	public void GetInput()
 	{
-		update=UpdateInput;
+		update=UpdateInputWorld;
 	}
 	void lightsUP(int i, float f)
 	{
@@ -142,18 +150,18 @@ public class MenuSelect : MonoBehaviour
 		}
 		
 	}
-	void UpdateInput()
+	void UpdateInputWorld()
 	{
 		int id=selectionID;
-		if(Input.GetKeyDown(KeyCode.UpArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId++;else selectionID-=rowCount;
-        if(Input.GetKeyDown(KeyCode.DownArrow))if(opt.selection==Menuoptions.SelectionType.Character)skinId--;else selectionID+=rowCount;
-        if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
-        if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
+		if(Input.GetKeyDown(KeyCode.UpArrow))selectionID-=rowCount;
+        if(Input.GetKeyDown(KeyCode.DownArrow))selectionID+=rowCount;
+        if(Input.GetKeyDown(KeyCode.RightArrow))selectionID++;
+        if(Input.GetKeyDown(KeyCode.LeftArrow))selectionID--;
 		if(id!=selectionID)
 		{
+			OnValueChanged();
 			lightsUP(id, 0.5f);
 			lightsUP(selectionID, 1);
-			OnValueChanged();
 		}
 		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
@@ -165,6 +173,56 @@ public class MenuSelect : MonoBehaviour
 				menus[i].Open();
 				if(confirmKey==KeyCode.None)
 					opt.Select(selectionID,skinId-1);
+			}
+		}
+	}
+	void UpdateInputPilot()
+	{
+		int id=selectionID;
+		if(Input.GetKeyDown(KeyCode.UpArrow)&& p1confirm)skinId++;
+        if(Input.GetKeyDown(KeyCode.DownArrow)&& p1confirm)skinId--;
+        if(Input.GetKeyDown(KeyCode.RightArrow)&& !p1confirm)selectionID++;
+        if(Input.GetKeyDown(KeyCode.LeftArrow)&& !p1confirm)selectionID--;
+		if(id!=selectionID)
+		{
+			OnValueChanged();
+			lightsUP(id, 0.5f);
+			lightsUP(selectionID, 1);
+		}
+		
+		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
+			Debug.Log(p1confirm);
+			if(p1confirm){
+				opt.Select(selectionID,skinId-1);
+			}else {
+				p1confirm=true;
+				selected=options[selectionID].transform.GetChild(2);
+				slots.Remove(selected);
+			}
+		}
+		foreach (Transform t in slots)
+		{
+			if(t.position.y>-4.5f)t.Translate(0,-Time.deltaTime*3,0);
+			else {
+				slots.Remove(t);
+				break;
+			}
+		}
+		if(selected && selected.position.y<-2.5f)selected.Translate(0,Time.deltaTime*3,0);
+		for(int i=0;i<menus.Length;i++){
+			if(menus[i].GetKeyDown()){
+				if(p1confirm){
+					p1confirm=false;
+					if(selected){
+						slots.Add(selected);
+						selected=null;
+					}
+				}else{
+				menus[i].Close(this);
+				menus[i].Open();
+				if(confirmKey==KeyCode.None)
+					opt.Select(selectionID,skinId-1);
+				}
 			}
 		}
 	}

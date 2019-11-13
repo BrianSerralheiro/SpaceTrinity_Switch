@@ -4,9 +4,7 @@ public class MenuEditor : Editor
 {
     public override void OnInspectorGUI(){
         EditorGUI.BeginChangeCheck();
-        SerializedProperty p= serializedObject.FindProperty("submenu");
-        EditorGUILayout.PropertyField(p);
-        p= serializedObject.FindProperty("options");
+        SerializedProperty p=serializedObject.FindProperty("options");
         EditorGUILayout.PropertyField(p,true);
         int i=p.arraySize;
         p= serializedObject.FindProperty("rowCount");
