@@ -41,18 +41,18 @@ public class MenuSelect : MonoBehaviour
     {
         //if(rowCount<2)rowCount=2;
 		//Locks.Load();
-		if(update==null)update=UpdateInputWorld;
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character){
 			selectionID=Ship.playerID;
 			skinId=Ship.skinID+1;
-			update=UpdateInputPilot;
+			if(update==null)update=UpdateInputPilot;
 			Check+=CheckSkins;
 		}
 		if(update==null)update=UpdateInputWorld;
     }
 	void OnEnable()
 	{
+		if(opt.selection==Menuoptions.SelectionType.None)return;
 		OnValueChanged();
 		if(displayName)displayName.text=name;
 		analogDisplay.gameObject.SetActive(!string.IsNullOrEmpty(analog));
@@ -155,8 +155,8 @@ public class MenuSelect : MonoBehaviour
 		int id=selectionID;
 		if(Input.GetKeyDown(KeyCode.UpArrow))selectionID-=rowCount;
         if(Input.GetKeyDown(KeyCode.DownArrow))selectionID+=rowCount;
-        if(Input.GetKeyDown(KeyCode.RightArrow))selectionID++;
-        if(Input.GetKeyDown(KeyCode.LeftArrow))selectionID--;
+        if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
+        if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
 		if(id!=selectionID)
 		{
 			OnValueChanged();
