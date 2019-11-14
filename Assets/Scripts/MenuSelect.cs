@@ -196,7 +196,8 @@ public class MenuSelect : MonoBehaviour
 				opt.Select(selectionID,skinId-1);
 			}else {
 				p1confirm=true;
-				selected=options[selectionID].transform.GetChild(2);
+				selected=options[selectionID].transform.GetChild(3);
+				options[selectionID].transform.GetChild(2).gameObject.SetActive(true);
 				slots.Remove(selected);
 			}
 		}
@@ -210,10 +211,14 @@ public class MenuSelect : MonoBehaviour
 		}
 		if(selected && selected.position.y<-2.5f)selected.Translate(0,Time.deltaTime*3,0);
 		for(int i=0;i<menus.Length;i++){
-			if(menus[i].GetKeyDown()){
-				if(p1confirm){
+			if(menus[i].GetKeyDown())
+			{
+				if(p1confirm)
+				{
 					p1confirm=false;
-					if(selected){
+					options[selectionID].transform.GetChild(2).gameObject.SetActive(false);
+					if(selected)
+					{
 						slots.Add(selected);
 						selected=null;
 					}
