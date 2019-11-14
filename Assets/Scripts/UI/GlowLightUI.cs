@@ -23,6 +23,8 @@ public class GlowLightUI : MonoBehaviour
 
     void Update()
     {
-        graphic.color=Color.Lerp(color1,color2,Time.time%cicleTime-offTime);
+        float f = Time.time%cicleTime;
+        graphic.color=Color.Lerp(color1,color2,Mathf.Min(f-offTime,cicleTime - f));
     }
+    
 }
