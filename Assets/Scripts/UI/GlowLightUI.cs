@@ -9,10 +9,8 @@ public class GlowLightUI : MonoBehaviour
     float offTime;
     float amount;
     [SerializeField]
-    [ColorUsageAttribute(true, true)]
     Color color1;
     [SerializeField]
-    [ColorUsageAttribute(true, true)]
     Color color2;
     private Graphic graphic;
     void Start()

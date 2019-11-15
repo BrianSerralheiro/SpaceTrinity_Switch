@@ -3,11 +3,16 @@
 public class UIRotate : MonoBehaviour
 {
     [SerializeField]
+    private float mindSpeed;
+    [SerializeField]
     private float rotationSpeed;
-
-    // Update is called once per frame
+    float delta;
+    void OnEnable()
+    {
+        delta=rotationSpeed-mindSpeed;
+    }
     void Update()
     {
-        transform.Rotate(0,0,Mathf.PingPong(Time.time, rotationSpeed) * 360 * Time.deltaTime);
+        transform.Rotate(0,0,(mindSpeed+ Mathf.PingPong(Time.time, rotationSpeed)*delta) * 360 * Time.deltaTime);
     }
 }
