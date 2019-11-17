@@ -10,18 +10,9 @@ public class Barata : EnemyBase {
     Del update;
 	int charges,spawns;
 	private EnemyInfo div;
-	enum State
-	{
-		intro,
-		moving,
-		charging,
-		dead
-	}
-	State state;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		damageEffect = true;
-		EnemySpawner.boss=true;
 		hp=500;
 		GameObject go = new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
@@ -80,8 +71,11 @@ public class Barata : EnemyBase {
 				rot.z=crystal.Value()*30;
 			}
 		if(transform.position.y>Scaler.sizeY+3){
-			if(charges++>2){
+			if(charges++>4){
+				EnemySpawner.boss=true;
 				update=Spawning;
+				if(vector.z<45)vector.z+=Time.deltaTime*15;
+
 			}
 	    	else {
 				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
@@ -92,7 +86,6 @@ public class Barata : EnemyBase {
     }
 	void Spawning(){
 		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime*2,0);
-		if(vector.z<45)vector.z+=Time.deltaTime*30;
 		if(spawns<3){
 			timer+=Time.deltaTime;
 			rot.z=Mathf.PingPong(timer,1)*25;
@@ -112,23 +105,22 @@ public class Barata : EnemyBase {
 				if(rot.z>-30)rot.z-=Time.deltaTime*30;
 			}
 	}
+	void Dying(){
+		crystal.Set(0);
+		transform.Translate(0,-Time.deltaTime*3,0,Space.World);
+		transform.Rotate(0,0,Time.deltaTime*3);
+		ParticleManager.Emit(8,(Vector3)Random.insideUnitCircle*2+transform.position,1);
+		if(transform.position.y<-Scaler.sizeY-4){
+			Destroy(gameObject);
+			EnemySpawner.boss=false;
+			SoundManager.Play(3);
+		}
+	}
 	new void Update()
 	{
 		if(Ship.paused) return;
 		base.Update();
         update?.Invoke();
-		if(state==State.dead)
-		{
-			crystal.Set(0);
-			transform.Translate(0,-Time.deltaTime*3,0,Space.World);
-			transform.Rotate(0,0,Time.deltaTime*3);
-			ParticleManager.Emit(8,(Vector3)Random.insideUnitCircle*2+transform.position,1);
-			if(transform.position.y<-Scaler.sizeY-4){
-				Destroy(gameObject);
-				EnemySpawner.boss=false;
-				SoundManager.Play(3);
-			}
-		}
 		if(hp>0){
 			wingL.localEulerAngles=vector;
 			wingR.localEulerAngles=-vector;
@@ -149,8 +141,7 @@ public class Barata : EnemyBase {
 	}
 	protected override void Die()
 	{
-		state=State.dead;
-		update=null;
+		update=Dying;
 		EnemySpawner.points+=500;
 	}
 	public override void Position(int i)
@@ -174,9 +165,8 @@ public class Barata : EnemyBase {
 	}
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
-		if(vector.z>5 && state!=State.dead) base.OnCollisionEnter2D(col);
+		if(vector.z>15 && update!=Dying) base.OnCollisionEnter2D(col);
 		else
 			ParticleManager.Emit(16,col.collider.transform.position,1);
-		speed=hp<350 ? 12 : 8;
 	}
 }

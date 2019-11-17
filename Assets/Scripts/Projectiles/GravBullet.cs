@@ -9,15 +9,13 @@ public class GravBullet : Bullet
     void Update()
     {
         if(Ship.paused) return;
-		ParticleManager.Emit(particleID,transform.position,1);
-		update?.Invoke();
+        update?.Invoke();
         timer-=Time.deltaTime;
 		transform.Translate(0,Time.deltaTime*10,0);
 		if(timer<=0) Destroy(gameObject);
     }
     public void Size(int i){
         size=i;
-        Debug.Log(i);
         pierce=i>0;
         damage+=i*20;
         BoxCollider2D c=GetComponent<BoxCollider2D>();
@@ -38,11 +36,11 @@ public class GravBullet : Bullet
         c.size=v2;
     }
     void UpdateSprite0(){
-        renderer.sprite=Bullet.sprites[spriteID+(int)(Time.time%2)];
+        renderer.sprite=Bullet.sprites[spriteID+(int)((2-timer)*4%2)];
     }void UpdateSprite1(){
-       renderer.sprite=Bullet.sprites[spriteID+2+(int)(Time.time*16%count)];
+       renderer.sprite=Bullet.sprites[spriteID+2+(int)((2-timer)*16%count)];
     }void UpdateSprite2(){
-       renderer.sprite=Bullet.sprites[spriteID+2+count+(int)(Time.time*16%count)];
+       renderer.sprite=Bullet.sprites[spriteID+2+count+(int)((2-timer)*16%count)];
     }
 	new void OnCollisionEnter2D(Collision2D col)
 	{

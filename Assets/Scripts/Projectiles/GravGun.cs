@@ -9,7 +9,7 @@ public class GravGun : Gun
     private float timer;
     protected override void Awake()
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID+1)*count+0]);
+		shotId=Bullet.Register(shots[(Ship.skinID+1)*count]);
         for(int i=1;i<count;i++){
             Bullet.Register(shots[(Ship.skinID+1)*count+i]);
         }
@@ -30,7 +30,6 @@ public class GravGun : Gun
 		bull.pierce=false;
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
-        Debug.Log(timer+","+level);
         bull.Size((int)(timer/(level/2f)));
 
 		go.transform.position=transform.position;

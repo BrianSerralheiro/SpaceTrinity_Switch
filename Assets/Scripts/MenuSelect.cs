@@ -191,7 +191,6 @@ public class MenuSelect : MonoBehaviour
 		}
 		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
-			Debug.Log(p1confirm);
 			if(p1confirm){
 				opt.Select(selectionID,skinId-1);
 			}else {

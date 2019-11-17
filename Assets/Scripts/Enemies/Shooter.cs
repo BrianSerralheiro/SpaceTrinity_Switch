@@ -6,7 +6,6 @@ public class Shooter : EnemyBase
 	private Vector3 finalpoint;
 	private float shoottimer=1;
 	bool shot;
-
 	private Transform armL;
 	private Transform armR;
 	private Transform legL;

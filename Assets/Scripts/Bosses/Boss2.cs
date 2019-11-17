@@ -26,6 +26,7 @@ public class Boss2 : EnemyBase {
 	private Vector3 left=new Vector3(1.8f,-1.5f,0);
 	private Vector3 right = new Vector3(-1.8f,-1.5f,0);
 	private Sprite round;
+	private int shotId;
 	enum State
 	{
 		intro,
@@ -103,7 +104,8 @@ public class Boss2 : EnemyBase {
 		eyes=go.AddComponent<Core>().Set(ei.sprites[6],new Color(0.5f,0.1f,0.05f));
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,0.7f,0);
-		round=ei.sprites[7];
+		round=ei.sprites[9];
+		shotId=ei.bulletsID[0];
 	}
 	
 	protected new void Update(){
@@ -284,7 +286,7 @@ public class Boss2 : EnemyBase {
 		go.AddComponent<BoxCollider2D>();
 		Bullet bu=go.AddComponent<Bullet>();
 		bu.owner=name;
-		bu.spriteID=10;
+		bu.spriteID=shotId;
 		go.transform.position=eyes.transform.position+pos[i]+Vector3.back*0.5f;
 		go.transform.up=(pos[i]+Vector3.down).normalized;
 	}
