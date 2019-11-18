@@ -7,13 +7,13 @@ TextureImporter:
     second: Skin roxa arcade_0
   - first:
       213: 2373479649404423235
-    second: Skin roxa arcade_1
+    second: arc14
   - first:
       213: -8452832530848854160
     second: Skin roxa arcade_2
   - first:
       213: 9034349168052149655
-    second: Skin roxa arcade_3
+    second: arc8
   - first:
       213: 2456355231738241282
     second: Skin roxa arcade_4
@@ -22,16 +22,16 @@ TextureImporter:
     second: Skin roxa arcade_5
   - first:
       213: -4898446546982693207
-    second: Skin roxa arcade_6
+    second: arc2
   - first:
       213: -9194461628602567464
-    second: Skin roxa arcade_7
+    second: arc13
   - first:
       213: 4783723510976449662
     second: Skin roxa arcade_8
   - first:
       213: -8230982078572440230
-    second: Skin roxa arcade_9
+    second: arc7
   - first:
       213: 7273859686239895734
     second: Skin roxa arcade_10
@@ -46,40 +46,40 @@ TextureImporter:
     second: Skin roxa arcade_13
   - first:
       213: 66222948685914126
-    second: Skin roxa arcade_14
+    second: arc1
   - first:
       213: 7788815270373521721
     second: Skin roxa arcade_15
   - first:
       213: 4145154402406325274
-    second: Skin roxa arcade_16
+    second: arc6
   - first:
       213: -7577351856727300544
     second: Skin roxa arcade_17
   - first:
       213: 2933662528322468959
-    second: Skin roxa arcade_18
+    second: arc12
   - first:
       213: -4329755747825714374
     second: Skin roxa arcade_19
   - first:
       213: -2166723284255702107
-    second: Skin roxa arcade_20
+    second: arc5
   - first:
       213: 136485253993066797
-    second: Skin roxa arcade_21
+    second: arc11
   - first:
       213: 1266111998741765768
-    second: Skin roxa arcade_22
+    second: arc4
   - first:
       213: -6757013404887409991
-    second: Skin roxa arcade_23
+    second: arc10
   - first:
       213: -5558322498575763280
-    second: Skin roxa arcade_24
+    second: arc3
   - first:
       213: 4947350274285596179
-    second: Skin roxa arcade_25
+    second: arc9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_1
+      name: arc14
       rect:
         serializedVersion: 2
         x: 699
@@ -206,7 +206,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_3
+      name: arc8
       rect:
         serializedVersion: 2
         x: 309
@@ -248,7 +248,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_6
+      name: arc2
       rect:
         serializedVersion: 2
         x: 79
@@ -269,7 +269,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_7
+      name: arc13
       rect:
         serializedVersion: 2
         x: 679
@@ -290,7 +290,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_9
+      name: arc7
       rect:
         serializedVersion: 2
         x: 309
@@ -332,7 +332,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_14
+      name: arc1
       rect:
         serializedVersion: 2
         x: 79
@@ -353,7 +353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_16
+      name: arc6
       rect:
         serializedVersion: 2
         x: 309
@@ -374,7 +374,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_18
+      name: arc12
       rect:
         serializedVersion: 2
         x: 669
@@ -416,7 +416,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_20
+      name: arc5
       rect:
         serializedVersion: 2
         x: 289
@@ -437,7 +437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_21
+      name: arc11
       rect:
         serializedVersion: 2
         x: 679
@@ -458,7 +458,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_22
+      name: arc4
       rect:
         serializedVersion: 2
         x: 278
@@ -479,7 +479,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_23
+      name: arc10
       rect:
         serializedVersion: 2
         x: 649
@@ -500,7 +500,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_24
+      name: arc3
       rect:
         serializedVersion: 2
         x: 279
@@ -521,7 +521,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skin roxa arcade_25
+      name: arc9
       rect:
         serializedVersion: 2
         x: 659

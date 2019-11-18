@@ -10,22 +10,22 @@ TextureImporter:
     second: Dark Hole skin
   - first:
       213: -3744048087197757696
-    second: Dark Hole skin_2
+    second: bh8
   - first:
       213: -114152701747950792
-    second: Dark Hole skin_3
+    second: bh14
   - first:
       213: 611524711416198858
-    second: Dark Hole skin_4
+    second: bh2
   - first:
       213: 2016903635567754527
-    second: Dark Hole skin_5
+    second: bh13
   - first:
       213: 6907937705990481577
     second: Dark Hole skin_6
   - first:
       213: 5719223593558061160
-    second: Dark Hole skin_7
+    second: bh7
   - first:
       213: -4231989712452663699
     second: Dark Hole skin_8
@@ -37,7 +37,7 @@ TextureImporter:
     second: Dark Hole skin_10
   - first:
       213: -2308377516375074141
-    second: Dark Hole skin_11
+    second: bh1
   - first:
       213: -6165955950355891881
     second: Dark Hole skin_12
@@ -55,31 +55,31 @@ TextureImporter:
     second: Dark Hole skin_16
   - first:
       213: -7481408252266736706
-    second: Dark Hole skin_17
+    second: bh6
   - first:
       213: -8760515710921067455
-    second: Dark Hole skin_18
+    second: bh12
   - first:
       213: -3332294653705534289
     second: Dark Hole skin_19
   - first:
       213: -1644514781278142587
-    second: Dark Hole skin_20
+    second: bh5
   - first:
       213: -3309143367406220674
-    second: Dark Hole skin_21
+    second: bh11
   - first:
       213: -8501587964164470125
-    second: Dark Hole skin_22
+    second: bh4
   - first:
       213: -4003622794630084455
-    second: Dark Hole skin_23
+    second: bh10
   - first:
       213: -4565906153274510604
-    second: Dark Hole skin_24
+    second: bh3
   - first:
       213: -3421346787135957085
-    second: Dark Hole skin_25
+    second: bh9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -206,7 +206,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_2
+      name: bh8
       rect:
         serializedVersion: 2
         x: 318
@@ -227,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_3
+      name: bh14
       rect:
         serializedVersion: 2
         x: 701
@@ -248,7 +248,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_4
+      name: bh2
       rect:
         serializedVersion: 2
         x: 81
@@ -269,7 +269,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_5
+      name: bh13
       rect:
         serializedVersion: 2
         x: 684
@@ -290,7 +290,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_7
+      name: bh7
       rect:
         serializedVersion: 2
         x: 312
@@ -311,7 +311,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_11
+      name: bh1
       rect:
         serializedVersion: 2
         x: 82
@@ -332,7 +332,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_17
+      name: bh6
       rect:
         serializedVersion: 2
         x: 316
@@ -353,7 +353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_18
+      name: bh12
       rect:
         serializedVersion: 2
         x: 667
@@ -395,7 +395,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_20
+      name: bh5
       rect:
         serializedVersion: 2
         x: 292
@@ -416,7 +416,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_21
+      name: bh11
       rect:
         serializedVersion: 2
         x: 677
@@ -437,7 +437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_22
+      name: bh4
       rect:
         serializedVersion: 2
         x: 279
@@ -458,7 +458,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_23
+      name: bh10
       rect:
         serializedVersion: 2
         x: 656
@@ -479,7 +479,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_24
+      name: bh3
       rect:
         serializedVersion: 2
         x: 279
@@ -500,7 +500,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark Hole skin_25
+      name: bh9
       rect:
         serializedVersion: 2
         x: 667

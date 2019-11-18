@@ -7,7 +7,7 @@ TextureImporter:
     second: SKin roxa Red Star_0
   - first:
       213: 4404015629984452970
-    second: SKin roxa Red Star_2
+    second: red14
   - first:
       213: -6898679141257608621
     second: SKin roxa Red Star_3
@@ -16,19 +16,19 @@ TextureImporter:
     second: SKin roxa Red Star_4
   - first:
       213: 7690338185879753141
-    second: SKin roxa Red Star_5
+    second: red2
   - first:
       213: -9215176380813430025
-    second: SKin roxa Red Star_6
+    second: red8
   - first:
       213: 7317825416579318607
-    second: SKin roxa Red Star_8
+    second: red7
   - first:
       213: 8492527143210364245
-    second: SKin roxa Red Star_9
+    second: red13
   - first:
       213: 483745616562163211
-    second: SKin roxa Red Star_13
+    second: red1
   - first:
       213: -3532992600303251370
     second: SKin roxa Red Star_14
@@ -46,31 +46,31 @@ TextureImporter:
     second: SKin roxa Red Star_18
   - first:
       213: -1394339821858227481
-    second: SKin roxa Red Star_19
+    second: red6
   - first:
       213: -2898540590001189566
-    second: SKin roxa Red Star_20
+    second: red12
   - first:
       213: 6714387312637307889
     second: SKin roxa Red Star_21
   - first:
       213: 6825108921201554742
-    second: SKin roxa Red Star_22
+    second: red5
   - first:
       213: 8674102794328827074
-    second: SKin roxa Red Star_23
+    second: red11
   - first:
       213: -1303190789329392059
-    second: SKin roxa Red Star_24
+    second: red4
   - first:
       213: -8853238404313325007
-    second: SKin roxa Red Star_25
+    second: red10
   - first:
       213: -4279311799645358519
-    second: SKin roxa Red Star_26
+    second: red3
   - first:
       213: -150266322201100009
-    second: SKin roxa Red Star_27
+    second: red9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_2
+      name: red14
       rect:
         serializedVersion: 2
         x: 701
@@ -218,7 +218,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_5
+      name: red2
       rect:
         serializedVersion: 2
         x: 81
@@ -239,7 +239,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_6
+      name: red8
       rect:
         serializedVersion: 2
         x: 318
@@ -260,7 +260,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_8
+      name: red7
       rect:
         serializedVersion: 2
         x: 312
@@ -281,7 +281,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_9
+      name: red13
       rect:
         serializedVersion: 2
         x: 684
@@ -302,7 +302,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_13
+      name: red1
       rect:
         serializedVersion: 2
         x: 82
@@ -428,7 +428,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_19
+      name: red6
       rect:
         serializedVersion: 2
         x: 316
@@ -449,7 +449,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_20
+      name: red12
       rect:
         serializedVersion: 2
         x: 667
@@ -491,7 +491,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_22
+      name: red5
       rect:
         serializedVersion: 2
         x: 292
@@ -512,7 +512,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_23
+      name: red11
       rect:
         serializedVersion: 2
         x: 677
@@ -533,7 +533,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_24
+      name: red4
       rect:
         serializedVersion: 2
         x: 279
@@ -554,7 +554,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_25
+      name: red10
       rect:
         serializedVersion: 2
         x: 656
@@ -575,7 +575,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_26
+      name: red3
       rect:
         serializedVersion: 2
         x: 279
@@ -596,7 +596,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKin roxa Red Star_27
+      name: red9
       rect:
         serializedVersion: 2
         x: 667
