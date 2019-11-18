@@ -9,6 +9,8 @@ public class WorldInfo : ScriptableObject
 	[HideInInspector]
 	public string songName;
 	public EnemyInfo subBoss;
+	public bool loopWorld=true;
+	public float scroll=60;
 	public EnemyInfo Boss;
 	[HideInInspector]
 	public string bossSong;

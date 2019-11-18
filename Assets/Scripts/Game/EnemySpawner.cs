@@ -7,11 +7,6 @@ public class EnemySpawner : MonoBehaviour {
 	public static bool boss;
 	private int counter;
 	public float timer;
-	[SerializeField]
-	private Texture[] mundos;
-	[SerializeField]
-	private GameObject merc;
-	private int worldID;
 	private int scroll=60;
 	private float transfer=1;
 	
@@ -79,24 +74,12 @@ public class EnemySpawner : MonoBehaviour {
 		if(counter>=world.wave.Length && !boss)Spawn(world.Boss).Position(0);
 		if(timer>0 && !boss) timer-=Time.deltaTime;
 		Vector2 v= bg.mainTextureOffset;
-		v.y+=Time.deltaTime/scroll;
-		if(worldID==2)
-			if(v.y>0.7f) v.y=0.7f;
+		v.y+=Time.deltaTime/world.scroll;
+		if(world.loopWorld)
+			{if(v.y>1) v.y-=1;}
 		else
-			if(v.y>1) v.y-=1;
+			if(v.y>0.9f) v.y=0.9f;
 		bg.mainTextureOffset=v;
-		if(transfer<1)
-		{
-			transfer-=Time.deltaTime*2;
-			float t=Mathf.Abs(transfer);
-			bg.color=new Color(t,t,t);
-			if(transfer<0 && bg.mainTexture!=mundos[worldID]){
-				bg.mainTexture= mundos[worldID];
-				bg.mainTextureOffset=Vector2.zero;
-			}
-			if(transfer<-1)transfer=1;
-		}
-		
 	}
 
 	public void Chose(string s)

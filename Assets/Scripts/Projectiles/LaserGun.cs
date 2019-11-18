@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LaserGun : Gun {
 	[SerializeField]
@@ -13,9 +11,7 @@ public class LaserGun : Gun {
 	private AudioSource source;
 	private LineRenderer line;
 	
-	protected override void Awake()
-	{
-	}
+	protected override void Awake(){}
 	void Start () {
 		if(Ship.skinID!=-1 && Locks.Skin(6+Ship.skinID))lasermaterial.mainTexture=lasers[Ship.skinID+1];
 		else lasermaterial.mainTexture=lasers[0];
@@ -47,6 +43,9 @@ public class LaserGun : Gun {
 	{
 		if(i<4){
 			line.widthMultiplier=i;
+			Vector2 v= col.size;
+			v.x=i;
+			col.size=v;
 			level=i;
 		}
 	}
