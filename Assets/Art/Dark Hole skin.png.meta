@@ -1,0 +1,538 @@
+fileFormatVersion: 2
+guid: 9ba63b67613acdc40897549eed4aea43
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6293601258671014883
+    second: dark hole mini
+  - first:
+      213: -3134479197178996570
+    second: Dark Hole skin
+  - first:
+      213: -3744048087197757696
+    second: Dark Hole skin_2
+  - first:
+      213: -114152701747950792
+    second: Dark Hole skin_3
+  - first:
+      213: 611524711416198858
+    second: Dark Hole skin_4
+  - first:
+      213: 2016903635567754527
+    second: Dark Hole skin_5
+  - first:
+      213: 6907937705990481577
+    second: Dark Hole skin_6
+  - first:
+      213: 5719223593558061160
+    second: Dark Hole skin_7
+  - first:
+      213: -4231989712452663699
+    second: Dark Hole skin_8
+  - first:
+      213: -8871538306016261308
+    second: Dark Hole skin_9
+  - first:
+      213: -8572921533764332200
+    second: Dark Hole skin_10
+  - first:
+      213: -2308377516375074141
+    second: Dark Hole skin_11
+  - first:
+      213: -6165955950355891881
+    second: Dark Hole skin_12
+  - first:
+      213: 554842395582864197
+    second: Dark Hole skin_13
+  - first:
+      213: -4910646733160248592
+    second: Dark Hole skin_14
+  - first:
+      213: -1652378578499355144
+    second: Dark Hole skin_15
+  - first:
+      213: 6707158450127789954
+    second: Dark Hole skin_16
+  - first:
+      213: -7481408252266736706
+    second: Dark Hole skin_17
+  - first:
+      213: -8760515710921067455
+    second: Dark Hole skin_18
+  - first:
+      213: -3332294653705534289
+    second: Dark Hole skin_19
+  - first:
+      213: -1644514781278142587
+    second: Dark Hole skin_20
+  - first:
+      213: -3309143367406220674
+    second: Dark Hole skin_21
+  - first:
+      213: -8501587964164470125
+    second: Dark Hole skin_22
+  - first:
+      213: -4003622794630084455
+    second: Dark Hole skin_23
+  - first:
+      213: -4565906153274510604
+    second: Dark Hole skin_24
+  - first:
+      213: -3421346787135957085
+    second: Dark Hole skin_25
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dark hole mini
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 2617
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9d2f79f66d13145b16353a0ec37253
+      internalID: -6293601258671014883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 2438
+        width: 296
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c013a07273c7556499801884cb3e8e72
+      internalID: -3134479197178996570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_2
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 2099
+        width: 305
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e836822e086be4491f7cffaf866c7f
+      internalID: -3744048087197757696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_3
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 2107
+        width: 344
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 802a80b3194187043af5b875a1ae7adc
+      internalID: -114152701747950792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_4
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1876
+        width: 162
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be89f786c0a7b944da50bff144ef267c
+      internalID: 611524711416198858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_5
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 1742
+        width: 348
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9db4d7125add445a8efaac22a401d0
+      internalID: 2016903635567754527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_7
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1754
+        width: 304
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb9e738f14498f46b6b7eb6d1f09ac7
+      internalID: 5719223593558061160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1612
+        width: 160
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff4f5eb0af549646b0aaf00eb4685e7
+      internalID: -2308377516375074141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_17
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 1329
+        width: 306
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8dc50f0069a8d43b608cbf1ac92fcd
+      internalID: -7481408252266736706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_18
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 1320
+        width: 354
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15440a15e2b8a5e49bf4fa24ccb2741d
+      internalID: -8760515710921067455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_19
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1287
+        width: 44
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ffdf79fc1687b48964e7e356dc77e1
+      internalID: -3332294653705534289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_20
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 955
+        width: 307
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ccc301a3578c240b7115f38781a1d1
+      internalID: -1644514781278142587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_21
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 925
+        width: 345
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0820d72f6b081b24da478da2af18e5eb
+      internalID: -3309143367406220674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_22
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 551
+        width: 306
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb5ba0dc81eca343bf5c8c410c4a1fe
+      internalID: -8501587964164470125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_23
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 528
+        width: 345
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e760f7fdbc9d44daaf86b76de9f058
+      internalID: -4003622794630084455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_24
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 141
+        width: 306
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9aa29d631d91c4ab6792d1c4c3f120
+      internalID: -4565906153274510604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Hole skin_25
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 80
+        width: 344
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acec1636929c4004a80e2c24294e980d
+      internalID: -3421346787135957085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

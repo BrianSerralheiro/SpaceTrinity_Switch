@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: e027f5fd1d50d3d46b7a9f88caa48df9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7108012953546758971
+    second: Skin roxa arcade_0
+  - first:
+      213: 2373479649404423235
+    second: Skin roxa arcade_1
+  - first:
+      213: -8452832530848854160
+    second: Skin roxa arcade_2
+  - first:
+      213: 9034349168052149655
+    second: Skin roxa arcade_3
+  - first:
+      213: 2456355231738241282
+    second: Skin roxa arcade_4
+  - first:
+      213: 8021698711991855929
+    second: Skin roxa arcade_5
+  - first:
+      213: -4898446546982693207
+    second: Skin roxa arcade_6
+  - first:
+      213: -9194461628602567464
+    second: Skin roxa arcade_7
+  - first:
+      213: 4783723510976449662
+    second: Skin roxa arcade_8
+  - first:
+      213: -8230982078572440230
+    second: Skin roxa arcade_9
+  - first:
+      213: 7273859686239895734
+    second: Skin roxa arcade_10
+  - first:
+      213: -1473000000088681368
+    second: Skin roxa arcade_11
+  - first:
+      213: 6328636057038645656
+    second: Skin roxa arcade_12
+  - first:
+      213: 1781285989756643811
+    second: Skin roxa arcade_13
+  - first:
+      213: 66222948685914126
+    second: Skin roxa arcade_14
+  - first:
+      213: 7788815270373521721
+    second: Skin roxa arcade_15
+  - first:
+      213: 4145154402406325274
+    second: Skin roxa arcade_16
+  - first:
+      213: -7577351856727300544
+    second: Skin roxa arcade_17
+  - first:
+      213: 2933662528322468959
+    second: Skin roxa arcade_18
+  - first:
+      213: -4329755747825714374
+    second: Skin roxa arcade_19
+  - first:
+      213: -2166723284255702107
+    second: Skin roxa arcade_20
+  - first:
+      213: 136485253993066797
+    second: Skin roxa arcade_21
+  - first:
+      213: 1266111998741765768
+    second: Skin roxa arcade_22
+  - first:
+      213: -6757013404887409991
+    second: Skin roxa arcade_23
+  - first:
+      213: -5558322498575763280
+    second: Skin roxa arcade_24
+  - first:
+      213: 4947350274285596179
+    second: Skin roxa arcade_25
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Skin roxa arcade_0
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 2469
+        width: 272
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d53e8d2d12e254496b57a64aded545
+      internalID: -7108012953546758971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_1
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 2098
+        width: 352
+        height: 361
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b5942cdc11976d419243bd3f2a1c192
+      internalID: 2373479649404423235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_3
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 2097
+        width: 322
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f032b937559c9af4bbc65967391f22d7
+      internalID: 9034349168052149655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_5
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 2404
+        width: 53
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e2e030c1b65a3b4ca083616d165f385
+      internalID: 8021698711991855929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_6
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1868
+        width: 172
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a67959835bedf4740894ec1d71211504
+      internalID: -4898446546982693207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_7
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1738
+        width: 352
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874be90b491199444abd7c8464fbeaef
+      internalID: -9194461628602567464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_9
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1748
+        width: 312
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6777c1d2192830242920531c2f0646ed
+      internalID: -8230982078572440230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_13
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1841
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ac8f6134598b04789aad85661c2baa
+      internalID: 1781285989756643811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_14
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1608
+        width: 163
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b29446a67dec04f9262b2925d00828
+      internalID: 66222948685914126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_16
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1327
+        width: 313
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045e063d27a06544c98dfbf7320091bf
+      internalID: 4145154402406325274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_18
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1318
+        width: 352
+        height: 371
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6168d705bb3c2468903b8686c88e96
+      internalID: 2933662528322468959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_19
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1288
+        width: 30
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f2fb2d5f594d1045a9b0c76b2d951c1
+      internalID: -4329755747825714374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_20
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 948
+        width: 313
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80fdb42e08151fa4599d3a94e77bfe88
+      internalID: -2166723284255702107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_21
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 919
+        width: 351
+        height: 351
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2e1ea976d0475a40aa0181ea8267d02
+      internalID: 136485253993066797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_22
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 548
+        width: 313
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46e3b92d754678449d87bd6ee8b19c3
+      internalID: 1266111998741765768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_23
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 528
+        width: 352
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c438b66818e5c479e5b8298d1a7cb8
+      internalID: -6757013404887409991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_24
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 137
+        width: 312
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc03e0456d587b746967881afa0df1cd
+      internalID: -5558322498575763280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin roxa arcade_25
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 78
+        width: 352
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb558fa25bf44744d84d8fe6e59eae1b
+      internalID: 4947350274285596179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

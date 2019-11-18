@@ -1,0 +1,634 @@
+fileFormatVersion: 2
+guid: de936d382e8f9ae4582ca521248e0fdd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5133327233238559308
+    second: SKin roxa Red Star_0
+  - first:
+      213: 4404015629984452970
+    second: SKin roxa Red Star_2
+  - first:
+      213: -6898679141257608621
+    second: SKin roxa Red Star_3
+  - first:
+      213: 8710191204348893239
+    second: SKin roxa Red Star_4
+  - first:
+      213: 7690338185879753141
+    second: SKin roxa Red Star_5
+  - first:
+      213: -9215176380813430025
+    second: SKin roxa Red Star_6
+  - first:
+      213: 7317825416579318607
+    second: SKin roxa Red Star_8
+  - first:
+      213: 8492527143210364245
+    second: SKin roxa Red Star_9
+  - first:
+      213: 483745616562163211
+    second: SKin roxa Red Star_13
+  - first:
+      213: -3532992600303251370
+    second: SKin roxa Red Star_14
+  - first:
+      213: 5050860078394906258
+    second: SKin roxa Red Star_15
+  - first:
+      213: 763144325347261116
+    second: SKin roxa Red Star_16
+  - first:
+      213: 2548493298204401425
+    second: SKin roxa Red Star_17
+  - first:
+      213: -9167890018478063298
+    second: SKin roxa Red Star_18
+  - first:
+      213: -1394339821858227481
+    second: SKin roxa Red Star_19
+  - first:
+      213: -2898540590001189566
+    second: SKin roxa Red Star_20
+  - first:
+      213: 6714387312637307889
+    second: SKin roxa Red Star_21
+  - first:
+      213: 6825108921201554742
+    second: SKin roxa Red Star_22
+  - first:
+      213: 8674102794328827074
+    second: SKin roxa Red Star_23
+  - first:
+      213: -1303190789329392059
+    second: SKin roxa Red Star_24
+  - first:
+      213: -8853238404313325007
+    second: SKin roxa Red Star_25
+  - first:
+      213: -4279311799645358519
+    second: SKin roxa Red Star_26
+  - first:
+      213: -150266322201100009
+    second: SKin roxa Red Star_27
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SKin roxa Red Star_0
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 2469
+        width: 272
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e548339d7de1f844b97aab79fd815b6
+      internalID: -5133327233238559308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_2
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 2107
+        width: 344
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3935a743f9a1224988d48c05a9e4788
+      internalID: 4404015629984452970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_4
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 2404
+        width: 53
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8aac6045f1a73241bdc33b8a319d074
+      internalID: 8710191204348893239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1876
+        width: 162
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b88204fccd7063c4c95b7c7f5862b55d
+      internalID: 7690338185879753141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_6
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 2099
+        width: 305
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df9e2d4a95a05fd44bd8cdfc72be2f55
+      internalID: -9215176380813430025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_8
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1754
+        width: 304
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c37733f49820d64bb87cb92441223fd
+      internalID: 7317825416579318607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_9
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 1742
+        width: 348
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595eed56bb1c03d479711b7900eff842
+      internalID: 8492527143210364245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_13
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1612
+        width: 160
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ccb44f270d014041ba86bad4e60f91a
+      internalID: 483745616562163211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_14
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1732
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5694a5cda448f0045a08c68832224a8c
+      internalID: -3532992600303251370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_15
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 1729
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0ed10ca6231a14589e26563026ac63
+      internalID: 5050860078394906258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_16
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1617
+        width: 47
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dbe430cba5c65f4198e81040393dc24
+      internalID: 763144325347261116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_17
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1669
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa55282bc29b3624f9fded5907c0e25d
+      internalID: 2548493298204401425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_18
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 1669
+        width: 40
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ca5fc8e9aa74349a9ce583a98be307
+      internalID: -9167890018478063298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_19
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 1329
+        width: 306
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e47737d69e4b9e47a0c54713cc73e83
+      internalID: -1394339821858227481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_20
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 1320
+        width: 354
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5b6ce838c50d241844b96aac318315
+      internalID: -2898540590001189566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_21
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1287
+        width: 44
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9add05472c50a4d9044d3164a15e16
+      internalID: 6714387312637307889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_22
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 955
+        width: 307
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b62d4b55539a34aa075a508545c6cb
+      internalID: 6825108921201554742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_23
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 925
+        width: 345
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d21f7d50163f784093ebdcb44723fb9
+      internalID: 8674102794328827074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_24
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 551
+        width: 306
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69c227169d996246bd05b7f66bbafe0
+      internalID: -1303190789329392059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_25
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 528
+        width: 345
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c606bf4da4010943b85e54fd79e40b2
+      internalID: -8853238404313325007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_26
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 141
+        width: 306
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f0e53484a02614eae7cccb200d0c4d
+      internalID: -4279311799645358519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SKin roxa Red Star_27
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 80
+        width: 344
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006ab33cd4ce71d4491cd60dc63faa5d
+      internalID: -150266322201100009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
