@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Boss3 : EnemyBase {
+public class Batzilla : EnemyBase {
 	private Transform body;
 	private Transform head;
 	private Transform wingL;
@@ -16,6 +16,7 @@ public class Boss3 : EnemyBase {
 	private Vector3 left=new Vector3(-0.64f,0.24f,-0.2f);
 	private Vector3 right=new Vector3(0.64f,0.24f,-0.2f);
 	private EnemyInfo bat;
+	private int shotId;
 	enum State
 	{
 		intro,
@@ -76,6 +77,7 @@ public class Boss3 : EnemyBase {
 		go.transform.localScale=new Vector3(5000,5000);
 		go.transform.position=new Vector3(0,0,-0.09f);
 		bat=(ei as CarrierInfo).spawnable;
+		shotId=ei.bulletsID[0];
 	}
 	
 	new void Update () {
@@ -211,7 +213,7 @@ public class Boss3 : EnemyBase {
 		go.AddComponent<BoxCollider2D>();
 		Bullet b=go.AddComponent<Bullet>();
 		b.owner=name;
-		b.spriteID=12;
+		b.spriteID=shotId;
 		go.transform.position=transform.position+v;
 		go.transform.up=-transform.up;
 		//go.transform.localScale=Vector3.one*2;

@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		if(!world)world=world1;
 		boss = false;
-		Boss4.last=false;
+		FinalBoss.last=false;
 		SoundManager.Play(1);
 		bg.mainTexture=world.bgs[0];
 		bg.mainTextureOffset=Vector2.zero;

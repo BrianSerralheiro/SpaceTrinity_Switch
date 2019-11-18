@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Boss2 : EnemyBase {
+public class Squid : EnemyBase {
 	private EnemyBase clawL;
 	private EnemyBase clawR;
 	private Transform elbowL;

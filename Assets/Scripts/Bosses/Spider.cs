@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Boss1 : EnemyBase {
+public class Spider : EnemyBase {
 
 	private Transform back,bitting;
 	private float speed=4,timer;

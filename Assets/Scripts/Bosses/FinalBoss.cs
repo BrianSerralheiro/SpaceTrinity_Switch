@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Boss4 : EnemyBase {
+public class FinalBoss : EnemyBase {
 	enum State
 	{
 		intro=0,
