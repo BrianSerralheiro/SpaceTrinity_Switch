@@ -181,11 +181,12 @@ public class MenuSelect : MonoBehaviour
 	void UpdateInputPilot()
 	{
 		int id=selectionID;
+		int skin = skinId;
 		if(Input.GetKeyDown(KeyCode.UpArrow)&& p1confirm)skinId++;
         if(Input.GetKeyDown(KeyCode.DownArrow)&& p1confirm)skinId--;
         if(Input.GetKeyDown(KeyCode.RightArrow)&& !p1confirm)selectionID++;
         if(Input.GetKeyDown(KeyCode.LeftArrow)&& !p1confirm)selectionID--;
-		if(id!=selectionID)
+		if(id!=selectionID || skin != skinId)
 		{
 			OnValueChanged();
 			lightsUP(id, 0.5f);

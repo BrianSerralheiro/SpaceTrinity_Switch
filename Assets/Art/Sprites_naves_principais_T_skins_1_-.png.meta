@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: 60930d9ff6b8df048becbc286ad3dd6e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2181070040516751289
+    second: Sprites_naves_principais_T_skins_1_-_0
+  - first:
+      213: 3033926145762804938
+    second: Sprites_naves_principais_T_skins_1_-_1
+  - first:
+      213: 5427970170712567253
+    second: Sprites_naves_principais_T_skins_1_-_2
+  - first:
+      213: 2745794985484994737
+    second: Sprites_naves_principais_T_skins_1_-_3
+  - first:
+      213: -1137695517384620033
+    second: Sprites_naves_principais_T_skins_1_-_4
+  - first:
+      213: 4703064412470873843
+    second: Sprites_naves_principais_T_skins_1_-_5
+  - first:
+      213: -7507125877073494421
+    second: Sprites_naves_principais_T_skins_1_-_6
+  - first:
+      213: 6701281355552825583
+    second: Sprites_naves_principais_T_skins_1_-_7
+  - first:
+      213: -8482456693328758
+    second: Sprites_naves_principais_T_skins_1_-_8
+  - first:
+      213: -1220318963112223024
+    second: Sprites_naves_principais_T_skins_1_-_9
+  - first:
+      213: 5397082440662661508
+    second: Sprites_naves_principais_T_skins_1_-_10
+  - first:
+      213: 3903062405281500325
+    second: Sprites_naves_principais_T_skins_1_-_11
+  - first:
+      213: 8675424891340451330
+    second: Sprites_naves_principais_T_skins_1_-_12
+  - first:
+      213: -4056636637551118886
+    second: Sprites_naves_principais_T_skins_1_-_13
+  - first:
+      213: -7858861097854960394
+    second: Sprites_naves_principais_T_skins_1_-_14
+  - first:
+      213: 8267259648158276118
+    second: Sprites_naves_principais_T_skins_1_-_15
+  - first:
+      213: 5662038351988447863
+    second: Sprites_naves_principais_T_skins_1_-_16
+  - first:
+      213: 8124697598724414801
+    second: Sprites_naves_principais_T_skins_1_-_17
+  - first:
+      213: 6361155389082803744
+    second: Sprites_naves_principais_T_skins_1_-_18
+  - first:
+      213: -8676661956970741552
+    second: Sprites_naves_principais_T_skins_1_-_19
+  - first:
+      213: -3944757967578338001
+    second: Sprites_naves_principais_T_skins_1_-_20
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_1
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 2035
+        width: 29
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39aec3ba139a5c349ae2160beec02753
+      internalID: 3033926145762804938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_10
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 1223
+        width: 229
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e5e6a113dc1234c8884a55f25056d7
+      internalID: 5397082440662661508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_12
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 1264
+        width: 259
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ab558fa1a39044e9d62cf33e205956
+      internalID: 8675424891340451330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_15
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 1201
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3566c819399ef5344ae7728b89e1dbea
+      internalID: 8267259648158276118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_17
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 1243
+        width: 5
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355e5155914433a4cb0edb9f26bf8a56
+      internalID: 8124697598724414801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_19
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1164
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5487a7df7919348b36a649a1f56115
+      internalID: -8676661956970741552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_naves_principais_T_skins_1_-_20
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 917
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a75589d036d0a40af4b7716cee6fd4
+      internalID: -3944757967578338001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
