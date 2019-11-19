@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class InGame_HUD : MonoBehaviour 
 {
 	[SerializeField]
 	private Text scoreHUD,pilotName;
-
-	public static float shipHealth = 1,special;
+	private static float _currentHP=1;
+	public static float shipHealth=1,special;
 
 	[SerializeField]
 	private Image lifeBar,lifeFill,specialFill,pilotPic;
@@ -25,11 +23,21 @@ public class InGame_HUD : MonoBehaviour
 		pilotName.text=HUD.name;
 		pilotPic.sprite=HUD.picture;
 		lifeFill.color=lifeBar.color=pilotName.color=HUD.color;
+		lifeFill.material.SetFloat("_CurrentHP",_currentHP);
 	}
 	
 	void Update()
 	{
-		lifeFill.fillAmount=shipHealth;
+		if(shipHealth<_currentHP){
+			_currentHP-=Time.deltaTime;
+			if(shipHealth>_currentHP)_currentHP=shipHealth;
+			lifeFill.material.SetFloat("_CurrentHP",_currentHP);
+		}
+		if(shipHealth>_currentHP){
+			_currentHP+=Time.deltaTime;
+			if(shipHealth<_currentHP)_currentHP=shipHealth;
+			lifeFill.material.SetFloat("_CurrentHP",_currentHP);
+		}
 		scoreHUD.text = EnemySpawner.points.ToString();
 		if(special >=1)
 		{
