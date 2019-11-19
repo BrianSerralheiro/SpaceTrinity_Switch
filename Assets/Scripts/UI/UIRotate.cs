@@ -3,16 +3,16 @@
 public class UIRotate : MonoBehaviour
 {
     [SerializeField]
-    private float mindSpeed;
+    private float minSpeed;
     [SerializeField]
     private float rotationSpeed;
     float delta;
     void OnEnable()
     {
-        delta=rotationSpeed-mindSpeed;
+        delta=rotationSpeed-minSpeed;
     }
     void Update()
     {
-        transform.Rotate(0,0,(mindSpeed+ Mathf.PingPong(Time.time, rotationSpeed)*delta) * 360 * Time.deltaTime);
+        transform.Rotate(0,0,(minSpeed+ Mathf.PingPong(Time.time, rotationSpeed)*delta) * 360 * Time.deltaTime);
     }
 }

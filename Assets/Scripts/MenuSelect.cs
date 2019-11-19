@@ -47,6 +47,8 @@ public class MenuSelect : MonoBehaviour
 			skinId=Ship.skinID+1;
 			if(update==null)update=UpdateInputPilot;
 			Check+=CheckSkins;
+			lightsUP(0, 0.5f);
+            lightsUP(selectionID, 1);
 		}
 		if(update==null)update=UpdateInputWorld;
     }
