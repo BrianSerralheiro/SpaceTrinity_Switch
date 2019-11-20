@@ -22,7 +22,7 @@ public class InGame_HUD : MonoBehaviour
 		lifeFill.sprite=HUD.lifeFill;
 		pilotName.text=HUD.name;
 		pilotPic.sprite=HUD.picture;
-		lifeFill.color=lifeBar.color=pilotName.color=HUD.color;
+		lifeFill.color=pilotName.color=HUD.color;
 		lifeFill.material.SetFloat("_CurrentHP",_currentHP);
 	}
 	
