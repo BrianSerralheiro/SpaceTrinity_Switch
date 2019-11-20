@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 5966535123744496078
     second: prot_3_verde_rework_Normal_0
+  - first:
+      213: -5569054298189279009
+    second: bruna cara
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -109,7 +112,7 @@ TextureImporter:
         width: 976
         height: 2339
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +120,27 @@ TextureImporter:
       bones: []
       spriteID: d0d17a53b8364334e925b27a636cdbb8
       internalID: 5966535123744496078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bruna cara
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 1471
+        width: 443
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c97687a1ce38974b82b455a6584b212
+      internalID: -5569054298189279009
       vertices: []
       indices: 
       edges: []

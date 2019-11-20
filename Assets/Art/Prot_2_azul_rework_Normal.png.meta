@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 269323290070616758
     second: Prot_2_azul_rework_Normal_0
+  - first:
+      213: -8961011297346203094
+    second: luna cara
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -109,7 +112,7 @@ TextureImporter:
         width: 571
         height: 2339
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +120,27 @@ TextureImporter:
       bones: []
       spriteID: e28ba67f62cebf14283714fcbf7151f5
       internalID: 269323290070616758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: luna cara
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1293
+        width: 498
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b53fe832192f834eb61b716010e1e21
+      internalID: -8961011297346203094
       vertices: []
       indices: 
       edges: []

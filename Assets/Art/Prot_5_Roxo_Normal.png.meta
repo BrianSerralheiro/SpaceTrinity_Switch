@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 3724250343766934619
     second: Prot_5_Roxo_Normal_0
+  - first:
+      213: -5066495844783104437
+    second: zarina cara
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -109,7 +112,7 @@ TextureImporter:
         width: 1229
         height: 2339
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +120,27 @@ TextureImporter:
       bones: []
       spriteID: 3e524529f5b01a8468adfb2a363f7594
       internalID: 3724250343766934619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zarina cara
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1549
+        width: 383
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d7d12bb277e4c4e9e22a5b0c4f4b3f
+      internalID: -5066495844783104437
       vertices: []
       indices: 
       edges: []

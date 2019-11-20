@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 936254bb600c379468088f292742c3b7
+guid: 156c9903e769441478ac981f3c3d72ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6115631769210758808
-    second: Prot_4_Amarelo_Normal 1_0
+      213: -7071551426080963246
+    second: Verde e vermelha azul pronta e amarelin F_0
   - first:
-      213: -3027790040863115079
-    second: Prot_4_Amarelo_Normal 1_1
+      213: 3751902043758355681
+    second: Verde e vermelha azul pronta e amarelin F_1
   - first:
-      213: -8342846433623739621
-    second: tomoyo cara
+      213: 5575314555334144635
+    second: Verde e vermelha azul pronta e amarelin F_2
+  - first:
+      213: -8652222202218168002
+    second: Verde e vermelha azul pronta e amarelin F_3
+  - first:
+      213: 6293689434008443520
+    second: Verde e vermelha azul pronta e amarelin F_4
+  - first:
+      213: -6195711320107850779
+    second: Verde e vermelha azul pronta e amarelin F_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -91,50 +100,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Prot_4_Amarelo_Normal 1_0
+      name: Verde e vermelha azul pronta e amarelin F_0
       rect:
         serializedVersion: 2
-        x: 122
-        y: 0
-        width: 1022
-        height: 2339
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd3bbc6479b37b542b9126ed1e2475cf
-      internalID: 6115631769210758808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prot_4_Amarelo_Normal 1_1
-      rect:
-        serializedVersion: 2
-        x: 1301
-        y: 1927
-        width: 353
-        height: 42
+        x: 422
+        y: 2331
+        width: 979
+        height: 934
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6bcae9398b12c4daca44538ebfa0a3
-      internalID: -3027790040863115079
+      spriteID: c1e21d130c5955241ad2d34811a8eab0
+      internalID: -7071551426080963246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomoyo cara
+      name: Verde e vermelha azul pronta e amarelin F_1
       rect:
         serializedVersion: 2
-        x: 503
-        y: 1558
-        width: 407
-        height: 435
+        x: 1957
+        y: 2320
+        width: 825
+        height: 953
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +139,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf88f22892ec1684fa22fd76ec8d6062
-      internalID: -8342846433623739621
+      spriteID: 1ab97cc4ef140f94fbf67c1ee9842809
+      internalID: 3751902043758355681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Verde e vermelha azul pronta e amarelin F_2
+      rect:
+        serializedVersion: 2
+        x: 3426
+        y: 2339
+        width: 833
+        height: 911
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a37f3fd277e901049b18aca956eb25a5
+      internalID: 5575314555334144635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Verde e vermelha azul pronta e amarelin F_3
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 1139
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adecb3d9e291f744b376bf54ff9031c
+      internalID: -8652222202218168002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Verde e vermelha azul pronta e amarelin F_4
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 1146
+        width: 1012
+        height: 1034
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44686efa72083049a5f8535d227588c
+      internalID: 6293689434008443520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Verde e vermelha azul pronta e amarelin F_5
+      rect:
+        serializedVersion: 2
+        x: 1854
+        y: 1187
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704da55a7c46cff44ab81990469574e0
+      internalID: -6195711320107850779
       vertices: []
       indices: 
       edges: []

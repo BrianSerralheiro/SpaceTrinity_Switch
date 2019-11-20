@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 6679438218107848473
     second: Prot_6_Laranja_Normal_0
+  - first:
+      213: 6238994566936806319
+    second: chunhua cara
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -109,7 +112,7 @@ TextureImporter:
         width: 610
         height: 2339
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +120,27 @@ TextureImporter:
       bones: []
       spriteID: 066add50c6d60684c80de039015b87dd
       internalID: 6679438218107848473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chunhua cara
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1545
+        width: 451
+        height: 471
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74d90cda69e90d4fa404659e3848320
+      internalID: 6238994566936806319
       vertices: []
       indices: 
       edges: []
