@@ -9,7 +9,7 @@ public class InGame_HUD : MonoBehaviour
 	public static float shipHealth=1,special;
 
 	[SerializeField]
-	private Image lifeBar,lifeFill,specialFill,pilotPic;
+	private Image lifeBar,lifeFill,specialFill,pilotPic, pilotMask;
 
 	private Color color;
 	private Color otherColor=Color.white;
@@ -22,7 +22,7 @@ public class InGame_HUD : MonoBehaviour
 		lifeFill.sprite=HUD.lifeFill;
 		pilotName.text=HUD.name;
 		pilotPic.sprite=HUD.picture;
-		lifeFill.color=pilotName.color=HUD.color;
+		pilotMask.color=HUD.color;
 		lifeFill.material.SetFloat("_CurrentHP",_currentHP);
 	}
 	
