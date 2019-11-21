@@ -7,19 +7,12 @@ public class Spider : EnemyBase {
 	private int charges,spawns;
 	private Transform[] legs;
 	private Core crystal,headCrystal;
-	private Diver diver;
-	private EnemyInfo div,info;
+	private Spiderling diver;
+	private EnemyInfo spiderling,info;
 	private Vector3[] rot;
 	private BoxCollider2D trigger;
+	private Transform[] webs;
 	Del update;
-	enum State
-	{
-		intro,
-		moving,
-		charging,
-		dead
-	}
-	State state;
 	private Vector3 vector = new Vector3(),dir=Vector3.right;
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -34,7 +27,7 @@ public class Spider : EnemyBase {
 		trigger.offset=Vector2.up*-5;
 		trigger.size=Vector2.one*2;
 		update=Building;
-		div=((CarrierInfo)ei).spawnable;
+		spiderling=((CarrierInfo)ei).spawnable;
 	}
 
 	void Building(){
@@ -54,6 +47,17 @@ public class Spider : EnemyBase {
 			headCrystal=go.AddComponent<Core>().Set(info.sprites[3],new Color(0.4f,0f,0.4f));
 			go.transform.parent=transform;
 			go.transform.localPosition=new Vector3(0,-3.74f,-0.1f);
+
+			webs=new Transform[5];
+			for (int i = 0; i < webs.Length; i++)
+			{
+				go=new GameObject("web"+i);
+				go.AddComponent<SpriteRenderer>().sprite=info.sprites[8];
+				webs[i]=go.transform;
+				webs[i].position=new Vector3(-Scaler.sizeX/2+ i* Scaler.sizeX/4,Scaler.sizeY,1);
+				webs[i].localScale=Vector3.right;
+				webs[i].Rotate(0,0,Mathf.Cos(i*45)*15);
+			}
 		}else if(legs==null){
 			legs=new Transform[12];
 			rot=new Vector3[12];
@@ -126,6 +130,10 @@ public class Spider : EnemyBase {
 		rot[7].z=rot[9].z=Mathf.Sin(Time.time)*15;
 		rot[10].z=-35;
 		rot[11].z=35;
+		for (int i = 0; i < webs.Length; i++)
+		{
+			webs[i].localScale=Vector3.MoveTowards(webs[i].localScale,new Vector3(1,4),Time.deltaTime*8);
+		}
 		if(transform.position.y<Scaler.sizeY/4)update=Charge;
 	}
 	void Charge(){
@@ -204,8 +212,8 @@ public class Spider : EnemyBase {
 		back.localScale=new Vector3(0.8f+Mathf.PingPong(timer,1)*0.1f,1);
 		crystal.Set(Mathf.PingPong(timer,1));
 		if(timer>0)timer-=Time.deltaTime;
-		else Spawn();
-		if(spawns>3){
+		else Spawn(spawns);
+		if(spawns>4){
 			update=Charge;
 			back.localScale=Vector3.one;
 			charges=0;
@@ -239,21 +247,20 @@ public class Spider : EnemyBase {
 		update=Dying;
 		EnemySpawner.points+=1000;
 	}
-	void Spawn()
+	void Spawn(int i)
 	{
 		spawns++;
 		timer=2;
 		GameObject go=new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=div.sprites[0];
+		go.AddComponent<SpriteRenderer>().sprite=spiderling.sprites[0];
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
-		Diver diver=go.AddComponent<Diver>();
-		diver.SetSprites(div);
-		diver.transform.position=transform.position-Vector3.back*0.2f;
-		diver.transform.rotation=transform.rotation;
-		diver.Fall(3);
+		Spiderling ling=go.AddComponent<Spiderling>();
+		ling.SetSprites(spiderling);
+		ling.MoveTo(webs[i]);
+		ling.transform.position=back.position+Vector3.up*3-Vector3.back*0.2f;
 	}
 	public override void Position(int i)
 	{
