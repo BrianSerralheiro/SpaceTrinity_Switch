@@ -51,6 +51,9 @@ public class Ship : MonoBehaviour {
 
 	public float immuneTime;
 
+	[SerializeField]
+	private Sprite[] sprites;
+
 	void Start()
 	{
 		if(playerID != id)
@@ -181,7 +184,9 @@ public class Ship : MonoBehaviour {
 			damageTimer -= Time.deltaTime;
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
-		Vector3 v =new Vector3(Input.GetAxis("Horizontal")*speed*Time.deltaTime,Input.GetAxis("Vertical")*speed*Time.deltaTime,0);
+		Vector3 v =new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0) * speed;
+		_renderer.sprite = v.x >= speed * 0.99f  ? sprites[1] :  v.x <= -speed * 0.99f ? sprites[0] : sprites[2];
+		v *= Time.deltaTime;
 		if(transform.position.x+v.x>Scaler.sizeX/2)v.x=Scaler.sizeX/2-transform.position.x;
 		if(transform.position.x+v.x<-Scaler.sizeX/2)v.x=-Scaler.sizeX/2-transform.position.x;
 		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
