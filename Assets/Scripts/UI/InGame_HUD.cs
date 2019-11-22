@@ -17,12 +17,12 @@ public class InGame_HUD : MonoBehaviour
 	public static HUDInfo HUD;
 	void Start()
 	{
-		color=specialFill.color;
 		lifeBar.sprite=HUD.lifeBar;
 		lifeFill.sprite=HUD.lifeFill;
 		pilotName.text=HUD.name;
 		pilotPic.sprite=HUD.picture;
-		pilotMask.color=HUD.color;
+		specialFill.color=pilotMask.color=HUD.color;
+		color=specialFill.color;
 		lifeFill.material.SetFloat("_CurrentHP",_currentHP);
 	}
 	

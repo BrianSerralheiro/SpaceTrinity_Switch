@@ -62,7 +62,7 @@ public class Ship : MonoBehaviour {
 			return;
 		}
 		InGame_HUD.shipHealth = 1;
-		InGame_HUD.special = 0;
+		InGame_HUD.special = 1;
 		hp=maxhp;
 		_renderer = GetComponent<SpriteRenderer>();
 		specialMat.mainTexture=specials[0];
