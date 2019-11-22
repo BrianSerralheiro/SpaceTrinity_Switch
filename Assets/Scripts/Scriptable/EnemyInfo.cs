@@ -20,8 +20,11 @@ public class EnemyInfo : ScriptableObject
 			bulletsID[i]=Bullet.Register(bullets[i]);
 		}
 	}
-	/* void OnValidate()
-	{
-		if(copy!=null)copy.sprites=sprites;
-	} */
+	// void OnValidate()
+	// {
+	// 	if(copy!=null){
+	// 		copy.sprites=sprites;
+	// 		copy.bullets=bullets;
+	// 	}
+	// } 
 }

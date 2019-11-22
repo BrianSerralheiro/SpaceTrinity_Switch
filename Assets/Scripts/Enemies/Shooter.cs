@@ -4,8 +4,8 @@ public class Shooter : EnemyBase
 {
 	private int position;
 	private Vector3 finalpoint;
-	private float shoottimer=1;
-	bool shot;
+	private float shoottimer;
+	int shots;
 	private Transform armL;
 	private Transform armR;
 	private Transform legL;
@@ -15,6 +15,9 @@ public class Shooter : EnemyBase
 	private Vector3 rot = new Vector3();
 	Del movement;
 	private static int shootId;
+    private int shotCount,cicles;
+    private float shotDelay,reloadTime;
+	private BulletPath path;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
@@ -42,6 +45,12 @@ public class Shooter : EnemyBase
 		fallSpeed=-9;
 		movement=Moving;
 		shootId=ei.bulletsID[0];
+		PathEnemy pe=(PathEnemy)ei;
+		shotCount=pe.shotCount;
+		cicles=pe.cicles;
+		shotDelay=pe.shotDelay;
+		reloadTime=pe.reloadTime;
+		path=pe.bulletPath;
 	}
 
 	public override void Position(int i)
@@ -61,29 +70,31 @@ public class Shooter : EnemyBase
 		legR.localEulerAngles=vector;
 	}
 	void Moving(){
-		transform.Translate((finalpoint-transform.position).normalized*4*Time.deltaTime,Space.World);
+		transform.position=Vector3.MoveTowards(transform.position,finalpoint,4*Time.deltaTime);
 		transform.up=transform.position-finalpoint;
-		if((finalpoint-transform.position).sqrMagnitude<0.01f)
+		if(finalpoint==transform.position)
 		{
-			transform.position=finalpoint;
 			movement=Shooting;
 		}
 		vector.Set(0,0,Mathf.PingPong(Time.time*80,45f));
 	}
 	void Shooting(){
-		Vector3 v=transform.position-player.position;
-		v.z=0;
-		v.Normalize();
-		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*90f);
-		if(shoottimer>0) shoottimer-=Time.deltaTime;
-		else
+		transform.Rotate(Vector3.Cross(Vector3.down,transform.up)*Time.deltaTime*90f);
+		shoottimer-=Time.deltaTime;
+		if(shoottimer<-shotDelay) 
 		{
-			shoottimer=1.5f;
-			Shoot();
-			if(shot)movement=SlowFall;
-			shot=true;
+			if(shots-->0){
+				shoottimer=0;
+				Shoot();
+			}
+			else if(cicles-->0){
+				shoottimer=reloadTime;
+				shots=shotCount;
+			}
+			else
+			movement=SlowFall;
 		}
-		crystal.Set(Mathf.Lerp(0,1,shoottimer-0.5f));
+		crystal.Set(Mathf.Lerp(0,1,-shoottimer/shotDelay));
 		vector.Set(0,0,Mathf.PingPong(Time.time*67.5f,45f));
 	}
 	protected override void SlowFall(){
@@ -98,9 +109,10 @@ public class Shooter : EnemyBase
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
-		Bullet bu=go.AddComponent<Bullet>();
+		PathBullet bu=go.AddComponent<PathBullet>();
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
+		bu.path=path;
 		go.transform.position=crystal.transform.position;
 		go.transform.up=-transform.up;
 	}
