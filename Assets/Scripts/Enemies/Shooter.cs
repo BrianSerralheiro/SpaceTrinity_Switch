@@ -113,6 +113,7 @@ public class Shooter : EnemyBase
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
 		bu.path=path;
+		bu.mirror=transform.position.x>0;
 		go.transform.position=crystal.transform.position;
 		go.transform.up=-transform.up;
 	}
