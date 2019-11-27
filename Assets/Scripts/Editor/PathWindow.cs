@@ -21,19 +21,30 @@ public class PathWindow : EditorWindow
         if(property==null)return;
         SerializedProperty nodes=property.FindPropertyRelative("nodes");
         SerializedProperty curves=property.FindPropertyRelative("curves");
+        
+        Vector3 proportion=new Vector3(position.width/limit.x,position.height/limit.y);
+        for (int j = 0; j < limit.x; j++)
+        {
+            for (int k = 0; k < limit.y; k++)
+            {
+                GUI.Box(new Rect(j*proportion.x,k*proportion.y,proportion.x,proportion.y),"");
+            }
+        }
         GUILayout.BeginHorizontal();
             if(GUILayout.Button("Clear")){
                 nodes.ClearArray();
                 curves.ClearArray();
             }
-            toggle=EditorGUILayout.Toggle("Show fields",toggle);
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.MinMaxSlider("Limits",ref limit.x,ref limit.y,4,20);
-            limit.x=(int)limit.x;
-            limit.y=(int)limit.y;
-            EditorGUILayout.LabelField(limit.x+" "+limit.y);
+            toggle=EditorGUILayout.Toggle("Show fields",toggle);
+            limit.x=EditorGUILayout.Slider("Size horizontal:",limit.x,8,20);
+            limit.y=EditorGUILayout.Slider("Size vertical:",limit.y,10,20);
+            if(!EditorGUI.EndChangeCheck()){
+                mid=limit/2;
+                limit.x=(int)limit.x;
+                limit.y=(int)limit.y;
+            }
 
-            if(EditorGUI.EndChangeCheck())mid=limit/2;
         GUILayout.EndHorizontal();
         if(toggle){
             EditorGUILayout.PropertyField(nodes,true);
@@ -43,7 +54,6 @@ public class PathWindow : EditorWindow
         else{
         Vector3 v1;
         int i;
-        Vector3 proportion=new Vector3(position.width/limit.x,position.height/limit.y);
         bool draging=Event.current.type==EventType.MouseDown && Event.current.button==0;
         if(Event.current.type==EventType.MouseUp && Event.current.button==0 && dragID>=0){
             nodes.GetArrayElementAtIndex(dragID).vector3Value=Round(nodes.GetArrayElementAtIndex(dragID).vector3Value);

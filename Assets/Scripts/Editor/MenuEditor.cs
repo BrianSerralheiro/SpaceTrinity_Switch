@@ -6,10 +6,10 @@ public class MenuEditor : Editor
         EditorGUI.BeginChangeCheck();
         SerializedProperty p=serializedObject.FindProperty("options");
         EditorGUILayout.PropertyField(p,true);
-        int i=p.arraySize;
         p= serializedObject.FindProperty("rowCount");
         EditorGUILayout.PropertyField(p);
-        if(p.intValue>i)p.intValue=i;
+        p= serializedObject.FindProperty("selector");
+        EditorGUILayout.PropertyField(p);
         p= serializedObject.FindProperty("displayText");
         EditorGUILayout.PropertyField(p);
         p= serializedObject.FindProperty("displayName");

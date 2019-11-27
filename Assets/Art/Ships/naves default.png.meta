@@ -47,6 +47,24 @@ TextureImporter:
   - first:
       213: 7164305565809372983
     second: orabge ship right
+  - first:
+      213: -3071607438822164802
+    second: blue ship left
+  - first:
+      213: -6459167605353981799
+    second: blue ship mid
+  - first:
+      213: 2091285988986442979
+    second: blue ship right
+  - first:
+      213: -6381682819811966797
+    second: green ship left
+  - first:
+      213: 4121877649382117332
+    second: green ship mid
+  - first:
+      213: 8190358512270352708
+    second: green ship right
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -90,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -151,7 +169,7 @@ TextureImporter:
         width: 16
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,12 +185,12 @@ TextureImporter:
       name: red ship left
       rect:
         serializedVersion: 2
-        x: 605
-        y: 1820
-        width: 203
-        height: 282
+        x: 228
+        y: 3201
+        width: 266
+        height: 373
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,12 +206,12 @@ TextureImporter:
       name: red ship mid
       rect:
         serializedVersion: 2
-        x: 850
-        y: 1820
-        width: 230
-        height: 296
+        x: 1205
+        y: 3196
+        width: 304
+        height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,12 +227,12 @@ TextureImporter:
       name: red ship right
       rect:
         serializedVersion: 2
-        x: 1107
-        y: 1825
-        width: 201
-        height: 283
+        x: 2134
+        y: 3201
+        width: 266
+        height: 373
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -227,36 +245,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: naves default_4
-      rect:
-        serializedVersion: 2
-        x: 959
-        y: 1790
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 225c02a8161a26042a758ebe501d5080
-      internalID: 3227150566327549538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: purple ship left
       rect:
         serializedVersion: 2
-        x: 958
-        y: 1418
-        width: 252
-        height: 262
+        x: 152
+        y: 2686
+        width: 358
+        height: 375
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -272,12 +269,12 @@ TextureImporter:
       name: purple ship mid
       rect:
         serializedVersion: 2
-        x: 1244
-        y: 1428
-        width: 273
-        height: 257
+        x: 1169
+        y: 2696
+        width: 389
+        height: 386
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -293,12 +290,12 @@ TextureImporter:
       name: purple ship right
       rect:
         serializedVersion: 2
-        x: 1537
-        y: 1421
-        width: 252
-        height: 264
+        x: 2176
+        y: 2700
+        width: 358
+        height: 375
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -311,36 +308,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: naves default_8
-      rect:
-        serializedVersion: 2
-        x: 1395
-        y: 1415
-        width: 13
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed90fcdbfa498cc4ca46f69e80141419
-      internalID: -2251726521346785860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: yellow ship left
       rect:
         serializedVersion: 2
-        x: 771
-        y: 963
-        width: 174
-        height: 240
+        x: 231
+        y: 2244
+        width: 231
+        height: 318
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -356,12 +332,12 @@ TextureImporter:
       name: yellow ship mid
       rect:
         serializedVersion: 2
-        x: 1001
-        y: 972
-        width: 170
-        height: 237
+        x: 1175
+        y: 2216
+        width: 226
+        height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -377,12 +353,12 @@ TextureImporter:
       name: yellow ship right
       rect:
         serializedVersion: 2
-        x: 1228
-        y: 970
-        width: 174
-        height: 240
+        x: 2163
+        y: 2209
+        width: 228
+        height: 318
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,12 +374,12 @@ TextureImporter:
       name: orabge ship left
       rect:
         serializedVersion: 2
-        x: 412
-        y: 229
-        width: 324
-        height: 338
+        x: 629
+        y: 1614
+        width: 252
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -419,12 +395,12 @@ TextureImporter:
       name: orabge ship mid
       rect:
         serializedVersion: 2
-        x: 1133
-        y: 231
-        width: 324
-        height: 343
+        x: 1184
+        y: 1615
+        width: 252
+        height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -440,12 +416,12 @@ TextureImporter:
       name: orabge ship right
       rect:
         serializedVersion: 2
-        x: 1811
-        y: 221
-        width: 320
-        height: 339
+        x: 1706
+        y: 1606
+        width: 252
+        height: 263
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -453,6 +429,132 @@ TextureImporter:
       bones: []
       spriteID: e7ed68a1e7c464d4385fdc008749ddf1
       internalID: 7164305565809372983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue ship left
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1057
+        width: 182
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253f137ac2a8d5241a2912d1c93e7277
+      internalID: -3071607438822164802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue ship mid
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 1076
+        width: 205
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72569a55ef3aa54db5f9ddcd8f63259
+      internalID: -6459167605353981799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue ship right
+      rect:
+        serializedVersion: 2
+        x: 2036
+        y: 1072
+        width: 183
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38965afafdb1a5b4d8c59d1d28917f97
+      internalID: 2091285988986442979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green ship left
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 408
+        width: 375
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf952c50ffd9ca4f87b325daae3e175
+      internalID: -6381682819811966797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green ship mid
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 413
+        width: 371
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00a2060f0e418f4bbc89d1a3bcf9ec2
+      internalID: 4121877649382117332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green ship right
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 375
+        width: 376
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a957bba9307a1a46be965646cef80ab
+      internalID: 8190358512270352708
       vertices: []
       indices: 
       edges: []
