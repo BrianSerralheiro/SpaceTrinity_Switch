@@ -52,7 +52,7 @@ public class Ship : MonoBehaviour {
 	public float immuneTime;
 
 	[SerializeField]
-	private Sprite[] sprites;
+	private Skin skin;
 
 	void Start()
 	{
@@ -185,7 +185,7 @@ public class Ship : MonoBehaviour {
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
 		Vector3 v =new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0) * speed;
-		_renderer.sprite = v.x >= speed * 0.99f  ? sprites[1] :  v.x <= -speed * 0.99f ? sprites[0] : sprites[2];
+		_renderer.sprite = v.x >= speed * 0.99f  ? skin.right :  v.x <= -speed * 0.99f ? skin.left : skin.iddle;
 		v *= Time.deltaTime;
 		if(transform.position.x+v.x>Scaler.sizeX/2)v.x=Scaler.sizeX/2-transform.position.x;
 		if(transform.position.x+v.x<-Scaler.sizeX/2)v.x=-Scaler.sizeX/2-transform.position.x;
