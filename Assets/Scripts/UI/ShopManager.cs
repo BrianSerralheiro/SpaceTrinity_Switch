@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
 		if(timer>0){
 			timer-=Time.deltaTime;
 			if(timer<=0){
-				sellerDialog.text="Chose the pattern you want to buy.";
+				sellerDialog.text="Which Spaceship pattern do you want to buy today?";
 				int i=buyID/3;
 				if(slots[i])slots[i].sprite=chibis[i*2];
 			}
@@ -42,7 +42,7 @@ public class ShopManager : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		sellerDialog.text="Welcome!";
+		sellerDialog.text="Welcome to the Hangar, Captain!";
 		for (int i = 0; i < slots.Length; i++)
 		{
 			if(slots[i])slots[i].sprite=chibis[i*2];
@@ -54,13 +54,13 @@ public class ShopManager : MonoBehaviour
 		if(skinPrices[buyID]<=Cash.totalCash)
 		{
 			price=skinPrices[buyID];
-			pop.Open("Buy skin "+skinNames[buyID]+" for "+price+" stars?",Confirm,Cancel,menu);
-			sellerDialog.text="Buy this patten?";
+			pop.Open("Buy pattern "+skinNames[buyID]+" for "+price+" stars?",Confirm,Cancel,menu);
+			sellerDialog.text="I knew you would like that spaceship, Captain!";
 		}
 		else
 		{
-			Warning.Open("You need "+skinPrices[buyID]+" stars to buy this skin!");
-			sellerDialog.text="You can't buy this patten!";
+			Warning.Open("You need "+skinPrices[buyID]+" stars to buy this pattern!");
+			sellerDialog.text="Sorry Captain, you don't have enough stars to get this pattern.";
 		}
 		timer=0;
 	}
@@ -93,7 +93,7 @@ public class ShopManager : MonoBehaviour
 		//Cash.Save();
 		Locks.Skin(buyID,true);
 		gameObject.BroadcastMessage("OnEnable");
-		sellerDialog.text="Thank you for your buy.";
+		sellerDialog.text="Thanks you for doing business, Captain!";
 		int i=buyID/3;
 		if(slots[i])slots[i].sprite=chibis[i*2+1];
 		timer=2;
