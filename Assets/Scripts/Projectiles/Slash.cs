@@ -15,7 +15,7 @@ public class Slash : MonoBehaviour {
 		if(Ship.paused) return;
 		transform.Translate(0,-Time.deltaTime*8,0);
 		if(transform.position.y<-Scaler.sizeY) Destroy(gameObject);
-		if(Bullet.bulletTime<=0) renderer.sprite=SpriteBase.I.bullets[spriteID+(Bullet.blink ? 0 : 1)];
+		if(Bullet.bulletTime<=0) renderer.sprite=Bullet.sprites[spriteID+(Bullet.blink ? 0 : 1)];
 	}
 	public void OnCollisionEnter2D(Collision2D col)
 	{

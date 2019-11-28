@@ -4,7 +4,7 @@ using UnityEditor;
 public class PathWindow : EditorWindow
 {
     private static SerializedProperty property;
-    Vector2 limit=new Vector2(8,10);
+    Vector2 limit=new Vector2(8,10),scroll;
     Vector3 mid=new Vector3(4,5);
     static int dragID;
     static bool toggle;
@@ -23,7 +23,7 @@ public class PathWindow : EditorWindow
         SerializedProperty curves=property.FindPropertyRelative("curves");
         
         Vector3 proportion=new Vector3(position.width/limit.x,position.height/limit.y);
-        for (int j = 0; j < limit.x; j++)
+        for (int j = 0; j < limit.x && !toggle; j++)
         {
             for (int k = 0; k < limit.y; k++)
             {
@@ -38,7 +38,7 @@ public class PathWindow : EditorWindow
             EditorGUI.BeginChangeCheck();
             toggle=EditorGUILayout.Toggle("Show fields",toggle);
             limit.x=EditorGUILayout.Slider("Size horizontal:",limit.x,8,20);
-            limit.y=EditorGUILayout.Slider("Size vertical:",limit.y,10,20);
+            limit.y=EditorGUILayout.Slider("Size vertical:",limit.y,10,32);
             if(!EditorGUI.EndChangeCheck()){
                 mid=limit/2;
                 limit.x=(int)limit.x;
@@ -47,9 +47,11 @@ public class PathWindow : EditorWindow
 
         GUILayout.EndHorizontal();
         if(toggle){
+            scroll=EditorGUILayout.BeginScrollView(scroll,false,false);
             EditorGUILayout.PropertyField(nodes,true);
             EditorGUILayout.PropertyField(property.FindPropertyRelative("curves"),true);
             nodes.serializedObject.ApplyModifiedProperties();
+            EditorGUILayout.EndScrollView();
         }
         else{
         Vector3 v1;
@@ -95,8 +97,8 @@ public class PathWindow : EditorWindow
         return v;
     }
     Vector3 Round(Vector3 v){
-        v.x=(int)(v.x*100)/100f;
-        v.y=(int)(v.y*100)/100f;
+        v.x=(int)(v.x*10)/10f;
+        v.y=(int)(v.y*10)/10f;
         return v;
     }
     bool MouseAround(Vector3 v){
