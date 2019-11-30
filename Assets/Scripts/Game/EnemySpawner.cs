@@ -44,6 +44,7 @@ public class EnemySpawner : MonoBehaviour {
 	void Start()
 	{
 		if(!world)world=world1;
+		if(!world.Boss)enabled=false;
 		boss = false;
 		FinalBoss.last=false;
 		SoundManager.Play(1);

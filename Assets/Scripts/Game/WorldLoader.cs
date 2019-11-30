@@ -67,7 +67,7 @@ public class WorldLoader : MonoBehaviour
             foreach(EnemyInfo ei in worldInfo.enemies){
                 ei.Register();
             }
-            worldInfo.Boss.Register();
+            worldInfo.Boss?.Register();
         }
         update=Step5;
     }

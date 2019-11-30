@@ -80,7 +80,7 @@ public class PathWindow : EditorWindow
         if(dragID==-1 && Event.current.type==EventType.MouseUp && Event.current.button==1){
             nodes.InsertArrayElementAtIndex(nodes.arraySize);
             curves.InsertArrayElementAtIndex(curves.arraySize);
-            nodes.GetArrayElementAtIndex(nodes.arraySize-1).vector3Value=Inv(Div(Event.current.mousePosition,proportion)-mid);
+            nodes.GetArrayElementAtIndex(nodes.arraySize-1).vector3Value=Round(Inv(Div(Event.current.mousePosition,proportion)-mid));
             Repaint();
             nodes.serializedObject.ApplyModifiedProperties();
         }
@@ -97,8 +97,8 @@ public class PathWindow : EditorWindow
         return v;
     }
     Vector3 Round(Vector3 v){
-        v.x=(int)(v.x*10)/10f;
-        v.y=(int)(v.y*10)/10f;
+        v.x=(int)((v.x+0.05f)*10)/10f;
+        v.y=(int)((v.y+0.05f)*10)/10f;
         return v;
     }
     bool MouseAround(Vector3 v){

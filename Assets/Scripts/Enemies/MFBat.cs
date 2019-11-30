@@ -8,6 +8,7 @@ public class MFBat : EnemyBase {
 	private BulletPath path;
 	Vector3 position;
 	bool inv;
+	Del update;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		explosionID = 10;
@@ -18,23 +19,28 @@ public class MFBat : EnemyBase {
 		PathEnemy pe=(PathEnemy)ei;
 		path=pe.bulletPath;
 		inv=Random.value>0.5;
+		fallSpeed=-4;
+		update=Pathing;
 	}
 	public override void Position(int i)
 	{
 		base.Position(i);
 		position=transform.position;
 	}
-	new void Update ()
-	{
-		if(Ship.paused) return;
-		base.Update();
+	void Pathing(){
 		if(timer>0)timer-=Time.deltaTime;
 		else Shoot();
 		if(sprite>0)sprite-=Time.deltaTime;
 		_renderer.flipX=transform.position.x<player.position.x;
 		transform.position=position+BulletPath.Next(ref path,inv);
-		if(path.Finished())Die();
+		if(path.Finished())update=SlowFall;
 		if(sprite<=0)_renderer.sprite=bats[Mathf.RoundToInt(Mathf.PingPong(Time.time*3,1f))];
+	}
+	new void Update ()
+	{
+		if(Ship.paused) return;
+		base.Update();
+		update?.Invoke();
 		
 	}
 	void Shoot()
