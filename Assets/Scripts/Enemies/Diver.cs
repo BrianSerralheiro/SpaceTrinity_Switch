@@ -36,8 +36,8 @@ public class Diver : EnemyBase
 		legL.localPosition=new Vector3(0.1f,1f,0.1f);
 		legR.localPosition=new Vector3(-0.1f,1f,0.1f);
 		movement=SlowFall;
-		fallSpeed=-2;
-		time=Time.time+3;
+		fallSpeed=-2.5f;
+		time=Time.time+5;
 	}
 	public void Fall(float f){
 		fallSpeed=f;
