@@ -25,8 +25,8 @@ public class Drone : EnemyBase {
 	}
 	public override void Position(int i)
 	{
-		_right = i > 3;
-		base.Position(i%8);
+		_right = i > 9;
+		base.Position(i);
 		id = i%3;
 	}
 	protected override void Die()

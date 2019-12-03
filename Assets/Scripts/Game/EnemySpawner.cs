@@ -86,9 +86,10 @@ public class EnemySpawner : MonoBehaviour {
 	public void Chose(string s)
 	{
 		int i;
-		if(int.TryParse(s.Substring(0,1),out i)|| s[0]=='/'){
+		if(int.TryParse(s.Substring(0,1),out i)|| s[0]=='/'|| s[0]=='.'){
 			EnemyBase en;
 			if(s[0]=='/')en=Spawn(world.subBoss);
+			else if(s[0]=='.')en=Spawn(world.drone);
 			else en=Spawn(world.enemies[i]);
 			if(en)
 			{
