@@ -19,8 +19,8 @@ public class Drone : EnemyBase {
 	{
 		if(Ship.paused) return;
 		base.Update();
-		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime,0);
-		else transform.Translate(dir*(_right?-1:1)*Time.deltaTime);
+		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0, 2* -Time.deltaTime,0);
+		else transform.Translate(dir*(_right?-1:1)* 3 * Time.deltaTime);
 		if(transform.position.x<-Scaler.sizeX/2f-1 || transform.position.x>Scaler.sizeX/2f+1)Die();
 	}
 	public override void Position(int i)
