@@ -9,9 +9,9 @@ public class GravGun : Gun
     private float timer;
     protected override void Awake()
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID+1)*count]);
+		shotId=Bullet.Register(shots[(Ship.skinID[5]+1)*count]);
         for(int i=1;i<count;i++){
-            Bullet.Register(shots[(Ship.skinID+1)*count+i]);
+            Bullet.Register(shots[(Ship.skinID[5]+1)*count+i]);
         }
 		shots=null;
 	}

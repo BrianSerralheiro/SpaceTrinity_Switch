@@ -46,21 +46,19 @@ public class Ship : MonoBehaviour {
 
 	[SerializeField]
 	private int id;
-	public static int playerID;
-	public static int skinID=-1;
+	public static int player1,player2=5;
+	public static int[] skinID={-1,-1,-1,-1,-1,-1};
 
 	public float immuneTime;
+	private PlayerInput input;
 
 	[SerializeField]
 	private Skin skin;
 
 	void Start()
 	{
-		if(playerID != id)
-		{
-			gameObject.SetActive(false);
-			return;
-		}
+		input=PlayerInput.Get();
+		Debug.LogWarning(input.name);
 		InGame_HUD.shipHealth = 1;
 		InGame_HUD.special = 1;
 		hp=maxhp;
@@ -71,12 +69,12 @@ public class Ship : MonoBehaviour {
 		falas=null;
 		charPics=null;
 		sizes=null;
-		if(skinID!=-1 && Locks.Skin(id*3+skinID))
+		if(skinID[id]!=-1 && Locks.Skin(id*3+skinID[id]))
 		{
-			_renderer.sprite=skins[skinID];
+			_renderer.sprite=skins[skinID[id]];
 			ParticleSystem.MainModule main = trail.main;
-			main.startColor=colors[skinID];
-			specialMat.mainTexture=specials[skinID+1];
+			main.startColor=colors[skinID[id]];
+			specialMat.mainTexture=specials[skinID[id]+1];
 			specialMat=null;
 			specials=null;
 			skins=null;
@@ -171,6 +169,7 @@ public class Ship : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
 		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
 		if(Input.GetKeyDown(KeyCode.Alpha3))OnLevel(3);
+		if(Input.GetKeyDown(input.special) && InGame_HUD.special==1)Special();
 		if(shielded) shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
@@ -184,7 +183,7 @@ public class Ship : MonoBehaviour {
 			damageTimer -= Time.deltaTime;
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
-		Vector3 v =new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0) * speed;
+		Vector3 v =input.GetAxis() * speed;
 		_renderer.sprite = v.x >= speed * 0.99f  ? skin.right :  v.x <= -speed * 0.99f ? skin.left : skin.iddle;
 		v *= Time.deltaTime;
 		if(transform.position.x+v.x>Scaler.sizeX/2)v.x=Scaler.sizeX/2-transform.position.x;
@@ -192,7 +191,7 @@ public class Ship : MonoBehaviour {
 		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
 		if(transform.position.y+v.y<-Scaler.sizeY)v.y=-Scaler.sizeY-transform.position.y;
 		transform.Translate(v);
-		if(Input.GetKey(KeyCode.Space) && shoottimer<=0)
+		if(Input.GetKey(input.shoot) && shoottimer<=0)
 		{
 			if(id!=2)SoundManager.PlayEffects(2 + id,0.1f,0.5f);
 			shoottimer=firerate;
@@ -223,6 +222,7 @@ public class Ship : MonoBehaviour {
 
 	public void Special()
 	{
+		InGame_HUD.special=0;
 		SoundManager.PlayEffects(6 + id, 1f, 2f);
 		switch(id)
 		{

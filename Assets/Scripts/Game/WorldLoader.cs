@@ -18,8 +18,9 @@ public class WorldLoader : MonoBehaviour
     void Start()
     {
         update=Step1;
-        InGame_HUD.HUD=HUDs[Ship.playerID];
-        PilotInfo.pilot=pilots[Ship.playerID];
+        InGame_HUD.HUD=HUDs[Ship.player1];
+        PilotInfo.pilot=pilots[Ship.player1];
+        PlayerInput.Unload();
     }
     void Update()
     {

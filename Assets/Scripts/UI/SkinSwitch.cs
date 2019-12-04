@@ -6,34 +6,16 @@ public class SkinSwitch : MonoBehaviour {
 	[SerializeField]
 	private int charID;
 	private int skinID;
-	public static int selectedChar,selectedSkin;
+	public static int[] selectedChar={0,5};
+	public static int[] selectedSkin;
 	void Update()
 	{
-		if(selectedChar==charID){
-			if(skinID!=selectedSkin)Set();
+		if(selectedChar[0]==charID || selectedChar[1]==charID){
+			if(skinID!=selectedSkin[charID])Set();
 		}
-	}/*
-	public void Next()
-	{
-		id++;
-		if(id>2)id=-1;
-		SoundManager.PlayEffects(0);
-		Set();
 	}
-	public void Prev()
-	{
-		id--;
-		if(id<-1) id=2;
-		SoundManager.PlayEffects(0);
-		Set();
-	}
-	void OnEnable()
-	{
-		id=PlayerPrefs.GetInt("char"+charID)-1;
-		Set();
-	}*/
 	void Set() {
-		skinID=selectedSkin;
+		skinID=selectedSkin[charID];
 		for(int i = 0; i<skins.Length; i++)
 		{
 			skins[i].SetActive(i==skinID);

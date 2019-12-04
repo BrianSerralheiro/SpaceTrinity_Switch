@@ -13,7 +13,7 @@ public class LaserGun : Gun {
 	
 	protected override void Awake(){}
 	void Start () {
-		if(Ship.skinID!=-1 && Locks.Skin(6+Ship.skinID))lasermaterial.mainTexture=lasers[Ship.skinID+1];
+		if(Ship.skinID[2]!=-1 && Locks.Skin(6+Ship.skinID[2]))lasermaterial.mainTexture=lasers[Ship.skinID[2]+1];
 		else lasermaterial.mainTexture=lasers[0];
 		lasers=null;
 		line=GetComponent<LineRenderer>();

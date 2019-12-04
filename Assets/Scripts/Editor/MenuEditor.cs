@@ -10,6 +10,8 @@ public class MenuEditor : Editor
         EditorGUILayout.PropertyField(p);
         p= serializedObject.FindProperty("selector");
         EditorGUILayout.PropertyField(p);
+        p= serializedObject.FindProperty("selector2");
+        EditorGUILayout.PropertyField(p);
         p= serializedObject.FindProperty("displayText");
         EditorGUILayout.PropertyField(p);
         p= serializedObject.FindProperty("displayName");

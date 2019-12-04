@@ -10,7 +10,7 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	int rowCount=3;
 	[SerializeField]
-	Graphic selector;
+	Graphic selector,selector2;
 	[SerializeField]
 	Text displayText,displayName;
 	[SerializeField]
@@ -26,36 +26,46 @@ public class MenuSelect : MonoBehaviour
 	public Menuoptions opt;
 	[SerializeField]
 	MenuTransition[] menus;
-	int selectionID;
-	int skinId;
+	int selectionID,selectionID2;
+	int[] skinId={-1,-1,-1,-1,-1,-1};
 	HashSet<Transform> slots=new HashSet<Transform>();
-	Transform selected;
+	Transform[] selected={null,null};
 	Vector3 outVector;
 	public delegate void Del();
 	private Del update;
 	private Del Check;
 	private RectTransform rect;
 	private Vector2 min,max;
-	bool p1confirm;
+	bool p1confirm,p2confirm;
 	void Awake()
     {
         //if(rowCount<2)rowCount=2;
 		//Locks.Load();
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character){
-			selectionID=Ship.playerID;
-			skinId=Ship.skinID+1;
+			selectionID=Ship.player1;
+			skinId=Ship.skinID;
+			for (int i = 0; i < skinId.Length; i++)
+			{
+				skinId[i]++;
+			}
 			if(update==null)update=UpdateInputPilot;
 			Check+=CheckSkins;
 			lightsUP(0, 0.5f);
             lightsUP(selectionID, 1);
+			if(PlayerInput.Conected(1)){
+				selectionID2=Ship.player2;
+				lightsUP(selectionID2,1);
+			}
 		}
-		if(update==null)update=UpdateInputWorld;
+		if(update==null)update=UpdateInput;
     }
 	void OnEnable()
 	{
 		if(opt.selection==Menuoptions.SelectionType.None)return;
 		OnValueChanged();
+		if(opt.selection==Menuoptions.SelectionType.Character && PlayerInput.Conected(1))OnValueChanged2();
+		selector2?.gameObject.SetActive(PlayerInput.Conected(1));
 		if(displayName)displayName.text=name;
 		analogDisplay.gameObject.SetActive(!string.IsNullOrEmpty(analog));
 		analogDisplay.text=analog;
@@ -79,7 +89,7 @@ public class MenuSelect : MonoBehaviour
 		if((transform.position-vector).sqrMagnitude<0.1f){
 			transform.position=vector;
 			if(opt.selection==Menuoptions.SelectionType.Character)update=UpdateInputPilot;
-			else update=UpdateInputWorld;
+			else update=UpdateInput;
 		}
 	}
 	void MovingOut()
@@ -101,7 +111,7 @@ public class MenuSelect : MonoBehaviour
 		rect.anchorMax=Vector2.MoveTowards(rect.anchorMax,Vector2.one,Time.deltaTime);
 		if(rect.anchorMax.x==1){
 			if(opt.selection==Menuoptions.SelectionType.Character)update=UpdateInputPilot;
-			else update=UpdateInputWorld;
+			else update=UpdateInput;
 		}
 	}
 	public void Open(Del d)
@@ -110,11 +120,19 @@ public class MenuSelect : MonoBehaviour
 	}
 	void Update()
     {
+		PlayerInput.WaitInput();
+		if(PlayerInput.recentConect && opt.selection==Menuoptions.SelectionType.Character && PlayerInput.Conected(1)){
+			selectionID2=Ship.player2;
+			lightsUP(selectionID2,1);
+			OnValueChanged2();
+			selector2?.gameObject.SetActive(PlayerInput.Conected(1));
+		}
 		update?.Invoke();
 	}
 	public void GetInput()
 	{
-		update=UpdateInputWorld;
+		if(opt.selection==Menuoptions.SelectionType.Character)update=UpdateInputPilot;
+		else update=UpdateInput;
 	}
 	void lightsUP(int i, float f)
 	{
@@ -131,6 +149,18 @@ public class MenuSelect : MonoBehaviour
 				c.a = f;
 				graphic.color = c;
 			}
+		}
+	}
+	void OnValueChanged2(){
+		Check();
+		if(options[selectionID2])
+		{
+			selector2.rectTransform.position=options[selectionID2].rectTransform.position;
+			selector2.rectTransform.anchoredPosition=options[selectionID2].rectTransform.anchoredPosition;
+			selector2.rectTransform.anchorMin=options[selectionID2].rectTransform.anchorMin;
+			selector2.rectTransform.anchorMax=options[selectionID2].rectTransform.anchorMax;
+			selector2.rectTransform.rotation=options[selectionID2].rectTransform.rotation;
+			selector2.color=options[selectionID2].color;
 		}
 	}
 	void OnValueChanged()
@@ -150,9 +180,8 @@ public class MenuSelect : MonoBehaviour
 			}
 			if(displayImage)displayImage.sprite=sprites[selectionID];
 		}
-		
 	}
-	void UpdateInputWorld()
+	void UpdateInput()
 	{
 		int id=selectionID;
 		if(Input.GetKeyDown(KeyCode.UpArrow))selectionID-=rowCount;
@@ -167,40 +196,82 @@ public class MenuSelect : MonoBehaviour
 		}
 		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
-			opt.Select(selectionID,skinId-1);
+			opt.Select(selectionID,skinId[selectionID]-1);
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
 				menus[i].Close(this);
 				menus[i].Open();
 				if(confirmKey==KeyCode.None)
-					opt.Select(selectionID,skinId-1);
+					opt.Select(selectionID,skinId[selectionID]-1);
+			}
+		}
+	}
+	void UpdateInputPilot2(){
+		if(!PlayerInput.Conected(1)){
+			return;
+		}
+		int id=selectionID2;
+		int skin = skinId[id];
+		if(Input.GetKeyDown(KeyCode.I)&& p2confirm)skinId[id]++;
+        if(Input.GetKeyDown(KeyCode.K)&& p2confirm)skinId[id]--;
+        if(Input.GetKeyDown(KeyCode.L)&& !p2confirm)selectionID2+=selectionID2+1==selectionID?2:1;
+        if(Input.GetKeyDown(KeyCode.J)&& !p2confirm)selectionID2-=selectionID2-1==selectionID?2:1;
+		if(id!=selectionID2 || skin != skinId[id])
+		{
+			OnValueChanged2();
+			lightsUP(id, 0.5f);
+			lightsUP(selectionID2, 1);
+		}
+		if(Input.GetKeyDown(PlayerInput.GetKeyShot(1)) && options[selectionID2].raycastTarget){
+			if(p1confirm  && p2confirm){
+				Ship.skinID=skinId;
+				Ship.player1=selectionID;
+				Ship.player2=selectionID2;
+				Loader.Scene("WorldLoader");
+			}else {
+				p2confirm=true;
+				selected[1]=options[selectionID2].transform.GetChild(3);
+				options[selectionID2].transform.GetChild(2).gameObject.SetActive(true);
+				slots.Remove(selected[1]);
+			}
+		}
+		if(Input.GetKeyDown(PlayerInput.GetKeySpecial(1)) && p2confirm){
+			p2confirm=false;
+			options[selectionID2].transform.GetChild(2).gameObject.SetActive(false);
+			if(selected[1])
+			{
+				slots.Add(selected[1]);
+				selected[1]=null;
 			}
 		}
 	}
 	void UpdateInputPilot()
 	{
 		int id=selectionID;
-		int skin = skinId;
-		if(Input.GetKeyDown(KeyCode.UpArrow)&& p1confirm)skinId++;
-        if(Input.GetKeyDown(KeyCode.DownArrow)&& p1confirm)skinId--;
-        if(Input.GetKeyDown(KeyCode.RightArrow)&& !p1confirm)selectionID++;
-        if(Input.GetKeyDown(KeyCode.LeftArrow)&& !p1confirm)selectionID--;
-		if(id!=selectionID || skin != skinId)
+		int skin = skinId[id];
+		if(Input.GetKeyDown(KeyCode.W)&& p1confirm)skinId[id]++;
+        if(Input.GetKeyDown(KeyCode.S)&& p1confirm)skinId[id]--;
+        if(Input.GetKeyDown(KeyCode.D)&& !p1confirm)selectionID+=PlayerInput.Conected(1) && selectionID2==selectionID+1?2:1;
+        if(Input.GetKeyDown(KeyCode.A)&& !p1confirm)selectionID-=PlayerInput.Conected(1) && selectionID2==selectionID-1?2:1;
+		if(id!=selectionID || skin != skinId[id])
 		{
 			OnValueChanged();
 			lightsUP(id, 0.5f);
 			lightsUP(selectionID, 1);
 		}
-		
-		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
-			if(p1confirm){
-				opt.Select(selectionID,skinId-1);
-			}else {
+		if(PlayerInput.Conected(1))UpdateInputPilot2();
+		if(Input.GetKeyDown(PlayerInput.GetKeyShot(0)) && options[selectionID].raycastTarget){
+			if(p1confirm  && (p2confirm || !PlayerInput.Conected(1))){
+				Ship.skinID=skinId;
+				Ship.player1=selectionID;
+				Ship.player2=selectionID2;
+				Loader.Scene("WorldLoader");
+			}else{
 				p1confirm=true;
-				selected=options[selectionID].transform.GetChild(3);
+				selected[0]=options[selectionID].transform.GetChild(3);
 				options[selectionID].transform.GetChild(2).gameObject.SetActive(true);
-				slots.Remove(selected);
+				slots.Remove(selected[0]);
 			}
 		}
 		foreach (Transform t in slots)
@@ -211,7 +282,8 @@ public class MenuSelect : MonoBehaviour
 				break;
 			}
 		}
-		if(selected && selected.position.y<-2.5f)selected.Translate(0,Time.deltaTime*3,0);
+		if(selected[0] && selected[0].position.y<-2.5f)selected[0].Translate(0,Time.deltaTime*3,0);
+		if(selected[1] && selected[1].position.y<-2.5f)selected[1].Translate(0,Time.deltaTime*3,0);
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown())
 			{
@@ -219,16 +291,16 @@ public class MenuSelect : MonoBehaviour
 				{
 					p1confirm=false;
 					options[selectionID].transform.GetChild(2).gameObject.SetActive(false);
-					if(selected)
+					if(selected[0])
 					{
-						slots.Add(selected);
-						selected=null;
+						slots.Add(selected[0]);
+						selected[0]=null;
 					}
-				}else{
+				}else if(!p2confirm){
 				menus[i].Close(this);
 				menus[i].Open();
 				if(confirmKey==KeyCode.None)
-					opt.Select(selectionID,skinId-1);
+					opt.Select(selectionID,skinId[selectionID]-1);
 				}
 			}
 		}
@@ -236,14 +308,18 @@ public class MenuSelect : MonoBehaviour
 	void CheckSelection()
 	{
 		if(selectionID>=options.Length)selectionID-=options.Length;
+		if(selectionID2>=options.Length)selectionID2-=options.Length;
 		if(selectionID<0)selectionID+=options.Length;
+		if(selectionID2<0)selectionID2+=options.Length;
 	}
 	void CheckSkins()
 	{
-		//if(skinId>0 && !Locks.Skin(selectionID*3+skinId-1))skinId++;
-		if(skinId>3)skinId=0;
-		if(skinId<0)skinId=3;
-		SkinSwitch.selectedChar=selectionID;
+		if(skinId[selectionID]>3)skinId[selectionID]=0;
+		if(skinId[selectionID2]>3)skinId[selectionID2]=0;
+		if(skinId[selectionID]<0)skinId[selectionID]=3;
+		if(skinId[selectionID2]<0)skinId[selectionID2]=3;
+		SkinSwitch.selectedChar[0]=selectionID;
+		SkinSwitch.selectedChar[1]=selectionID2;
 		SkinSwitch.selectedSkin=skinId;
 	}
 	public void Open(Vector3 vector)
@@ -293,9 +369,7 @@ public struct Menuoptions
 				EnemySpawner.world=worlds[i];
 				return;
 			case SelectionType.Character:
-				Ship.playerID=i;
-				Ship.skinID=j;
-				if(EnemySpawner.world)Loader.Scene("WorldLoader");
+			//vazio por agr
 				return;
 			case SelectionType.Weapon:
 				//implementar equips

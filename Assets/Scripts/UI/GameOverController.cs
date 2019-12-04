@@ -57,12 +57,12 @@ public class GameOverController : MonoBehaviour
 		{
 			Timer-=Time.deltaTime;
 			color.a=(2f-Timer)/2f;
-			colors[Ship.playerID].a=color.a;
+			colors[Ship.player1].a=color.a;
 			foreach(Graphic g in graphics)
 			{
 				g.color=color;
 			}
-			gameover.color=colors[Ship.playerID];
+			gameover.color=colors[Ship.player1];
 			if(Timer<=0)gameoverDialog.gameObject.SetActive(true);
 		}
 		else if(charCount<fullText.Length)
@@ -88,8 +88,8 @@ public class GameOverController : MonoBehaviour
 		charCount = 0;
 		gameoverTEXT.text = "";
 		fullText = highscore ? DialogBox.GetText(5):DialogBox.GetText(6);
-		panel.sprite=panels[Ship.playerID];
-		image.sprite=chars[Ship.playerID * 2 + (highscore ? 1:0)];
+		panel.sprite=panels[Ship.player1];
+		image.sprite=chars[Ship.player1 * 2 + (highscore ? 1:0)];
 		Score.text = EnemySpawner.points.ToString();
 		int cashStars = EnemySpawner.points / 400;
 		EnemySpawner.points=0;

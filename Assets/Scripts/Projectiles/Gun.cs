@@ -17,8 +17,8 @@ public class Gun : MonoBehaviour {
 	public bool minusPower;
 	protected virtual void Awake()
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID+1)*2+0]);
-		Bullet.Register(shots[(Ship.skinID+1)*2+1]);
+		shotId=Bullet.Register(shots[(Ship.skinID[Ship.player1]+1)*2+0]);
+		Bullet.Register(shots[(Ship.skinID[Ship.player1]+1)*2+1]);
 		shots=null;
 	}
 	public virtual void Shoot()

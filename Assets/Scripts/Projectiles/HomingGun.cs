@@ -4,10 +4,10 @@ public class HomingGun : Gun
 {
 	protected override void Awake()
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID+1)*4+0]);
-		Bullet.Register(shots[(Ship.skinID+1)*4+1]);
-		Bullet.Register(shots[(Ship.skinID+1)*4+2]);
-		Bullet.Register(shots[(Ship.skinID+1)*4+3]);
+		shotId=Bullet.Register(shots[(Ship.skinID[4]+1)*4+0]);
+		Bullet.Register(shots[(Ship.skinID[4]+1)*4+1]);
+		Bullet.Register(shots[(Ship.skinID[4]+1)*4+2]);
+		Bullet.Register(shots[(Ship.skinID[4]+1)*4+3]);
 		shots=null;
 	}
     public override void Shoot()

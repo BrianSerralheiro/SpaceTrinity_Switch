@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
-using ADs;
 using IAP;
 public class MenuController : MonoBehaviour 
 {
@@ -127,7 +126,7 @@ public class MenuController : MonoBehaviour
 		{
 			characterIDButton[j].SetActive(i == j%4);
 		}
-		Ship.playerID = i;
+		Ship.player1 = i;
 		PlayerPrefs.SetInt("char",i);
 	}
 	public void ButtonSound()

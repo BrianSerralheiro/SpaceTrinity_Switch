@@ -22,8 +22,9 @@ public class ItemDrop : MonoBehaviour
 		id = i;
 		_renderer= GetComponent<SpriteRenderer>();
 		_renderer.sprite = SpriteBase.I.item[id];
-		sprite[0] = SpriteBase.I.item[(id==2?id+Ship.playerID:id)*2];
-		sprite[1] = SpriteBase.I.item[(id==2 ? id+Ship.playerID : id)*2+1];
+		i=(id==2?id+(Ship.player2<0 || Random.value>0.5f?Ship.player1:Ship.player2):id)*2;
+		sprite[0] = SpriteBase.I.item[i];
+		sprite[1] = SpriteBase.I.item[i+1];
 		gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
 	}
 	void Update () 
