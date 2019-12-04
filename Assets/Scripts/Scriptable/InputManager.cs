@@ -4,15 +4,9 @@ using UnityEngine;
 public class InputManager : ScriptableObject
 {
     public PlayerInput[] players;
-    void OnEnable()
+    public void Load()
     {
         PlayerInput.players=players;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
 [System.Serializable]
@@ -20,7 +14,7 @@ public struct PlayerInput{
     public static bool recentConect;
     public KeyCode shoot,special,equip;
     public string vertical,horizontal,name;
-    public static  PlayerInput[] players;
+    public static PlayerInput[] players;
     public bool got,conected;
     public Vector3 GetAxis(){
         return new Vector3(Input.GetAxis(horizontal),Input.GetAxis(vertical),0);

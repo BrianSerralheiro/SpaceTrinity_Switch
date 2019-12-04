@@ -18,6 +18,7 @@ public class Shooter : EnemyBase
     private int shotCount,cicles;
     private float shotDelay,reloadTime;
 	private BulletPath path;
+	private static BulletPath[] paths;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
@@ -45,12 +46,12 @@ public class Shooter : EnemyBase
 		fallSpeed=-9;
 		movement=Moving;
 		shootId=ei.bulletsID[0];
-		PathEnemy pe=(PathEnemy)ei;
+		MultiPathEnemy pe=(MultiPathEnemy)ei;
 		shotCount=pe.shotCount;
 		cicles=pe.cicles;
 		shotDelay=pe.shotDelay;
 		reloadTime=pe.reloadTime;
-		path=pe.bulletPath;
+		paths=pe.paths;
 	}
 
 	public override void Position(int i)
@@ -58,6 +59,7 @@ public class Shooter : EnemyBase
 		base.Position(i);
 		position=i;
 		finalpoint=new Vector3((i*Scaler.sizeX/20-Scaler.sizeX/2)*0.9f,Scaler.sizeY/2,0);
+		path=paths[i<10?i:(19-i)];
 	}
 	new void Update()
 	{

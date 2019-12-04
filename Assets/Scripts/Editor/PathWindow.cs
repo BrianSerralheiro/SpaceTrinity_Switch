@@ -34,6 +34,7 @@ public class PathWindow : EditorWindow
             if(GUILayout.Button("Clear")){
                 nodes.ClearArray();
                 curves.ClearArray();
+                nodes.serializedObject.ApplyModifiedProperties();
             }
             EditorGUI.BeginChangeCheck();
             toggle=EditorGUILayout.Toggle("Show fields",toggle);
