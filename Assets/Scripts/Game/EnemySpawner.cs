@@ -3,7 +3,7 @@ public class EnemySpawner : MonoBehaviour {
 	public Material bg;
 	[TextArea]
 	public string wave;
-	public static int points;
+	public static int[] points=new int[2];
 	public static bool boss;
 	private int counter;
 	public float timer;
@@ -51,12 +51,14 @@ public class EnemySpawner : MonoBehaviour {
 		bg.mainTexture=world.bgs[0];
 		bg.mainTextureOffset=Vector2.zero;
 		bg.color=Color.white;
-		points=0;
+		points[0]=0;
+		points[1]=0;
 	}
 
 	void OnDestroy()
 	{
-		Cash.totalCash += points/200;
+		Cash.totalCash += points[0]/200;
+		Cash.totalCash += points[1]/200;
 		Cash.Save();
 	}
 

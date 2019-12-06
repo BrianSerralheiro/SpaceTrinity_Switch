@@ -294,7 +294,7 @@ public class Squid : EnemyBase {
 	{
 		state=State.dead;
 		timer=5;
-		EnemySpawner.points+=1000;
+		EnemySpawner.points[killerid]+=1000;
 	}
 	private void MoveElbow(Transform t,Vector3 v1,Vector3 v2,bool b)
 	{

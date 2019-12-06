@@ -142,7 +142,7 @@ public class Barata : EnemyBase {
 	protected override void Die()
 	{
 		update=Dying;
-		EnemySpawner.points+=500;
+		EnemySpawner.points[killerid]+=500;
 	}
 	public override void Position(int i)
 	{

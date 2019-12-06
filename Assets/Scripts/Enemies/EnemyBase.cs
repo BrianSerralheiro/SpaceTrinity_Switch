@@ -3,6 +3,7 @@
 public class EnemyBase : MonoBehaviour {
 	protected int points;
 	protected int hp=8;
+	protected int killerid=0;
 	public static Transform player;
 	protected float damageTimer,fallSpeed=-1;
 	protected SpriteRenderer _renderer;
@@ -38,10 +39,14 @@ public class EnemyBase : MonoBehaviour {
 		if(col.gameObject.name=="enemy") return;
 		int i=1;
 		Bullet bull=col.gameObject.GetComponent<Bullet>();
-		if(bull)i=bull.damage;
+		if(bull){
+			i=bull.damage;
+			int.TryParse(bull.owner[7].ToString(),out killerid);
+		}
 		ParticleManager.Emit(1,col.collider.transform.position,1);
 		hp-=i;
 		if(hp<=0)Die();
+		killerid=0;
 		if(!damageEffect || damageTimer <= 0)
 		{
 			damageTimer = 1;
@@ -54,8 +59,10 @@ public class EnemyBase : MonoBehaviour {
 		if(hp<=0)
 		{
 			SoundManager.PlayEffects(15, 0.8f, 1.2f);
-			EnemySpawner.points+=points;
-			InGame_HUD.special += 0.01f;
+			if(killerid>0){
+				InGame_HUD.special[killerid-1] += 0.01f;
+				EnemySpawner.points[killerid-1]+=points;
+			}
 			ParticleManager.Emit(explosionID, transform.position,1);
 		}
 	}

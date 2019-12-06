@@ -11,7 +11,8 @@ public class InputManager : ScriptableObject
 }
 [System.Serializable]
 public struct PlayerInput{
-    public static bool recentConect;
+    public static bool recentConect,recentDisconect;
+    public int id;
     public KeyCode shoot,special,equip;
     public string vertical,horizontal,name;
     public static PlayerInput[] players;
@@ -37,6 +38,7 @@ public struct PlayerInput{
     }
     public static void WaitInput(){
         recentConect=false;
+        recentDisconect=false;
         for(int i=0;i<players.Length;i++){
             if(players[i].conected){
                 if(Input.GetKeyDown(players[i].equip))DisConect(i);
@@ -48,6 +50,7 @@ public struct PlayerInput{
     }
     public static void DisConect(int i){
         players[i].conected=false;
+        recentDisconect=true;
     }
     public static void Conect(int i){
         players[i].conected=true;

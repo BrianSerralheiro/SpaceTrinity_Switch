@@ -15,10 +15,16 @@ public class Gun : MonoBehaviour {
 	protected int particleID;
 
 	public bool minusPower;
-	protected virtual void Awake()
+	public virtual void Load(int i,int j)
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID[Ship.player1]+1)*2+0]);
-		Bullet.Register(shots[(Ship.skinID[Ship.player1]+1)*2+1]);
+		if(Ship.skinID[i]>=0 && Locks.Skin(j*3+Ship.skinID[i])){
+			shotId=Bullet.Register(shots[(Ship.skinID[i]+1)*2]);
+			Bullet.Register(shots[(Ship.skinID[i]+1)*2+1]);
+		}
+		else {
+			shotId=Bullet.Register(shots[0]);
+			Bullet.Register(shots[1]);
+		}
 		shots=null;
 	}
 	public virtual void Shoot()

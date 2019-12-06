@@ -35,7 +35,7 @@ public class Drone : EnemyBase {
 		if(hp<=0 && !dropped)
 		{
 			dropped = true;
-			EnemySpawner.points+=points;
+			EnemySpawner.points[killerid]+=points;
 			GameObject go = new GameObject("ItemDrop");
 			go.AddComponent<SpriteRenderer>();
 			ItemDrop item= go.AddComponent<ItemDrop>();

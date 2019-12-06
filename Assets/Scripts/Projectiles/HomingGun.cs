@@ -2,12 +2,19 @@
 
 public class HomingGun : Gun
 {
-	protected override void Awake()
+	public override void Load(int i,int j)
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID[4]+1)*4+0]);
-		Bullet.Register(shots[(Ship.skinID[4]+1)*4+1]);
-		Bullet.Register(shots[(Ship.skinID[4]+1)*4+2]);
-		Bullet.Register(shots[(Ship.skinID[4]+1)*4+3]);
+		if(Ship.skinID[i]>=0 && Locks.Skin(j*3+Ship.skinID[i])){
+            shotId=Bullet.Register(shots[(Ship.skinID[j]+1)*4]);
+            for(int c=1;c<4;c++){
+                Bullet.Register(shots[(Ship.skinID[j]+1)*4+c]);
+            }
+        }else{
+            shotId=Bullet.Register(shots[0]);
+            for(int c=1;c<4;c++){
+                Bullet.Register(shots[c]);
+            }
+        }
 		shots=null;
 	}
     public override void Shoot()

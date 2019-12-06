@@ -7,11 +7,19 @@ public class GravGun : Gun
     private int count=14;
     [SerializeField]
     private float timer;
-    protected override void Awake()
+    public override void Load(int i,int j)
 	{
-		shotId=Bullet.Register(shots[(Ship.skinID[5]+1)*count]);
-        for(int i=1;i<count;i++){
-            Bullet.Register(shots[(Ship.skinID[5]+1)*count+i]);
+        
+		if(Ship.skinID[i]>=0 && Locks.Skin(j*3+Ship.skinID[i])){
+            shotId=Bullet.Register(shots[(Ship.skinID[j]+1)*count]);
+            for(int c=1;c<count;c++){
+                Bullet.Register(shots[(Ship.skinID[j]+1)*count+c]);
+            }
+        }else{
+            shotId=Bullet.Register(shots[0]);
+            for(int c=1;c<count;c++){
+                Bullet.Register(shots[c]);
+            }
         }
 		shots=null;
 	}

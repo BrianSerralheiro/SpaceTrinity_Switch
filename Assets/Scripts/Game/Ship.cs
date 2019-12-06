@@ -50,7 +50,7 @@ public class Ship : MonoBehaviour {
 	public static int[] skinID={-1,-1,-1,-1,-1,-1};
 
 	public float immuneTime;
-	private PlayerInput input;
+	public PlayerInput input;
 
 	[SerializeField]
 	private Skin skin;
@@ -59,8 +59,13 @@ public class Ship : MonoBehaviour {
 	{
 		input=PlayerInput.Get();
 		Debug.LogWarning(input.name);
-		InGame_HUD.shipHealth = 1;
-		InGame_HUD.special = 1;
+		InGame_HUD.shipHealth[input.id] = 1;
+		InGame_HUD.special[input.id] = 0;
+		name=input.name;
+		foreach (Gun gun in guns)
+		{
+			gun.Load(input.id,id);
+		}
 		hp=maxhp;
 		_renderer = GetComponent<SpriteRenderer>();
 		specialMat.mainTexture=specials[0];
@@ -107,7 +112,7 @@ public class Ship : MonoBehaviour {
 		{
 			SoundManager.PlayEffects(9, 1, 0);
 		}
-		InGame_HUD.shipHealth = (float)hp / (float)maxhp;
+		InGame_HUD.shipHealth[input.id] = (float)hp / (float)maxhp;
 		damageTimer=1;
 		immuneTime=1f;
 	}
@@ -116,7 +121,7 @@ public class Ship : MonoBehaviour {
 		gameObject.SetActive(true);
 		immuneTime = 3;
 		hp=maxhp;
-		InGame_HUD.shipHealth =1;
+		InGame_HUD.shipHealth[input.id] =1;
 		paused=false;
 	}
 	public void Shield()
@@ -124,7 +129,7 @@ public class Ship : MonoBehaviour {
 		if(hp==maxhp)
 			shielded=true;
 		else hp++;
-		InGame_HUD.shipHealth=(float)hp/(float)maxhp;
+		InGame_HUD.shipHealth[input.id]=(float)hp/(float)maxhp;
 	}
 	void Update()
 	{
@@ -169,7 +174,7 @@ public class Ship : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
 		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
 		if(Input.GetKeyDown(KeyCode.Alpha3))OnLevel(3);
-		if(Input.GetKeyDown(input.special) && InGame_HUD.special==1)Special();
+		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]==1)Special();
 		if(shielded) shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
@@ -222,7 +227,7 @@ public class Ship : MonoBehaviour {
 
 	public void Special()
 	{
-		InGame_HUD.special=0;
+		InGame_HUD.special[input.id]=0;
 		SoundManager.PlayEffects(6 + id, 1f, 2f);
 		switch(id)
 		{

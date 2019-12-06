@@ -44,10 +44,9 @@ public class MenuSelect : MonoBehaviour
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character){
 			selectionID=Ship.player1;
-			skinId=Ship.skinID;
 			for (int i = 0; i < skinId.Length; i++)
 			{
-				skinId[i]++;
+				skinId[i]=Ship.skinID[i]+1;
 			}
 			if(update==null)update=UpdateInputPilot;
 			Check+=CheckSkins;
@@ -225,7 +224,11 @@ public class MenuSelect : MonoBehaviour
 		}
 		if(Input.GetKeyDown(PlayerInput.GetKeyShot(1)) && options[selectionID2].raycastTarget){
 			if(p1confirm  && p2confirm){
-				Ship.skinID=skinId;
+				
+			for (int i = 0; i < skinId.Length; i++)
+			{
+				Ship.skinID[i]=skinId[i]-1;
+			}
 				Ship.player1=selectionID;
 				Ship.player2=selectionID2;
 				Loader.Scene("WorldLoader");
@@ -263,7 +266,10 @@ public class MenuSelect : MonoBehaviour
 		if(PlayerInput.Conected(1))UpdateInputPilot2();
 		if(Input.GetKeyDown(PlayerInput.GetKeyShot(0)) && options[selectionID].raycastTarget){
 			if(p1confirm  && (p2confirm || !PlayerInput.Conected(1))){
-				Ship.skinID=skinId;
+				for (int i = 0; i < skinId.Length; i++)
+				{
+					Ship.skinID[i]=skinId[i]-1;
+				}
 				Ship.player1=selectionID;
 				Ship.player2=selectionID2;
 				Loader.Scene("WorldLoader");

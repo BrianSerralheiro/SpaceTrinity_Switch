@@ -202,7 +202,7 @@ public class Batzilla : EnemyBase {
 		Destroy(slash.gameObject);
 		Destroy(dark.gameObject);
 		state=State.dead;
-		EnemySpawner.points+=1000;
+		EnemySpawner.points[killerid]+=1000;
 		timer=1;
 		GetComponent<BoxCollider2D>().enabled = false;
 	}

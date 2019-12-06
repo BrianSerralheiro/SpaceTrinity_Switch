@@ -245,7 +245,7 @@ public class Spider : EnemyBase {
 	protected override void Die()
 	{
 		update=Dying;
-		EnemySpawner.points+=1000;
+		EnemySpawner.points[killerid]+=1000;
 	}
 	void Spawn(int i)
 	{

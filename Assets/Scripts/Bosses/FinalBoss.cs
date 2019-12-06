@@ -103,7 +103,7 @@ public class FinalBoss : EnemyBase {
 	}
 	protected override void Die()
 	{
-		EnemySpawner.points+=1000;
+		EnemySpawner.points[killerid]+=1000;
 		if(last)
 		{
 			state=State.dead;

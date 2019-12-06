@@ -3,5 +3,5 @@
 public struct PilotInfo
 {
    public Sprite normal,happy,sad;
-   public static PilotInfo pilot;
+   public static PilotInfo[] pilot=new PilotInfo[2];
 }

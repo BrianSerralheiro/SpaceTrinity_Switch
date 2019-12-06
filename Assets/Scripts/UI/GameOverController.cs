@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class GameOverController : MonoBehaviour 
 {
 	[SerializeField]
+	int id;
+	[SerializeField]
 	private Image panel;
 	[SerializeField]
 	private Image image;
@@ -75,10 +77,10 @@ public class GameOverController : MonoBehaviour
 	
 	void Enable () 
 	{
-		if(PlayerPrefs.GetInt("highscore") <= EnemySpawner.points)
+		if(PlayerPrefs.GetInt("highscore") <= EnemySpawner.points[id])
 		{
 			highscore = true;
-			PlayerPrefs.SetInt("highscore", EnemySpawner.points);
+			PlayerPrefs.SetInt("highscore", EnemySpawner.points[id]);
 		}
 		else
 		{
@@ -91,8 +93,8 @@ public class GameOverController : MonoBehaviour
 		panel.sprite=panels[Ship.player1];
 		image.sprite=chars[Ship.player1 * 2 + (highscore ? 1:0)];
 		Score.text = EnemySpawner.points.ToString();
-		int cashStars = EnemySpawner.points / 400;
-		EnemySpawner.points=0;
+		int cashStars = EnemySpawner.points[id] / 400;
+		EnemySpawner.points[id]=0;
 		Stars.text = cashStars.ToString();
 		Cash.totalCash += cashStars;
 		Cash.Save();

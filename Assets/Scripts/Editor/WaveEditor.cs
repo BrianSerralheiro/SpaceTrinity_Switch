@@ -134,7 +134,10 @@ public class WaveEditor : EditorWindow
 			GUI.EndScrollView();
 		GUILayout.EndArea();
 		GUILayout.BeginArea(new Rect(x*8,y*8,x*2,y*2));
-			if(GUILayout.Button("Save"))world.wave=GetWave();
+			if(GUILayout.Button("Save")){
+				world.wave=GetWave();
+				EditorUtility.SetDirty(world);
+			}
 			if(GUILayout.Button("Load"))Revert(world.wave);
 		GUILayout.EndArea();
 		if(currentEnemy==null)return;
