@@ -24,8 +24,6 @@ public class Ship : MonoBehaviour {
 	private Vector3 offset = Vector3.up;
 	[SerializeField]
 	private float speed=5f;
-	[SerializeField]
-	private Sprite[] skins;
 	public static bool paused;
 	[SerializeField]
 	private Core shield;
@@ -51,6 +49,7 @@ public class Ship : MonoBehaviour {
 
 	public float immuneTime;
 	public PlayerInput input;
+	public static Skin[] skins=new Skin[2];
 
 	[SerializeField]
 	private Skin skin;
@@ -76,7 +75,7 @@ public class Ship : MonoBehaviour {
 		sizes=null;
 		if(skinID[id]!=-1 && Locks.Skin(id*3+skinID[id]))
 		{
-			_renderer.sprite=skins[skinID[id]];
+			skin=skins[input.id];
 			ParticleSystem.MainModule main = trail.main;
 			main.startColor=colors[skinID[id]];
 			specialMat.mainTexture=specials[skinID[id]+1];

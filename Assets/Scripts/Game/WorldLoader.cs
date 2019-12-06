@@ -14,6 +14,8 @@ public class WorldLoader : MonoBehaviour
     private HUDInfo[] HUDs;
     [SerializeField]
     private PilotInfo[] pilots;
+    [SerializeField]
+    private Skin[] skins;
 	private ResourceRequest request;
     void Start()
     {
@@ -22,6 +24,8 @@ public class WorldLoader : MonoBehaviour
         InGame_HUD.HUD[1]=HUDs[Ship.player2];
         PilotInfo.pilot[0]=pilots[Ship.player1];
         PilotInfo.pilot[1]=pilots[Ship.player2];
+        if(Ship.skinID[Ship.player1]>-1)Ship.skins[0]=skins[Ship.skinID[Ship.player1]];
+        if(Ship.skinID[Ship.player2]>-1)Ship.skins[1]=skins[Ship.skinID[Ship.player2]];
         PlayerInput.Unload();
     }
     void Update()
