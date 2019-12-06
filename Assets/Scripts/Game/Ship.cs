@@ -63,7 +63,7 @@ public class Ship : MonoBehaviour {
 		name=input.name;
 		foreach (Gun gun in guns)
 		{
-			gun.Load(input.id,id);
+			gun.Load(id);
 		}
 		hp=maxhp;
 		_renderer = GetComponent<SpriteRenderer>();
@@ -81,7 +81,6 @@ public class Ship : MonoBehaviour {
 			specialMat.mainTexture=specials[skinID[id]+1];
 			specialMat=null;
 			specials=null;
-			skins=null;
 			colors=null;
 		}
 		EnemyBase.player=transform;

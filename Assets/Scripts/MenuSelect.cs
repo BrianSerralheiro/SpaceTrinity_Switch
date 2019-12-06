@@ -195,14 +195,14 @@ public class MenuSelect : MonoBehaviour
 		}
 		
 		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
-			opt.Select(selectionID,skinId[selectionID]-1);
+			opt.Select(selectionID,0);
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
 				menus[i].Close(this);
 				menus[i].Open();
 				if(confirmKey==KeyCode.None)
-					opt.Select(selectionID,skinId[selectionID]-1);
+					opt.Select(selectionID,0);
 			}
 		}
 	}

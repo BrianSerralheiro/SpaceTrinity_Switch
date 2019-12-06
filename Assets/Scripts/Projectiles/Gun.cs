@@ -15,9 +15,9 @@ public class Gun : MonoBehaviour {
 	protected int particleID;
 
 	public bool minusPower;
-	public virtual void Load(int i,int j)
+	public virtual void Load(int i)
 	{
-		if(Ship.skinID[i]>=0 && Locks.Skin(j*3+Ship.skinID[i])){
+		if(Ship.skinID[i]>=0 && Locks.Skin(i*3+Ship.skinID[i])){
 			shotId=Bullet.Register(shots[(Ship.skinID[i]+1)*2]);
 			Bullet.Register(shots[(Ship.skinID[i]+1)*2+1]);
 		}

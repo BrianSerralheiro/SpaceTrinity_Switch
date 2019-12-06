@@ -11,7 +11,7 @@ public class LaserGun : Gun {
 	private AudioSource source;
 	private LineRenderer line;
 	
-	public override void Load(int i,int j){}
+	public override void Load(int i){}
 	void Start () {
 		if(Ship.skinID[2]!=-1 && Locks.Skin(6+Ship.skinID[2]))lasermaterial.mainTexture=lasers[Ship.skinID[2]+1];
 		else lasermaterial.mainTexture=lasers[0];
