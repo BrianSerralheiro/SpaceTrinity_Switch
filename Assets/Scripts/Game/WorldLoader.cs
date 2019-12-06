@@ -24,8 +24,8 @@ public class WorldLoader : MonoBehaviour
         InGame_HUD.HUD[1]=HUDs[Ship.player2];
         PilotInfo.pilot[0]=pilots[Ship.player1];
         PilotInfo.pilot[1]=pilots[Ship.player2];
-        if(Ship.skinID[Ship.player1]>-1)Ship.skins[0]=skins[Ship.skinID[Ship.player1]];
-        if(Ship.skinID[Ship.player2]>-1)Ship.skins[1]=skins[Ship.skinID[Ship.player2]];
+        if(Ship.skinID[Ship.player1]>-1)Ship.skins[0]=skins[Ship.player1 * 3 + Ship.skinID[Ship.player1]];
+        if(Ship.skinID[Ship.player2]>-1)Ship.skins[1]=skins[Ship.player2 * 3 + Ship.skinID[Ship.player2]];
         PlayerInput.Unload();
     }
     void Update()

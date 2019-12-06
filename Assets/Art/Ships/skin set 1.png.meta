@@ -1,0 +1,811 @@
+fileFormatVersion: 2
+guid: e0283621bcbe9034787ad4b84df0bfc9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4744310049745811189
+    second: skin set 1_0
+  - first:
+      213: 7749405980152091222
+    second: skin set 1_1
+  - first:
+      213: 7446830463500458494
+    second: skin set 1_2
+  - first:
+      213: -4158464490744324531
+    second: skin set 1_3
+  - first:
+      213: 6277040608641239441
+    second: skin set 1_4
+  - first:
+      213: 6296031613602111875
+    second: skin set 1_5
+  - first:
+      213: 7563597699131725229
+    second: skin set 1_6
+  - first:
+      213: -3782451124643978358
+    second: skin set 1_7
+  - first:
+      213: -608215713057008835
+    second: skin set 1_8
+  - first:
+      213: -896447311509209476
+    second: skin set 1_9
+  - first:
+      213: -3731915728735613603
+    second: skin set 1_10
+  - first:
+      213: -8139893057848194197
+    second: skin set 1_11
+  - first:
+      213: -4646149626583796186
+    second: skin set 1_12
+  - first:
+      213: -1857242744681687185
+    second: skin set 1_13
+  - first:
+      213: -2240859344127423235
+    second: skin set 1_14
+  - first:
+      213: -744485919500349694
+    second: skin set 1_16
+  - first:
+      213: 8006019458525970058
+    second: skin set 1_17
+  - first:
+      213: 2726199468666584968
+    second: skin set 1_20
+  - first:
+      213: 3687012253575666448
+    second: skin set 1_23
+  - first:
+      213: -5349849873162229631
+    second: skin set 1_25
+  - first:
+      213: -8663139019358412534
+    second: skin set 1_26
+  - first:
+      213: -3497553716393999647
+    second: skin set 1_27
+  - first:
+      213: 6613358440067602511
+    second: skin set 1_28
+  - first:
+      213: -1511882065156864492
+    second: skin set 1_29
+  - first:
+      213: 6952660753013838431
+    second: skin set 1_30
+  - first:
+      213: -1605967358368110702
+    second: skin set 1_31
+  - first:
+      213: 2249742524757847617
+    second: skin set 1_32
+  - first:
+      213: 2568892845164667672
+    second: skin set 1_33
+  - first:
+      213: 4896454865441266844
+    second: skin set 1_34
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skin set 1_0
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 3201
+        width: 264
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4615a3f5cdd10d84db7f95cefd3f633a
+      internalID: 4744310049745811189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_1
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 3196
+        width: 303
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eb0401eb567db44591fb59a138c019d
+      internalID: 7749405980152091222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_2
+      rect:
+        serializedVersion: 2
+        x: 2136
+        y: 3201
+        width: 263
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff72c26ca8dd984b8b15fcbe10e6a1c
+      internalID: 7446830463500458494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 2686
+        width: 357
+        height: 375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de2ef9db328628e459969a7090942930
+      internalID: -4158464490744324531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_4
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 2714
+        width: 389
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6af8c6eee1ce14d90c5e868edbaaf5
+      internalID: 6277040608641239441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_5
+      rect:
+        serializedVersion: 2
+        x: 2177
+        y: 2702
+        width: 357
+        height: 375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7811971697ab5dc47948c99130b73725
+      internalID: 6296031613602111875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_6
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 2245
+        width: 233
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22ceb562e2478640913e32225197b96
+      internalID: 7563597699131725229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_7
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 2545
+        width: 63
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f976080ec704646819612cb47bc7e6
+      internalID: -3782451124643978358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_8
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 2561
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517b96a43c9bcf64ebb9de041c9ff57d
+      internalID: -608215713057008835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_9
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 2216
+        width: 226
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72245fa800dc9c74aa31ce946252e2db
+      internalID: -896447311509209476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_10
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 2204
+        width: 232
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a2b5a793b30d344a9a02d7600b01d3f
+      internalID: -3731915728735613603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_11
+      rect:
+        serializedVersion: 2
+        x: 2556
+        y: 2266
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6bced80c1c0064cb6b8722b068f716
+      internalID: -8139893057848194197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_12
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 2183
+        width: 57
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e11a015af0a39ea4ba36b4854c0d9e75
+      internalID: -4646149626583796186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_13
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 2064
+        width: 20
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e526e412dcea3f42aab1c716b1399b9
+      internalID: -1857242744681687185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_14
+      rect:
+        serializedVersion: 2
+        x: 1608
+        y: 2013
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0f7841dd2bd1642ade34194e4a4601
+      internalID: -2240859344127423235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_16
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 1614
+        width: 252
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17de7c71263494e41861f9f016a712ab
+      internalID: -744485919500349694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_17
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1751
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125bdd82eee0bfa4fb15de8bb1d20d8c
+      internalID: 8006019458525970058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_20
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 1615
+        width: 252
+        height: 265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d2d43b9d08c5f4983b2eb25ce753ea
+      internalID: 2726199468666584968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_23
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 1609
+        width: 252
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8693e9e425fba4aa4ca323a6e66d99
+      internalID: 3687012253575666448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_25
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1059
+        width: 181
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44cbdc094127a854492068625e01b453
+      internalID: -5349849873162229631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_26
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1125
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af106073749d5e4c999df3c6a395175
+      internalID: -8663139019358412534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_27
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1074
+        width: 209
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58881cfa68453984bba26e3277558d14
+      internalID: -3497553716393999647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_28
+      rect:
+        serializedVersion: 2
+        x: 2037
+        y: 1072
+        width: 182
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad07c6766d99a04b8dbe2ca19a4885b
+      internalID: 6613358440067602511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_29
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 925
+        width: 47
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 613d280ce280cf84b9e4efcdacee7da3
+      internalID: -1511882065156864492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_30
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 1040
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb3f57bc7085b547b6d5ed984c1cc5b
+      internalID: 6952660753013838431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_31
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 893
+        width: 48
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b92b3fb6bdfe24995a0fa7cc7c8eeb
+      internalID: -1605967358368110702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_32
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 408
+        width: 374
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b74c276e5e0b6a4cb1a4d7c4aaa9b0e
+      internalID: 2249742524757847617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_33
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 414
+        width: 368
+        height: 370
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b64d0d532faffc4d9c20dc9d92a02b9
+      internalID: 2568892845164667672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skin set 1_34
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 375
+        width: 374
+        height: 427
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97c1a204723cee42af1ce8b4c0d6095
+      internalID: 4896454865441266844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
