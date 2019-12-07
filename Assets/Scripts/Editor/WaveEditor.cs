@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -11,6 +10,7 @@ public class WaveEditor : EditorWindow
 	EnemyHelper currentEnemy,subBossHelper;
 	int x,y,counter,fullY,tempY,lastH;
 	Vector2 pos,pos2;
+	double saveTime,lastTime;
 	[MenuItem("Window/Wave Editor")]
 	public static void ShowWindow()
 	{
@@ -18,6 +18,7 @@ public class WaveEditor : EditorWindow
 	}
 	void OnGUI()
 	{
+#region Setting
 		WorldInfo w=world;
 		world=EditorGUILayout.ObjectField("World",world,typeof(WorldInfo),false)as WorldInfo;
 		if(w!=world && world!=null)Revert(world.wave);
@@ -31,7 +32,9 @@ public class WaveEditor : EditorWindow
 			if(entries.Count==0) entries.Add(new Entry());
 			currentEntry=entries[0];
 		}
-		GUILayout.BeginArea(new Rect(x/10,y,x,y*5));
+#endregion
+#region EnemyList
+		GUILayout.BeginArea(new Rect(x/10,EditorGUIUtility.singleLineHeight,x,y*5));
 		pos2=GUILayout.BeginScrollView(pos2,false,false);
 		counter=0;
 		foreach(EnemyInfo en in world.enemies)
@@ -41,13 +44,7 @@ public class WaveEditor : EditorWindow
 				GUILayout.BeginVertical();
 					GUILayout.Space(y/2);
 					if(GUILayout.Button("+",GUILayout.Width(y/2),GUILayout.Height(y/2)))
-					{
-						EnemyHelper eh=new EnemyHelper();
-						eh.id=counter;
-						eh.sprite=en.sprites[0];
-						currentEntry.enemies.Add(eh);
-						currentEnemy=eh;
-					}
+						Add(counter);
 				GUILayout.EndVertical();
 			GUILayout.EndHorizontal();
 			GUILayout.Label(en.name);
@@ -55,6 +52,18 @@ public class WaveEditor : EditorWindow
 		}
 		GUILayout.EndScrollView();
 		GUILayout.EndArea();
+#endregion
+#region Shortcuts
+		if(GetKeyDown(KeyCode.Alpha1))Add(0);
+		if(GetKeyDown(KeyCode.Alpha2))Add(1);
+		if(GetKeyDown(KeyCode.Alpha3))Add(2);
+		if(GetKeyDown(KeyCode.Alpha4))Add(3);
+		if(GetKeyDown(KeyCode.Alpha5))Add(4);
+		float f=pos.y;
+		if(GetKey(KeyCode.UpArrow))pos.y-=10;
+		if(GetKey(KeyCode.DownArrow))pos.y+=10;
+		if(f!=pos.y)Repaint();
+#endregion
 #region SubBoss
 		EnemyInfo sub=world.subBoss;
 		if(sub){
@@ -64,7 +73,7 @@ public class WaveEditor : EditorWindow
 			ShowSprite(GUILayoutUtility.GetRect(x/5,y*2),sub.sprites[0].rect,sub.sprites[0].texture);
 				GUILayout.BeginVertical();
 					GUILayout.Space(y/2);
-					if(GUILayout.Button("+",GUILayout.Width(y/2),GUILayout.Height(y/2)))
+					if(GUILayout.Button("+",GUILayout.Width(y/2),GUILayout.Height(y/2)) || GetKeyDown(KeyCode.Alpha0))
 					{
 						if(subBossHelper==null){
 							subBossHelper=new EnemyHelper();
@@ -75,57 +84,71 @@ public class WaveEditor : EditorWindow
 						currentEntry.enemies.Add(subBossHelper);
 						subEntry=currentEntry;
 						currentEnemy=subBossHelper;
+						Repaint();
+						saveTime=EditorApplication.timeSinceStartup+2;
 					}
 				GUILayout.EndVertical();
 			GUILayout.EndHorizontal();
 		GUILayout.EndArea();
 		}
 #endregion
-#region drone
+#region Drone
 		GUILayout.BeginArea(new Rect(x/10,y*6,x,y));
 			GUILayout.BeginHorizontal();
 			ShowSprite(GUILayoutUtility.GetRect(x/5,y*2),world.drone.sprites[0].rect,world.drone.sprites[0].texture);
 				GUILayout.BeginVertical();
 					GUILayout.Space(y/2);
-					if(GUILayout.Button("+",GUILayout.Width(y/2),GUILayout.Height(y/2)))
+					if(GUILayout.Button("+",GUILayout.Width(y/2),GUILayout.Height(y/2)) || GetKeyDown(KeyCode.D))
 					{
 						EnemyHelper eh=new EnemyHelper();
 						eh.id=-2;
 						eh.sprite=world.drone.sprites[1];
 						currentEntry.enemies.Add(eh);
 						currentEnemy=eh;
+						Repaint();
+						saveTime=EditorApplication.timeSinceStartup+2;
 					}
 				GUILayout.EndVertical();
 			GUILayout.EndHorizontal();
 		GUILayout.EndArea();
 #endregion
-		GUILayout.BeginArea(new Rect(x*8,y/2,x*2,y*3));
+#region Entry Options
+	#region Time
+		GUILayout.BeginArea(new Rect(x*8,EditorGUIUtility.singleLineHeight,x*2,y*3));
 			GUILayout.BeginHorizontal();
 				if(GUILayout.Button("+0.1"))currentEntry.timer++;
+				if(GUILayout.Button("+0.5"))currentEntry.timer+=5;
 				if(GUILayout.Button("+1"))currentEntry.timer+=10;
 				if(GUILayout.Button("+5"))currentEntry.timer+=50;
 			GUILayout.EndHorizontal();
 			GUILayout.BeginHorizontal();
 				if(GUILayout.Button("-0.1"))currentEntry.timer--;
+				if(GUILayout.Button("-0.5"))currentEntry.timer-=5;
 				if(GUILayout.Button("-1"))currentEntry.timer-=10;
 				if(GUILayout.Button("-5"))currentEntry.timer-=50;
 				if(currentEntry.timer<1) currentEntry.timer=1;
 			GUILayout.EndHorizontal();
-
+	#endregion
+	#region  Add/Remove
 		if(GUILayout.Button("Addd entry")){
 			counter=entries.IndexOf(currentEntry)+1;
 			currentEntry=new Entry();
 			currentEntry.timer=5;
 			entries.Insert(counter,currentEntry);
+			saveTime=EditorApplication.timeSinceStartup+2;
 		}
 		if(entries.Count>1 && GUILayout.Button("Remove entry")){
 			entries.Remove(currentEntry);
 			currentEntry=null;
+			saveTime=EditorApplication.timeSinceStartup+2;
 		}
 		GUILayout.EndArea();
+	#endregion
+#endregion
+#region Wave preview
 		lastH=(int)GUILayoutUtility.GetLastRect().height;
 		fullY=FullSize();
-		GUILayout.BeginArea(new Rect(x,y/2,x*7,y*9));
+		GUILayout.BeginArea(new Rect(x,EditorGUIUtility.singleLineHeight,x*7,y*9));
 			GUI.Box(new Rect(x/2,0,x*6.5f,y*9),"");
 			pos=GUI.BeginScrollView(new Rect(0,0,x*7,y*9f),pos,new Rect(new Rect(0,0,x*4f,fullY+lastH)),false,true);
 				counter=0;
@@ -133,32 +156,54 @@ public class WaveEditor : EditorWindow
 				entries.ForEach(DrawEntry);
 			GUI.EndScrollView();
 		GUILayout.EndArea();
+#endregion
+#region Wave Options
 		GUILayout.BeginArea(new Rect(x*8,y*8,x*2,y*2));
-			if(GUILayout.Button("Save")){
+			if(GUILayout.Button("Save") || GetKeyDown(KeyCode.S)){
 				world.wave=GetWave();
 				EditorUtility.SetDirty(world);
+				saveTime=0;
 			}
-			if(GUILayout.Button("Load"))Revert(world.wave);
+			if(GUILayout.Button("Load") || GetKeyDown(KeyCode.R)){
+				Revert(world.wave);
+				Repaint();
+				saveTime=0;
+			}
 		GUILayout.EndArea();
+#endregion
+#region Enemy Options
 		if(currentEnemy==null)return;
 		GUILayout.BeginArea(new Rect(x*8,y*6,x*2,y*2));
 			GUILayout.BeginHorizontal();
-				if(GUILayout.Button("<")){
+				if(GUILayout.Button("<") || GetKeyDown(KeyCode.LeftArrow)){
 					currentEnemy.position--;
 					if(currentEnemy.position<0) currentEnemy.position=19;
 					if(currentEnemy.id==-2)currentEnemy.sprite=world.drone.sprites[currentEnemy.position%3+1];
+					Repaint();
+					saveTime=EditorApplication.timeSinceStartup+2;
 				}
-				if(GUILayout.Button(">")){
+				if(GUILayout.Button(">") || GetKeyDown(KeyCode.RightArrow)){
 					currentEnemy.position++;
 					if(currentEnemy.position>19) currentEnemy.position=0;
 					if(currentEnemy.id==-2)currentEnemy.sprite=world.drone.sprites[currentEnemy.position%3+1];
+					Repaint();
+					saveTime=EditorApplication.timeSinceStartup+2;
 				}
 			GUILayout.EndHorizontal();
-			if(GUILayout.Button("X")){
+			if(GUILayout.Button("X") || GetKeyDown(KeyCode.X)){
 				currentEntry.enemies.Remove(currentEnemy);
 				currentEnemy=null;
+				Repaint();
 			}
 		GUILayout.EndArea();
+#endregion
+#region AutoSave
+		if(lastTime<saveTime && EditorApplication.timeSinceStartup>saveTime){
+			world.wave=GetWave();
+			EditorUtility.SetDirty(world);
+		}
+		lastTime=EditorApplication.timeSinceStartup;
+#endregion
 	}
 
 	void ShowSprite(Rect r,Rect c,Texture2D t)
@@ -170,7 +215,23 @@ public class WaveEditor : EditorWindow
 		rect.height/=t.height;
 		GUI.DrawTextureWithTexCoords(r,t,rect);
 	}
-
+	bool GetKey(KeyCode key){
+		return Event.current.keyCode==key;
+	}
+	bool GetKeyDown(KeyCode key){
+		if(Event.current.type==EventType.KeyDown)return GetKey(key);
+		return false;
+	}
+	void Add(int i){
+		if(i>=world.enemies.Length)return;
+		EnemyHelper eh=new EnemyHelper();
+		eh.id=i;
+		eh.sprite=world.enemies[i].sprites[0];
+		currentEntry.enemies.Add(eh);
+		currentEnemy=eh;
+		Repaint();
+		saveTime=EditorApplication.timeSinceStartup+2;
+	}
 	void DrawEntry(Entry en)
 	{
 
