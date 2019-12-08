@@ -41,18 +41,18 @@ public struct PlayerInput{
         recentDisconect=false;
         for(int i=0;i<players.Length;i++){
             if(players[i].conected){
-                if(Input.GetKeyDown(players[i].equip))DisConect(i);
+                if(Input.GetKeyDown(players[i].equip))DisConnected(i);
             }
             else{
-                if(Input.GetKeyDown(players[i].shoot))Conect(i);
+                if(Input.GetKeyDown(players[i].special))Connect(i);
             }
         }
     }
-    public static void DisConect(int i){
+    public static void DisConnected(int i){
         players[i].conected=false;
         recentDisconect=true;
     }
-    public static void Conect(int i){
+    public static void Connect(int i){
         players[i].conected=true;
         recentConect=true;
     }

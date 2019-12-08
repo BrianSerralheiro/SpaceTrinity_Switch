@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour 
 {
-	private int id;
+	private int id,playerID;
 	private bool set;
 	private SpriteRenderer _renderer;
 	private Sprite[] sprite=new Sprite[2];
@@ -13,18 +13,19 @@ public class ItemDrop : MonoBehaviour
 	void Start () 
 	{
 		dir =  new Vector3(Random.value,-2 - Random.value, 0);
-		Set(Random.Range(0 , 2));
+		//Set(Random.Range(0 , 2));
 	}
-	public void Set(int i)
+	public void Set(int i,int j)
 	{
 		if(set)return;
 		set=true;
 		id = i;
+		playerID=j;
 		_renderer= GetComponent<SpriteRenderer>();
-		_renderer.sprite = SpriteBase.I.item[id];
-		i=(id==2?id+(Ship.player2<0 || Random.value>0.5f?Ship.player1:Ship.player2):id)*2;
+		i=(id==2?2+(j==1?Ship.player2:Ship.player1):id)*2;
 		sprite[0] = SpriteBase.I.item[i];
 		sprite[1] = SpriteBase.I.item[i+1];
+		_renderer.sprite = sprite[0];
 		gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
 	}
 	void Update () 
@@ -41,7 +42,7 @@ public class ItemDrop : MonoBehaviour
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		Ship s = other.GetComponent<Ship>();
-		if (s != null)
+		if (s != null && (id<2 || s.input.id==playerID))
 		{
 			SoundManager.PlayEffects(21);
 			if(id == 0)

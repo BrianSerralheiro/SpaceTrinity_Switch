@@ -35,12 +35,19 @@ public class Drone : EnemyBase {
 		if(hp<=0 && !dropped)
 		{
 			dropped = true;
-			EnemySpawner.points[killerid]+=points;
+			EnemySpawner.points[killerid -1]+=points;
 			GameObject go = new GameObject("ItemDrop");
 			go.AddComponent<SpriteRenderer>();
 			ItemDrop item= go.AddComponent<ItemDrop>();
-			item.Set(id);
+			item.Set(id,0);
 			go.transform.position = transform.position;
+			if(id==2 && PlayerInput.Conected(1)){
+				go = new GameObject("ItemDrop");
+				go.AddComponent<SpriteRenderer>();
+				item= go.AddComponent<ItemDrop>();
+				item.Set(id,1);
+				go.transform.position = transform.position;
+			}
 		}
 	}
 }
