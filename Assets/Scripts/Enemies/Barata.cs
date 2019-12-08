@@ -13,7 +13,7 @@ public class Barata : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		damageEffect = true;
-		hp=500;
+		hp=1200;
 		GameObject go = new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
@@ -70,12 +70,11 @@ public class Barata : EnemyBase {
 				crystal.Add(Time.deltaTime);
 				rot.z=crystal.Value()*30;
 			}
+		if(charges>2 && vector.z<45)vector.z+=Time.deltaTime*15;
 		if(transform.position.y>Scaler.sizeY+3){
-			if(charges++>4){
+			if(charges++>2){
 				EnemySpawner.boss=true;
 				update=Spawning;
-				if(vector.z<45)vector.z+=Time.deltaTime*15;
-
 			}
 	    	else {
 				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
@@ -97,7 +96,7 @@ public class Barata : EnemyBase {
 		}else if(transform.position.y>Scaler.sizeY+3){
 				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
 				crystal.Set(0);
-				mouthRot.z=vector.z=0;
+				mouthRot.z=0;
 				spawns=0;
 				update=Charge;
 			}else {
