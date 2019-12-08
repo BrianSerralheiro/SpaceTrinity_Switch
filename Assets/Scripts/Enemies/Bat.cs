@@ -14,6 +14,7 @@ public class Bat : EnemyBase
 	{
 		explosionID = 9;
 		hp=10;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=20;
 		GameObject go=new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];

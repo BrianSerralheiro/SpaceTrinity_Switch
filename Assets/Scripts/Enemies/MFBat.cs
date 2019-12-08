@@ -13,6 +13,7 @@ public class MFBat : EnemyBase {
 	{
 		explosionID = 10;
 		hp=50;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=100;
 		shootId=ei.bulletsID[0];
 		if(bats==null)bats=ei.sprites;

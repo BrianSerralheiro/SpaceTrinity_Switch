@@ -14,6 +14,7 @@ public class Header : EnemyBase {
 	{
 		explosionID = 9;
 		hp=70;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=180;
 		GameObject go=new GameObject("eyes");
 		eyes=go.AddComponent<Core>().Set(ei.sprites[1],new Color(0.4f,0f,0f));

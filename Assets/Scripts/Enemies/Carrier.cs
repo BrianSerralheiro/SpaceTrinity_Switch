@@ -14,6 +14,7 @@ public class Carrier : EnemyBase {
 	{
 		explosionID=8;
 		hp=100;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 150;
 		legs=new Transform[6];
 		GameObject go = new GameObject("crystal");

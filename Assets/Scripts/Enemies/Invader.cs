@@ -11,6 +11,7 @@ public class Invader : EnemyBase {
 		points = 50;
 		explosionID = 10;
 		hp=30;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		shootId=ei.bulletsID[0];
 	}
 	void Shoot()

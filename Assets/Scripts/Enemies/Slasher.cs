@@ -11,6 +11,7 @@ public class Slasher : EnemyBase {
 		points = 120;
 		explosionID = 10;
 		hp=90;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 	}
 
 	new void Update()

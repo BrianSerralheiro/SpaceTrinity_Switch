@@ -14,7 +14,9 @@ public class Zapper : EnemyBase {
 		points = 150;
 		explosionID = 10;
 		hp=80;
-		GameObject go=new GameObject("zap");if(sprites==null){
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		GameObject go=new GameObject("zap");
+		if(sprites==null){
 			sprites=new Sprite[4];
 			sprites[0]=ei.sprites[1];
 			sprites[1]=ei.sprites[2];

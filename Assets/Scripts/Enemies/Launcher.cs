@@ -15,6 +15,7 @@ public class Launcher : EnemyBase {
 	{
 		points = 100;
 		hp=40;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		timer=5;
 		rocketSprite=ei.sprites[1];
 		burstSprite=ei.sprites[2];

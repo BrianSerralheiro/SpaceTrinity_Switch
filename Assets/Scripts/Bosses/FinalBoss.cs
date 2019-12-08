@@ -41,6 +41,7 @@ public class FinalBoss : EnemyBase {
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		hp=1600;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		screens=SpriteBase.I.screens;
 		GameObject go=new GameObject("screen");
 		screenren=go.AddComponent<SpriteRenderer>();

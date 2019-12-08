@@ -16,6 +16,7 @@ public class Diver : EnemyBase
 	{
 		explosionID=8;
 		hp=12;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 50;
 		if(legL)return;
 		GameObject go = new GameObject("legL");

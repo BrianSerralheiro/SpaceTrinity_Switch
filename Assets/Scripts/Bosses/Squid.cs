@@ -43,6 +43,7 @@ public class Squid : EnemyBase {
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		hp=1200;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go = new GameObject("enemy");
 		clawL=go.AddComponent<EnemyBase>();
 		clawL.SetHP(150);

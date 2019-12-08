@@ -22,6 +22,7 @@ public class Spider : EnemyBase {
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		hp=1000;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		trigger=gameObject.AddComponent<BoxCollider2D>();
 		trigger.isTrigger=true;
 		trigger.offset=Vector2.up*-5;

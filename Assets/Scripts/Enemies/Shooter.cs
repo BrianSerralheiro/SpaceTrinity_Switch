@@ -23,6 +23,7 @@ public class Shooter : EnemyBase
 	{
 		points = 100;
 		explosionID=8;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go = new GameObject("legL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		legL=go.transform;
@@ -58,7 +59,7 @@ public class Shooter : EnemyBase
 	{
 		base.Position(i);
 		position=i;
-		finalpoint=new Vector3((i*Scaler.sizeX/20-Scaler.sizeX/2)*0.9f,Scaler.sizeY/2,0);
+		finalpoint=new Vector3(i*Scaler.sizeX/20-Scaler.sizeX/2,Scaler.sizeY/2,0);
 		path=paths[i<10?i:(19-i)];
 	}
 	new void Update()

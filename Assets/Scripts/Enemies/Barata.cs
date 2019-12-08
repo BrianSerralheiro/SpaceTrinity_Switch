@@ -10,10 +10,13 @@ public class Barata : EnemyBase {
     Del update;
 	int charges,spawns;
 	private EnemyInfo div;
+	/*REMOVER AQUI*/float time;
 	public override void SetSprites(EnemyInfo ei)
 	{
+		/*REMOVER*/time=Time.time;
 		damageEffect = true;
 		hp=1200;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go = new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
@@ -70,10 +73,10 @@ public class Barata : EnemyBase {
 				crystal.Add(Time.deltaTime);
 				rot.z=crystal.Value()*30;
 			}
-		if(charges>2 && vector.z<45)vector.z+=Time.deltaTime*15;
 		if(transform.position.y>Scaler.sizeY+3){
 			if(charges++>2){
 				EnemySpawner.boss=true;
+				Debug.Log(Time.time-time);
 				update=Spawning;
 			}
 	    	else {
@@ -85,6 +88,7 @@ public class Barata : EnemyBase {
     }
 	void Spawning(){
 		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime*2,0);
+		if(charges>2 && vector.z<45)vector.z+=Time.deltaTime*15;
 		if(spawns<3){
 			timer+=Time.deltaTime;
 			rot.z=Mathf.PingPong(timer,1)*25;
@@ -142,6 +146,10 @@ public class Barata : EnemyBase {
 	{
 		update=Dying;
 		EnemySpawner.points[killerid]+=500;
+		foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+		{
+			collider.enabled=false;
+		}
 	}
 	public override void Position(int i)
 	{

@@ -34,6 +34,7 @@ public class Batzilla : EnemyBase {
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		hp=1800;
+		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go=new GameObject("body");
 		_renderer=go.AddComponent<SpriteRenderer>();
 		_renderer.sprite=ei.sprites[1];
