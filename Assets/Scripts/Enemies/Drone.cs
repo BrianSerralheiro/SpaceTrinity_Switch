@@ -11,7 +11,7 @@ public class Drone : EnemyBase {
 	private bool _right;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=40;
+		hp=1;
 	}
 	
 	// Update is called once per frame
