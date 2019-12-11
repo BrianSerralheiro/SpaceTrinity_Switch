@@ -40,6 +40,10 @@ public class Diver : EnemyBase
 		fallSpeed=-2.5f;
 		time=Time.time+5;
 	}
+	public override void Position(int i){
+		base.Position(i);
+		if(i<=0 || i>=19)time=0;
+	}
 	public void Fall(float f){
 		fallSpeed=f;
 	}
@@ -63,14 +67,12 @@ public class Diver : EnemyBase
 		if(time<Time.time)movement=Follow;
 	}
 	void Follow(){
-		if(transform.position.y>player.position.y){
-			Vector3 v=transform.position-player.position;
-			v.z=0;
-			v.Normalize();
-			transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*90f);
-		}
+		Vector3 v=transform.position-player.position;
+		v.z=0;
+		v.Normalize();
+		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*60f);
 		transform.Translate(0,-12*Time.deltaTime,0);
 		vector.Set(0,0,Mathf.PingPong(Time.time*150,45f));
-		if(transform.position.y<-Scaler.sizeY)Die();
+		if(transform.position.y<-Scaler.sizeY || transform.position.x<-Scaler.sizeX || transform.position.x>Scaler.sizeX)Die();
 	}
 }
