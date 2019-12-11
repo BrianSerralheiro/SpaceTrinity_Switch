@@ -40,6 +40,9 @@ public struct BulletPath
         if(b)v.x*=-1;
         return v;
     }
+    public Vector3 GetNode0(){
+        return nodes[0];
+    }
     private Vector3 GetNode(){
         return nodes[nodeID];
     }

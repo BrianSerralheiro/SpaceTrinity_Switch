@@ -89,6 +89,7 @@ public class Ship : MonoBehaviour {
 	{
 		if(immuneTime > 0) return;
 		if(col!=null && col.gameObject.name=="playerbullet") return;
+		if(col!=null && col.gameObject.name=="drone") return;
 		if(col!=null && col.otherCollider.name=="laser") return;
 		if(shielded)
 		{

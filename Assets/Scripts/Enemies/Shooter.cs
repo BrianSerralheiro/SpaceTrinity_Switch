@@ -78,11 +78,14 @@ public class Shooter : EnemyBase
 		if(finalpoint==transform.position)
 		{
 			movement=Shooting;
+			//transform.up=-path.GetNode0().normalized;
 		}
 		vector.Set(0,0,Mathf.PingPong(Time.time*80,45f));
 	}
 	void Shooting(){
-		transform.Rotate(Vector3.Cross(Vector3.down,transform.up)*Time.deltaTime*90f);
+		Vector3 v=path.GetNode0();
+		if(transform.position.x>0)v.x*=-1;
+		transform.Rotate(Vector3.Cross(v,transform.up)*Time.deltaTime*30f);
 		shoottimer-=Time.deltaTime;
 		if(shoottimer<-shotDelay) 
 		{

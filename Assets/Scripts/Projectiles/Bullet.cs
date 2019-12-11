@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour {
 	}
 	protected void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.collider.name!="laser" && col.gameObject.name!=owner && !pierce){
+		if(col.collider.name!="laser" && col.gameObject.name.Substring(0,3)!=owner.Substring(0,3) && !pierce){
 			Destroy(gameObject);
 		}
 	}

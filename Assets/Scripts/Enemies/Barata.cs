@@ -3,7 +3,7 @@
 public class Barata : EnemyBase {
 
 	private Transform wingL, wingR;
-	private float speed=4,timer,dir=0.5f;
+	private float speed=12,timer,dir=0.5f;
 	private Transform[] legs;
 	private Core crystal;
 	private Vector3 rot = Vector3.zero,vector=Vector3.zero,mouthRot=Vector3.zero;
@@ -20,18 +20,18 @@ public class Barata : EnemyBase {
 		GameObject go = new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
-		box.size = new Vector2(1.2f,4);
-		box.offset = new Vector2(0,-2f);
+		box.size = new Vector2(2.4f,8);
+		box.offset = new Vector2(0,-4f);
 		wingL=go.transform;
 		go = new GameObject("wingR");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		box = go.AddComponent<BoxCollider2D>();
-		box.size = new Vector2(1.2f,4);
-		box.offset = new Vector2(0,-2f);
+		box.size = new Vector2(2.4f,8);
+		box.offset = new Vector2(0,-4f);
 		wingR=go.transform;
 		wingL.parent=wingR.parent=transform;
-		wingL.localPosition=new Vector3(0.7f,1.9f,-0.1f);
-		wingR.localPosition=new Vector3(-0.7f,1.9f,-0.1f);
+		wingL.localPosition=new Vector3(1.4f,3.8f,-0.1f);
+		wingR.localPosition=new Vector3(-1.4f,3.8f,-0.1f);
 		legs=new Transform[12];
 		go = new GameObject("crystal");
 		crystal=go.AddComponent<Core>().Set(ei.sprites[15],new Color(0.4f,0f,0.4f));
@@ -42,21 +42,21 @@ public class Barata : EnemyBase {
 			legs[i-3]=go.transform;
 			go.transform.parent=transform;
 		}
-		legs[0].localPosition=new Vector3(-0.3f,2.5f,0.1f);
-		legs[1].localPosition=new Vector3(0.3f,2.5f,0.1f);
-		legs[2].localPosition=new Vector3(-0.55f,2.1f,0.1f);
-		legs[3].localPosition=new Vector3(0.55f,2.1f,0.1f);
-		legs[4].localPosition=new Vector3(-0.85f,1.5f,0.1f);
-		legs[5].localPosition=new Vector3(0.85f,1.5f,0.1f);
-		legs[6].localPosition=new Vector3(-1,0.65f,0.1f);
-		legs[7].localPosition=new Vector3(1,0.65f,0.1f);
-		legs[8].localPosition=new Vector3(-0.97f,-0.7f,0.1f);
-		legs[9].localPosition=new Vector3(0.97f,-0.7f,0.1f);
-		legs[10].localPosition=new Vector3(-0.4f,-2.4f,0.1f);
-		legs[11].localPosition=new Vector3(0.4f,-2.4f,0.1f);
+		legs[0].localPosition=new Vector3(-0.6f,5f,0.1f);
+		legs[1].localPosition=new Vector3(0.6f,5f,0.1f);
+		legs[2].localPosition=new Vector3(-1.1f,4.2f,0.1f);
+		legs[3].localPosition=new Vector3(1.1f,4.2f,0.1f);
+		legs[4].localPosition=new Vector3(-1.7f,3f,0.1f);
+		legs[5].localPosition=new Vector3(1.7f,3f,0.1f);
+		legs[6].localPosition=new Vector3(-2,1.3f,0.1f);
+		legs[7].localPosition=new Vector3(2,1.3f,0.1f);
+		legs[8].localPosition=new Vector3(-1.94f,-1.4f,0.1f);
+		legs[9].localPosition=new Vector3(1.94f,-1.4f,0.1f);
+		legs[10].localPosition=new Vector3(-0.8f,-4.8f,0.1f);
+		legs[11].localPosition=new Vector3(0.8f,-4.8f,0.1f);
 
 		crystal.transform.parent=transform;
-		crystal.transform.localPosition=new Vector3(0,0.1f,-0.01f);
+		crystal.transform.localPosition=new Vector3(0,0.2f,-0.01f);
         update=Intro;
 		div=(ei as CarrierInfo).spawnable;
 	}
@@ -76,7 +76,7 @@ public class Barata : EnemyBase {
 		if(transform.position.y>Scaler.sizeY+3){
 			if(charges++>2){
 				EnemySpawner.boss=true;
-				Debug.Log(Time.time-time);
+				/*REMOVER*/Debug.Log(Time.time-time);
 				update=Spawning;
 			}
 	    	else {
@@ -92,7 +92,7 @@ public class Barata : EnemyBase {
 		if(spawns<3){
 			timer+=Time.deltaTime;
 			rot.z=Mathf.PingPong(timer,1)*25;
-			if(timer>2)Spawn();
+			if(timer>1.2)Spawn();
 			if(transform.position.x>Scaler.sizeX/2-2)dir=-Mathf.Abs(dir);
 			if(transform.position.x<-Scaler.sizeX/2+2)dir=Mathf.Abs(dir);
 			transform.Translate(Time.deltaTime*speed*dir,0,0);

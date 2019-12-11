@@ -39,8 +39,15 @@ public class Drone : EnemyBase {
 			GameObject go = new GameObject("ItemDrop");
 			go.AddComponent<SpriteRenderer>();
 			ItemDrop item= go.AddComponent<ItemDrop>();
-			item.Set(id);
+			item.Set(id,0);
 			go.transform.position = transform.position;
+			if(id==2 && PlayerInput.Conected(1)){
+				go = new GameObject("ItemDrop");
+				go.AddComponent<SpriteRenderer>();
+				item= go.AddComponent<ItemDrop>();
+				item.Set(id,1);
+				go.transform.position = transform.position;
+			}
 		}
 	}
 }
