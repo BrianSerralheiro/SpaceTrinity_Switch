@@ -11,6 +11,8 @@ public class Drone : EnemyBase {
 	private bool _right;
 	public override void SetSprites(EnemyInfo ei)
 	{
+		GetComponent<SpriteRenderer>().sprite=ei.sprites[!PlayerInput.Conected(1) || Random.value>0.5?Ship.player1:Ship.player2];
+		ItemDrop.spriteId=ei.bulletsID[0];
 		hp=1;
 	}
 	
@@ -35,8 +37,7 @@ public class Drone : EnemyBase {
 		if(hp<=0 && !dropped)
 		{
 			dropped = true;
-			Debug.Log(killerid);
-			EnemySpawner.points[killerid]+=points;
+			EnemySpawner.points[killerid-1]+=points;
 			GameObject go = new GameObject("ItemDrop");
 			go.AddComponent<SpriteRenderer>();
 			ItemDrop item= go.AddComponent<ItemDrop>();

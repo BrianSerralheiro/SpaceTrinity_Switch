@@ -116,14 +116,4 @@ public class EnemySpawner : MonoBehaviour {
 		e.SetSprites(en);
 		return e;
 	}
-	EnemyBase Spawn<t>(Sprite sp)where t :EnemyBase
-	{
-		GameObject go=new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=sp;
-		go.AddComponent<BoxCollider2D>();
-		Rigidbody2D r= go.AddComponent<Rigidbody2D>();
-		r.isKinematic=true;
-		r.useFullKinematicContacts=true;
-		return go.AddComponent<t>();
-	}
 }

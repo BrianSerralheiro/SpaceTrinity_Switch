@@ -92,6 +92,24 @@ TextureImporter:
   - first:
       213: 21300058
     second: slash2
+  - first:
+      213: -3432510766057547977
+    second: gravity2
+  - first:
+      213: 9093520431398137231
+    second: gravity1
+  - first:
+      213: 2960262304862047585
+    second: magnet2
+  - first:
+      213: -3867618922712729204
+    second: magnet1
+  - first:
+      213: -9191097554748801488
+    second: drone_orange
+  - first:
+      213: 7721062393585546846
+    second: drone_purple
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -235,7 +253,7 @@ TextureImporter:
         serializedVersion: 2
         x: 837
         y: 1959
-        width: 282
+        width: 281
         height: 147
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -246,48 +264,6 @@ TextureImporter:
       bones: []
       spriteID: 42305410000000000800000000000000
       internalID: 21300004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 56248046_818265655201724_5374516714648109056_n_3
-      rect:
-        serializedVersion: 2
-        x: 338
-        y: 1932
-        width: 19
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62305410000000000800000000000000
-      internalID: 21300006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 56248046_818265655201724_5374516714648109056_n_4
-      rect:
-        serializedVersion: 2
-        x: 574
-        y: 1897
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82305410000000000800000000000000
-      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -658,7 +634,7 @@ TextureImporter:
         width: 115
         height: 113
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -679,7 +655,7 @@ TextureImporter:
         width: 113
         height: 117
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -700,7 +676,7 @@ TextureImporter:
         width: 116
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -721,7 +697,7 @@ TextureImporter:
         width: 105
         height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -742,7 +718,7 @@ TextureImporter:
         width: 107
         height: 106
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -763,7 +739,7 @@ TextureImporter:
         width: 109
         height: 109
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -779,12 +755,12 @@ TextureImporter:
       name: slash2
       rect:
         serializedVersion: 2
-        x: 1193
-        y: 1756
-        width: 112
-        height: 108
+        x: 1195
+        y: 1757
+        width: 107
+        height: 106
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -796,10 +772,136 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: gravity2
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 1762
+        width: 109
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1768075f5833f54291d314f61946e7b
+      internalID: -3432510766057547977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gravity1
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 1538
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3753e52e30a398a4db02e73dc2276c36
+      internalID: 9093520431398137231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magnet2
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 1758
+        width: 106
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e213a856f46bff749a0352c3599e8dad
+      internalID: 2960262304862047585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magnet1
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 1537
+        width: 106
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b23ae50e805afb479474d78872d2530
+      internalID: -3867618922712729204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drone_orange
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 1220
+        width: 273
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5a12f94c7c94e4fa28fba6f6f1e412
+      internalID: -9191097554748801488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drone_purple
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 1012
+        width: 277
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5a0f78f7a778b4595f2802b8ee2857
+      internalID: 7721062393585546846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 58039e6988a2c074ab26013f023a3df0
     internalID: 0
     vertices: []
     indices: 

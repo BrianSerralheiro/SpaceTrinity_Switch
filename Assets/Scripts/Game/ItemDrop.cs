@@ -9,7 +9,7 @@ public class ItemDrop : MonoBehaviour
 	private SpriteRenderer _renderer;
 	private Sprite[] sprite=new Sprite[2];
 	private Vector3 dir;
-
+	public static int spriteId;
 	void Start () 
 	{
 		dir =  new Vector3(Random.value,-2 - Random.value, 0);
@@ -23,8 +23,8 @@ public class ItemDrop : MonoBehaviour
 		playerID=j;
 		_renderer= GetComponent<SpriteRenderer>();
 		i=(id==2?2+(j==1?Ship.player2:Ship.player1):id)*2;
-		sprite[0] = SpriteBase.I.item[i];
-		sprite[1] = SpriteBase.I.item[i+1];
+		sprite[0] = Bullet.sprites[spriteId+i];
+		sprite[1] = Bullet.sprites[spriteId+i+1];
 		_renderer.sprite = sprite[0];
 		gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
 	}
