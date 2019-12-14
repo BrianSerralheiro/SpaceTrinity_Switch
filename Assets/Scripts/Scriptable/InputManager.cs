@@ -24,6 +24,18 @@ public struct PlayerInput{
         got=true;
         return this;
     }
+    public bool GetKeyDown(string s){
+        switch(s){
+            case "shoot":
+                return Input.GetKeyDown(shoot);
+            case "special":
+                return Input.GetKeyDown(special);
+            case "equip":
+                return Input.GetKeyDown(equip);
+            default:
+                return false;
+        }
+    }
     public static KeyCode GetKeyEquip(int i){
         if(i<players.Length)return players[i].equip;
         return KeyCode.None;

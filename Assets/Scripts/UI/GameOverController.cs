@@ -19,11 +19,9 @@ public class GameOverController : MonoBehaviour
 	private Text Stars;
 	[SerializeField]
 	private Continue cont;
-	public Sprite[] chars;
 	public Sprite[] panels;
 	[SerializeField]
 	private Graphic[] graphics;
-	private Color[] colors=new Color[]{Color.red,Color.blue,Color.green,Color.yellow,new Color(1,1,0,1),new Color(1,0,1,1)};
 	private static float Timer;
 
 	private static Ship ship;
@@ -59,28 +57,32 @@ public class GameOverController : MonoBehaviour
 		{
 			Timer-=Time.deltaTime;
 			color.a=(2f-Timer)/2f;
-			colors[Ship.player1].a=color.a;
+			PilotInfo.pilot[ship.input.id].color.a=color.a;
 			foreach(Graphic g in graphics)
 			{
 				g.color=color;
 			}
-			gameover.color=colors[Ship.player1];
+			gameover.color=PilotInfo.pilot[ship.input.id].color;
 			if(Timer<=0)gameoverDialog.gameObject.SetActive(true);
 		}
-		else if(charCount<fullText.Length)
-		{
-			charCount+=Time.deltaTime * 14;
-			if(gameoverTEXT.text.Length<Mathf.FloorToInt(charCount))gameoverTEXT.text=fullText.Substring(0,Mathf.FloorToInt(charCount));
+		else {
+			if(charCount<fullText.Length)
+			{
+				charCount+=Time.deltaTime * 14;
+				if(gameoverTEXT.text.Length<Mathf.FloorToInt(charCount))gameoverTEXT.text=fullText.Substring(0,Mathf.FloorToInt(charCount));
+			}
+			if(ship.input.GetKeyDown("shoot"))RevivePopUp();
+			if(ship.input.GetKeyDown("special"))QuitGame();
 		}
 
 	}
 	
 	void Enable () 
 	{
-		if(PlayerPrefs.GetInt("highscore") <= EnemySpawner.points[id])
+		if(PlayerPrefs.GetInt("highscore") <= EnemySpawner.points[ship.input.id])
 		{
 			highscore = true;
-			PlayerPrefs.SetInt("highscore", EnemySpawner.points[id]);
+			PlayerPrefs.SetInt("highscore", EnemySpawner.points[ship.input.id]);
 		}
 		else
 		{
@@ -90,8 +92,8 @@ public class GameOverController : MonoBehaviour
 		charCount = 0;
 		gameoverTEXT.text = "";
 		fullText = highscore ? DialogBox.GetText(5):DialogBox.GetText(6);
-		panel.sprite=panels[Ship.player1];
-		image.sprite=chars[Ship.player1 * 2 + (highscore ? 1:0)];
+		panel.sprite=panels[ship.ID()];
+		image.sprite=highscore ? PilotInfo.pilot[ship.input.id].happy:PilotInfo.pilot[ship.input.id].normal;
 		Score.text = EnemySpawner.points.ToString();
 		int cashStars = EnemySpawner.points[id] / 400;
 		EnemySpawner.points[id]=0;

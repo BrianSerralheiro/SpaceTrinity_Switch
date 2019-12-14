@@ -54,6 +54,7 @@ public class MenuSelect : MonoBehaviour
             lightsUP(selectionID, 1);
 			if(PlayerInput.Conected(1)){
 				selectionID2=Ship.player2;
+				if(selectionID==selectionID2)selectionID2=0;
 				lightsUP(selectionID2,1);
 			}
 		}
@@ -120,11 +121,27 @@ public class MenuSelect : MonoBehaviour
 	void Update()
     {
 		PlayerInput.WaitInput();
-		if(PlayerInput.recentConect && opt.selection==Menuoptions.SelectionType.Character && PlayerInput.Conected(1)){
-			selectionID2=Ship.player2;
-			lightsUP(selectionID2,1);
-			OnValueChanged2();
-			selector2?.gameObject.SetActive(PlayerInput.Conected(1));
+		if(opt.selection==Menuoptions.SelectionType.Character){
+			if(PlayerInput.recentConect && PlayerInput.Conected(1)){
+				selectionID2=Ship.player2;
+				if(selectionID2==selectionID)selectionID2++;
+				OnValueChanged2();
+				lightsUP(selectionID2,1);
+				selector2?.gameObject.SetActive(PlayerInput.Conected(1));
+			}else if(PlayerInput.recentDisconect && !PlayerInput.Conected(1)){
+				selector2?.gameObject.SetActive(PlayerInput.Conected(1));
+				if(p2confirm){
+					p2confirm=false;
+					options[selectionID2].transform.GetChild(2).gameObject.SetActive(false);
+					if(selected[1])
+					{
+						slots.Add(selected[1]);
+						selected[1]=null;
+					}
+				}
+				lightsUP(selectionID2,0.5f);
+				OnValueChanged2();
+			}
 		}
 		update?.Invoke();
 	}
@@ -313,10 +330,22 @@ public class MenuSelect : MonoBehaviour
 	}
 	void CheckSelection()
 	{
-		if(selectionID>=options.Length)selectionID-=options.Length;
-		if(selectionID2>=options.Length)selectionID2-=options.Length;
-		if(selectionID<0)selectionID+=options.Length;
-		if(selectionID2<0)selectionID2+=options.Length;
+		if(selectionID>=options.Length){
+			selectionID-=options.Length;
+			if(selectionID2==selectionID)selectionID++;
+		}
+		if(selectionID2>=options.Length){
+			selectionID2-=options.Length;
+			if(selectionID2==selectionID)selectionID2++;
+		}
+		if(selectionID<0){
+			selectionID+=options.Length;
+			if(selectionID2==selectionID)selectionID--;
+		}
+		if(selectionID2<0){
+			selectionID2+=options.Length;
+			if(selectionID2==selectionID)selectionID2--;
+		}
 	}
 	void CheckSkins()
 	{

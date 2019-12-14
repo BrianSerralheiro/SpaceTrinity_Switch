@@ -130,6 +130,9 @@ public class Ship : MonoBehaviour {
 		else hp++;
 		InGame_HUD.shipHealth[input.id]=(float)hp/(float)maxhp;
 	}
+	public int ID(){
+		return id;
+	}
 	void Update()
 	{
 		if(paused)
