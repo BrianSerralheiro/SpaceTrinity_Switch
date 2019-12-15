@@ -15,7 +15,7 @@ public class Barata : EnemyBase {
 	{
 		/*REMOVER*/time=Time.time;
 		damageEffect = true;
-		hp=1200;
+		hp=700;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go = new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];

@@ -13,7 +13,7 @@ public class Carrier : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		explosionID=8;
-		hp=100;
+		hp=75;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 150;
 		legs=new Transform[6];
