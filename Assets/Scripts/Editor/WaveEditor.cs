@@ -134,6 +134,7 @@ public class WaveEditor : EditorWindow
 			counter=entries.IndexOf(currentEntry)+1;
 			currentEntry=new Entry();
 			currentEntry.timer=5;
+			currentEnemy=null;
 			entries.Insert(counter,currentEntry);
 			saveTime=EditorApplication.timeSinceStartup+2;
 		}
@@ -248,8 +249,13 @@ public class WaveEditor : EditorWindow
 			currentEnemy=null;
 		}
 		GUI.color=Color.white;
+		for (int i = 0; i < 20; i++)
+		{
+			GUI.Box(new Rect(i*xw+x2,fullY-tempY,xw,y2),"");
+		}
 		foreach(EnemyHelper eh in en.enemies)
 		{
+			GUI.Label(new Rect(eh.position*xw+x2,fullY-tempY+y2,xw,y2),eh.position.ToString());
 			if(GUI.Button(new Rect(eh.position*xw+x2,fullY-tempY,xw,y2),""))
 			{
 				currentEnemy=eh;
@@ -262,28 +268,6 @@ public class WaveEditor : EditorWindow
 			ShowSprite(new Rect(eh.position*xw+x2,fullY-tempY,xw,y2),eh.sprite.rect,eh.sprite.texture);
 		}
 		tempY+=lastH;
-/*
-		if(currentEntry==en) GUI.color=Color.green;
-		if(GUILayout.Button("Entry "+counter++,GUILayout.Width(x/2))){
-			currentEntry=en;
-			currentEnemy=null;
-		}
-		GUI.color=Color.white;
-		foreach(EnemyHelper eh in en.enemies)
-		{
-			if(GUI.Button(new Rect(eh.position*x/5+x*0.6f,GUILayoutUtility.GetLastRect().y,x/10,y/2),"")){
-				currentEnemy=eh;
-				currentEntry=en;
-			}
-			GUI.color=Color.cyan;
-			if(eh==currentEnemy)GUI.Box(new Rect(eh.position*x/5+x*0.6f,GUILayoutUtility.GetLastRect().y,x/10,y/2),"");
-			GUI.color=Color.white;
-
-			ShowSprite(new Rect(eh.position*x/5+x*0.6f,GUILayoutUtility.GetLastRect().y,x/10,y/2),eh.sprite.rect,eh.sprite.texture);
-		}
-		GUILayout.Space(en.timer*y/10);
-		GUILayout.Label(en.timer/10+"."+(en.timer%10));
-*/
 	}
 	int FullSize()
 	{

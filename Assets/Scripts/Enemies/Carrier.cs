@@ -44,19 +44,15 @@ public class Carrier : EnemyBase {
 		base.Update();
 		transform.Translate(0,-Time.deltaTime * 2,0);
 		timer+=Time.deltaTime;
-		if(timer>=1 && !diver)Spawn();
-		if(diver && timer<2)
+		if(timer<0)crystal.Min(Time.deltaTime);
+		else  if(timer<2)
 		{
-			diver.transform.localPosition=Vector3.up*1.3f+Vector3.up*4f*(timer-1)+Vector3.forward*0.1f;
-			crystal.Set(Mathf.Clamp(timer-1,0,1));
+			crystal.Add(Time.deltaTime*2);
 		}
-		if(timer>2)
+		else 
 		{
-			diver.enabled=true;
-			diver.transform.parent=null;
-			diver=null;
+			Spawn();
 			timer =-1;
-			crystal.Set(0);
 		}
 		vector.Set(0,0,Mathf.PingPong(Time.time*50,45f));
 		legs[0].localEulerAngles=vector;
@@ -77,13 +73,11 @@ public class Carrier : EnemyBase {
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
 		diver =go.AddComponent<Diver>();
-		diver.enabled=false;
 		diver.SetSprites(div);
 		diver.Fall(2);
 		diver.SetTimer(1.4f);
-		diver.transform.position=transform.position;
+		diver.transform.position=transform.position+new Vector3(0,5.3f,0.5f);
 		diver.transform.rotation=transform.rotation;
-		diver.transform.parent=transform;
 	}
 	protected override void Die()
 	{

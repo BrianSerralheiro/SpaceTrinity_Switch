@@ -43,7 +43,7 @@ public class Diver : EnemyBase
 	public override void Position(int i)
 	{
 		base.Position(i);
-		if(i%2 == 1)time=0;
+		if(i>9?(i%2 == 1):(i%2==0))time=0;
 	}
 
 	public void SetTimer(float f)
