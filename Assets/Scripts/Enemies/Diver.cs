@@ -40,11 +40,19 @@ public class Diver : EnemyBase
 		fallSpeed=-2.5f;
 		time=Time.time+5;
 	}
-	public override void Position(int i){
+	public override void Position(int i)
+	{
 		base.Position(i);
-		if(i<=0 || i>=19)time=0;
+		if(i%2 == 1)time=0;
 	}
-	public void Fall(float f){
+
+	public void SetTimer(float f)
+	{
+		time=Time.time+f;
+	}
+
+	public void Fall(float f)
+	{
 		fallSpeed=f;
 	}
 	new void Update()
@@ -71,7 +79,7 @@ public class Diver : EnemyBase
 		v.z=0;
 		v.Normalize();
 		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*60f);
-		transform.Translate(0,-12*Time.deltaTime,0);
+		transform.Translate(0,-9*Time.deltaTime,0);
 		vector.Set(0,0,Mathf.PingPong(Time.time*150,45f));
 		if(transform.position.y<-Scaler.sizeY || transform.position.x<-Scaler.sizeX || transform.position.x>Scaler.sizeX)Die();
 	}

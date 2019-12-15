@@ -26,7 +26,7 @@ public class HomingGun : Gun
 		go.AddComponent<BoxCollider2D>();
 		CircleCollider2D col=go.AddComponent<CircleCollider2D>();
         col.isTrigger=true;
-        col.radius=10;
+        col.radius=5;
 		Homing bull= go.AddComponent<Homing>();
 		bull.owner=transform.parent.name;
 		bull.damage=damage;

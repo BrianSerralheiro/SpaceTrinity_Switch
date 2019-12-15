@@ -42,7 +42,7 @@ public class Carrier : EnemyBase {
 	{
 		if(Ship.paused) return;
 		base.Update();
-		transform.Translate(0,-Time.deltaTime,0);
+		transform.Translate(0,-Time.deltaTime * 2,0);
 		timer+=Time.deltaTime;
 		if(timer>=1 && !diver)Spawn();
 		if(diver && timer<2)
@@ -79,6 +79,8 @@ public class Carrier : EnemyBase {
 		diver =go.AddComponent<Diver>();
 		diver.enabled=false;
 		diver.SetSprites(div);
+		diver.Fall(2);
+		diver.SetTimer(1.4f);
 		diver.transform.position=transform.position;
 		diver.transform.rotation=transform.rotation;
 		diver.transform.parent=transform;

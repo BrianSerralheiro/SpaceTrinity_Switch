@@ -167,6 +167,7 @@ public class Barata : EnemyBase {
 		r.useFullKinematicContacts=true;
 		Diver diver=go.AddComponent<Diver>();
 		diver.SetSprites(div);
+		diver.SetTimer(0);
 		diver.transform.position=transform.position;
 		diver.transform.rotation=transform.rotation;
 	}
