@@ -102,7 +102,7 @@ public class WaveEditor : EditorWindow
 					{
 						EnemyHelper eh=new EnemyHelper();
 						eh.id=-2;
-						eh.sprite=world.drone.sprites[1];
+						eh.sprite=world.drone.bullets[0];
 						currentEntry.enemies.Add(eh);
 						currentEnemy=eh;
 						Repaint();
@@ -178,14 +178,14 @@ public class WaveEditor : EditorWindow
 				if(GUILayout.Button("<") || GetKeyDown(KeyCode.LeftArrow)){
 					currentEnemy.position--;
 					if(currentEnemy.position<0) currentEnemy.position=19;
-					if(currentEnemy.id==-2)currentEnemy.sprite=world.drone.sprites[currentEnemy.position%3+1];
+					if(currentEnemy.id==-2)currentEnemy.sprite=world.drone.bullets[currentEnemy.position%3*2];
 					Repaint();
 					saveTime=EditorApplication.timeSinceStartup+2;
 				}
 				if(GUILayout.Button(">") || GetKeyDown(KeyCode.RightArrow)){
 					currentEnemy.position++;
 					if(currentEnemy.position>19) currentEnemy.position=0;
-					if(currentEnemy.id==-2)currentEnemy.sprite=world.drone.sprites[currentEnemy.position%3+1];
+					if(currentEnemy.id==-2)currentEnemy.sprite=world.drone.bullets[currentEnemy.position%3*2];
 					Repaint();
 					saveTime=EditorApplication.timeSinceStartup+2;
 				}
@@ -344,7 +344,7 @@ public class WaveEditor : EditorWindow
 					subBossHelper=enemy;
 					subEntry=entry;
 				}else if(s[i]=='.'){
-					enemy.sprite=world.drone.sprites[enemy.position%3+1];
+					enemy.sprite=world.drone.bullets[enemy.position%3*2];
 					enemy.id=-2;
 				}else{
 					enemy.sprite=world.enemies[j].sprites[0];
