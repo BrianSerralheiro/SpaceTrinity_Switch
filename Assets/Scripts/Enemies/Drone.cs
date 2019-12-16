@@ -14,6 +14,7 @@ public class Drone : EnemyBase {
 		GetComponent<SpriteRenderer>().sprite=ei.sprites[!PlayerInput.Conected(1) || Random.value>0.5?Ship.player1:Ship.player2];
 		ItemDrop.spriteId=ei.bulletsID[0];
 		hp=1;
+		name="drone";
 	}
 	
 	// Update is called once per frame

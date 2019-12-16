@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour {
 	[TextArea]
 	public string wave;
 	public static int[] points=new int[2];
-	public static bool boss;
+	public static bool boss,freeze;
 	private int counter;
 	public float timer;
 	private int scroll=60;
@@ -46,6 +46,7 @@ public class EnemySpawner : MonoBehaviour {
 		if(!world)world=world1;
 		if(!world.Boss)enabled=false;
 		boss = false;
+		freeze=false;
 		FinalBoss.last=false;
 		SoundManager.Play(1);
 		bg.mainTexture=world.bgs[0];
@@ -77,7 +78,7 @@ public class EnemySpawner : MonoBehaviour {
 		if(counter>=world.wave.Length && !boss)Spawn(world.Boss).Position(0);
 		if(timer>0 && !boss) timer-=Time.deltaTime;
 		Vector2 v= bg.mainTextureOffset;
-		v.y+=Time.deltaTime/world.scroll;
+		if(!freeze)v.y+=Time.deltaTime/world.scroll;
 		if(world.loopWorld)
 			{if(v.y>1) v.y-=1;}
 		else

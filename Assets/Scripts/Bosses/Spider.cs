@@ -3,17 +3,17 @@
 public class Spider : EnemyBase {
 
 	private Transform back,bitting;
-	private float speed=4,timer;
+	private float speed=5,timer;
 	private int charges,spawns;
 	private Transform[] legs;
 	private Core crystal,headCrystal;
 	private Spiderling diver;
 	private EnemyInfo spiderling,info;
 	private Vector3[] rot;
-	private BoxCollider2D trigger;
 	private Transform[] webs;
 	Del update;
-	private Vector3 vector = new Vector3(),dir=Vector3.right;
+	private Vector3 vector = new Vector3();
+	private float dir=1;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		info=ei;
@@ -21,14 +21,17 @@ public class Spider : EnemyBase {
 		SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;
+		BoxCollider2D collider2D=GetComponent<BoxCollider2D>();
+		collider2D.size=new Vector2(3.7f,9);
 		hp=1000;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
-		trigger=gameObject.AddComponent<BoxCollider2D>();
+		BoxCollider2D trigger=gameObject.AddComponent<BoxCollider2D>();
 		trigger.isTrigger=true;
 		trigger.offset=Vector2.up*-5;
 		trigger.size=Vector2.one*2;
 		update=Building;
 		spiderling=((CarrierInfo)ei).spawnable;
+		EnemySpawner.freeze=true;
 	}
 
 	void Building(){
@@ -133,19 +136,19 @@ public class Spider : EnemyBase {
 		rot[11].z=35;
 		for (int i = 0; i < webs.Length; i++)
 		{
-			webs[i].localScale=Vector3.MoveTowards(webs[i].localScale,new Vector3(1,4),Time.deltaTime*8);
+			webs[i].localScale=Vector3.MoveTowards(webs[i].localScale,new Vector3(1,2),Time.deltaTime*8);
 		}
 		if(transform.position.y<Scaler.sizeY/4)update=Charge;
 	}
 	void Charge(){
-		headCrystal.Min(Time.deltaTime);
+		// headCrystal.Min(Time.deltaTime);
 		if(timer>0){
 			timer-=Time.deltaTime;
 			if(transform.position.y<Scaler.sizeY)transform.Translate(0,Time.deltaTime*speed,0);
-			if((int)Time.time%5==0)dir.x*=-1;
-			if(transform.position.x<-Scaler.sizeX/2+2)dir.x=1;
-			if(transform.position.x>Scaler.sizeX/2-2)dir.x=-1;
-			transform.Translate(dir.x*Time.deltaTime,0,0);
+			if((int)Time.time%5==0)dir*=-1;
+			if(transform.position.x<-Scaler.sizeX/2+2)dir=1;
+			if(transform.position.x>Scaler.sizeX/2-2)dir=-1;
+			transform.Translate(dir*Time.deltaTime,0,0);
 			rot[0].z=Mathf.Sin(Time.time*4)*-15f-15;
 			rot[1].z=Mathf.Sin(Time.time*4+60)*15+15;
 			rot[2].z=Mathf.Sin(Time.time*4)*-20-20;
@@ -164,8 +167,8 @@ public class Spider : EnemyBase {
 			rot[3].z=Mathf.Cos(Time.time*10+45)*30;
 			rot[4].z=Mathf.Cos(Time.time*10)*-30-30;
 			rot[5].z=Mathf.Cos(Time.time*10+90)*30+30;
-			if(rot[6].z>-25f)rot[6].z=rot[8].z+=Time.deltaTime*20f;
-			rot[7].z=rot[8].z=-rot[6].z;
+			if(rot[6].z<25f)rot[6].z=rot[8].z-=Time.deltaTime*20f;
+			rot[7].z=rot[9].z=-rot[6].z;
 			headCrystal.Add(Time.deltaTime*2);
 		}
 		if(transform.position.y<-Scaler.sizeY+4){
@@ -203,7 +206,6 @@ public class Spider : EnemyBase {
 	}
 	void Spawning(){
 		headCrystal.Min(Time.deltaTime);
-		transform.Translate(-transform.position*Time.deltaTime);
 		rot[6].z=Mathf.PingPong(timer,1)*25f;
 		rot[7].z=-rot[6].z;
 		rot[8].z=Mathf.PingPong(timer,1)*15f;
@@ -213,7 +215,7 @@ public class Spider : EnemyBase {
 		back.localScale=new Vector3(0.8f+Mathf.PingPong(timer,1)*0.1f,1);
 		crystal.Set(Mathf.PingPong(timer,1));
 		if(timer>0)timer-=Time.deltaTime;
-		else Spawn(spawns);
+		else Spawn();
 		if(spawns>4){
 			update=Charge;
 			back.localScale=Vector3.one;
@@ -221,7 +223,9 @@ public class Spider : EnemyBase {
 		}
 	}
 	void Dying(){
-		ParticleManager.Emit(0,transform.position+Random.onUnitSphere,1);
+		timer-=Time.deltaTime;
+		if(timer<0)Loader.Scene("SelectionTest");
+		ParticleManager.Emit(0,transform.position+Random.onUnitSphere*2,1);
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -246,9 +250,10 @@ public class Spider : EnemyBase {
 	protected override void Die()
 	{
 		update=Dying;
+		timer=3;
 		EnemySpawner.points[killerid]+=1000;
 	}
-	void Spawn(int i)
+	void Spawn()
 	{
 		spawns++;
 		timer=2;
@@ -260,7 +265,7 @@ public class Spider : EnemyBase {
 		r.useFullKinematicContacts=true;
 		Spiderling ling=go.AddComponent<Spiderling>();
 		ling.SetSprites(spiderling);
-		ling.MoveTo(webs[i]);
+		ling.MoveTo(webs[Random.Range(0,webs.Length)]);
 		ling.transform.position=back.position+Vector3.up*3-Vector3.back*0.2f;
 	}
 	public override void Position(int i)
