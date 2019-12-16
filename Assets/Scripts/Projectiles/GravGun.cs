@@ -38,6 +38,7 @@ public class GravGun : Gun
 		bull.pierce=false;
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
+        bull.bulleSpeed=bulletSpeed;
         bull.Size((int)(timer/(level/2f)));
 
 		go.transform.position=transform.position;

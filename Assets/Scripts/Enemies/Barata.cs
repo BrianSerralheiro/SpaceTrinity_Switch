@@ -66,21 +66,21 @@ public class Barata : EnemyBase {
 		if(transform.position.y<0)update=Charge;
     }
     void Charge(){
-        if(transform.position.y<-Scaler.sizeY-1)transform.Translate(0,Time.deltaTime,0);
+        if(transform.position.y<-Scaler.sizeY-1)transform.Translate(0,Time.deltaTime*speed/4,0);
         else if(mouthRot.z<45)mouthRot.z+=30*Time.deltaTime;
 			else {
 				transform.Translate(0,Time.deltaTime*speed,0);
 				crystal.Add(Time.deltaTime);
 				rot.z=crystal.Value()*30;
 			}
-		if(transform.position.y>Scaler.sizeY+3){
+		if(transform.position.y>Scaler.sizeY+5){
 			if(charges++>2){
 				EnemySpawner.boss=true;
 				/*REMOVER*/Debug.Log(Time.time-time);
 				update=Spawning;
 			}
 	    	else {
-				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
+				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-8);
 				crystal.Set(0);
 				mouthRot.z=rot.z=0;
 			}
@@ -97,8 +97,8 @@ public class Barata : EnemyBase {
 			if(transform.position.x<-Scaler.sizeX/2+2)dir=Mathf.Abs(dir);
 			transform.Translate(Time.deltaTime*speed*dir,0,0);
 			crystal.Set(timer/2);
-		}else if(transform.position.y>Scaler.sizeY+3){
-				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-5);
+		}else if(transform.position.y>Scaler.sizeY+5){
+				transform.position=new Vector3(Random.Range(-Scaler.sizeX,Scaler.sizeX)/2,-Scaler.sizeY-8);
 				crystal.Set(0);
 				mouthRot.z=0;
 				spawns=0;
@@ -113,7 +113,7 @@ public class Barata : EnemyBase {
 		transform.Translate(0,-Time.deltaTime*3,0,Space.World);
 		transform.Rotate(0,0,Time.deltaTime*3);
 		ParticleManager.Emit(8,(Vector3)Random.insideUnitCircle*2+transform.position,1);
-		if(transform.position.y<-Scaler.sizeY-4){
+		if(transform.position.y<-Scaler.sizeY-5){
 			Destroy(gameObject);
 			EnemySpawner.boss=false;
 			SoundManager.Play(3);

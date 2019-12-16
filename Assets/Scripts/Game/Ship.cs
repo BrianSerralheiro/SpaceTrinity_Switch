@@ -125,10 +125,10 @@ public class Ship : MonoBehaviour {
 	}
 	public void Shield()
 	{
-		if(hp==maxhp)
+		// if(hp==maxhp)
 			shielded=true;
-		else hp++;
-		InGame_HUD.shipHealth[input.id]=(float)hp/(float)maxhp;
+		// else hp++;
+		// InGame_HUD.shipHealth[input.id]=(float)hp/(float)maxhp;
 	}
 	public int ID(){
 		return id;

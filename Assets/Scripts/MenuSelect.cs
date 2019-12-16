@@ -332,7 +332,7 @@ public class MenuSelect : MonoBehaviour
 	{
 		if(selectionID>=options.Length){
 			selectionID-=options.Length;
-			if(selectionID2==selectionID)selectionID++;
+			if(PlayerInput.Conected(1) && selectionID2==selectionID)selectionID++;
 		}
 		if(selectionID2>=options.Length){
 			selectionID2-=options.Length;
@@ -340,7 +340,7 @@ public class MenuSelect : MonoBehaviour
 		}
 		if(selectionID<0){
 			selectionID+=options.Length;
-			if(selectionID2==selectionID)selectionID--;
+			if(PlayerInput.Conected(1) && selectionID2==selectionID)selectionID--;
 		}
 		if(selectionID2<0){
 			selectionID2+=options.Length;

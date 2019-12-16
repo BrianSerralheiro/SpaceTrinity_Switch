@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour {
 	[SerializeField]
 	protected int damage=1;
 	[SerializeField]
+	public float bulletSpeed=12.5f;
+	[SerializeField]
 	protected bool pierce;
 
 	[SerializeField]
@@ -40,6 +42,7 @@ public class Gun : MonoBehaviour {
 		bull.pierce=pierce;
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
+		bull.bulleSpeed=bulletSpeed;
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
 	}

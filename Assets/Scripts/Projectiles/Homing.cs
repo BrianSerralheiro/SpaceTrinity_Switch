@@ -24,7 +24,7 @@ public class Homing : Bullet
         else {
             timer-=Time.deltaTime;
         }
-		transform.Translate(0,Time.deltaTime*10,0);
+		transform.Translate(0,Time.deltaTime*bulleSpeed,0);
 		if(timer<=0 || transform.position.x<-Scaler.sizeX-4 || transform.position.x>Scaler.sizeX+4 || transform.position.y<-Scaler.sizeY-4 || transform.position.y>Scaler.sizeY+4) Destroy(gameObject);
     }
     void OnTriggerExit2D(Collider2D col)

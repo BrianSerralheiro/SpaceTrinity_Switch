@@ -33,7 +33,7 @@ public class HomingGun : Gun
 		bull.pierce=pierce;
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
-
+		bull.bulleSpeed=bulletSpeed;
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
     }
