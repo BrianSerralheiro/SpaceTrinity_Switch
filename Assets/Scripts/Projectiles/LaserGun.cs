@@ -2,7 +2,7 @@
 
 public class LaserGun : Gun {
 	[SerializeField]
-	private int ticks;
+	private int damageByLevel,ticks;
 	private float second,half;
 	[SerializeField]
 	private Texture[] lasers;
@@ -55,6 +55,7 @@ public class LaserGun : Gun {
 			v.x=i;
 			col.size=v;
 			level=i;
+			transform.parent.GetComponent<Bullet>().damage=damage+damageByLevel*(i-1);
 		}
 	}
 	void Update()

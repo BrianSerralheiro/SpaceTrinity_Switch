@@ -5,6 +5,7 @@ public class GravBullet : Bullet
     private static int count=6;
     private int size;
     private delegate void Del();
+    public int sizeDamage;
     Del update;
     void Update()
     {
@@ -17,7 +18,7 @@ public class GravBullet : Bullet
     public void Size(int i){
         size=i;
         pierce=i>0;
-        damage+=i*20;
+        damage+=i*sizeDamage;
         BoxCollider2D c=GetComponent<BoxCollider2D>();
         Vector2 v2=c.size;
         switch(i){
