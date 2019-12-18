@@ -4,7 +4,7 @@ public class Spider : EnemyBase {
 
 	private Transform back,bitting;
 	private float speed=5,timer;
-	private int charges,spawns;
+	private int charges,spawns,webshot;
 	private Transform[] legs;
 	private Core crystal,headCrystal;
 	private Spiderling diver;
@@ -32,6 +32,7 @@ public class Spider : EnemyBase {
 		update=Building;
 		spiderling=((CarrierInfo)ei).spawnable;
 		EnemySpawner.freeze=true;
+		webshot=ei.bulletsID[0];
 	}
 
 	void Building(){
@@ -255,7 +256,7 @@ public class Spider : EnemyBase {
 	}
 	void Spawn()
 	{
-		spawns++;
+		if(spawns++==0)Shoot();
 		timer=2;
 		GameObject go=new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=spiderling.sprites[0];
@@ -267,6 +268,11 @@ public class Spider : EnemyBase {
 		ling.SetSprites(spiderling);
 		ling.MoveTo(webs[Random.Range(0,webs.Length)]);
 		ling.transform.position=back.position+Vector3.up*3-Vector3.back*0.2f;
+	}
+	void Shoot(){
+		GameObject go=new GameObject("webshot");
+		go.transform.position=back.position+Vector3.up*4;
+		go.AddComponent<WebShot>().Set(webshot,(player.position-(back.position+Vector3.up*4)).normalized*10,16,8,3,1,name);
 	}
 	public override void Position(int i)
 	{

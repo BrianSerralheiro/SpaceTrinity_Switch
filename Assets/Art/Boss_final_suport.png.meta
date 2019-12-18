@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: -4876095292792960751
     second: spiderling leg4
+  - first:
+      213: 6380548863226655934
+    second: webshot1
+  - first:
+      213: -7456835138536416955
+    second: webshot2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -128,10 +134,10 @@ TextureImporter:
       name: spiderling
       rect:
         serializedVersion: 2
-        x: 646
-        y: 397
-        width: 74
-        height: 139
+        x: 349
+        y: 385
+        width: 86
+        height: 162
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,12 +155,12 @@ TextureImporter:
       name: spiderling leg1
       rect:
         serializedVersion: 2
-        x: 839
-        y: 314
-        width: 60
-        height: 36
+        x: 570
+        y: 528
+        width: 73
+        height: 56
       alignment: 9
-      pivot: {x: 0.05, y: 0.3}
+      pivot: {x: 0.05, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +176,12 @@ TextureImporter:
       name: spiderling leg2
       rect:
         serializedVersion: 2
-        x: 720
-        y: 250
-        width: 51
-        height: 44
+        x: 670
+        y: 420
+        width: 54
+        height: 77
       alignment: 9
-      pivot: {x: 0.07, y: 0.65}
+      pivot: {x: 0.07, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +197,12 @@ TextureImporter:
       name: spiderling leg3
       rect:
         serializedVersion: 2
-        x: 835
-        y: 137
-        width: 34
-        height: 58
+        x: 597
+        y: 347
+        width: 44
+        height: 80
       alignment: 9
-      pivot: {x: 0.15, y: 0.92}
+      pivot: {x: 0.25, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +218,12 @@ TextureImporter:
       name: spiderling leg4
       rect:
         serializedVersion: 2
-        x: 800
-        y: 53
-        width: 17
-        height: 54
+        x: 527
+        y: 321
+        width: 32
+        height: 79
       alignment: 9
-      pivot: {x: 0.3, y: 0.9}
+      pivot: {x: 0.45, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,6 +231,48 @@ TextureImporter:
       bones: []
       spriteID: 02961a0c27f9b5b4bb1c1d6e886a40d8
       internalID: -4876095292792960751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: webshot1
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 587
+        width: 162
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3cbe24f3d50104291eef12d3fdb8a9
+      internalID: 6380548863226655934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: webshot2
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 580
+        width: 167
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 503b587dca56dc4478860c7aa454ff5f
+      internalID: -7456835138536416955
       vertices: []
       indices: 
       edges: []
