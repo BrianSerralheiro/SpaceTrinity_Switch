@@ -10,6 +10,7 @@ public class WorldInfo : ScriptableObject
 	public bool loopWorld=true;
 	public float scroll=60;
 	public EnemyInfo Boss;
+	public Sprite bossFace;
 	public EnemyInfo drone;
 	[HideInInspector]
 	public string songName;

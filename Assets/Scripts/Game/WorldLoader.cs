@@ -11,6 +11,8 @@ public class WorldLoader : MonoBehaviour
     [SerializeField]
     private Text text;
     [SerializeField]
+    private Image boss;
+    [SerializeField]
     private HUDInfo[] HUDs;
     [SerializeField]
     private PilotInfo[] pilots;
@@ -27,10 +29,12 @@ public class WorldLoader : MonoBehaviour
         if(Ship.skinID[Ship.player1]>-1)Ship.skins[0]=skins[Ship.player1 * 3 + Ship.skinID[Ship.player1]];
         if(Ship.skinID[Ship.player2]>-1)Ship.skins[1]=skins[Ship.player2 * 3 + Ship.skinID[Ship.player2]];
         PlayerInput.Unload();
+        boss.sprite=EnemySpawner.world.bossFace;
     }
     void Update()
     {
         update?.Invoke();
+        boss.transform.Translate(-Time.deltaTime*200,0,0);
         text.text = "Loading";
         for (int i = 0; i < Mathf.CeilToInt(Time.time * 3 % 3); i++)
         {
