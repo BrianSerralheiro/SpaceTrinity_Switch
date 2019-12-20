@@ -19,7 +19,8 @@ public class HomingGun : Gun
 	}
     public override void Shoot()
 	{
-        if(!gameObject.activeSelf)return;
+        if(!gameObject.activeSelf || shotTimer > 0)return;
+		shotTimer = fireRate;
 		ParticleManager.Emit(17,transform.position,1);
 		GameObject go=new GameObject("playerbullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId+((int)Time.time%4)];

@@ -29,7 +29,8 @@ public class GravGun : Gun
 	}
 	public override void Shoot()
 	{ 
-        if(!gameObject.activeSelf)return;
+        if(!gameObject.activeSelf || shotTimer > 0)return;
+        shotTimer = fireRate;
 		ParticleManager.Emit(17,transform.position,1);
 		GameObject go=new GameObject("playerbullet");
 		SpriteRenderer sp= go.AddComponent<SpriteRenderer>();
@@ -49,8 +50,12 @@ public class GravGun : Gun
 		//go.transform.rotation=transform.rotation;
         timer=0;
     }
-    void Update()
+    protected override void Update()
     {
+        if(shotTimer > 0)
+		{
+			shotTimer -= Time.deltaTime;
+		}
         var main=particles.main;
         Color c=main.startColor.color;
         c.a=0;

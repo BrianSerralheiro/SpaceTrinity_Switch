@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 public class Ship : MonoBehaviour {
-	float shoottimer;
 	[SerializeField]
 	private ParticleSystem trail;
 	[SerializeField]
@@ -10,8 +9,7 @@ public class Ship : MonoBehaviour {
 	private Gun[] guns;
 	[SerializeField]
 	Transform burst;
-	[SerializeField]
-	private float firerate=0.5f;
+
 	[SerializeField]
 	private int maxhp = 1;
 	private int hp;
@@ -198,16 +196,18 @@ public class Ship : MonoBehaviour {
 		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
 		if(transform.position.y+v.y<-Scaler.sizeY)v.y=-Scaler.sizeY-transform.position.y;
 		transform.Translate(v);
-		if(Input.GetKey(input.shoot) && shoottimer<=0)
+		if(Input.GetKey(input.shoot))
 		{
 			if(id!=2)SoundManager.PlayEffects(2 + id,0.1f,0.5f);
-			shoottimer=firerate;
 			foreach(Gun gun in guns)
 			{
-				gun.Shoot();
+				if(gun.enabled)
+				{
+					gun.Shoot();
+				}
+				
 			}
 		}
-		if(shoottimer>0) shoottimer-=Time.deltaTime;
 		
 	}
 	void OnLevel(int i)

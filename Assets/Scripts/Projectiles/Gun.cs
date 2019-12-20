@@ -9,9 +9,14 @@ public class Gun : MonoBehaviour {
 	[SerializeField]
 	protected int damage=1;
 	[SerializeField]
-	public float bulletSpeed=12.5f;
+	public float bulletSpeed=12.5f,maxSpeed;
 	[SerializeField]
 	protected bool pierce;
+
+	[SerializeField]
+	protected float fireRate = 0.5f;
+
+	protected float shotTimer;
 
 	[SerializeField]
 	protected int particleID;
@@ -31,7 +36,8 @@ public class Gun : MonoBehaviour {
 	}
 	public virtual void Shoot()
 	{
-		if(!gameObject.activeSelf)return;
+		if(!gameObject.activeSelf || shotTimer > 0)return;
+		shotTimer = fireRate;		
 		ParticleManager.Emit(17,transform.position,1);
 		GameObject go=new GameObject("playerbullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId+(Bullet.blink ? 0 : 1)];
@@ -43,6 +49,7 @@ public class Gun : MonoBehaviour {
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
 		bull.bulleSpeed=bulletSpeed;
+		bull.maxSpeed=maxSpeed;	
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
 	}
@@ -55,6 +62,14 @@ public class Gun : MonoBehaviour {
 		else
 		{
 			gameObject.SetActive(level<=i);
+		}
+	}
+
+	protected virtual void Update()
+	{
+		if(shotTimer > 0)
+		{
+			shotTimer -= Time.deltaTime;
 		}
 	}
 }
