@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour {
 	{
 		_time = Time.time;
 		renderer=GetComponent<SpriteRenderer>();
-		timer=2;
+		timer=2 + bulleSpeed * maxSpeed;
 	}
 	public static int Register(Sprite sp){
 		if(sprites.Contains(sp)){
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour {
 	{
 		if(Ship.paused) return;
 		ParticleManager.Emit(particleID,transform.position,1);
-		transform.Translate(0,Time.deltaTime*Mathf.Min(bulleSpeed,bulleSpeed- maxSpeed / (Time.time - _time)),0);
+		transform.Translate(0,Time.deltaTime*(maxSpeed > 0? Mathf.Clamp((Time.time -_time) / maxSpeed , 0 , bulleSpeed): bulleSpeed),0);
 		if(bulletTime<=0)renderer.sprite=sprites[spriteID+(blink?0:1)];
 		timer-=Time.deltaTime;
 		if(timer<=0) Destroy(gameObject);
