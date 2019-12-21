@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour {
 	}
 	public virtual void Level(int i)
 	{
+		shotTimer=0;
 		if(minusPower && i==1)
 		{
 			gameObject.SetActive(true);

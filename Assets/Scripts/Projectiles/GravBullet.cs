@@ -24,14 +24,15 @@ public class GravBullet : Bullet
         switch(i){
             case 0:
                 update=UpdateSprite0;
-                v2.x=2;
+                v2.x=1;
                 break;
             case 1:
                 update=UpdateSprite1;
-                v2.x=3;
+                v2.x=1;
                 break;
             default:
                 update=UpdateSprite2;
+                v2.x=3;
                 break;
         }
         c.size=v2;
