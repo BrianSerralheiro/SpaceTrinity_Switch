@@ -92,6 +92,7 @@ public class Ship : MonoBehaviour {
 		if(shielded)
 		{
 			shielded=false;
+			immuneTime=0.5f;
 			return;
 		}
 		if(--hp<=0)
