@@ -59,7 +59,7 @@ public class Shooter : EnemyBase
 	{
 		base.Position(i);
 		position=i;
-		finalpoint=new Vector3(i*Scaler.sizeX/20-Scaler.sizeX/2,Scaler.sizeY/2,0);
+		finalpoint=new Vector3(i*Scaler.sizeX/20-Scaler.sizeX/2+Scaler.sizeX/40,Scaler.sizeY/2,0);
 		path=paths[i<10?i:(19-i)];
 	}
 	new void Update()

@@ -4,8 +4,8 @@ using UnityEditor;
 public class PathWindow : EditorWindow
 {
     private static SerializedProperty property;
-    Vector2 limit=new Vector2(8,10),scroll;
-    Vector3 mid=new Vector3(4,5);
+    Vector2 limit=new Vector2(30,20),scroll;
+    Vector3 mid=new Vector3(15,5);
     static int dragID;
     static bool toggle;
     static readonly Color[] colors={Color.black,Color.blue,Color.cyan,Color.gray,Color.green,Color.magenta,Color.red,Color.white,Color.yellow};
@@ -36,15 +36,7 @@ public class PathWindow : EditorWindow
                 curves.ClearArray();
                 nodes.serializedObject.ApplyModifiedProperties();
             }
-            EditorGUI.BeginChangeCheck();
             toggle=EditorGUILayout.Toggle("Show fields",toggle);
-            limit.x=EditorGUILayout.Slider("Size horizontal:",limit.x,8,20);
-            limit.y=EditorGUILayout.Slider("Size vertical:",limit.y,10,32);
-            if(!EditorGUI.EndChangeCheck()){
-                mid=limit/2;
-                limit.x=(int)limit.x;
-                limit.y=(int)limit.y;
-            }
 
         GUILayout.EndHorizontal();
         if(toggle){

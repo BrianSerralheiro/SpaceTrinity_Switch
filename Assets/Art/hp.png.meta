@@ -7,7 +7,7 @@ TextureImporter:
     second: hp_0
   - first:
       213: 3532547729105675132
-    second: hp_1
+    second: specialbar
   - first:
       213: -6770129802454094894
     second: hp_2
@@ -261,6 +261,27 @@ TextureImporter:
       bones: []
       spriteID: ccd03cd5b34de084abbbd44a735bc07c
       internalID: -7861861436077981788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: specialbar
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1169
+        width: 370
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e72f67e1ab8696344aa266980ca8254f
+      internalID: 3532547729105675132
       vertices: []
       indices: 
       edges: []
