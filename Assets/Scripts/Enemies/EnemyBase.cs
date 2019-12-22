@@ -37,6 +37,7 @@ public class EnemyBase : MonoBehaviour {
 	{
 		if(col.gameObject.name=="enemybullet") return;
 		if(col.gameObject.name=="enemy") return;
+		if(transform.position.y > Scaler.sizeY) return;
 		int i=1;
 		Bullet bull=col.gameObject.GetComponent<Bullet>();
 		if(bull){
