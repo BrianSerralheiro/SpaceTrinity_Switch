@@ -21,6 +21,9 @@ public class Bullet : MonoBehaviour {
 		timer=2 + maxSpeed;
 		spriteTimer=_time+blinkTimer;
 	}
+	public void Timer(float f){
+		timer=f+maxSpeed;
+	}
 	public static int Register(Sprite sp){
 		if(sprites.Contains(sp)){
 			Debug.Log("Sprite "+sp.name+" alredy added");

@@ -8,7 +8,7 @@ public class Barata : EnemyBase {
 	private Core crystal;
 	private Vector3 rot = Vector3.zero,vector=Vector3.zero,mouthRot=Vector3.zero;
     Del update;
-	int charges,spawns;
+	int charges,spawns,shotId;
 	private EnemyInfo div;
 	/*REMOVER AQUI*/float time;
 	public override void SetSprites(EnemyInfo ei)
@@ -59,6 +59,7 @@ public class Barata : EnemyBase {
 		crystal.transform.localPosition=new Vector3(0,0.2f,-0.01f);
         update=Intro;
 		div=(ei as CarrierInfo).spawnable;
+		shotId=ei.bulletsID[0];
 	}
     void Intro(){
         transform.Translate(0,-Time.deltaTime*2,0);
@@ -77,6 +78,7 @@ public class Barata : EnemyBase {
 			if(charges++>2){
 				EnemySpawner.boss=true;
 				/*REMOVER*/Debug.Log(Time.time-time);
+				Shot(12);
 				update=Spawning;
 			}
 	    	else {
@@ -170,6 +172,24 @@ public class Barata : EnemyBase {
 		diver.SetTimer(0);
 		diver.transform.position=transform.position;
 		diver.transform.rotation=transform.rotation;
+	}
+	void Shot(int c){
+		SoundManager.PlayEffects(12, 0.5f, 0.8f);
+		float degrees=180f/c;
+		for (int i = 0; i < c; i++)
+		{
+			GameObject go = new GameObject("enemybullet");
+			go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
+			go.AddComponent<BoxCollider2D>();
+			Bullet bu=go.AddComponent<Bullet>();
+			bu.owner=transform.name;
+			bu.spriteID=shotId;
+			bu.bulleSpeed=8f;
+			bu.Timer(10);
+			bu.maxSpeed=2;
+			go.transform.position=crystal.transform.position;
+			go.transform.eulerAngles=new Vector3(0,0,90f+degrees*i);
+		}
 	}
 	private new void OnCollisionEnter2D(Collision2D col)
 	{

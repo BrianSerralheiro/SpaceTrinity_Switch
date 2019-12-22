@@ -79,6 +79,7 @@ public class WorldLoader : MonoBehaviour
                 ei.Register();
             }
             worldInfo.Boss?.Register();
+            worldInfo.subBoss?.Register();
             worldInfo.drone?.Register();
         }
         update=Step5;
