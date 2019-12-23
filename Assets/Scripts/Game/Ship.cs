@@ -28,7 +28,7 @@ public class Ship : MonoBehaviour {
 	[SerializeField]
 	private Material specialMat;
 	[SerializeField]
-	private Texture2D[] specials;
+	private SpecialInfo special;
 	private bool shielded;
 
 	private float damageTimer;
@@ -65,7 +65,7 @@ public class Ship : MonoBehaviour {
 		}
 		hp=maxhp;
 		_renderer = GetComponent<SpriteRenderer>();
-		specialMat.mainTexture=specials[0];
+		// specialMat.mainTexture=specials[0];
 		DialogBox.Texts(falas,sizes);
 		DialogBox.Chars(charPics);
 		falas=null;
@@ -76,9 +76,9 @@ public class Ship : MonoBehaviour {
 			skin=skins[input.id];
 			ParticleSystem.MainModule main = trail.main;
 			main.startColor=colors[skinID[id]];
-			specialMat.mainTexture=specials[skinID[id]+1];
+			// specialMat.mainTexture=specials[skinID[id]+1];
 			specialMat=null;
-			specials=null;
+			// specials=null;
 			colors=null;
 		}
 		EnemyBase.player=transform;
@@ -157,25 +157,16 @@ public class Ship : MonoBehaviour {
 		if(freezeTimer > 0)
 		{
 			freezeTimer -= Time.deltaTime;
+			special.Update();
 			if(freezeTimer<=0)
 			{
-				burst.gameObject.SetActive(true);
-				_renderer.enabled=true;
-				GameObject go = new GameObject("playerbullet");
-				go.AddComponent<BoxCollider2D>().size=new Vector2(Scaler.sizeX,Scaler.sizeY);
-				Bullet bu= go.AddComponent<Bullet>();
-				bu.damage=200;
-				bu.pierce=true;
-				bu.owner=name;
-				bu.enabled=false;
-				Destroy(go,0.1f);
+				special.Finish();
 			}
-			return;
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
 		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
-		if(Input.GetKeyDown(KeyCode.Alpha3))OnLevel(3);
-		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]==1)Special();
+		if(Input.GetKey(KeyCode.Alpha3))OnLevel(3);
+		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]>=special.cost && freezeTimer<=0)Special();
 		if(shielded) shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
@@ -197,7 +188,7 @@ public class Ship : MonoBehaviour {
 		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
 		if(transform.position.y+v.y<-Scaler.sizeY)v.y=-Scaler.sizeY-transform.position.y;
 		transform.Translate(v);
-		if(Input.GetKey(input.shoot))
+		if(freezeTimer<=0 && Input.GetKey(input.shoot))
 		{
 			if(id!=2)SoundManager.PlayEffects(2 + id,0.1f,0.5f);
 			foreach(Gun gun in guns)
@@ -206,10 +197,8 @@ public class Ship : MonoBehaviour {
 				{
 					gun.Shoot();
 				}
-				
 			}
 		}
-		
 	}
 	void OnLevel(int i)
 	{
@@ -230,32 +219,10 @@ public class Ship : MonoBehaviour {
 
 	public void Special()
 	{
-		InGame_HUD.special[input.id]=0;
+		InGame_HUD.special[input.id]-=special.cost;
 		SoundManager.PlayEffects(6 + id, 1f, 2f);
-		switch(id)
-		{
-			case 0:
-				ParticleManager.Emit(12,Vector3.up*-10,20,1f);
-				immuneTime=4f;
-				freezeTimer=3f;
-				break;
-			case 1:
-				ParticleManager.Emit(13,Vector3.zero,200);
-				immuneTime=4;
-				freezeTimer=3;
-				break;
-			case 2:
-				ParticleManager.Emit(14,Vector3.zero,5,1f);
-				immuneTime=2;
-				freezeTimer=1;
-				break;
-			case 3:
-				ParticleManager.Emit(15,Vector3.zero,20,2f);
-				immuneTime=3;
-				freezeTimer=2;
-				_renderer.enabled=false;
-				burst.gameObject.SetActive(false);
-				break;
-		}
+		freezeTimer=special.duration;
+		immuneTime=freezeTimer+1;
+		special.Start(transform);
 	}
 }

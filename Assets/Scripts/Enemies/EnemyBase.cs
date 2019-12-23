@@ -3,7 +3,7 @@
 public class EnemyBase : MonoBehaviour {
 	protected int points;
 	protected int hp=8;
-	protected int killerid=0;
+	protected int killerid=1;
 	public static Transform player;
 	protected float damageTimer,fallSpeed=-1;
 	protected SpriteRenderer _renderer;
@@ -47,7 +47,7 @@ public class EnemyBase : MonoBehaviour {
 		ParticleManager.Emit(1,col.collider.transform.position,1);
 		hp-=i;
 		if(hp<=0)Die();
-		killerid=0;
+		killerid=1;
 		if(!damageEffect || damageTimer <= 0)
 		{
 			damageTimer = 1;
