@@ -8,7 +8,7 @@ public struct SpecialInfo
     private bool followShip;
     [Range(0.1f,1)]
     public float cost;
-    public float fps,speed,rotationAround,rotationSelf,duration;
+    public float damageInterval,fps,speed,rotationAround,rotationSelf,duration;
     public int damage;
     private float spriteId;
     private Transform transform;
@@ -36,10 +36,15 @@ public struct SpecialInfo
         transform.localScale=new Vector3(area.x,area.y);
     }
     public void  Update(){
-        transform.Rotate(Vector3.back,rotationAround*Time.deltaTime,Space.Self);
-        transform.Rotate(0,0,rotationSelf*Time.deltaTime,Space.Self);
-        transform.Translate(Vector3.up*speed*Time.deltaTime,Space.World);
-        spriteId+=Time.deltaTime*fps;
+        if(rotationAround!=0){
+            Vector3 v=transform.localPosition;
+            v=Quaternion.Euler(0,0,rotationAround*Time.deltaTime)*v;
+            transform.localPosition=v;
+        }
+        if(rotationSelf!=0)transform.Rotate(0,0,rotationSelf*Time.deltaTime,Space.Self);
+        if(speed!=0)transform.Translate(Vector3.up*speed*Time.deltaTime,Space.World);
+        if(fps>0)spriteId+=Time.deltaTime*fps;
+        if(damageInterval>0)collider.enabled=Time.time%damageInterval>damageInterval/2;
         if(spriteId>sprites.Length)spriteId=0;
         renderer.sprite=sprites[Mathf.FloorToInt(spriteId)];
     }
