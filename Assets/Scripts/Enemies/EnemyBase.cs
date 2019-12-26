@@ -8,7 +8,7 @@ public class EnemyBase : MonoBehaviour {
 	protected float damageTimer,fallSpeed=-1;
 	protected SpriteRenderer _renderer;
 
-	protected bool damageEffect;
+	protected bool damageEffect,killed;
 	protected delegate void Del();
 	protected int explosionID;
 
@@ -53,18 +53,25 @@ public class EnemyBase : MonoBehaviour {
 			damageTimer = 1;
 		}
 	}
+	public void Kill(int i){
+		killerid=i;
+		hp=0;
+		killed=true;
+		Die();
+	}
 	protected virtual void Die()
 	{
-		
 		Destroy(gameObject);
 		if(hp<=0)
 		{
-			SoundManager.PlayEffects(15, 0.8f, 1.2f);
 			if(killerid>0){
 				InGame_HUD.special[killerid-1] += 0.01f;
 				EnemySpawner.points[killerid-1]+=points;
 			}
-			ParticleManager.Emit(explosionID, transform.position,1);
+			if(!killed){
+				SoundManager.PlayEffects(15, 0.8f, 1.2f);
+				ParticleManager.Emit(explosionID, transform.position,1);
+			}
 		}
 	}
 	public virtual void Position(int i)
