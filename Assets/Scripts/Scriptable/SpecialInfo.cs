@@ -4,13 +4,13 @@ public struct SpecialInfo
 {
     public Vector2 area,offSet;
     [SerializeField]
-    private bool followShip;
+    private bool followShip,lockShot;
     [Range(0.1f,1)]
     public float cost;
-    public float damageInterval,fps,speed,rotationAround,rotationSelf,duration;
+    public float damageInterval,speed,rotationAround,rotationSelf,duration,imuneTime;
     public int damage;
-    private float spriteId;
-    private Transform transform;
+    private float time;
+    private Transform transform,ship;
     [SerializeField]
     private GameObject gameObject;
     private Collider2D collider;
@@ -28,29 +28,28 @@ public struct SpecialInfo
         // renderer.sprite=sprites[0];
         collider=gameObject.GetComponent<Collider2D>();
         transform=gameObject.transform;
-        if(followShip){
-            transform.parent=t;
-            transform.localPosition=new Vector3(offSet.x,offSet.y);
-        }
-        else {
-            transform.parent=null;
-            transform.position=t.position+(Vector3)offSet;
-        }
+        transform.parent=null;
+        transform.position=t.position+(Vector3)offSet;
         transform.localScale=new Vector3(area.x,area.y,1);
+        time=Time.time+duration;
+        ship=t;
     }
     public void  Update(){
+        if(followShip)transform.position=ship.position+(Vector3)offSet;
         if(rotationAround!=0){
-            Vector3 v=transform.localPosition;
-            v=Quaternion.Euler(0,0,rotationAround*Time.deltaTime)*v;
-            transform.localPosition=v;
+            Vector3 v=transform.position-ship.position;
+            v=Quaternion.Euler(0,0,rotationAround*Time.deltaTime)*v.normalized;
+            transform.position=ship.position+v*offSet.y;
         }
         if(rotationSelf!=0)transform.Rotate(0,0,rotationSelf*Time.deltaTime,Space.Self);
         if(speed!=0)transform.Translate(Vector3.up*speed*Time.deltaTime,Space.World);
-        if(fps>0)spriteId+=Time.deltaTime*fps;
         if(damageInterval>0)collider.enabled=Time.time%damageInterval>damageInterval/2;
+        if(time<Time.time)gameObject.SetActive(false);
     }
-    public void Finish(){
-        // GameObject.Destroy(gameObject);
-        gameObject.SetActive(false);
+    public bool Finished(){
+        return !gameObject.activeSelf;
+    }
+    public bool AllowShot(){
+        return !lockShot || Finished();
     }
 }

@@ -33,17 +33,15 @@ public class LaserGun : Gun {
 	{
 		col.enabled=Time.time%second>half;
 		line.enabled=true;
-		if(col.enabled){
-			float f=4.5f/line.positionCount;
-			float f1=40f;
-			float t=Time.time*10;
-			float t1=Time.time*40;
-			for(int i = 1; i<line.positionCount-1; i++)
-			{
-				Vector3 v=line.GetPosition(i);
-				v.x=Mathf.Sin(t+f*i)*level*0.6f+Mathf.Cos(t1+f1*i)*0.4f;
-				line.SetPosition(i,v);
-			}
+		float f=4.5f/line.positionCount;
+		float f1=40f;
+		float t=Time.time*10;
+		float t1=Time.time*40;
+		for(int i = 1; i<line.positionCount-1; i++)
+		{
+			Vector3 v=line.GetPosition(i);
+			v.x=Mathf.Sin(t+f*i)*level*0.6f+Mathf.Cos(t1+f1*i)*0.4f;
+			line.SetPosition(i,v);
 		}
 		timer=0.1f;
 	}
@@ -58,7 +56,7 @@ public class LaserGun : Gun {
 			transform.parent.GetComponent<Bullet>().damage=damage+damageByLevel*(i-1);
 		}
 	}
-	void Update()
+	new void Update()
 	{
 		if(timer>0)
 			timer-=Time.deltaTime;

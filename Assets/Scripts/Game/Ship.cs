@@ -32,7 +32,6 @@ public class Ship : MonoBehaviour {
 	private bool shielded;
 
 	private float damageTimer;
-	private float freezeTimer;
 	private float clickTime=-1;
 
 	private SpriteRenderer _renderer;
@@ -154,19 +153,14 @@ public class Ship : MonoBehaviour {
 			_renderer.color = c;
 			
 		}
-		if(freezeTimer > 0)
+		if(!special.Finished())
 		{
-			freezeTimer -= Time.deltaTime;
 			special.Update();
-			if(freezeTimer<=0)
-			{
-				special.Finish();
-			}
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
 		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
 		if(Input.GetKey(KeyCode.Alpha3))OnLevel(3);
-		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]>=special.cost && freezeTimer<=0)Special();
+		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
 		if(shielded) shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
@@ -188,7 +182,7 @@ public class Ship : MonoBehaviour {
 		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
 		if(transform.position.y+v.y<-Scaler.sizeY)v.y=-Scaler.sizeY-transform.position.y;
 		transform.Translate(v);
-		if(freezeTimer<=0 && Input.GetKey(input.shoot))
+		if(special.AllowShot() && Input.GetKey(input.shoot))
 		{
 			if(id!=2)SoundManager.PlayEffects(2 + id,0.1f,0.5f);
 			foreach(Gun gun in guns)
@@ -221,8 +215,7 @@ public class Ship : MonoBehaviour {
 	{
 		InGame_HUD.special[input.id]-=special.cost;
 		SoundManager.PlayEffects(6 + id, 1f, 2f);
-		freezeTimer=special.duration;
-		immuneTime=freezeTimer+1;
+		immuneTime=special.imuneTime;
 		special.Start(transform);
 	}
 }
