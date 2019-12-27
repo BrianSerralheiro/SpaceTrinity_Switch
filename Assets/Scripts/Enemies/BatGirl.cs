@@ -18,6 +18,7 @@ public class BatGirl : EnemyBase {
 	{
 		explosionID = 9;
 		hp=180;
+		name+="big";
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=150;
 		GameObject go = new GameObject("wingL");

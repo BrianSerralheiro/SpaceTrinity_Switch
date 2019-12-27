@@ -14,16 +14,17 @@ public class Barata : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		/*REMOVER*/time=Time.time;
+		name="subBoss";
 		damageEffect = true;
 		hp=700;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
-		GameObject go = new GameObject("wingL");
+		GameObject go = new GameObject("BosswingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
 		box.size = new Vector2(2.4f,8);
 		box.offset = new Vector2(0,-4f);
 		wingL=go.transform;
-		go = new GameObject("wingR");
+		go = new GameObject("BosswingR");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
 		box = go.AddComponent<BoxCollider2D>();
 		box.size = new Vector2(2.4f,8);

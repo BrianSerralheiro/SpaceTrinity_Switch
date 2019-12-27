@@ -160,6 +160,7 @@ public class Ship : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
 		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
 		if(Input.GetKey(KeyCode.Alpha3))OnLevel(3);
+		if(Input.GetKeyDown(KeyCode.Space) && special.Finished())Special();
 		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
 		if(shielded) shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);

@@ -13,7 +13,7 @@ public class BlackHole : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.name.Contains("Player") || col.name.Contains("big") || col.name.Contains("item") || col.name.Contains("boss"))return;
+        if(col.name.Contains("Player") || col.name.Contains("big") || col.name.Contains("item") || col.name.Contains("Boss"))return;
         EnemyBase en=col.GetComponent<EnemyBase>();
         if(en)en.enabled=false;
         Bullet bullet=col.GetComponent<Bullet>();
@@ -46,7 +46,13 @@ public class BlackHole : MonoBehaviour
         do{
             HashSet<Transform>.Enumerator  enu= swallow.GetEnumerator();
             while(enu.MoveNext()){
-                if(enu.Current)Destroy(enu.Current.gameObject);
+                if(enu.Current){
+                    EnemyBase en=enu.Current.GetComponent<EnemyBase>();
+                    if(en){
+                        en.Kill(killerId);
+                    }
+                    else Destroy(enu.Current.gameObject);
+                }
                 swallow.Remove(enu.Current);
                 break;
             }

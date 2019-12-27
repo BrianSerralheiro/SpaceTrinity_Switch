@@ -31,6 +31,7 @@ public class Batzilla : EnemyBase {
 	{
 		BossWarning.Show();
 		SoundManager.Play(2);
+		name="Boss";
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		hp=1800;

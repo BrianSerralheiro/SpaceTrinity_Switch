@@ -9,6 +9,7 @@ public class Bomber : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
+		name+="big";
 		explosionID = 10;
 		hp=200;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);

@@ -39,6 +39,7 @@ public class Squid : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
+		name="Boss";
 		SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;

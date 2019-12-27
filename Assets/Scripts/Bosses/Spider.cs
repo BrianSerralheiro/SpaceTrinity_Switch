@@ -18,6 +18,7 @@ public class Spider : EnemyBase {
 	{
 		info=ei;
 		BossWarning.Show();
+		name+="Boss";
 		SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;

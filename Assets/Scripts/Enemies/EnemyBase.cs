@@ -35,9 +35,9 @@ public class EnemyBase : MonoBehaviour {
 	}
 	public void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.gameObject.name=="enemybullet") return;
-		if(col.gameObject.name=="enemy") return;
-		if(transform.position.y > Scaler.sizeY) return;
+		if(col.gameObject.name.Contains("enemybullet"))return;
+		if(col.gameObject.name.Contains("enemy"))return;
+		if(transform.position.y > Scaler.sizeY && !name.Contains("boss")) return;
 		int i=1;
 		Bullet bull=col.gameObject.GetComponent<Bullet>();
 		if(bull){

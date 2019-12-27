@@ -24,7 +24,7 @@ public class WebShot : MonoBehaviour
         spriteID=p;
         renderer.sprite=Bullet.sprites[p];
         owner=o;
-        gameObject.AddComponent<BoxCollider2D>().isTrigger=true;;
+        gameObject.AddComponent<BoxCollider2D>().isTrigger=true;
     }
     void Update()
     {
@@ -45,6 +45,7 @@ public class WebShot : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.name==owner)return;
+        if(col.name.Contains("enemy"))return;
         target=transform.position;
         if(!glued.ContainsKey(col.transform))glued.Add(col.transform,col.transform.position);
     }
