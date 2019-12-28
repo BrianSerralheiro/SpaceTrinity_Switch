@@ -10,7 +10,6 @@ public class Continue : MonoBehaviour
 	[SerializeField]
 	private Button button;
 	public Ship ship;
-	private int continues;
 	private void Update()
 	{
 		button.interactable = false;
@@ -21,29 +20,25 @@ public class Continue : MonoBehaviour
 		}
 		if(ship.input.GetKeyDown("shoot"))buyContinue();
 	}
-	public void Continues(int i)
-	{
-		continues=i;
-	}
 	private void OnEnable()
 	{
-		continueLog.text="Continues Left: "+continues;
+		continueLog.text="Continues Left: "+Ship.continues[ship.input.id];
 	}
 	public void WatchAd()
 	{
 		SoundManager.PlayEffects(0);
-		continues--;
+		Ship.continues[ship.input.id]--;
 	}
 	public bool HasContinue()
 	{
-		return continues>0;
+		return Ship.continues[ship.input.id]>0;
 	}
 	public void buyContinue()
 	{
 		if(Cash.totalCash>=0){
 			Cash.Save();
 			SoundManager.PlayEffects(0);
-			continues--;
+			Ship.continues[ship.input.id]--;
 			gameObject.SetActive(false);
 			Active(false);
 			ship.Revive();

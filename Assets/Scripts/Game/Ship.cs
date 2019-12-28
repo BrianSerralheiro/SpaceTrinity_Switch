@@ -29,6 +29,7 @@ public class Ship : MonoBehaviour {
 	private Material specialMat;
 	[SerializeField]
 	private SpecialInfo special;
+	public static int[] continues=new int[2];
 	private bool shielded;
 
 	private float damageTimer;
@@ -54,7 +55,7 @@ public class Ship : MonoBehaviour {
 	void Start()
 	{
 		input=PlayerInput.Get();
-		Debug.LogWarning(input.name);
+		continues[input.id]=PlayerInput.Conected(1)?2:4;
 		InGame_HUD.shipHealth[input.id] = 1;
 		InGame_HUD.special[input.id] = 0;
 		name=input.name;

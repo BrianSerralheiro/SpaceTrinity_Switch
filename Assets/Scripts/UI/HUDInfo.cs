@@ -3,7 +3,7 @@
 public struct HUDInfo
 {
     public Color color;
-    public Sprite picture;
+    public Sprite picture,lifeIcon;
     public string name;
     public Sprite lifeBar,lifeFill;
 }
