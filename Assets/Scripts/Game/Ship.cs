@@ -95,24 +95,35 @@ public class Ship : MonoBehaviour {
 			immuneTime=0.5f;
 			return;
 		}
+		damageTimer=1;
+		immuneTime=1f;
 		if(--hp<=0)
 		{
+			damageTimer = 0;
 			if(Level>1)
 			{
 				OnLevel(--Level);
 			}
 			SoundManager.PlayEffects(10, 1, 0);
-			paused = true;
 			gameObject.SetActive(false);
-			GameOverController.Open(this);
+			ParticleManager.Emit(0, transform.position, 1);
+			if(continues[input.id]-- <= 0)
+			{				
+				GameOverController.Open(this);
+				paused = true;
+			}
+			else
+			{
+				transform.position = Vector3.zero;
+				Revive();
+			}
 		}
 		else
 		{
 			SoundManager.PlayEffects(9, 1, 0);
 		}
 		InGame_HUD.shipHealth[input.id] = (float)hp / (float)maxhp;
-		damageTimer=1;
-		immuneTime=1f;
+
 	}
 	public void Revive()
 	{
