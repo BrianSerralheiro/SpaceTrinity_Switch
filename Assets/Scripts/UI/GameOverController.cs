@@ -118,6 +118,8 @@ public class GameOverController : MonoBehaviour
 	
 	public static void Open(Ship s)
 	{
+		if(Ship.continues[0]!=0 || Ship.continues[1]!=0)
+		Ship.paused = true;
 		ship = s;
 		enable();
 		menu.SetActive(true);

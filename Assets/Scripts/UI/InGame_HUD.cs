@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class InGame_HUD : MonoBehaviour 
@@ -20,6 +21,7 @@ public class InGame_HUD : MonoBehaviour
 	private Color color;
 	private Color otherColor=Color.white;
 	public static HUDInfo[] HUD=new HUDInfo[2];
+	private static HashSet<Ship> shipsToRevive=new HashSet<Ship>();
 	void Start()
 	{
 		if(!p1 && !PlayerInput.Conected(1))gameObject.SetActive(false);
@@ -37,7 +39,10 @@ public class InGame_HUD : MonoBehaviour
 			lifes[i].gameObject.SetActive(i<Ship.continues[id]);
 		}
 	}
-	
+	public static void Revive(Ship s){
+		s.reviveTimer=1;
+		shipsToRevive.Add(s);
+	}
 	void Update()
 	{
 		if(shipHealth[id]<_currentHP[id]){
@@ -59,5 +64,14 @@ public class InGame_HUD : MonoBehaviour
 			specialFill.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.time*8));
 		}else specialFill.color=color;
 		specialFill.fillAmount=special[id];
+		foreach (Ship s in shipsToRevive)
+		{
+			s.reviveTimer-=Time.deltaTime;
+			if(s.reviveTimer<=0){
+				s.Revive();
+				shipsToRevive.Remove(s);
+				return;
+			}
+		}
 	}
 }

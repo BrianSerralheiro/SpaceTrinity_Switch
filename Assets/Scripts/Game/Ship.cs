@@ -34,7 +34,8 @@ public class Ship : MonoBehaviour {
 
 	private float damageTimer;
 	private float clickTime=-1;
-
+	[HideInInspector]
+	public float reviveTimer;
 	private SpriteRenderer _renderer;
 
 	private int Level = 1;
@@ -114,8 +115,7 @@ public class Ship : MonoBehaviour {
 			}
 			else
 			{
-				transform.position = Vector3.zero;
-				Revive();
+				InGame_HUD.Revive(this);
 			}
 		}
 		else
@@ -131,7 +131,9 @@ public class Ship : MonoBehaviour {
 		immuneTime = 3;
 		hp=maxhp;
 		InGame_HUD.shipHealth[input.id] =1;
-		paused=false;
+		reviveTimer=1;
+		transform.position=new Vector3(0,-Scaler.sizeY-2,-0.1f);
+		//paused=false;
 	}
 	public void Shield()
 	{
@@ -149,7 +151,11 @@ public class Ship : MonoBehaviour {
 		{
 			return;
 		}
-		
+		if(reviveTimer>0){
+			reviveTimer-=Time.deltaTime;
+			transform.Translate(0,4*Time.deltaTime,0);
+			return;
+		}
 		if(immuneTime > 0)
 			{
 			immuneTime -= Time.deltaTime;
