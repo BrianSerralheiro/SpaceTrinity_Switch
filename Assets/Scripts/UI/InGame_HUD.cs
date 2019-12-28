@@ -14,6 +14,8 @@ public class InGame_HUD : MonoBehaviour
 
 	[SerializeField]
 	private Image lifeBar,lifeFill,specialFill,pilotPic, pilotMask;
+	[SerializeField]
+	private Image[] lifes=new Image[4];
 
 	private Color color;
 	private Color otherColor=Color.white;
@@ -29,6 +31,11 @@ public class InGame_HUD : MonoBehaviour
 		specialFill.color=pilotMask.color=HUD[id].color;
 		color=specialFill.color;
 		lifeFill.material.SetFloat("_CurrentHP",_currentHP[id]);
+		for (int i = 0; i < lifes.Length; i++)
+		{
+			lifes[i].sprite=HUD[id].lifeIcon;
+			lifes[i].gameObject.SetActive(i<Ship.continues[id]);
+		}
 	}
 	
 	void Update()
@@ -40,6 +47,8 @@ public class InGame_HUD : MonoBehaviour
 		}
 		if(shipHealth[id]>_currentHP[id]){
 			_currentHP[id]+=Time.deltaTime;
+			for (int i = 0; i < lifes.Length; i++)
+				lifes[i].gameObject.SetActive(i<Ship.continues[id]);
 			if(shipHealth[id]<_currentHP[id])_currentHP[id]=shipHealth[id];
 			lifeFill.material.SetFloat("_CurrentHP",_currentHP[id]);
 		}

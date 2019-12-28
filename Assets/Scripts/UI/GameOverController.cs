@@ -48,7 +48,6 @@ public class GameOverController : MonoBehaviour
 		enable=Enable;
 		menu = gameObject;
 		gameObject.SetActive(false);
-		cont.Continues(Locks.IsPremium() ? 5 : 3);
 	}
 
 	void Update ()
@@ -127,9 +126,9 @@ public class GameOverController : MonoBehaviour
 
 	public void RevivePopUp()
 	{
+		cont.ship=ship;
 		if(cont.HasContinue()){
 			SoundManager.PlayEffects(0);
-			cont.ship=ship;
 			cont.Active=gameObject.SetActive;
 			cont.gameObject.SetActive(true);
 		}
