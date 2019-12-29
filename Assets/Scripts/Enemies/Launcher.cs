@@ -70,8 +70,9 @@ public class Launcher : EnemyBase {
 				Vector3 v=rocket.position-player.position;
 				v.z=0;
 				v.Normalize();
-				rocket.Rotate(Vector3.Cross(v,rocket.up)*Time.deltaTime*270f*spd);
+				if(timer>-4)rocket.Rotate(Vector3.Cross(v,rocket.up)*Time.deltaTime*270f*spd);
 				rocket.Translate(0,Time.deltaTime*8*spd,0);
+				if(rocket.position.x<-Scaler.sizeX/2-2 || rocket.position.x>Scaler.sizeX/2+2 || rocket.position.y<-Scaler.sizeY/2-2 || rocket.position.y>Scaler.sizeY/2+2)Destroy(rocket.gameObject);
 			}
 			else Create();
 		}

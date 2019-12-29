@@ -8,6 +8,8 @@ public class Grabber : EnemyBase {
 	private Transform armR;
 	private Core core;
 	private Vector3 vector = new Vector3();
+	BulletPath path;
+	Vector3 position;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=40;
@@ -26,15 +28,20 @@ public class Grabber : EnemyBase {
 		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,-0.18f);
+		path=(ei as MultiPathEnemy).paths[Random.Range(0,2)];
 	}
-	
+	public override void Position(int i){
+		base.Position(i);
+		position=transform.position;
+	}
 	new void Update(){
 		if(Ship.paused) return;
 		base.Update();
-		rotation.z=Mathf.Atan2(transform.position.x-player.position.x,player.position.y-transform.position.y)*Mathf.Rad2Deg+180;
-		transform.eulerAngles=rotation;
 		if(!transform.parent){
-			transform.Translate(0,-2*Time.deltaTime,0);
+			if(path.Finished()){
+				Die();
+			}
+			else transform.position=position+BulletPath.Next(ref path,position.x>player.position.x);
 			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
 			core.Set(0);
 		}
