@@ -109,7 +109,7 @@ public class Spider : EnemyBase {
 			go.transform.parent=back;
 			legs[11]=go.transform;
 			update=Intro;
-
+			timer=6;
 			legs[0].localPosition=new Vector3(-1.97f,-1.78f,0.1f);
 			legs[1].localPosition=new Vector3(1.97f,-1.78f,0.1f);
 			legs[2].localPosition=new Vector3(-3.21f,-0.28f,0.1f);
@@ -125,7 +125,8 @@ public class Spider : EnemyBase {
 		}
 	}
 	void Intro(){
-		transform.Translate(0,-Time.deltaTime,0);
+		timer-=Time.deltaTime;
+		transform.Translate(timer*dir*Time.deltaTime,-Time.deltaTime*2,0);
 		rot[0].z=Mathf.Cos(Time.time)*-15f-10;
 		rot[1].z=Mathf.Cos(Time.time+40)*15+10;
 		rot[2].z=Mathf.Cos(Time.time*3)*-30;
@@ -140,16 +141,22 @@ public class Spider : EnemyBase {
 		{
 			webs[i].localScale=Vector3.MoveTowards(webs[i].localScale,new Vector3(1,2),Time.deltaTime*8);
 		}
-		if(transform.position.y<Scaler.sizeY/4)update=Charge;
+		if(transform.position.x>3)dir=-1;
+		if(transform.position.x<-3)dir=1;
+		if(timer<=0)update=Charge;
 	}
 	void Charge(){
 		// headCrystal.Min(Time.deltaTime);
 		if(timer>0){
 			timer-=Time.deltaTime;
+			if(timer<2.5 && charges<0){
+				Shoot();
+				charges++;
+			}
 			if(transform.position.y<Scaler.sizeY)transform.Translate(0,Time.deltaTime*speed,0);
 			if((int)Time.time%5==0)dir*=-1;
-			if(transform.position.x<-Scaler.sizeX/2+2)dir=1;
-			if(transform.position.x>Scaler.sizeX/2-2)dir=-1;
+			if(transform.position.x<player.position.x-3)dir=1;
+			if(transform.position.x>player.position.x+3)dir=-1;
 			transform.Translate(dir*Time.deltaTime,0,0);
 			rot[0].z=Mathf.Sin(Time.time*4)*-15f-15;
 			rot[1].z=Mathf.Sin(Time.time*4+60)*15+15;
@@ -217,11 +224,17 @@ public class Spider : EnemyBase {
 		back.localScale=new Vector3(0.8f+Mathf.PingPong(timer,1)*0.1f,1);
 		crystal.Set(Mathf.PingPong(timer,1));
 		if(timer>0)timer-=Time.deltaTime;
-		else Spawn();
+		else {
+			int i=Random.Range(1,webs.Length-1);
+			spawns++;
+			Spawn(i);
+			Spawn(i-1);
+			Spawn(i+1);
+		}
 		if(spawns>4){
 			update=Charge;
 			back.localScale=Vector3.one;
-			charges=0;
+			charges=-1;
 		}
 	}
 	void Dying(){
@@ -255,9 +268,8 @@ public class Spider : EnemyBase {
 		timer=3;
 		EnemySpawner.points[killerid]+=1000;
 	}
-	void Spawn()
+	void Spawn(int i)
 	{
-		if(spawns++==0)Shoot();
 		timer=2;
 		GameObject go=new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=spiderling.sprites[0];
@@ -267,13 +279,13 @@ public class Spider : EnemyBase {
 		r.useFullKinematicContacts=true;
 		Spiderling ling=go.AddComponent<Spiderling>();
 		ling.SetSprites(spiderling);
-		ling.MoveTo(webs[Random.Range(0,webs.Length)]);
+		ling.MoveTo(webs[i]);
 		ling.transform.position=back.position+Vector3.up*3-Vector3.back*0.2f;
 	}
 	void Shoot(){
 		GameObject go=new GameObject("webshot");
 		go.transform.position=back.position+Vector3.up*4;
-		go.AddComponent<WebShot>().Set(webshot,(player.position-(back.position+Vector3.up*4)).normalized*10,16,8,3,1,name);
+		go.AddComponent<WebShot>().Set(webshot,(player.position-(back.position+Vector3.up*4)).normalized*15+go.transform.position,16,4,3,1,"enemy");
 	}
 	public override void Position(int i)
 	{

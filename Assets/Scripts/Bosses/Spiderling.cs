@@ -61,8 +61,8 @@ public class Spiderling : EnemyBase
             
         }
         else {
-            transform.Rotate(0,0,Time.deltaTime*360);
-            transform.position=Vector3.MoveTowards(transform.position,follow.position+Vector3.back/2,Time.deltaTime*10);
+            transform.Rotate(0,0,Time.deltaTime*720);
+            transform.position=Vector3.MoveTowards(transform.position,follow.position+Vector3.back/2,Vector3.Distance(transform.position,follow.position)*4*Time.deltaTime);
             if(transform.position==follow.position+Vector3.back/2)Web(follow);
         }
     }

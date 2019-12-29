@@ -45,7 +45,7 @@ public class WebShot : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.name==owner)return;
-        if(col.name.Contains("enemy"))return;
+        if(col.name.Contains(owner))return;
         target=transform.position;
         if(!glued.ContainsKey(col.transform))glued.Add(col.transform,col.transform.position);
     }
