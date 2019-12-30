@@ -3,7 +3,7 @@
 public class Round : EnemyBase
 {
 
-	private float shoottimer = 2;
+	private float shoottimer = 1.4f;
 	private Vector3 vector=new Vector3();
 	private static int shootId;
 	public override void SetSprites(EnemyInfo ei)

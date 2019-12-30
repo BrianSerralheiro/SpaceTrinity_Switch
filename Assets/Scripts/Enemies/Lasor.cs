@@ -27,7 +27,7 @@ public class Lasor : EnemyBase
 		go.transform.localScale=new Vector3();
 		laser=go.transform;
 		laser.localPosition=charge.transform.localPosition=new Vector3();
-		go = new GameObject("laserbody");
+		go = new GameObject("enemylaser");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
 		collider=go.AddComponent<BoxCollider2D>();
 		collider.enabled=false;
@@ -46,18 +46,18 @@ public class Lasor : EnemyBase
 	}
 	new void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.otherCollider.name=="laserbody") return;
+		if(col.otherCollider.name=="enemylaser") return;
 		base.OnCollisionEnter2D(col);
 	}
 	new void Update(){
 		if(Ship.paused) return;
 		base.Update();
-		if(transform.position.y>Scaler.sizeY/2){
+		if(transform.position.y>Scaler.sizeY/1.3f){
 			transform.Translate(0,-Time.deltaTime*2,0,Space.World);
 			transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(dir),Time.deltaTime*45);
 		}
 		else{
-			if(timer>0)timer-=Time.deltaTime;
+			if(timer>0)timer-=Time.deltaTime * 3;
 			if(timer<1)
 			{
 				charge.transform.localScale=laser.localPosition;

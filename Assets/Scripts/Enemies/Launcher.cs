@@ -27,7 +27,7 @@ public class Launcher : EnemyBase {
 	}
 	private void Create()
 	{
-		timer=3;
+		timer=2;
 		spd=0;
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=rocketSprite;
@@ -50,7 +50,7 @@ public class Launcher : EnemyBase {
 		if(Ship.paused) return;
 		base.Update();
 		timer-=Time.deltaTime;
-		if(transform.position.y>-Scaler.sizeY-1)transform.Translate(0,-Time.deltaTime/2,0);
+		if(transform.position.y>-Scaler.sizeY-1)transform.Translate(0,-Time.deltaTime,0);
 		else Die();
 		if(timer>0 && rocket)
 		{
@@ -72,7 +72,7 @@ public class Launcher : EnemyBase {
 				v.Normalize();
 				if(timer>-4)rocket.Rotate(Vector3.Cross(v,rocket.up)*Time.deltaTime*270f*spd);
 				rocket.Translate(0,Time.deltaTime*8*spd,0);
-				if(rocket.position.x<-Scaler.sizeX/2-2 || rocket.position.x>Scaler.sizeX/2+2 || rocket.position.y<-Scaler.sizeY/2-2 || rocket.position.y>Scaler.sizeY/2+2)Destroy(rocket.gameObject);
+				if(rocket.position.x<-Scaler.sizeX/2-2 || rocket.position.x>Scaler.sizeX/2+2 || rocket.position.y<-Scaler.sizeY-2 || rocket.position.y>Scaler.sizeY+2)Destroy(rocket.gameObject);
 			}
 			else Create();
 		}
