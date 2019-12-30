@@ -8,7 +8,7 @@ public class Round : EnemyBase
 	private static int shootId;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=52;
+		hp=30;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 150;
 		shootId=ei.bulletsID[0];

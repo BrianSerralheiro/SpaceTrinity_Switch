@@ -12,7 +12,7 @@ public class Lasor : EnemyBase
 	private Core core;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=40;
+		hp=30;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 120;
 		GameObject go = new GameObject("charge");
