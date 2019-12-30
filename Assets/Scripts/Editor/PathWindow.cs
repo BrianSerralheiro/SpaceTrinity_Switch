@@ -4,8 +4,8 @@ using UnityEditor;
 public class PathWindow : EditorWindow
 {
     private static SerializedProperty property;
-    Vector2 limit=new Vector2(30,20),scroll;
-    Vector3 mid=new Vector3(15,5);
+    Vector2 limit=new Vector2(60,22),scroll;
+    Vector3 mid=new Vector3(30,11);
     static int dragID;
     static bool toggle;
     static readonly Color[] colors={Color.black,Color.blue,Color.cyan,Color.gray,Color.green,Color.magenta,Color.red,Color.white,Color.yellow};
@@ -23,13 +23,13 @@ public class PathWindow : EditorWindow
         SerializedProperty curves=property.FindPropertyRelative("curves");
         
         Vector3 proportion=new Vector3(position.width/limit.x,position.height/limit.y);
-        for (int j = 0; j < limit.x && !toggle; j++)
-        {
-            for (int k = 0; k < limit.y; k++)
-            {
-                GUI.Box(new Rect(j*proportion.x,k*proportion.y,proportion.x,proportion.y),"");
-            }
-        }
+        // for (int j = 0; j < limit.x && !toggle; j++)
+        // {
+        //     for (int k = 0; k < limit.y; k++)
+        //     {
+        //         GUI.Box(new Rect(j*proportion.x,k*proportion.y,proportion.x,proportion.y),"");
+        //     }
+        // }
         GUILayout.BeginHorizontal();
             if(GUILayout.Button("Clear")){
                 nodes.ClearArray();
@@ -42,7 +42,7 @@ public class PathWindow : EditorWindow
         if(toggle){
             scroll=EditorGUILayout.BeginScrollView(scroll,false,false);
             EditorGUILayout.PropertyField(nodes,true);
-            EditorGUILayout.PropertyField(property.FindPropertyRelative("curves"),true);
+            EditorGUILayout.PropertyField(curves,true);
             nodes.serializedObject.ApplyModifiedProperties();
             EditorGUILayout.EndScrollView();
         }

@@ -9,6 +9,7 @@ public class Grabber : EnemyBase {
 	private Core core;
 	private Vector3 vector = new Vector3();
 	BulletPath path;
+	static BulletPath[] paths;
 	Vector3 position;
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -28,11 +29,16 @@ public class Grabber : EnemyBase {
 		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,-0.18f);
-		path=(ei as MultiPathEnemy).paths[Random.Range(0,2)];
+		if(paths==null)paths=(ei as MultiPathEnemy).paths;
 	}
 	public override void Position(int i){
 		base.Position(i);
+		int p=i<10?i:(19-i);
+		if(i==0)transform.position=new Vector3(-Scaler.sizeX/2-2,Scaler.sizeY/2,0.1f);
+		if(i==19)transform.position=new Vector3(Scaler.sizeX/2+2,Scaler.sizeY/2,0.1f);
 		position=transform.position;
+		if(p<3)path=paths[p];
+		else path=paths[3];
 	}
 	new void Update(){
 		if(Ship.paused) return;
@@ -41,7 +47,7 @@ public class Grabber : EnemyBase {
 			if(path.Finished()){
 				Die();
 			}
-			else transform.position=position+BulletPath.Next(ref path,position.x>player.position.x);
+			else transform.position=position+BulletPath.Next(ref path,position.x>0);
 			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
 			core.Set(0);
 		}
