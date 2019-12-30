@@ -39,7 +39,7 @@ public class Squid : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
-		name="Boss";
+		name+="Boss";
 		SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;
@@ -284,10 +284,10 @@ public class Squid : EnemyBase {
 	void Shoot(int i)
 	{
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=round;
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
 		go.AddComponent<BoxCollider2D>();
 		Bullet bu=go.AddComponent<Bullet>();
-		bu.owner=name;
+		bu.owner="enemy";
 		bu.spriteID=shotId;
 		go.transform.position=eyes.transform.position+pos[i]+Vector3.back*0.5f;
 		go.transform.up=(pos[i]+Vector3.down).normalized;

@@ -37,7 +37,7 @@ public class FinalBoss : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		SoundManager.Play(last?2:3);
-		name="Boss";
+		name+="Boss";
 		BossWarning.Show();
 		damageEffect = true;
 		EnemySpawner.boss=true;
