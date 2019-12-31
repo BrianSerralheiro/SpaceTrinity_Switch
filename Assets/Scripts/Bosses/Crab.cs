@@ -15,16 +15,16 @@ public class Crab : EnemyBase {
 	private LineRenderer lineelbowR;
 	private LineRenderer lineclawL;
 	private LineRenderer lineclawR;
-	private Vector3[] pos={new Vector3(-0.5f,0),new Vector3(-0.15f,-0.06f),new Vector3(0.15f,-0.06f), new Vector3(0.5f,0)};
+	private Vector3[] pos={new Vector3(-0.75f,0),new Vector3(-0.225f,-0.09f),new Vector3(0.225f,-0.09f), new Vector3(0.75f,0)};
 	private Vector3 target;
 	private float timer;
 	private float time;
 	private Transform moving;
 	new private Core light;
-	private Vector3 vectorB=new Vector3(0,-0.82f,0.1f);
-	private Vector3 vectorT=new Vector3(0,-0.17f,0.1f);
-	private Vector3 left=new Vector3(1.8f,-1.5f,0);
-	private Vector3 right = new Vector3(-1.8f,-1.5f,0);
+	private Vector3 vectorB=new Vector3(0,-1.23f,0.1f);
+	private Vector3 vectorT=new Vector3(0,-0.255f,0.1f);
+	private Vector3 left=new Vector3(2.7f,-2.25f,0);
+	private Vector3 right = new Vector3(-1.8f*1.5f,-1.5f*1.5f,0);
 	private Sprite round;
 	private int shotId;
 	enum State
@@ -58,7 +58,7 @@ public class Crab : EnemyBase {
 		go=new GameObject("lightL");
 		lightL=go.AddComponent<Core>().Set(ei.sprites[7],new Color(0.5f,0.5f,0.5f));
 		go.transform.parent=clawL.transform;
-		go.transform.localPosition=new Vector3(0.25f,0.1f);
+		go.transform.localPosition=new Vector3(0.25f*1.5f,0.15f);
 		go = new GameObject("elbowL");
 		lineelbowL=go.AddComponent<LineRenderer>();
 		Config(lineelbowL);
@@ -79,7 +79,7 @@ public class Crab : EnemyBase {
 		go=new GameObject("lightR");
 		lightR=go.AddComponent<Core>().Set(ei.sprites[7],new Color(0.5f,0.5f,0.5f)).Flip();
 		go.transform.parent=clawR.transform;
-		go.transform.localPosition=new Vector3(-0.25f,0.1f);
+		go.transform.localPosition=new Vector3(-0.25f*1.5f,0.15f);
 		go = new GameObject("elbowR");
 		lineelbowR=go.AddComponent<LineRenderer>();
 		Config(lineelbowR);
@@ -101,11 +101,11 @@ public class Crab : EnemyBase {
 		go = new GameObject("eye");
 		eye=go.AddComponent<Core>().Set(ei.sprites[5],new Color(0.5f,0.5f,0.5f));
 		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3(0,-0.47f,0.2f);
+		go.transform.localPosition=new Vector3(0,-0.47f*1.5f,0.2f);
 		go = new GameObject("eyes");
 		eyes=go.AddComponent<Core>().Set(ei.sprites[6],new Color(0.5f,0.1f,0.05f));
 		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3(0,0.7f,0);
+		go.transform.localPosition=new Vector3(0,0.7f*1.5f,0);
 		round=ei.sprites[9];
 		shotId=ei.bulletsID[0];
 	}
@@ -130,7 +130,7 @@ public class Crab : EnemyBase {
 		}
 		else if(state==State.waiting)
 		{
-			if(vectorB.y<-0.82f) vectorB.y+=Time.deltaTime/5;
+			if(vectorB.y<-0.82f*1.5f) vectorB.y+=Time.deltaTime/5;
 			if(light)light.Min(Time.deltaTime/2);
 			if(clawL)clawL.transform.position=Vector3.MoveTowards(clawL.transform.position,transform.position+left*1.5f,5*Time.deltaTime);
 			if(clawR) clawR.transform.position=Vector3.MoveTowards(clawR.transform.position,transform.position+right*1.5f,5*Time.deltaTime);
@@ -170,7 +170,7 @@ public class Crab : EnemyBase {
 		}
 		else if(state==State.shooting)
 		{
-			if(vectorB.y>=-1.5f)vectorB.y-=Time.deltaTime/5;
+			if(vectorB.y>=-1.5f*1.5f)vectorB.y-=Time.deltaTime/5;
 			if(!clawL && !clawR){
 				transform.Translate(Mathf.Cos(time)*Time.deltaTime*4,0,0);
 				time+=Time.deltaTime;
@@ -182,7 +182,7 @@ public class Crab : EnemyBase {
 				{
 					Shoot(i);
 				}
-				timer=0.6f;
+				timer=1f;
 				eyes.Set(1);
 				if(clawL || clawR)state=State.waiting;
 			}
@@ -285,7 +285,7 @@ public class Crab : EnemyBase {
 	{
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
-		go.AddComponent<BoxCollider2D>();
+		go.AddComponent<CircleCollider2D>();
 		Bullet bu=go.AddComponent<Bullet>();
 		bu.owner="enemy";
 		bu.spriteID=shotId;
@@ -321,11 +321,12 @@ public class Crab : EnemyBase {
 	}
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
-		if(vectorB.y<-1.3f && state!=State.dead) base.OnCollisionEnter2D(col);
+		if(vectorB.y<-1.3f*1.5f && state!=State.dead) base.OnCollisionEnter2D(col);
 		else ParticleManager.Emit(16,col.collider.transform.position,1);
 	}
 	public override void Position(int i)
 	{
 		transform.position=new Vector3(0,Scaler.sizeY+5,0);
 	}
+
 }
