@@ -20,6 +20,180 @@ TextureImporter:
   - first:
       213: -8434096185859266283
     second: lifeicon_5
+  - first:
+      213: 7773823277397071394
+    second: lifeicon_6
+  - first:
+      213: -6841023470203089386
+    second: lifeicon_7
+  - first:
+      213: -7698557575477485010
+    second: lifeicon_8
+  - first:
+      213: 5530324841288683362
+    second: lifeicon_9
+  - first:
+      213: 1391292803069211586
+    second: lifeicon_10
+  - first:
+      213: 9026387303257536314
+    second: lifeicon_11
+  - first:
+      213: -559463635718590266
+    second: lifeicon_12
+  - first:
+      213: -766607783909119674
+    second: lifeicon_13
+  - first:
+      213: -1248411856574618509
+    second: lifeicon_14
+  - first:
+      213: 5231159757887614477
+    second: lifeicon_15
+  - first:
+      213: -6858617743227493303
+    second: lifeicon_16
+  - first:
+      213: 7236627040494341655
+    second: lifeicon_17
+  - first:
+      213: 2987827884988295673
+    second: lifeicon_18
+  - first:
+      213: -5810204849007305726
+    second: lifeicon_19
+  - first:
+      213: 2919085747047081011
+    second: lifeicon_20
+  - first:
+      213: -4351384243283374407
+    second: lifeicon_21
+  - first:
+      213: 7931190266060213881
+    second: lifeicon_22
+  - first:
+      213: 6800923718119024011
+    second: lifeicon_23
+  - first:
+      213: 7263151501556232440
+    second: lifeicon_24
+  - first:
+      213: -6889412005866820889
+    second: lifeicon_25
+  - first:
+      213: -9025290805612566663
+    second: lifeicon_26
+  - first:
+      213: -5296286592852081691
+    second: lifeicon_27
+  - first:
+      213: -7013678457791436727
+    second: lifeicon_28
+  - first:
+      213: -3338787949528910015
+    second: lifeicon_29
+  - first:
+      213: -5824064990720575494
+    second: lifeicon_30
+  - first:
+      213: -4978311249146114216
+    second: lifeicon_31
+  - first:
+      213: 7486494077584642609
+    second: lifeicon_32
+  - first:
+      213: 4443049691903301118
+    second: lifeicon_33
+  - first:
+      213: -5019387621666384130
+    second: lifeicon_34
+  - first:
+      213: 23534641880985548
+    second: lifeicon_35
+  - first:
+      213: 1222908514461306682
+    second: lifeicon_36
+  - first:
+      213: -2725528428721009432
+    second: lifeicon_37
+  - first:
+      213: -2290038001489911978
+    second: lifeicon_38
+  - first:
+      213: -2909428447293410533
+    second: lifeicon_39
+  - first:
+      213: -22376861321504808
+    second: lifeicon_40
+  - first:
+      213: 1917049135553693292
+    second: lifeicon_41
+  - first:
+      213: 7459034966524495503
+    second: lifeicon_42
+  - first:
+      213: -5148729532471102681
+    second: lifeicon_43
+  - first:
+      213: 7185365576596295214
+    second: lifeicon_44
+  - first:
+      213: -2611469405257443129
+    second: lifeicon_45
+  - first:
+      213: 7948000001857624049
+    second: lifeicon_46
+  - first:
+      213: -3497171593826527797
+    second: lifeicon_47
+  - first:
+      213: -1706940723958406870
+    second: lifeicon_48
+  - first:
+      213: -6973241805604782377
+    second: lifeicon_49
+  - first:
+      213: -8482264560812796979
+    second: lifeicon_50
+  - first:
+      213: 1627864009532092593
+    second: lifeicon_51
+  - first:
+      213: -3997378614038037852
+    second: lifeicon_52
+  - first:
+      213: -8297846873475954670
+    second: lifeicon_53
+  - first:
+      213: -767524124264059486
+    second: lifeicon_54
+  - first:
+      213: -4626310180010361348
+    second: lifeicon_55
+  - first:
+      213: -4192165764678016813
+    second: lifeicon_56
+  - first:
+      213: -4943002023317068819
+    second: lifeicon_57
+  - first:
+      213: 703369879998312617
+    second: lifeicon_58
+  - first:
+      213: 2572304051881226670
+    second: lifeicon_59
+  - first:
+      213: -3771484774067714294
+    second: lifeicon_60
+  - first:
+      213: 8755553358579599825
+    second: lifeicon_61
+  - first:
+      213: 5606703947338666723
+    second: lifeicon_62
+  - first:
+      213: -3615903443307925665
+    second: lifeicon_63
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -49,7 +223,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -100,6 +274,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -107,10 +293,10 @@ TextureImporter:
       name: lifeicon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 25
-        width: 260
-        height: 285
+        x: 25
+        y: 167
+        width: 146
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,7 +304,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e28b43390c3c6a24c94a5a8e23a2e35b
+      spriteID: 93ee736062500c3488e2cf79dc95163b
       internalID: 4080371287521909244
       vertices: []
       indices: 
@@ -128,10 +314,10 @@ TextureImporter:
       name: lifeicon_1
       rect:
         serializedVersion: 2
-        x: 302
-        y: 24
-        width: 302
-        height: 287
+        x: 178
+        y: 167
+        width: 167
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +325,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a43d4830bda294ba37524e2d5680ad
+      spriteID: 1e3423c4566ed514abe394fad65d1200
       internalID: -3622567046700499259
       vertices: []
       indices: 
@@ -149,10 +335,10 @@ TextureImporter:
       name: lifeicon_2
       rect:
         serializedVersion: 2
-        x: 725
-        y: 25
-        width: 256
-        height: 293
+        x: 392
+        y: 167
+        width: 143
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +346,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fe3f0323d0bbed4e83106917d156564
+      spriteID: 42425812546aea24bbc6b71969ab0e83
       internalID: -5666852895731121398
       vertices: []
       indices: 
@@ -170,10 +356,10 @@ TextureImporter:
       name: lifeicon_3
       rect:
         serializedVersion: 2
-        x: 1058
-        y: 1
-        width: 254
-        height: 304
+        x: 559
+        y: 155
+        width: 143
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,7 +367,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7fb816adb0de9140b83360daf8d879e
+      spriteID: 259fd75d5454b8c49ad4eadde93e58eb
       internalID: 3700898363503908199
       vertices: []
       indices: 
@@ -191,10 +377,10 @@ TextureImporter:
       name: lifeicon_4
       rect:
         serializedVersion: 2
-        x: 1368
-        y: 11
-        width: 270
-        height: 307
+        x: 716
+        y: 160
+        width: 150
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +388,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69d74939d2d485a49b66d331e8fbe7cc
+      spriteID: f3a321dda177bad48b5dc6d71616d179
       internalID: 1204968881304793646
       vertices: []
       indices: 
@@ -212,10 +398,10 @@ TextureImporter:
       name: lifeicon_5
       rect:
         serializedVersion: 2
-        x: 1703
-        y: 0
-        width: 261
-        height: 303
+        x: 885
+        y: 161
+        width: 146
+        height: 161
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +409,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0ba7139ea60a434bac206c48c29d017
+      spriteID: 8656448b6eeffac48a82b4ee82f5f3cf
       internalID: -8434096185859266283
       vertices: []
       indices: 
