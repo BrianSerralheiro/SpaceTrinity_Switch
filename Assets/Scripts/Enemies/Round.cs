@@ -36,11 +36,11 @@ public class Round : EnemyBase
 	{
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
-		go.AddComponent<BoxCollider2D>();
+		go.AddComponent<CircleCollider2D>();
 		Bullet bu = go.AddComponent<Bullet>();
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
-		Vector3 v= new Vector3(i%2,i/2,0)-Vector3.one*0.5f;
+		Vector3 v= new Vector3(i%2,i/2,0)-Vector3.one;
 		go.transform.position=transform.position+v;
 		go.transform.eulerAngles=new Vector3(0,0,135+i*90)*(i<2?1:-1);
 	}

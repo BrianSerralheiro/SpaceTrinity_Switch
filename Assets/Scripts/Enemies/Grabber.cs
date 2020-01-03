@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Grabber : EnemyBase {
 	private Vector3 rotation = Vector3.zero;
@@ -11,6 +9,7 @@ public class Grabber : EnemyBase {
 	BulletPath path;
 	static BulletPath[] paths;
 	Vector3 position;
+	private int shotId;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=10;
@@ -30,6 +29,7 @@ public class Grabber : EnemyBase {
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,-0.18f);
 		if(paths==null)paths=(ei as MultiPathEnemy).paths;
+		shotId=ei.bulletsID[0];
 	}
 	public override void Position(int i){
 		base.Position(i);
@@ -46,6 +46,7 @@ public class Grabber : EnemyBase {
 		if(!transform.parent){
 			if(path.Finished()){
 				Die();
+				Shoot();
 			}
 			else transform.position=position+BulletPath.Next(ref path,position.x>0);
 			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
@@ -53,7 +54,6 @@ public class Grabber : EnemyBase {
 		}
 		else
 		{
-			vector.Set(0,0,-30f);
 			transform.parent.Translate(transform.localPosition*Time.deltaTime);
 			if(transform.localPosition.y<0.2f)transform.parent=null;
 			core.Set(1);
@@ -61,10 +61,22 @@ public class Grabber : EnemyBase {
 		armL.localEulerAngles=vector;
 		armR.localEulerAngles=-vector;
 	}
+	void Shoot()
+	{
+		GameObject go = new GameObject("enemybullet");
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
+		go.AddComponent<CircleCollider2D>();
+		Bullet bu = go.AddComponent<Bullet>();
+		bu.owner=transform.name;
+		bu.spriteID=shotId;
+		go.transform.position=transform.position;
+		go.transform.up=-path.GetNodeL(position.x>0).normalized;
+	}
 	new private void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.collider.name.Contains("Ship")){
+		if(col.collider.name.Contains("Player")){
 			transform.parent=col.transform;
+			vector.Set(0,0,-30f);
 			hp*=2;
 		}else 
 			base.OnCollisionEnter2D(col);
