@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
 public class Grabber : EnemyBase {
-	private Vector3 rotation = Vector3.zero;
-	private Transform armL;
-	private Transform armR;
+	private Transform armL, armR,grabed;
+	private float timer;
 	private Core core;
-	private Vector3 vector = new Vector3();
+	private Vector3 vector = new Vector3(),local;
 	BulletPath path;
 	static BulletPath[] paths;
 	Vector3 position;
@@ -43,20 +42,19 @@ public class Grabber : EnemyBase {
 	new void Update(){
 		if(Ship.paused) return;
 		base.Update();
-		if(!transform.parent){
-			if(path.Finished()){
-				Die();
-				Shoot();
-			}
-			else transform.position=position+BulletPath.Next(ref path,position.x>0);
-			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
-			core.Set(0);
+		if(path.Finished()){
+			Die();
+			Shoot();
 		}
-		else
-		{
-			transform.parent.Translate(transform.localPosition*Time.deltaTime);
-			if(transform.localPosition.y<0.2f)transform.parent=null;
-			core.Set(1);
+		else transform.position=position+BulletPath.Next(ref path,position.x>0);
+		if(timer>0){
+			timer-=Time.deltaTime;
+			grabed.position=transform.position+local;
+			core.Add(Time.deltaTime);
+		}
+		else {
+			core.Min(Time.deltaTime);
+			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
 		}
 		armL.localEulerAngles=vector;
 		armR.localEulerAngles=-vector;
@@ -74,10 +72,10 @@ public class Grabber : EnemyBase {
 	}
 	new private void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.collider.name.Contains("Player")){
-			transform.parent=col.transform;
+		if(col.collider.name.Contains("Player") && timer<=0){
+			grabed=col.transform;
+			timer=3;
 			vector.Set(0,0,-30f);
-			hp*=2;
 		}else 
 			base.OnCollisionEnter2D(col);
 	}
