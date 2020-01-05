@@ -14,7 +14,7 @@ public class Launcher : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
-		hp=30;
+		hp=20;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		timer=5;
 		rocketSprite=ei.sprites[1];
@@ -31,7 +31,7 @@ public class Launcher : EnemyBase {
 		spd=0;
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=rocketSprite;
-		go.AddComponent<Missile>().SetHP(30);
+		go.AddComponent<Missile>().SetHP(20);
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;

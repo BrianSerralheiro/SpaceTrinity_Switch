@@ -6,6 +6,8 @@ public class Round : EnemyBase
 	private float shoottimer = 1.4f;
 	private Vector3 vector=new Vector3();
 	private static int shootId;
+
+	private int shootCount;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=30;
@@ -26,7 +28,17 @@ public class Round : EnemyBase
 		if(shoottimer<=0)
 		{
 			SoundManager.PlayEffects(12, 0.1f, 0.5f);
-			shoottimer=0.2f;
+			shootCount++;
+			if(shootCount > 3)
+			{
+				shootCount = 0;
+				shoottimer = 0.6f;
+			}
+			else
+			{
+				shoottimer = 0.2f;
+			}
+			
 			for(int i=0;i<4;i++){
 				Shoot(i);
 			}
@@ -40,7 +52,7 @@ public class Round : EnemyBase
 		Bullet bu = go.AddComponent<Bullet>();
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
-		Vector3 v= new Vector3(i%2,i/2,0)-Vector3.one;
+		Vector3 v= new Vector3(i%2,i/2,0) *2 -Vector3.one;
 		go.transform.position=transform.position+v;
 		go.transform.eulerAngles=new Vector3(0,0,135+i*90)*(i<2?1:-1);
 	}

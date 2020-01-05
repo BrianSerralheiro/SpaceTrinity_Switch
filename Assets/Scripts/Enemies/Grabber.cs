@@ -76,6 +76,7 @@ public class Grabber : EnemyBase {
 			grabed=col.transform;
 			timer=3;
 			vector.Set(0,0,-30f);
+			local = col.transform.position - transform.position;
 		}else 
 			base.OnCollisionEnter2D(col);
 	}
