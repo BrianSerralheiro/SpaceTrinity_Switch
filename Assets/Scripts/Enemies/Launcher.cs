@@ -19,11 +19,14 @@ public class Launcher : EnemyBase {
 		timer=5;
 		rocketSprite=ei.sprites[1];
 		burstSprite=ei.sprites[2];
-		Create();
 		GameObject go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,0.22f);
+	}
+	public override void Position(int i){
+		base.Position(i);
+		Create();
 	}
 	private void Create()
 	{
@@ -72,7 +75,7 @@ public class Launcher : EnemyBase {
 				v.Normalize();
 				if(timer>-4)rocket.Rotate(Vector3.Cross(v,rocket.up)*Time.deltaTime*270f*spd);
 				rocket.Translate(0,Time.deltaTime*8*spd,0);
-				if(rocket.position.x<-Scaler.sizeX/2-2 || rocket.position.x>Scaler.sizeX/2+2 || rocket.position.y<-Scaler.sizeY-2 || rocket.position.y>Scaler.sizeY+2)Destroy(rocket.gameObject);
+				if(rocket.position.x<-Scaler.sizeX/2-2 || rocket.position.x>Scaler.sizeX/2+2 || rocket.position.y<-Scaler.sizeY-2 || rocket.position.y>Scaler.sizeY+4)Destroy(rocket.gameObject);
 			}
 			else Create();
 		}
@@ -81,6 +84,6 @@ public class Launcher : EnemyBase {
 	protected override void Die()
 	{
 		base.Die();
-		if(rocket)Destroy(rocket.gameObject);
+		if(rocket)rocket.GetComponent<Missile>().release=true;
 	}
 }

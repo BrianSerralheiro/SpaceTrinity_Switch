@@ -46,7 +46,10 @@ public class Grabber : EnemyBase {
 			Die();
 			Shoot();
 		}
-		else transform.position=position+BulletPath.Next(ref path,position.x>0);
+		else {
+			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x>0))*180*Time.deltaTime);
+			transform.position=position+BulletPath.Next(ref path,position.x>0);
+		}
 		if(timer>0){
 			timer-=Time.deltaTime;
 			grabed.position=transform.position+local;
@@ -54,7 +57,7 @@ public class Grabber : EnemyBase {
 		}
 		else {
 			core.Min(Time.deltaTime);
-			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
+			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f)*Time.deltaTime);
 		}
 		armL.localEulerAngles=vector;
 		armR.localEulerAngles=-vector;
@@ -76,7 +79,6 @@ public class Grabber : EnemyBase {
 			grabed=col.transform;
 			timer=3;
 			vector.Set(0,0,-30f);
-			local = col.transform.position - transform.position;
 		}else 
 			base.OnCollisionEnter2D(col);
 	}

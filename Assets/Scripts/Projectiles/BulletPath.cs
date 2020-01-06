@@ -40,6 +40,13 @@ public struct BulletPath
         if(b)v.x*=-1;
         return v;
     }
+    public Vector3 Directiom(bool b){
+        Vector3 v;
+        if(nodeID==0)v=nodes[0];
+        else v=nodes[nodeID]-nodes[nodeID-1];
+        if(b)v.x*=-1;
+        return v.normalized;
+    }
     public Vector3 GetNodeL(bool b){
         Vector3 v;
         if(nodes.Length<2)v= nodes[0];

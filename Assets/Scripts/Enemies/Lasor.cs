@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lasor : EnemyBase
 {
@@ -57,8 +55,18 @@ public class Lasor : EnemyBase
 			transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(dir),Time.deltaTime*45);
 		}
 		else{
-			if(timer>0)timer-=Time.deltaTime * 3;
-			if(timer<1)
+			timer-=Time.deltaTime;
+			if(timer<0){
+				dir.x=1+timer;
+				laser.localScale=dir;
+				collider.enabled=!collider.enabled;
+				if(dir.x<=0){
+					timer=3;
+					dir.x=0;
+					collider.enabled=false;
+				}
+			}
+			else if(timer<1)
 			{
 				charge.transform.localScale=laser.localPosition;
 				dir.Set(1-timer,1,1);
