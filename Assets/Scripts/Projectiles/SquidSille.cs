@@ -12,7 +12,7 @@ public class SquidSille : EnemyBase
     
 	public override void Position(int i){
 		base.Position(i);
-        target.Set(transform.position.x, -Scaler.sizeY/2, 0.1f);
+        target.Set(transform.position.x, -Scaler.sizeY/2 -4, 0.1f);
         transform.up=Vector3.down;
     }
 	void Shot(int c){
@@ -26,8 +26,8 @@ public class SquidSille : EnemyBase
 			Bullet bu=go.AddComponent<Bullet>();
 			bu.owner=name;
 			bu.spriteID=shotId;
-			bu.bulleSpeed=10;
-			bu.Timer(0.1f);
+			bu.bulleSpeed=12;
+			bu.Timer(2);
 			go.transform.position=transform.position;
 			go.transform.eulerAngles=new Vector3(0,0,degrees*i);
 		}
@@ -37,10 +37,10 @@ public class SquidSille : EnemyBase
         if(Ship.paused)return;
         base.Update();
         transform.Rotate(Vector3.Cross(transform.up,target - transform.position)*Time.deltaTime*60);
-        transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*8);
+        transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*6);
         if(transform.position == target)
         {
-            Shot(12);
+            Shot(8);
             Die();
         }
     }
