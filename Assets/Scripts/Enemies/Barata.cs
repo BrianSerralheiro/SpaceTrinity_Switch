@@ -181,13 +181,12 @@ public class Barata : EnemyBase {
 		{
 			GameObject go = new GameObject("enemybullet");
 			go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
-			go.AddComponent<BoxCollider2D>();
+			go.AddComponent<CircleCollider2D>();
 			Bullet bu=go.AddComponent<Bullet>();
-			bu.owner=transform.name;
+			bu.owner=name;
 			bu.spriteID=shotId;
 			bu.bulleSpeed=8f;
 			bu.Timer(10);
-			bu.maxSpeed=2;
 			go.transform.position=crystal.transform.position;
 			go.transform.eulerAngles=new Vector3(0,0,90f+degrees*i);
 		}

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	protected float timer,spriteTimer,blinkTimer=0.1f;
+	protected float timer=2,spriteTimer,blinkTimer=0.1f;
 	public string owner;
 	public int damage;
 	public bool pierce;
@@ -18,11 +18,11 @@ public class Bullet : MonoBehaviour {
 	{
 		_time = Time.time;
 		renderer=GetComponent<SpriteRenderer>();
-		timer=2 + maxSpeed;
+		timer+=maxSpeed;
 		spriteTimer=_time+blinkTimer;
 	}
 	public void Timer(float f){
-		timer=f+maxSpeed;
+		timer=f;
 	}
 	public static int Register(Sprite sp){
 		if(sprites.Contains(sp)){
