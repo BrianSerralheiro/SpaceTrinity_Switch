@@ -36,9 +36,12 @@ public class SquidSille : EnemyBase
     {
         if(Ship.paused)return;
         base.Update();
-        transform.Rotate(Vector3.Cross(transform.up,target - transform.position)*Time.deltaTime*60);
-        transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*6);
-        if(transform.position == target)
+        target.z=transform.position.z;
+        Vector3 vector=target - transform.position;
+        transform.Rotate(Vector3.Cross(transform.up,vector)*Time.deltaTime*60);
+        //transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*6);
+        transform.Translate(0,Time.deltaTime*6,0);
+        if(Vector3.Distance(transform.position,target)<0.5)
         {
             Shot(8);
             Die();
