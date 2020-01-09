@@ -58,13 +58,13 @@ public class Lasor : EnemyBase
 			timer-=Time.deltaTime;
 			if(timer<0){
 				dir.x=1+timer;
-				laser.localScale=dir;
 				collider.enabled=!collider.enabled;
 				if(dir.x<=0){
 					timer=3;
 					dir.x=0;
 					collider.enabled=false;
 				}
+				laser.localScale=dir;
 			}
 			else if(timer<1)
 			{

@@ -57,7 +57,7 @@ public class Grabber : EnemyBase {
 		}
 		else {
 			core.Min(Time.deltaTime);
-			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f)*Time.deltaTime);
+			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
 		}
 		armL.localEulerAngles=vector;
 		armR.localEulerAngles=-vector;
@@ -71,7 +71,7 @@ public class Grabber : EnemyBase {
 		bu.owner=transform.name;
 		bu.spriteID=shotId;
 		go.transform.position=transform.position;
-		go.transform.up=-path.GetNodeL(position.x>0).normalized;
+		go.transform.up=player.position-go.transform.position;
 	}
 	new private void OnCollisionEnter2D(Collision2D col)
 	{
