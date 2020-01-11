@@ -83,7 +83,7 @@ public class Shooter : EnemyBase
 		vector.Set(0,0,Mathf.PingPong(Time.time*80,45f));
 	}
 	void Shooting(){
-		Vector3 v=path.GetNode0();
+		Vector3 v=path.GetNode0(transform.position.x>0);
 		if(transform.position.x>0)v.x*=-1;
 		transform.Rotate(Vector3.Cross(v,transform.up)*Time.deltaTime*30f);
 		shoottimer-=Time.deltaTime;

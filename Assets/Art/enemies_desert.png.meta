@@ -1,0 +1,550 @@
+fileFormatVersion: 2
+guid: a593d0b8c279f05418f45f92d4edbdd1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5733711821747517446
+    second: hole
+  - first:
+      213: 1922634086934727929
+    second: turret medium
+  - first:
+      213: -6543745899218514353
+    second: turrethole
+  - first:
+      213: -722748450617542271
+    second: turret lid
+  - first:
+      213: 3798138748194089976
+    second: turret small
+  - first:
+      213: -8865873749720410653
+    second: jet
+  - first:
+      213: -2884657546131186542
+    second: ject tail
+  - first:
+      213: -8706461747652600605
+    second: pod
+  - first:
+      213: 6371263099297328572
+    second: pod door
+  - first:
+      213: 4816720371435263991
+    second: enemies_desert_9
+  - first:
+      213: -4692524128882893025
+    second: enemies_desert_10
+  - first:
+      213: 7159805554057691426
+    second: enemies_desert_11
+  - first:
+      213: -5438047118213396448
+    second: chopper
+  - first:
+      213: -7262830813431042741
+    second: enemies_desert_13
+  - first:
+      213: 7895150657509526253
+    second: missile
+  - first:
+      213: -6755913240931323787
+    second: tank base
+  - first:
+      213: 6095219272419629605
+    second: tank cannon
+  - first:
+      213: -4689609241597284983
+    second: enemies_desert_17
+  - first:
+      213: -8797290704025250493
+    second: enemies_desert_18
+  - first:
+      213: -7424177290580584139
+    second: enemies_desert_19
+  - first:
+      213: -3728892667808769297
+    second: turret base
+  - first:
+      213: 7532225120804370497
+    second: turret big
+  - first:
+      213: 2925290756085588242
+    second: helix
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: turret medium
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 1890
+        width: 67
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca5e78078554d6c489d1db2422024968
+      internalID: 1922634086934727929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turrethole
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 1896
+        width: 84
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4016e1cd18cda64e858c032e0538ad5
+      internalID: -6543745899218514353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret lid
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 1893
+        width: 84
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db26458e20facbe4baa92b9d546c9d1f
+      internalID: -722748450617542271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret small
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 1888
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7746cfb5079bdcc448c76cdcd22bf95e
+      internalID: 3798138748194089976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jet
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 1570
+        width: 479
+        height: 581
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8facfabd21f782a4981f7092352fad39
+      internalID: -8865873749720410653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ject tail
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 1737
+        width: 135
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b535f27a661a3c4381c7c222c24e587
+      internalID: -2884657546131186542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pod
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1074
+        width: 420
+        height: 422
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35114078bd11aad4484cc95fea62030b
+      internalID: -8706461747652600605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pod door
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1212
+        width: 107
+        height: 164
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79609ef17c430eb4bba1979333863706
+      internalID: 6371263099297328572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chopper
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 594
+        width: 117
+        height: 345
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75cf25241632d14449077b1987b5220e
+      internalID: -5438047118213396448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_desert_13
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 858
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f17aa518e23234409a64abb0b5ef62d
+      internalID: -7262830813431042741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: missile
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 653
+        width: 114
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05d05b16ea8aee4a9c4cde350283513
+      internalID: 7895150657509526253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank base
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 599
+        width: 182
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61afc20b2f981b2489a85214b5923f20
+      internalID: -6755913240931323787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank cannon
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 499
+        width: 130
+        height: 326
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2b7b46f849b144ab8e1390cb54eea0
+      internalID: 6095219272419629605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_desert_18
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 577
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc035d327d910854d8445709fc3b1978
+      internalID: -8797290704025250493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_desert_19
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 577
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd67d1046fe4f6145b2f5909c9596d51
+      internalID: -7424177290580584139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret base
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 243
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0994c88a2b7b94d98bcce48b92905a
+      internalID: -3728892667808769297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret big
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 221
+        width: 137
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b586a6889da5694e87f674b4453eacd
+      internalID: 7532225120804370497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 216
+        width: 253
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736abb82ef87f7442beec8e9d4bf789f
+      internalID: 2925290756085588242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
