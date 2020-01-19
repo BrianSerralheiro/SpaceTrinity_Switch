@@ -17,6 +17,7 @@ public class Chopper : EnemyBase
         go.transform.parent=transform;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
+        go.AddComponent<BoxCollider2D>();
         shotId=ei.bulletsID[0];
         MultiPathEnemy enemy=(MultiPathEnemy)ei;
         counter=shots=enemy.shotCount;
@@ -42,7 +43,7 @@ public class Chopper : EnemyBase
             if(timer<0)Shot();
         }
         else{
-			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x>0))*180*Time.deltaTime);
+			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x>0))*360*Time.deltaTime);
             transform.position=position+BulletPath.Next(ref path,position.x>0);
         }
     }
@@ -67,5 +68,17 @@ public class Chopper : EnemyBase
             }
         }else
             timer=delay;
+    }
+    
+    protected override void Die(){
+        if(hp<=0){
+            helix.transform.parent=null;
+            Bullet b=helix.gameObject.AddComponent<Bullet>();
+            b.enabled=false;
+            b.damage=40;
+            b.owner="hel";
+            helix.time=Time.time+1;
+        }
+        base.Die();
     }
 }

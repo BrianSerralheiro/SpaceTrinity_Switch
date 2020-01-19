@@ -27,12 +27,13 @@ public class Tank : EnemyBase
         if(Ship.paused)return;
         base.Update();
         timer-=Time.deltaTime;
-        if(transform.position.y>0){
+        if(transform.position.y>-Scaler.sizeY/2){
             transform.Translate(0,-Time.deltaTime,0);
             Vector3 v=player.position-turret.position;
             v.z=0;
-            turret.Rotate(Vector3.Cross(-turret.up,v)*Time.deltaTime*25);
-            if(timer<=0)Shot();
+            v=Vector3.Cross(-turret.up,v);
+            turret.Rotate(v*Time.deltaTime*15);
+            if(timer<=0 && Mathf.Abs(v.z)<0.1f)Shot();
         }
         else{
             transform.Translate(0,-Time.deltaTime*2.5f,0);

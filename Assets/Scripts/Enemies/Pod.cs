@@ -14,8 +14,8 @@ public class Pod : EnemyBase
         name+="Big";
         BoxCollider2D col=GetComponent<BoxCollider2D>();
         col.isTrigger=true;
-        col.size=new Vector2(3,6);
-        col.offset=new Vector2(0,-4);
+        col.size=new Vector2(3,10);
+        col.offset=new Vector2(0,-8);
         GameObject go=new GameObject("door");
         doors[0]=go.transform;
         doors[0].parent=transform;
@@ -65,7 +65,6 @@ public class Pod : EnemyBase
     void OnTriggerStay2D(Collider2D col)
     {
         if(col.GetComponent<Ship>() && (!target || Vector3.Distance(target.position,transform.position)>Vector3.Distance(col.transform.position,transform.position)))target=col.transform;
-        Debug.Log(target);
     }
     void OnTriggerExit2D(Collider2D col)
     {

@@ -41,6 +41,7 @@ public class ParticleManager : MonoBehaviour {
 	}
 	public static void Emit(int i,Vector3 p,int c)
 	{
+		if(sys==null)return;
 		sys[i].transform.up=up;
 		sys[i].transform.position=p+mod;
 		sys[i].Emit(c);

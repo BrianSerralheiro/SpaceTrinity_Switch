@@ -1,39 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MiniTurret : MonoBehaviour
 {
-    float min,max,timer,shooterTimer;
-    int shotId;
-    void Perepare(Sprite s,float mi,float ma,float t,int id)
-    {
-        gameObject.AddComponent<SpriteRenderer>().sprite=s;
-        gameObject.AddComponent<BoxCollider2D>();
-        min=mi;
-        max=ma;
-        shooterTimer=t;
-        shotId=id;
-    }
+    float angle,angledelta,timer,shooterTimer;
+    int shots,hp;
+    public int shotId;
+    public float variant=1;
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.name.Contains("Player")){
-            Destroy(gameObject);
+        if(other.collider.name.Contains("Player") && hp--<=0){
+            enabled=false;
         }
+    }
+    void OnEnable()
+    {
+        hp=5;
+    }
+    void OnDisable()
+    {
+        shots=0;
     }
     void Update()
     {
-        shooterTimer-=Time.deltaTime;
-        if(shooterTimer<=0)Shot();
+        if(!Ship.paused && shots>0 && timer<Time.time)Shot();
+    }
+    public void Prepare(float initialAngle,float anglepershot,float shotcount,float delay){
+        angle=initialAngle;
+        angledelta=anglepershot;
+        shots=(int)shotcount;
+        shooterTimer=delay*variant;
+        timer=0;
     }
     void Shot(){
-        transform.rotation=Quaternion.Euler(0,0,Random.Range(min,max));
-        timer=shooterTimer;
+        timer=Time.time+shooterTimer;
+        transform.rotation=Quaternion.Euler(0,0,angle);
+        angle+=angledelta;
+        shots--;
         GameObject go=new GameObject("enemybullet");
+        go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
         bu.bulleSpeed=5;
+        bu.Timer(5);
         bu.spriteID=shotId;
-        go.AddComponent<CircleCollider2D>();
+        go.AddComponent<BoxCollider2D>();
+        go.transform.position=transform.position-transform.up;
         go.transform.up=-transform.up;
     }
 }
