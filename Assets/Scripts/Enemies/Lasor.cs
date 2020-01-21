@@ -2,7 +2,7 @@
 
 public class Lasor : EnemyBase
 {
-	private float timer=3;
+	private float timer=1.5f;
 	private Vector3 dir;
 	private Transform laser;
 	private SpriteRenderer charge;

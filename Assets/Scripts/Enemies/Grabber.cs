@@ -70,6 +70,7 @@ public class Grabber : EnemyBase {
 		Bullet bu = go.AddComponent<Bullet>();
 		bu.owner=transform.name;
 		bu.spriteID=shotId;
+		bu.Timer(3);
 		go.transform.position=transform.position;
 		go.transform.up=player.position-go.transform.position;
 	}
