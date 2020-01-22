@@ -217,6 +217,13 @@ public class Squid : EnemyBase {
 	protected override void Die()
 	{
 		EnemySpawner.points[killerid]+=1000;
+		update=Dying;
+		timer=3;
+	}
+	void Dying(){
+		timer-=Time.deltaTime;
+		if(timer<0)Loader.Scene("SelectionTest");
+		if(Time.time%1f<0.1f)ParticleManager.Emit(0,transform.position+Random.onUnitSphere*2,1);
 	}
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
