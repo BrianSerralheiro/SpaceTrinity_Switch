@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
 
 public class Launcher : EnemyBase {
-	private float timer=5;
-	private float spd;
-	private Transform rocket;
-	private Transform burst;
-	private Vector3 rot;
-	private Vector3 scale=Vector3.one;
-	private Vector3 pos=new Vector3(0,0.4f,0.1f);
+	private float timer=5,spd;
+	private Transform rocket, burst,target;
+	private Vector3 rot,scale=Vector3.one, pos=new Vector3(0,0.4f,0.1f);
 	private Core core;
-	private static Sprite rocketSprite;
-	private static Sprite burstSprite;
+	private static Sprite rocketSprite,burstSprite;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
@@ -30,6 +25,7 @@ public class Launcher : EnemyBase {
 	}
 	private void Create()
 	{
+		target=GetPlayer();
 		timer=1.5f;
 		spd=0;
 		GameObject go = new GameObject("enemy");
@@ -70,7 +66,7 @@ public class Launcher : EnemyBase {
 				if(spd>1)spd=1;
 				scale.y=spd*5;
 				burst.localScale=scale;
-				Vector3 v=rocket.position-player.position;
+				Vector3 v=rocket.position-target.position;
 				v.z=0;
 				v.Normalize();
 				if(timer>-4)rocket.Rotate(Vector3.Cross(v,rocket.up)*Time.deltaTime*270f*spd);

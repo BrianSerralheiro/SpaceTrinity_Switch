@@ -32,7 +32,7 @@ public class FinalBoss : EnemyBase {
 	private SpriteRenderer screenren;
 	private SpriteRenderer overlay;
 	private float screentimer;
-
+	Transform target;
 	public static bool last;
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -202,13 +202,14 @@ public class FinalBoss : EnemyBase {
 					state=(State)Random.Range(2,6);
 				while(state==prev);
 				prev=state;
+				target=GetPlayer();
 				if(state==State.zap)timer=last?2:4;
 			}
 		}
 		else if(state==State.shot)
 		{
 			if(!last){
-				if(player.position.x<transform.position.x) transform.Translate(-Time.deltaTime,0,0);
+				if(target.position.x<transform.position.x) transform.Translate(-Time.deltaTime,0,0);
 				else transform.Translate(Time.deltaTime,0,0);
 			}
 			if(timer<=0)
@@ -262,12 +263,12 @@ public class FinalBoss : EnemyBase {
 			if(timer>1)
 			{
 				if(!last){
-					pos=Vector3.MoveTowards(transform.position,player.position,Time.deltaTime*2);
+					pos=Vector3.MoveTowards(transform.position,target.position,Time.deltaTime*2);
 					pos.z=0;
 					transform.position=pos;
 				}
 				energy.transform.localPosition=local;
-				rot.Set(0,0,Mathf.Atan2(energy.transform.position.x-player.position.x,player.position.y-energy.transform.position.y)*Mathf.Rad2Deg);
+				rot.Set(0,0,Mathf.Atan2(energy.transform.position.x-target.position.x,target.position.y-energy.transform.position.y)*Mathf.Rad2Deg);
 				energy.transform.eulerAngles=rot;
 			}
 			else if(timer >0.1f)

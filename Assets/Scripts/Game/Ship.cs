@@ -82,7 +82,7 @@ public class Ship : MonoBehaviour {
 			// specials=null;
 			colors=null;
 		}
-		EnemyBase.player=transform;
+		EnemyBase.players[input.id]=transform;
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
@@ -111,7 +111,6 @@ public class Ship : MonoBehaviour {
 			if(continues[input.id]-- <= 0)
 			{				
 				GameOverController.Open(this);
-				paused = true;
 			}
 			else
 			{

@@ -59,8 +59,9 @@ public class Header : EnemyBase {
 		bu.owner=name;
 		bu.spriteID=shootId;
 		go.transform.position=transform.position;
-		Vector3 rotation = new Vector3(0,0,Mathf.Atan2(transform.position.x-player.position.x,player.position.y-transform.position.y)*Mathf.Rad2Deg);
-		go.transform.eulerAngles=rotation;
+		Vector3 v=GetPlayer(transform.position).position-transform.position;
+		v.z=0;
+		go.transform.Rotate(Vector3.Cross(go.transform.up,v));
 	}
 
 }

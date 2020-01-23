@@ -44,7 +44,7 @@ public class Bat : EnemyBase
 			if(count--==0)
 			target=new Vector3(pos.x,Scaler.sizeY+4,pos.z);
 			else
-			target=pos+(player.position-pos).normalized*8;
+			target=pos+(GetPlayer().position-pos).normalized*8;
 		}
 		if(transform.position.y>Scaler.sizeY+3)Die();
 		transform.position=pos;

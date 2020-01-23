@@ -96,7 +96,7 @@ public class Batzilla : EnemyBase {
 			if(transform.position.y<Scaler.sizeY/2f){
 				state=State.slashing;
 				timer=1.5f;
-				slash.transform.position=player.position;
+				slash.transform.position=GetPlayer().position;
 				slashrot.z=Random.Range(-45f,45f);
 				slash.transform.eulerAngles=slashrot;
 			}
@@ -116,7 +116,7 @@ public class Batzilla : EnemyBase {
 				else if(f>0.2f)state=State.calling;
 				else {
 					state=State.slashing;
-					slash.transform.position=player.position;
+					slash.transform.position=GetPlayer().position;
 					slashrot.z=Random.Range(-45f,45f);
 					if(slashrot.z>0)wingR.eulerAngles=Vector3.forward*45f;
 					else wingL.eulerAngles=Vector3.forward*-45f;
@@ -230,7 +230,7 @@ public class Batzilla : EnemyBase {
 	{
 		GameObject go = new GameObject("enemy");
 		Bat b=go.AddComponent<Bat>();
-		b.target=head.position+(player.position-head.position)*5f;
+		b.target=head.position+(GetPlayer().position-head.position)*5f;
 		b.SetSprites(bat);
 		go.AddComponent<SpriteRenderer>().sprite=bat.sprites[0];
 		go.AddComponent<BoxCollider2D>();

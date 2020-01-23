@@ -67,7 +67,7 @@ public class Diver : EnemyBase
 	}
 	protected override void SlowFall(){
 		base.SlowFall();
-		Vector3 v=transform.position-player.position;
+		Vector3 v=transform.position-GetPlayer(transform.position).position;
 		v.z=0;
 		v.Normalize();
 		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*270f);
@@ -75,7 +75,7 @@ public class Diver : EnemyBase
 		if(time<Time.time)movement=Follow;
 	}
 	void Follow(){
-		Vector3 v=transform.position-player.position;
+		Vector3 v=transform.position-transform.position;
 		v.z=0;
 		v.Normalize();
 		transform.Rotate(Vector3.Cross(v,-transform.up)*Time.deltaTime*60f);

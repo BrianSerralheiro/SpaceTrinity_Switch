@@ -7,6 +7,7 @@ public class Jet : EnemyBase
     Vector3 pos=new Vector3(Scaler.sizeX/2,Scaler.sizeY/2);
     Quaternion rot=Quaternion.Euler(0,0,-45);
     int patternId;
+    Transform target;
     bool face;
     Del update;
     float[,] patterns={{90,-30,4,0.02f,2},
@@ -66,7 +67,7 @@ public class Jet : EnemyBase
         }
     }
     void Face(){
-        pos.x=player.position.x;
+        pos.x=target.position.x;
         pos.y*=0.99f;
         transform.position=Vector3.MoveTowards(transform.position,pos,Time.deltaTime*2);
         transform.rotation=Quaternion.RotateTowards(transform.rotation,rot,Time.deltaTime*360);
@@ -91,6 +92,7 @@ public class Jet : EnemyBase
 	}
     void TurretUpdate(){
         if(shootTime<Time.time){
+            target=GetPlayer();
             shootTime=Time.time+patterns[patternId,4];
             turrets[0].Prepare(patterns[patternId,0],patterns[patternId,1],patterns[patternId,2],patterns[patternId,3]);
             turrets[1].Prepare(-patterns[patternId,0],-patterns[patternId,1],patterns[patternId,2],patterns[patternId,3]);

@@ -10,7 +10,7 @@ public class Bomb : EnemyBase {
 	{
 		hp=5;
 		pos=transform.position;
-		aim=(player.position-pos).normalized*20+pos;
+		aim=(GetPlayer(pos).position-pos).normalized*20+pos;
 	}
 	
 	new void Update () {
@@ -21,7 +21,7 @@ public class Bomb : EnemyBase {
 		if(speed>8)speed=8;
 		transform.position=pos;
 		transform.Rotate(0,0,Time.deltaTime*90);
-		if((pos-player.position).sqrMagnitude<2.25f)Explode();
+		if((pos-GetPlayer(transform.position).position).sqrMagnitude<2.25f)Explode();
 		if((pos-aim).sqrMagnitude<0.1f)Die();
 	}
 	public new void OnCollisionEnter2D(Collision2D col)

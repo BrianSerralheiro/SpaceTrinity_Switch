@@ -52,7 +52,8 @@ public class Grabber : EnemyBase {
 		}
 		if(timer>0){
 			timer-=Time.deltaTime;
-			grabed.position=transform.position+local;
+			grabed.localPosition=local;
+			if(timer<=0)grabed.parent=null;
 			core.Add(Time.deltaTime);
 		}
 		else {
@@ -72,12 +73,19 @@ public class Grabber : EnemyBase {
 		bu.spriteID=shotId;
 		bu.Timer(3);
 		go.transform.position=transform.position;
-		go.transform.up=player.position-go.transform.position;
+		go.transform.up=GetPlayer().position-go.transform.position;
+	}
+	protected override void Die()
+	{
+		if(grabed)grabed.parent=null;
+		base.Die();
 	}
 	new private void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.collider.name.Contains("Player") && timer<=0){
+		Ship s=col.collider.GetComponent<Ship>();
+		if(s && s.immuneTime<=0 && s.transform.parent==null && timer<=0){
 			grabed=col.transform;
+			grabed.parent=transform;
 			timer=3;
 			vector.Set(0,0,-30f);
 		}else 

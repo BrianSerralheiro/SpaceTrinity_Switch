@@ -176,7 +176,7 @@ public class Squid : EnemyBase {
 			if(slot<missiles.Length){
 				if(missiles[slot]){
 					missiles[slot].enabled=true;
-					missiles[slot].target=player.position;
+					missiles[slot].target=GetPlayer().position;
 				}
 				slot++;
 				timer=1;
@@ -228,7 +228,7 @@ public class Squid : EnemyBase {
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.otherCollider.name.Contains("enemylaser"))return;
-		if(true) base.OnCollisionEnter2D(col);
+		if(update!=Intro || update!=Dying) base.OnCollisionEnter2D(col);
 		else ParticleManager.Emit(16,col.collider.transform.position,1);
 	}
 	public override void Position(int i)

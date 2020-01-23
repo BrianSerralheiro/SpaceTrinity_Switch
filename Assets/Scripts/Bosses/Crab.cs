@@ -141,7 +141,7 @@ public class Crab : EnemyBase {
 						timer=2;
 					}else{
 					state=State.punching;
-					target=transform.position+(player.position-transform.position).normalized*10;
+					target=transform.position+(GetPlayer().position-transform.position).normalized*10;
 					if(clawL && clawR){
 						moving=Random.value<0.5f?clawR.transform:clawL.transform;
 						if(moving==clawR.transform)light=lightR;

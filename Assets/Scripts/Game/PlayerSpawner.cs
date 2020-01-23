@@ -6,6 +6,7 @@ public class PlayerSpawner : MonoBehaviour
     GameObject[] ships;
     void Awake()
     {
+        EnemyBase.players=new Transform[2];
         if(!PlayerInput.Conected(1))Instantiate(ships[Ship.player1]);
         else{
             Instantiate(ships[Ship.player1]).transform.position=Vector3.left*3;

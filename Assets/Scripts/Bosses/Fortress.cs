@@ -9,7 +9,7 @@ public class Fortress : EnemyBase
     int turretID,shotId;
     bool flag;
     MiniTurret[] turrets=new MiniTurret[4];
-    Transform cannon;
+    Transform cannon,target;
     Transform[] tracks=new Transform[4];
     void Start()
     {
@@ -86,6 +86,7 @@ public class Fortress : EnemyBase
 	}
     void Intro(){
         UpdateTrack();
+        target=GetPlayer();
         if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime*2,0);
         else{
             treadspeed=3;
@@ -95,7 +96,7 @@ public class Fortress : EnemyBase
         }
     }
     void UpdateCannon(){
-        Vector3 v=player.position-cannon.position;
+        Vector3 v=target.position-cannon.position;
         v.z=0;
         cannon.Rotate(Vector3.Cross(-cannon.up,v)*20*Time.deltaTime);
         if(turretTimer<Time.time+9 && turretTimer>Time.time+1 && cannonTime<Time.time){
@@ -240,6 +241,7 @@ public class Fortress : EnemyBase
         flag=!flag;
         game.transform.up=-cannon.up;
         game.transform.localScale=Vector3.one*5;
+        target=GetPlayer();
     }
     void ShotBig(){
         GameObject game=new GameObject("enemybullet");

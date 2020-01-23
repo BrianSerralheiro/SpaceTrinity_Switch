@@ -52,8 +52,10 @@ public class Zapper : EnemyBase {
 		if(transform.position.y<-Scaler.sizeY-2)Die();
 		if(timer>1){
 			transform.Translate(0,-Time.deltaTime,0,Space.World);
-			rot.Set(0,0,Mathf.Atan2(transform.position.x-player.position.x,player.position.y-transform.position.y)*Mathf.Rad2Deg);
-			transform.eulerAngles=rot;
+			Vector3 v=GetPlayer(transform.position).position-transform.position;
+            v.z=0;
+            v=Vector3.Cross(-transform.up,v);
+            transform.Rotate(v*Time.deltaTime*15);
 		}else if(timer >0.1f)
 		{
 			energy.sprite=Bullet.blink? sprites[2]:sprites[3];

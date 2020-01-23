@@ -28,7 +28,7 @@ public class BigTurret : EnemyBase
         timer-=Time.deltaTime;
         transform.Translate(0,-Time.deltaTime*2.5f,0);
         if(cicles>0){
-            Vector3 v=player.position-turret.position;
+            Vector3 v=GetPlayer(turret.position).position-turret.position;
             v.z=0;
             turret.Rotate(Vector3.Cross(-turret.up,v)*Time.deltaTime*25);
             if(timer<=0)Shot();

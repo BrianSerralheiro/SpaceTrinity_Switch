@@ -4,7 +4,7 @@ public class EnemyBase : MonoBehaviour {
 	protected int points;
 	protected int hp=8;
 	protected int killerid=1;
-	public static Transform player;
+	public static Transform[] players;
 	protected float damageTimer,fallSpeed=-1;
 	protected SpriteRenderer _renderer;
 
@@ -19,6 +19,20 @@ public class EnemyBase : MonoBehaviour {
 	public void SetHP(int i)
 	{
 		hp=i;
+	}
+	protected static Transform GetPlayer(Vector3 v){
+		if(players[1]==null || !players[1].gameObject.activeSelf)
+			return players[0];
+		if(!players[0].gameObject.activeSelf)return players[1];
+		if(Vector3.Distance(players[0].position,v)<Vector3.Distance(players[1].position,v))return players[0];
+		return players[1];
+	}
+	protected static Transform GetPlayer(){
+		if(players[1]==null)return players[0];
+		if(players[0].gameObject.activeSelf && players[1].gameObject.activeSelf)
+			return players[Random.Range(0,2)];
+		if(!players[0].gameObject.activeSelf)return players[1];
+		return players[0];
 	}
 	protected virtual void SlowFall(){
 		transform.Translate(0,fallSpeed*Time.deltaTime,0,Space.World);

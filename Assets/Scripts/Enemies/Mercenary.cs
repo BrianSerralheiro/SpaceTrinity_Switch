@@ -19,7 +19,7 @@ public class Mercenary : EnemyBase {
 	{
 		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime*2,0);
 		if(Ship.paused){
-			if(!player.gameObject.activeSelf)transform.Translate(0,-Time.deltaTime*10,0);
+			if(!GetPlayer().gameObject.activeSelf)transform.Translate(0,-Time.deltaTime*10,0);
 			if(transform.position.y<-Scaler.sizeY-2){Destroy(gameObject);
 			EnemySpawner.boss=false;}
 			return;
@@ -31,7 +31,7 @@ public class Mercenary : EnemyBase {
 			return;
 		}
 		base.Update();
-		if(player.position.x<transform.position.x) transform.Translate(-Time.deltaTime,0,0);
+		if(GetPlayer().position.x<transform.position.x) transform.Translate(-Time.deltaTime,0,0);
 		else transform.Translate(Time.deltaTime,0,0);
 		if(timer>0)timer-=Time.deltaTime;
 		else

@@ -2,7 +2,7 @@
 
 public class Spider : EnemyBase {
 
-	private Transform back,bitting;
+	private Transform back,bitting,target;
 	private float speed=5,timer;
 	private int charges,spawns,webshot;
 	private Transform[] legs;
@@ -143,7 +143,10 @@ public class Spider : EnemyBase {
 		}
 		if(transform.position.x>3)dir=-1;
 		if(transform.position.x<-3)dir=1;
-		if(timer<=0)update=Charge;
+		if(timer<=0){
+			update=Charge;
+			target=GetPlayer();
+		}
 	}
 	void Charge(){
 		// headCrystal.Min(Time.deltaTime);
@@ -155,8 +158,8 @@ public class Spider : EnemyBase {
 			}
 			if(transform.position.y<Scaler.sizeY)transform.Translate(0,Time.deltaTime*speed,0);
 			if((int)Time.time%5==0)dir*=-1;
-			if(transform.position.x<player.position.x-3)dir=1;
-			if(transform.position.x>player.position.x+3)dir=-1;
+			if(transform.position.x<target.position.x-3)dir=1;
+			if(transform.position.x>target.position.x+3)dir=-1;
 			transform.Translate(dir*Time.deltaTime,0,0);
 			rot[0].z=Mathf.Sin(Time.time*4)*-15f-15;
 			rot[1].z=Mathf.Sin(Time.time*4+60)*15+15;
@@ -184,6 +187,7 @@ public class Spider : EnemyBase {
 			if(charges++>2){
 				timer=2;
 				spawns=0;
+				target=GetPlayer();
 				update=Spawning;
 			}else{
 				timer=3;
@@ -285,7 +289,7 @@ public class Spider : EnemyBase {
 	void Shoot(){
 		GameObject go=new GameObject("webshot");
 		go.transform.position=back.position+Vector3.up*4;
-		go.AddComponent<WebShot>().Set(webshot,(player.position-(back.position+Vector3.up*4)).normalized*15+go.transform.position,16,4,3,1,"enemy");
+		go.AddComponent<WebShot>().Set(webshot,(target.position-(back.position+Vector3.up*4)).normalized*15+go.transform.position,16,4,3,1,"enemy");
 	}
 	public override void Position(int i)
 	{

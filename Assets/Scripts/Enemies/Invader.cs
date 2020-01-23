@@ -36,7 +36,7 @@ public class Invader : EnemyBase {
 			shoottimer=0.5f;
 			Shoot();
 		}
-		if(player.position.x<transform.position.x)transform.Translate(-Time.deltaTime*2,0,0);
+		if(GetPlayer(transform.position).position.x<transform.position.x)transform.Translate(-Time.deltaTime*2,0,0);
 		else transform.Translate(Time.deltaTime*2,0,0);
 		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime,0);
 	}

@@ -29,7 +29,7 @@ public class Tank : EnemyBase
         timer-=Time.deltaTime;
         if(transform.position.y>-Scaler.sizeY/2){
             transform.Translate(0,-Time.deltaTime,0);
-            Vector3 v=player.position-turret.position;
+            Vector3 v=GetPlayer(transform.position).position-turret.position;
             v.z=0;
             v=Vector3.Cross(-turret.up,v);
             turret.Rotate(v*Time.deltaTime*15);
