@@ -35,18 +35,41 @@ public struct PlayerInput{
             default:
                 return false;
         }
+    }public bool GetKey(string s){
+        switch(s){
+            case "shoot":
+                return Input.GetKey(shoot);
+            case "special":
+                return Input.GetKey(special);
+            case "equip":
+                return Input.GetKey(equip);
+            default:
+                return false;
+        }
     }
-    public static KeyCode GetKeyEquip(int i){
-        if(i<players.Length)return players[i].equip;
-        return KeyCode.None;
+    public static bool GetKeyEquip(int i){
+        if(i<players.Length)return players[i].GetKey("equip");
+        return false;
     }
-    public static KeyCode GetKeySpecial(int i){
-        if(i<players.Length)return players[i].special;
-        return KeyCode.None;
+    public static bool GetKeySpecial(int i){
+        if(i<players.Length)return players[i].GetKey("special");
+        return false;
     }
-    public static KeyCode GetKeyShot(int i){
-        if(i<players.Length)return players[i].shoot;
-        return KeyCode.None;
+    public static bool GetKeyShot(int i){
+        if(i<players.Length)return players[i].GetKey("shoot");
+        return false;
+    }
+    public static bool GetKeyEquipDown(int i){
+        if(i<players.Length)return players[i].GetKeyDown("equip");
+        return false;
+    }
+    public static bool GetKeySpecialDown(int i){
+        if(i<players.Length)return players[i].GetKeyDown("special");
+        return false;
+    }
+    public static bool GetKeyShotDown(int i){
+        if(i<players.Length)return players[i].GetKeyDown("shoot");
+        return false;
     }
     public static void WaitInput(){
         recentConect=false;

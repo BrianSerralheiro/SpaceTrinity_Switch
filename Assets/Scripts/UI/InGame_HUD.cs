@@ -6,10 +6,11 @@ public class InGame_HUD : MonoBehaviour
 {
 	[SerializeField]
 	private bool p1;
+	bool hide;
 	private int id;
 	private float currentHp,_shipHealth,_special;
 	[SerializeField]
-	private Text scoreHUD,pilotName;
+	private Text scoreHUD,pilotName,steal;
 	private static float[] _currentHP={1,1};
 	public static float[] shipHealth={1,1},special={0,0};
 
@@ -45,6 +46,31 @@ public class InGame_HUD : MonoBehaviour
 	}
 	void Update()
 	{
+		if(Ship.continues[id]<0){
+			steal.color=Color.Lerp(Color.white,Color.clear,Mathf.Cos(Time.time*8));
+			if(!hide){
+				hide=true;
+				lifeBar.enabled=lifeFill.enabled=specialFill.enabled=pilotMask.enabled=pilotPic.enabled=pilotName.enabled=
+				scoreHUD.enabled=false;
+				steal.enabled=true;
+			}
+			if(PlayerInput.GetKeyShot(id) && PlayerInput.GetKeySpecialDown(id)){
+				int i=p1?1:0;
+				if(Ship.continues[i]>0){
+					Ship.continues[i]--;
+					Ship.continues[id]=0;
+					shipHealth[id]=1;
+					shipHealth[i]=_currentHP[i]-Time.deltaTime;
+					Revive(EnemyBase.players[id].GetComponent<Ship>());
+				}
+			}
+		}
+		else if(hide){
+				hide=false;
+				lifeBar.enabled=lifeFill.enabled=specialFill.enabled=pilotMask.enabled=pilotPic.enabled=pilotName.enabled=
+				scoreHUD.enabled=true;
+				steal.enabled=false;
+			}
 		if(shipHealth[id]<_currentHP[id]){
 			_currentHP[id]-=Time.deltaTime;
 			if(shipHealth[id]>_currentHP[id])_currentHP[id]=shipHealth[id];

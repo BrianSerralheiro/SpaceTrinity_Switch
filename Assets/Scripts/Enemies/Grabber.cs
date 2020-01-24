@@ -77,7 +77,11 @@ public class Grabber : EnemyBase {
 	}
 	protected override void Die()
 	{
-		if(grabed)grabed.parent=null;
+		if(grabed){
+			grabed.parent=null;
+			grabed.rotation=Quaternion.identity;
+			grabed=null;
+		}
 		base.Die();
 	}
 	new private void OnCollisionEnter2D(Collision2D col)

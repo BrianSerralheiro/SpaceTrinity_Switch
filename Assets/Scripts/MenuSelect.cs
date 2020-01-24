@@ -239,7 +239,7 @@ public class MenuSelect : MonoBehaviour
 			lightsUP(id, 0.5f);
 			lightsUP(selectionID2, 1);
 		}
-		if(Input.GetKeyDown(PlayerInput.GetKeyShot(1)) && options[selectionID2].raycastTarget){
+		if(PlayerInput.GetKeyShotDown(1) && options[selectionID2].raycastTarget){
 			if(p1confirm  && p2confirm){
 				
 			for (int i = 0; i < skinId.Length; i++)
@@ -256,7 +256,7 @@ public class MenuSelect : MonoBehaviour
 				slots.Remove(selected[1]);
 			}
 		}
-		if(Input.GetKeyDown(PlayerInput.GetKeySpecial(1)) && p2confirm){
+		if(PlayerInput.GetKeySpecialDown(1) && p2confirm){
 			p2confirm=false;
 			options[selectionID2].transform.GetChild(2).gameObject.SetActive(false);
 			if(selected[1])
@@ -281,7 +281,7 @@ public class MenuSelect : MonoBehaviour
 			lightsUP(selectionID, 1);
 		}
 		if(PlayerInput.Conected(1))UpdateInputPilot2();
-		if(Input.GetKeyDown(PlayerInput.GetKeyShot(0)) && options[selectionID].raycastTarget){
+		if(PlayerInput.GetKeyShotDown(0) && options[selectionID].raycastTarget){
 			if(p1confirm  && (p2confirm || !PlayerInput.Conected(1))){
 				for (int i = 0; i < skinId.Length; i++)
 				{
