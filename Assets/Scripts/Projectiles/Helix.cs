@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Helix : MonoBehaviour
 {
-    SpriteRenderer renderer;
+    new SpriteRenderer renderer;
     Vector3 dir;
     public float time;
     // Start is called before the first frame update

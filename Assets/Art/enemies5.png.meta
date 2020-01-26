@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: 0fd21354ece5e354c8dc75e8c5ec0e0a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6043123688788952279
+    second: nun
+  - first:
+      213: 7004565304433678321
+    second: cherubin
+  - first:
+      213: 7713878706265705153
+    second: saint
+  - first:
+      213: 5990675261012659704
+    second: priest
+  - first:
+      213: -4433989733446370999
+    second: ascended
+  - first:
+      213: -4273002487402607752
+    second: enemies5_5
+  - first:
+      213: 3570751873105947270
+    second: miracle
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +91,168 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: nun
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1259
+        width: 479
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa31208bfcdabe458a5bb04a3c45116
+      internalID: 6043123688788952279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cherubin
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 1487
+        width: 503
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9ef66b7e233dc41a279a6b07aeafe8
+      internalID: 7004565304433678321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saint
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 773
+        width: 1484
+        height: 1052
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1763b6cfde324b94d987dd271bd0bddc
+      internalID: 7713878706265705153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 671
+        width: 464
+        height: 335
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11a62a6681cb0e4e9cd1da96c9a32b7
+      internalID: 5990675261012659704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ascended
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 563
+        width: 264
+        height: 417
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ceceefd51388d84e9ede8be95a83c20
+      internalID: -4433989733446370999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies5_5
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 463
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5dea5165260e74193edc16865a9ac0
+      internalID: -4273002487402607752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miracle
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 339
+        width: 179
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50dd8cfa5d635a34fb2f84b7e5f3deee
+      internalID: 3570751873105947270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

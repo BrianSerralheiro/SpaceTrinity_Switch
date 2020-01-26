@@ -84,7 +84,7 @@ public class Ship : MonoBehaviour {
 		}
 		EnemyBase.players[input.id]=transform;
 	}
-	void OnCollisionEnter2D(Collision2D col)
+	void OnCollisionStay2D(Collision2D col)
 	{
 		if(immuneTime > 0) return;
 		if(col!=null && col.gameObject.name=="playerbullet") return;

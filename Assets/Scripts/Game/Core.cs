@@ -11,6 +11,13 @@ public class Core : MonoBehaviour {
 		render=gameObject.GetComponent<SpriteRenderer>();
 		render.color=color;
 	}
+	public Core Set(Color w,Color c){
+		white=w;
+		color=c;
+		render=GetComponent<SpriteRenderer>();
+		render.color=c;
+		return this;
+	}
 	public Core Set(Sprite s,Color c)
 	{
 		render=gameObject.AddComponent<SpriteRenderer>();
