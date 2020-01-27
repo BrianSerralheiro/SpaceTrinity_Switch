@@ -5,6 +5,7 @@ public class Nun : EnemyBase
 {
     EnemyInfo miracle;
     float time,offset=2;
+    int spawns;
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -33,8 +34,13 @@ public class Nun : EnemyBase
             miracles.Remove(m);
         }
         fred.Clear();
+        if(transform.position.y>Scaler.sizeY+3)Die();
     }
     void Spawn(){
+        if(spawns++>15){
+            fallSpeed=3;
+            SlowFall();
+        }
         GameObject go=new GameObject("enemy");
         go.AddComponent<SpriteRenderer>().sprite=miracle.sprites[0];
         go.AddComponent<BoxCollider2D>();
