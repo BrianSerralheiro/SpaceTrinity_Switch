@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-
 public class Grabber : EnemyBase {
-	private Transform armL, armR,grabed;
+	private Transform armL, armR;
+	private Ship grabed;
 	private float timer;
 	private Core core;
 	private Vector3 vector = new Vector3(),local;
@@ -50,10 +50,14 @@ public class Grabber : EnemyBase {
 			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x>0))*180*Time.deltaTime);
 			transform.position=position+BulletPath.Next(ref path,position.x>0);
 		}
-		if(timer>0){
+		if(timer>0 && grabed){
 			timer-=Time.deltaTime;
-			grabed.localPosition=local;
-			if(timer<=0)grabed.parent=null;
+			grabed.transform.localPosition=local;
+			if(timer<=0 || grabed.reviveTimer>0){
+				grabed.transform.parent=null;
+				grabed.transform.rotation=Quaternion.identity;
+				grabed=null;
+			}
 			core.Add(Time.deltaTime);
 		}
 		else {
@@ -78,8 +82,8 @@ public class Grabber : EnemyBase {
 	protected override void Die()
 	{
 		if(grabed){
-			grabed.parent=null;
-			grabed.rotation=Quaternion.identity;
+			grabed.transform.parent=null;
+			grabed.transform.rotation=Quaternion.identity;
 			grabed=null;
 		}
 		base.Die();
@@ -88,8 +92,8 @@ public class Grabber : EnemyBase {
 	{
 		Ship s=col.collider.GetComponent<Ship>();
 		if(s && s.immuneTime<=0 && s.transform.parent==null && timer<=0){
-			grabed=col.transform;
-			grabed.parent=transform;
+			grabed=s;
+			grabed.transform.parent=transform;
 			timer=3;
 			vector.Set(0,0,-30f);
 		}else 

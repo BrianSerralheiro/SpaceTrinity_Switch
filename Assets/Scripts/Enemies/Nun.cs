@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class Nun : EnemyBase
 {
-    EnemyInfo miracle;
+    Transform[] wings=new Transform[4];
+    static EnemyInfo miracle;
     float time,offset=2;
     int spawns;
+
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -14,6 +16,17 @@ public class Nun : EnemyBase
         points=120;
         hp=200;
         time=Time.time+5;
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject g=new GameObject("wing"+i);
+            SpriteRenderer sp=g.AddComponent<SpriteRenderer>();
+            sp.sprite=ei.sprites[1];
+            sp.flipX=i%2==1;
+            wings[i]=g.transform;
+            wings[i].parent=transform;
+            wings[i].localScale=Vector3.one*(1-i/2*0.2f);
+            wings[i].localPosition=new Vector3(-0.25f+i%2*0.5f,0.4f-i/2*0.6f,0.1f);
+        }
     }
     new void Update()
     {
@@ -21,15 +34,17 @@ public class Nun : EnemyBase
         base.Update();
         if(transform.position.y>Scaler.sizeY/2)SlowFall();
         if(time<Time.time)Spawn();
-        foreach (Miracle m in miracles)
+        for (int i = 0; i < 4; i++)
+                wings[i].rotation=Quaternion.Euler(0,0,Mathf.PingPong(Time.time*60,45)*(i%2==1?-1:1));
+        foreach(Miracle m in miracles)
         {
             if(m==null)fred.Add(m);
-            else {
+            else{
                 m?.Spawn();
                 if(m.enabled)fred.Add(m);
             }
         }
-        foreach (Miracle m in fred)
+        foreach(Miracle m in fred)
         {
             miracles.Remove(m);
         }

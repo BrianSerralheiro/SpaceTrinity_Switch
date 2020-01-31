@@ -23,6 +23,42 @@ TextureImporter:
   - first:
       213: 3570751873105947270
     second: miracle
+  - first:
+      213: -3730947106380132997
+    second: saint wing
+  - first:
+      213: -689416748882422992
+    second: saint light
+  - first:
+      213: -8837010344953432289
+    second: nun wing
+  - first:
+      213: -5586020702046845048
+    second: priest wing1
+  - first:
+      213: -4550111905549723073
+    second: priest wing2
+  - first:
+      213: -7363038010224668374
+    second: cherubin wing
+  - first:
+      213: -5737544122623018610
+    second: cherubin face mid
+  - first:
+      213: 6453039087797725452
+    second: cherubin face lef
+  - first:
+      213: 4626640478558399009
+    second: cherubin face rig
+  - first:
+      213: -1250046123286211847
+    second: ascended crystal
+  - first:
+      213: 1645422613186505914
+    second: miracle wing
+  - first:
+      213: 4925891014036338146
+    second: miracle tail
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,10 +146,10 @@ TextureImporter:
       name: nun
       rect:
         serializedVersion: 2
-        x: 167
-        y: 1259
-        width: 479
-        height: 479
+        x: 302
+        y: 1324
+        width: 201
+        height: 414
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +167,10 @@ TextureImporter:
       name: cherubin
       rect:
         serializedVersion: 2
-        x: 1047
-        y: 1487
-        width: 503
-        height: 294
+        x: 1190
+        y: 1544
+        width: 214
+        height: 185
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,9 +188,9 @@ TextureImporter:
       name: saint
       rect:
         serializedVersion: 2
-        x: 1716
+        x: 2180
         y: 773
-        width: 1484
+        width: 557
         height: 1052
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -173,10 +209,10 @@ TextureImporter:
       name: priest
       rect:
         serializedVersion: 2
-        x: 74
+        x: 147
         y: 671
-        width: 464
-        height: 335
+        width: 318
+        height: 247
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,34 +248,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies5_5
-      rect:
-        serializedVersion: 2
-        x: 950
-        y: 463
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f5dea5165260e74193edc16865a9ac0
-      internalID: -4273002487402607752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: miracle
       rect:
         serializedVersion: 2
-        x: 948
-        y: 339
-        width: 179
-        height: 123
+        x: 992
+        y: 354
+        width: 93
+        height: 97
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,6 +264,258 @@ TextureImporter:
       bones: []
       spriteID: 50dd8cfa5d635a34fb2f84b7e5f3deee
       internalID: 3570751873105947270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saint wing
+      rect:
+        serializedVersion: 2
+        x: 2894
+        y: 1490
+        width: 700
+        height: 237
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7455dc42930a554448d321c90d8ed398
+      internalID: -3730947106380132997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saint light
+      rect:
+        serializedVersion: 2
+        x: 2919
+        y: 1076
+        width: 700
+        height: 237
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e667cd3790bb06c47bf3cbc383dbecdd
+      internalID: -689416748882422992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nun wing
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1883
+        width: 222
+        height: 162
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f42fe8c8f12c3344abd6280bf19db2a3
+      internalID: -8837010344953432289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest wing1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 918
+        width: 186
+        height: 202
+      alignment: 9
+      pivot: {x: 0.2, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 243664d67e535994a86b48b1cf25c04d
+      internalID: -5586020702046845048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest wing2
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 836
+        width: 155
+        height: 81
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ffa7468cc023da4b831a2e527eaac74
+      internalID: -4550111905549723073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cherubin wing
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 1856
+        width: 237
+        height: 162
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41323a775f04aff44ab0c2ec0b7eb54a
+      internalID: -7363038010224668374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cherubin face mid
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 1355
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3b0f543ec366643abcac16185c5c33
+      internalID: -5737544122623018610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cherubin face lef
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 1231
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310cfe344e1131f4ea0166f5751d5f7f
+      internalID: 6453039087797725452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cherubin face rig
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 1225
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7981dabfe3147458286d67e8be763d
+      internalID: 4626640478558399009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ascended crystal
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 674
+        width: 42
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7110df79f7c4a0447b6f4c4d2963269b
+      internalID: -1250046123286211847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miracle wing
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 399
+        width: 56
+        height: 65
+      alignment: 9
+      pivot: {x: 0.2, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1c664159a91484f9c588091775acb4
+      internalID: 1645422613186505914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miracle tail
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 323
+        width: 47
+        height: 33
+      alignment: 9
+      pivot: {x: 1.2, y: 1.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81e8d297b8918b49aca03a5a6436f58
+      internalID: 4925891014036338146
       vertices: []
       indices: 
       edges: []
