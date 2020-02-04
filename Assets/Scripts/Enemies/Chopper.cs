@@ -12,7 +12,9 @@ public class Chopper : EnemyBase
 	Vector3 position;
     Helix helix;
     static BulletPath around;
-	public override void SetSprites(EnemyInfo ei){
+	public override void SetSprites(EnemyInfo ei)
+    {
+        transform.localScale = Vector3.one * 0.8f;
         hp=100;
         GameObject go=new GameObject("Helix");
         go.transform.parent=transform;
@@ -46,7 +48,7 @@ public class Chopper : EnemyBase
         }
         else{
             timer-=Time.deltaTime;
-			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x>0))*360*Time.deltaTime);
+			transform.Rotate(Vector3.Cross(-transform.up,transform.position - GetPlayer(transform.position).position)*360*Time.deltaTime);
             if(timer<0)Shot();
             transform.position=position+BulletPath.Next(ref path,position.x>0);
         }

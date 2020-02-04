@@ -2,7 +2,9 @@
 public class ChopperD : EnemyBase
 {
     Helix helix;
-	public override void SetSprites(EnemyInfo ei){
+	public override void SetSprites(EnemyInfo ei)
+    {
+        transform.localScale = Vector3.one * 0.8f;
         hp=10;
         GameObject go=new GameObject("Helix");
         go.transform.parent=transform;
