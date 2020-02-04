@@ -4,8 +4,8 @@ using UnityEditor;
 public class PathWindow : EditorWindow
 {
     private static SerializedProperty property;
-    Vector2 limit=new Vector2(60,22),scroll;
-    Vector3 mid=new Vector3(30,11);
+    Vector2 limit=new Vector2(100,100),scroll;
+    Vector3 mid=new Vector3(50,50);
     static int dragID;
     static bool toggle;
     static readonly Color[] colors={Color.black,Color.blue,Color.cyan,Color.gray,Color.green,Color.magenta,Color.red,Color.white,Color.yellow};
@@ -77,7 +77,7 @@ public class PathWindow : EditorWindow
             Repaint();
             nodes.serializedObject.ApplyModifiedProperties();
         }
-        if(dragID!=-1 && Event.current.keyCode==KeyCode.Space){
+        if(dragID!=-1 && Event.current.keyCode==KeyCode.X){
             nodes.DeleteArrayElementAtIndex(dragID);
             curves.DeleteArrayElementAtIndex(dragID);
             nodes.serializedObject.ApplyModifiedProperties();

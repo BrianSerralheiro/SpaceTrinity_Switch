@@ -8,6 +8,12 @@ public struct BulletPath
     public Vector3[] nodes;
     public float[] curves;
     private static float rad=90f*Mathf.Deg2Rad;
+    public BulletPath Set(float s,Vector3[] n){
+        speed=s;
+        nodes=n;
+        curves=new float[n.Length];
+        return this;
+    }
     public static Vector3 Next(ref BulletPath path,bool b){
         float c=path.GetCurve();
         Vector3 p=path.point;
