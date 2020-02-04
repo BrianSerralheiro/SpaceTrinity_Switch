@@ -28,7 +28,7 @@ public class Chopper : EnemyBase
         cicles=enemy.cicles;
         timer=reload=enemy.reloadTime;
         if(paths==null)paths=enemy.paths;
-        if(around.nodes==null)around.Set(10,new Vector3[]{new Vector3(0,0),new Vector3(Scaler.sizeX,0),new Vector3(Scaler.sizeX,-Scaler.sizeY*2+2),new Vector3(-1,-Scaler.sizeY*2+2)});
+        if(around.nodes==null)around.Set(8,new Vector3[]{new Vector3(0,0),new Vector3(Scaler.sizeX,0),new Vector3(Scaler.sizeX,-Scaler.sizeY*2+2),new Vector3(-1,-Scaler.sizeY*2+2)});
     }
 	public override void Position(int i){
 		base.Position(i);
@@ -43,19 +43,20 @@ public class Chopper : EnemyBase
     {
         if(Ship.paused)return;
         base.Update();
-        if(path.Finished()){
+        if(path.Finished())
+        {
             Die();
         }
-        else{
+        else
+        {
             timer-=Time.deltaTime;
             if(timer<0)Shot();
             transform.position=position+BulletPath.Next(ref path,position.x>0);
-            Vector3 v=GetPlayer(transform.position).position-transform.position;
-            v.z=0;
-			transform.Rotate(Vector3.Cross(-transform.up,v)*Time.deltaTime*60);
+			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x > 0))*Time.deltaTime*180);
         }
     }
-    void Shot(){
+    void Shot()
+    {
         GameObject go=new GameObject("enemybullet");
         go.transform.position=transform.position-transform.up;
         Bullet bu=go.AddComponent<Bullet>();
@@ -64,8 +65,9 @@ public class Chopper : EnemyBase
         bu.spriteID=shotId;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
-        go.transform.up=-transform.up;
-        if(counter--==0){
+        go.transform.up=GetPlayer(transform.position).position-bu.transform.position;
+        if(counter--==0)
+        {
             timer=reload;
             counter=shots;
         }else
