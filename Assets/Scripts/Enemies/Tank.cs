@@ -6,8 +6,9 @@ public class Tank : EnemyBase
     Transform turret;
     int shotId;
     
-	public override void SetSprites(EnemyInfo ei){
-        hp=200;
+	public override void SetSprites(EnemyInfo ei)
+    {
+        hp=60;
         GameObject go=new GameObject("enemy");
         go.transform.parent=transform;
         turret=go.transform;
@@ -25,16 +26,20 @@ public class Tank : EnemyBase
         if(Ship.paused)return;
         base.Update();
         timer-=Time.deltaTime;
-        if(transform.position.y>-Scaler.sizeY/2){
+        if(transform.position.y>-Scaler.sizeY/2)
+        {
             transform.Translate(speed*Time.deltaTime,-Time.deltaTime,0,Space.World);
             Aim();
         }
-        else{
-            if(wait>5){
+        else
+        {
+            if(wait>5)
+            {
                 transform.Translate(0,-Time.deltaTime*2.5f,0,Space.World);
                 turret.rotation=Quaternion.RotateTowards(turret.rotation,Quaternion.Euler(0,0,180),Time.deltaTime*30);
             }
-            else {
+            else 
+            {
                 wait+=Time.deltaTime;
                 transform.Translate(speed*Time.deltaTime,0,0,Space.World);
                 Aim();
@@ -42,7 +47,8 @@ public class Tank : EnemyBase
             }
         }
     }
-    void Aim(){
+    void Aim()
+    {
         Vector3 v=GetPlayer(transform.position).position;
         float s=v.x>transform.position.x+2?2:v.x+2<transform.position.x?-1:0;
         speed=Mathf.MoveTowards(speed,s,Time.deltaTime/2);
@@ -53,7 +59,8 @@ public class Tank : EnemyBase
         turret.Rotate(v*Time.deltaTime*15);
         if(timer<=0 && Mathf.Abs(v.z)<0.1f)Shot();
     }
-    void Shot(){
+    void Shot()
+    {
         GameObject go=new GameObject("enemybullet");
         go.transform.position=transform.position-turret.up*2;
         go.transform.localScale=Vector3.one*2;
@@ -69,13 +76,15 @@ public class Tank : EnemyBase
     void OnCollisionStay2D(Collision2D col)
     {
         Tank tank=col.gameObject.GetComponent<Tank>();
-        if(tank){
+        if(tank)
+        {
             float f=Mathf.Abs(speed);
             if(tank.transform.position.x<transform.position.x)transform.Translate(f*Time.deltaTime,0,0,Space.World);
             else transform.Translate(-f*Time.deltaTime,0,0,Space.World);
         }
     }
-    protected override void Die(){
+    protected override void Die()
+    {
         GameObject g=new GameObject("hole");
         g.transform.position=transform.position;
         g.transform.rotation=transform.rotation;

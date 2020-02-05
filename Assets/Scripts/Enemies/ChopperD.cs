@@ -11,7 +11,7 @@ public class ChopperD : EnemyBase
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
         go.AddComponent<BoxCollider2D>();
-        fallSpeed-=10;
+        fallSpeed-=6;
     }
     new void Update()
     {

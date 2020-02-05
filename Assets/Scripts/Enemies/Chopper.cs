@@ -15,7 +15,7 @@ public class Chopper : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
     {
         transform.localScale = Vector3.one * 0.8f;
-        hp=100;
+        hp=10;
         GameObject go=new GameObject("Helix");
         go.transform.parent=transform;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
@@ -28,7 +28,7 @@ public class Chopper : EnemyBase
         cicles=enemy.cicles;
         timer=reload=enemy.reloadTime;
         if(paths==null)paths=enemy.paths;
-        if(around.nodes==null)around.Set(8,new Vector3[]{new Vector3(0,0),new Vector3(Scaler.sizeX,0),new Vector3(Scaler.sizeX,-Scaler.sizeY*2+2),new Vector3(-1,-Scaler.sizeY*2+2)});
+        if(around.nodes==null)around.Set(8,new Vector3[]{new Vector3(0,0),new Vector3(Scaler.sizeX,0),new Vector3(Scaler.sizeX,-Scaler.sizeY*2-2)});
     }
 	public override void Position(int i){
 		base.Position(i);
@@ -61,7 +61,7 @@ public class Chopper : EnemyBase
         go.transform.position=transform.position-transform.up;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
-        bu.bulleSpeed=18;
+        bu.bulleSpeed=10;
         bu.spriteID=shotId;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();

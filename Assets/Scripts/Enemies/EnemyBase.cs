@@ -51,6 +51,7 @@ public class EnemyBase : MonoBehaviour {
 	{
 		if(col.gameObject.name.Contains("enemybullet"))return;
 		if(col.gameObject.name.Contains("enemy"))return;
+		if(col.gameObject.name.Contains("drone"))return;
 		if(transform.position.y > Scaler.sizeY && !name.Contains("Boss")) return;
 		int i=1;
 		Bullet bull=col.gameObject.GetComponent<Bullet>();

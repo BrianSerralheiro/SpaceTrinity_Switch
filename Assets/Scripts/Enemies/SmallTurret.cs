@@ -8,7 +8,7 @@ public class SmallTurret : EnemyBase
     static BulletPath[] paths;
     bool mirror;
 	public override void SetSprites(EnemyInfo ei){
-        hp=10;
+        hp=5;
         gameObject.AddComponent<SpriteMask>().sprite=ei.sprites[0];
         GameObject go=new GameObject("lid");
         lid=go.transform;
@@ -42,7 +42,7 @@ public class SmallTurret : EnemyBase
         if(Ship.paused)return;
         base.Update();
         timer-=Time.deltaTime;
-        transform.Translate(0,-Time.deltaTime*2.5f,0);
+        transform.Translate(0,-Time.deltaTime*2,0);
         if(timer>reload){
             turret.gameObject.SetActive(false);
             lid.localPosition=Vector3.MoveTowards(lid.localPosition,Vector3.zero+Vector3.back/10,Time.deltaTime*2);

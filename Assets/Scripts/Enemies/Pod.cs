@@ -9,12 +9,13 @@ public class Pod : EnemyBase
     Transform[] doors=new Transform[2];
     float timer;
     int shots=6;
-	public override void SetSprites(EnemyInfo ei){
+	public override void SetSprites(EnemyInfo ei)
+    {
         if(missile==null)missile=ei.sprites[1];
         name+="Big";
         BoxCollider2D col=GetComponent<BoxCollider2D>();
         col.isTrigger=true;
-        col.size=new Vector2(3,10);
+        col.size=new Vector2(5,10);
         col.offset=new Vector2(0,-8);
         GameObject go=new GameObject("door");
         doors[0]=go.transform;
@@ -35,7 +36,7 @@ public class Pod : EnemyBase
     {
         if(Ship.paused)return;
         base.Update();
-        transform.Translate(0,-Time.deltaTime*2.5f,0);
+        transform.Translate(0,-Time.deltaTime*2f,0);
         timer-=Time.deltaTime;
         if(shots>0 && target && timer<0)Shot();
         if(target){
@@ -75,10 +76,11 @@ public class Pod : EnemyBase
         go.transform.position=transform.position;
         go.transform.localScale=Vector3.one*2;
         Missile bu=go.AddComponent<Missile>();
+        bu.SetHP(20);
         go.AddComponent<SpriteRenderer>().sprite=missile;
         go.AddComponent<BoxCollider2D>();
         go.transform.up=transform.position-target.position;
-        timer=0.5f;
+        timer=1.5f;
         shots--;
         missiles.Add(go.transform);
     }

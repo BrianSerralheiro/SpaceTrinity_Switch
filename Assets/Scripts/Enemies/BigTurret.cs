@@ -26,7 +26,7 @@ public class BigTurret : EnemyBase
         if(Ship.paused)return;
         base.Update();
         timer-=Time.deltaTime;
-        transform.Translate(0,-Time.deltaTime*2.5f,0);
+        transform.Translate(0,-Time.deltaTime*2,0);
         if(cicles>0){
             Vector3 v=GetPlayer(turret.position).position-turret.position;
             v.z=0;
