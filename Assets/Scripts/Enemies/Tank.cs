@@ -2,7 +2,7 @@
 
 public class Tank : EnemyBase
 {
-    float timer;
+    float timer,speed,wait;
     Transform turret;
     int shotId;
     
@@ -14,8 +14,6 @@ public class Tank : EnemyBase
         turret.localPosition=Vector3.zero+Vector3.back/10;
         turret.Rotate(0,0,180);
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
-        go.AddComponent<CircleCollider2D>();
-        Destroy(GetComponent<Collider2D>());
         shotId=ei.bulletsID[0];
     }
     void Start()
@@ -28,17 +26,32 @@ public class Tank : EnemyBase
         base.Update();
         timer-=Time.deltaTime;
         if(transform.position.y>-Scaler.sizeY/2){
-            transform.Translate(0,-Time.deltaTime,0);
-            Vector3 v=GetPlayer(transform.position).position-turret.position;
-            v.z=0;
-            v=Vector3.Cross(-turret.up,v);
-            turret.Rotate(v*Time.deltaTime*15);
-            if(timer<=0 && Mathf.Abs(v.z)<0.1f)Shot();
+            transform.Translate(speed*Time.deltaTime,-Time.deltaTime,0,Space.World);
+            Aim();
         }
         else{
-            transform.Translate(0,-Time.deltaTime*2.5f,0);
-            turret.rotation=Quaternion.RotateTowards(turret.rotation,Quaternion.Euler(0,0,180),Time.deltaTime*30);
+            if(wait>5){
+                transform.Translate(0,-Time.deltaTime*2.5f,0,Space.World);
+                turret.rotation=Quaternion.RotateTowards(turret.rotation,Quaternion.Euler(0,0,180),Time.deltaTime*30);
+            }
+            else {
+                wait+=Time.deltaTime;
+                transform.Translate(speed*Time.deltaTime,0,0,Space.World);
+                Aim();
+
+            }
         }
+    }
+    void Aim(){
+        Vector3 v=GetPlayer(transform.position).position;
+        float s=v.x>transform.position.x+2?2:v.x+2<transform.position.x?-1:0;
+        speed=Mathf.MoveTowards(speed,s,Time.deltaTime/2);
+        transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,-15*s),7*Time.deltaTime);
+        v-=turret.position;
+        v.z=0;
+        v=Vector3.Cross(-turret.up,v);
+        turret.Rotate(v*Time.deltaTime*15);
+        if(timer<=0 && Mathf.Abs(v.z)<0.1f)Shot();
     }
     void Shot(){
         GameObject go=new GameObject("enemybullet");
@@ -53,9 +66,19 @@ public class Tank : EnemyBase
         go.transform.up=-turret.up;
         timer=2;
     }
+    void OnCollisionStay2D(Collision2D col)
+    {
+        Tank tank=col.gameObject.GetComponent<Tank>();
+        if(tank){
+            float f=Mathf.Abs(speed);
+            if(tank.transform.position.x<transform.position.x)transform.Translate(f*Time.deltaTime,0,0,Space.World);
+            else transform.Translate(-f*Time.deltaTime,0,0,Space.World);
+        }
+    }
     protected override void Die(){
         GameObject g=new GameObject("hole");
         g.transform.position=transform.position;
+        g.transform.rotation=transform.rotation;
         g.AddComponent<SpriteRenderer>().sprite=GetComponent<SpriteRenderer>().sprite;
         g.AddComponent<TurretHole>();
         base.Die();

@@ -18,11 +18,22 @@ public class WaveEditor : EditorWindow
 	}
 	void OnGUI()
 	{
-#region Setting
+#region Settings
 		WorldInfo w=world;
-		world=EditorGUILayout.ObjectField("World",world,typeof(WorldInfo),false)as WorldInfo;
-		if(w!=world && world!=null)Revert(world.wave);
-		if(world==null)return;
+		if(world!=null){
+			EditorGUILayout.BeginHorizontal();
+				GUILayout.Label(world.name);
+				if(GUILayout.Button("Deselect"))world=null;
+			EditorGUILayout.EndHorizontal();
+		}
+		if(world==null){
+			foreach (WorldInfo info in Resources.FindObjectsOfTypeAll(typeof(WorldInfo)))
+			{
+				if(GUILayout.Button(info.name))world=info;
+			}
+			if(w!=world && world!=null)Revert(world.wave);
+			return;
+		}
 		x=(int)position.width/10;
 		y=(int)position.height/10;
 		if(entries.Count==0 && !string.IsNullOrEmpty(world.wave))
@@ -34,7 +45,7 @@ public class WaveEditor : EditorWindow
 		}
 #endregion
 #region EnemyList
-		GUILayout.BeginArea(new Rect(x/10,EditorGUIUtility.singleLineHeight,x,y*5));
+		GUILayout.BeginArea(new Rect(x/10,EditorGUIUtility.singleLineHeight*2,x*0.9f,y*5));
 		pos2=GUILayout.BeginScrollView(pos2,false,false);
 		counter=0;
 		foreach(EnemyInfo en in world.enemies)
@@ -59,6 +70,7 @@ public class WaveEditor : EditorWindow
 		if(GetKeyDown(KeyCode.Alpha3))Add(2);
 		if(GetKeyDown(KeyCode.Alpha4))Add(3);
 		if(GetKeyDown(KeyCode.Alpha5))Add(4);
+		if(GetKeyDown(KeyCode.Alpha6))Add(5);
 		float f=pos.y;
 		if(GetKey(KeyCode.UpArrow))pos.y-=10;
 		if(GetKey(KeyCode.DownArrow))pos.y+=10;
@@ -114,7 +126,7 @@ public class WaveEditor : EditorWindow
 #endregion
 #region Entry Options
 	#region Time
-		GUILayout.BeginArea(new Rect(x*8,EditorGUIUtility.singleLineHeight,x*2,y*3));
+		GUILayout.BeginArea(new Rect(x*8,EditorGUIUtility.singleLineHeight*2,x*2,y*3));
 			GUILayout.BeginHorizontal();
 				if(GUILayout.Button("+0.1"))currentEntry.timer++;
 				if(GUILayout.Button("+0.5"))currentEntry.timer+=5;
@@ -149,7 +161,7 @@ public class WaveEditor : EditorWindow
 #region Wave preview
 		lastH=(int)GUILayoutUtility.GetLastRect().height;
 		fullY=FullSize();
-		GUILayout.BeginArea(new Rect(x,EditorGUIUtility.singleLineHeight,x*7,y*9));
+		GUILayout.BeginArea(new Rect(x,EditorGUIUtility.singleLineHeight*2,x*7,y*9));
 			GUI.Box(new Rect(x/2,0,x*6.5f,y*9),"");
 			pos=GUI.BeginScrollView(new Rect(0,0,x*7,y*9f),pos,new Rect(new Rect(0,0,x*4f,fullY+lastH)),false,true);
 				counter=0;
