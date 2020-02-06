@@ -14,10 +14,13 @@ public class Helix : MonoBehaviour
     }
     void Update()
     {
-        if(transform.parent){
+        if(transform.parent)
+        {
             transform.Rotate(0,0,Time.deltaTime*360);
             renderer.enabled=Time.time%0.1f<0.05f;
-        }else{
+        }
+        else
+        {
             transform.Translate(dir*Time.deltaTime*10,Space.World);
             transform.Rotate(0,0,Time.deltaTime*360);
             renderer.enabled=true;
@@ -27,5 +30,9 @@ public class Helix : MonoBehaviour
     void OnDestroy()
     {
         ParticleManager.Emit(0,transform.position,1);
+    }
+    void OnDisabled()
+    {
+        enabled = true;
     }
 }

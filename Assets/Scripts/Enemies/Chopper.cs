@@ -74,8 +74,10 @@ public class Chopper : EnemyBase
             timer=delay;
     }
     
-    protected override void Die(){
-        if(hp<=0){
+    protected override void Die()
+    {
+        if(hp<=0 && Random.value < 0.2)
+        {
             helix.transform.parent=null;
             helix.time=Time.time+1;
         }

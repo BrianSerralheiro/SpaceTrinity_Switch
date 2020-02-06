@@ -58,7 +58,10 @@ public class Tank : EnemyBase
         v-=turret.position;
         v.z=0;
         v=Vector3.Cross(-turret.up,v);
-        turret.Rotate(v*Time.deltaTime*15);
+        turret.Rotate(v*Time.deltaTime*100);
+        float f = turret.eulerAngles.z / 15;
+        turret.rotation = Quaternion.Euler(0,0,Mathf.RoundToInt(f +(f > 0 ? 0.5f : -0.5f))* 15);
+
         if(timer<=0 && Mathf.Abs(v.z)<0.1f)Shot();
     }
     void Shot()

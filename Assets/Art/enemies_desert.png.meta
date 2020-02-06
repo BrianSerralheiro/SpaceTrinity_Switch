@@ -71,6 +71,18 @@ TextureImporter:
   - first:
       213: 2925290756085588242
     second: helix
+  - first:
+      213: 5199453955538469441
+    second: bullet1
+  - first:
+      213: 364093396588394500
+    second: bullet2
+  - first:
+      213: 7721055859901328462
+    second: bigbullet1
+  - first:
+      213: -635684765685512555
+    second: bigbullet2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -221,10 +233,10 @@ TextureImporter:
       name: turret small
       rect:
         serializedVersion: 2
-        x: 707
-        y: 1889
-        width: 32
-        height: 51
+        x: 1939
+        y: 1952
+        width: 56
+        height: 87
       alignment: 9
       pivot: {x: 0.5, y: 0.7}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,10 +254,10 @@ TextureImporter:
       name: jet
       rect:
         serializedVersion: 2
-        x: 821
-        y: 1570
-        width: 479
-        height: 581
+        x: 2027
+        y: 673
+        width: 807
+        height: 1013
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,10 +275,10 @@ TextureImporter:
       name: ject tail
       rect:
         serializedVersion: 2
-        x: 1406
-        y: 1737
-        width: 135
-        height: 159
+        x: 3008
+        y: 955
+        width: 231
+        height: 268
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,10 +380,10 @@ TextureImporter:
       name: missile
       rect:
         serializedVersion: 2
-        x: 495
-        y: 653
-        width: 114
-        height: 171
+        x: 501
+        y: 693
+        width: 56
+        height: 103
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,6 +540,90 @@ TextureImporter:
       bones: []
       spriteID: 736abb82ef87f7442beec8e9d4bf789f
       internalID: 2925290756085588242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet1
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 1300
+        width: 21
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdef719690cef7c41bbd0654902377ac
+      internalID: 5199453955538469441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet2
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 1232
+        width: 21
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e96039122cdbf4c96a1faa14022afd
+      internalID: 364093396588394500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bigbullet1
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1304
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abedcbc924af4dc4483c2a9e77787470
+      internalID: 7721055859901328462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bigbullet2
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 1238
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d8ef7ac8bd5374c8947f46c497cfc7
+      internalID: -635684765685512555
       vertices: []
       indices: 
       edges: []
