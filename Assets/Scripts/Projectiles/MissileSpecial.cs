@@ -10,7 +10,6 @@ public class MissileSpecial : MonoBehaviour
         explosion.damage=bullet.damage;
         explosion.owner=bullet.owner;
         explosion.transform.parent=null;
-        bullet.transform.localScale=transform.localScale;
     }
     void Update()
     {
@@ -18,7 +17,7 @@ public class MissileSpecial : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.name.Contains("Player") || col.name.Contains("item"))return;
+        if(col.name.Contains("Player") || col.name.Contains("item") || col.isTrigger)return;
         gameObject.SetActive(false);
     }
     void OnDisable()

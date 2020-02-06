@@ -7,14 +7,11 @@ public class Helix : MonoBehaviour
     new SpriteRenderer renderer;
     Vector3 dir;
     public float time;
-    // Start is called before the first frame update
     void Start()
     {
         renderer=GetComponent<SpriteRenderer>();
         dir=Random.insideUnitCircle;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(transform.parent){

@@ -9,6 +9,7 @@ public class Tank : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
     {
         hp=60;
+        name+="big";
         GameObject go=new GameObject("enemy");
         go.transform.parent=transform;
         turret=go.transform;
@@ -46,6 +47,7 @@ public class Tank : EnemyBase
 
             }
         }
+        if(transform.position.y<-Scaler.sizeY-2)Die();
     }
     void Aim()
     {

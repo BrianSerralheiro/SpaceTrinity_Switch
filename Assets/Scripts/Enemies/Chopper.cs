@@ -20,7 +20,6 @@ public class Chopper : EnemyBase
         go.transform.parent=transform;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
-        go.AddComponent<BoxCollider2D>();
         shotId=ei.bulletsID[0];
         MultiPathEnemy enemy=(MultiPathEnemy)ei;
         counter=shots=enemy.shotCount;
@@ -63,6 +62,7 @@ public class Chopper : EnemyBase
         bu.owner="enemy";
         bu.bulleSpeed=10;
         bu.spriteID=shotId;
+        bu.Timer(5);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=GetPlayer(transform.position).position-bu.transform.position;
@@ -77,10 +77,6 @@ public class Chopper : EnemyBase
     protected override void Die(){
         if(hp<=0){
             helix.transform.parent=null;
-            Bullet b=helix.gameObject.AddComponent<Bullet>();
-            b.enabled=false;
-            b.damage=40;
-            b.owner="hel";
             helix.time=Time.time+1;
         }
         base.Die();

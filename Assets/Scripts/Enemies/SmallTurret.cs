@@ -4,9 +4,7 @@ public class SmallTurret : EnemyBase
 {
     Transform turret,lid;
     float timer,delay,reload;
-    int shotId,counter,shots,cicles,pathID;
-    static BulletPath[] paths;
-    bool mirror;
+    int shotId,counter,shots,cicles,dir;
 	public override void SetSprites(EnemyInfo ei){
         hp=5;
         gameObject.AddComponent<SpriteMask>().sprite=ei.sprites[0];
@@ -17,7 +15,7 @@ public class SmallTurret : EnemyBase
         SpriteRenderer sr=go.AddComponent<SpriteRenderer>();
         sr.sprite=ei.sprites[1];
         sr.maskInteraction=SpriteMaskInteraction.VisibleInsideMask;
-        go=new GameObject("enemy");
+        go=new GameObject("enemybig");
         turret=go.transform;
         go.transform.parent=transform;
         go.transform.localPosition=Vector3.zero;
@@ -30,8 +28,7 @@ public class SmallTurret : EnemyBase
         cicles=multi.cicles;
         reload=multi.reloadTime;
         Destroy(GetComponent<Collider2D>());
-        if(paths==null)paths=multi.paths;
-        pathID=Random.Range(0,paths.Length);
+        dir=Random.Range(0,8);
     }
     void Start()
     {
@@ -51,31 +48,30 @@ public class SmallTurret : EnemyBase
         else if(timer<1){
             lid.localPosition=Vector3.MoveTowards(lid.localPosition,Vector3.right+Vector3.back/10,Time.deltaTime);
             if(lid.localPosition==Vector3.right+Vector3.back/10){
-                turret.up=-paths[pathID].GetNode0(mirror).normalized;
+                turret.rotation=Quaternion.Euler(0,0,dir*45);
                 turret.gameObject.SetActive(true);
             }
             lid.Rotate(0,0,-40*Time.deltaTime);
             if(timer<=0)
                 Shot();
         }
+        if(transform.position.y<-Scaler.sizeY-1)Die();
     }
     void Shot(){
         GameObject go=new GameObject("enemybullet");
-        go.transform.position=turret.position;
-        PathBullet bu=go.AddComponent<PathBullet>();
+        go.transform.position=turret.position-turret.up;
+        Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
         bu.bulleSpeed=5;
         bu.spriteID=shotId;
-        bu.mirror=mirror;
-        bu.path=paths[pathID];
+        bu.Timer(8);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
-        go.AddComponent<CircleCollider2D>();
-        go.transform.up=-transform.up;
+        go.AddComponent<BoxCollider2D>();
+        go.transform.up=-turret.up;
         if(counter--==0){
             timer=reload+1;
             counter=shots;
-            pathID=Random.Range(0,paths.Length);
-            mirror=Random.value>0.5f;
+            dir=Random.Range(0,8);
         }else
             timer=delay;
     }

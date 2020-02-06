@@ -10,7 +10,6 @@ public class ChopperD : EnemyBase
         go.transform.parent=transform;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
-        go.AddComponent<BoxCollider2D>();
         fallSpeed-=6;
     }
     new void Update()
@@ -23,10 +22,6 @@ public class ChopperD : EnemyBase
     protected override void Die(){
         if(hp<=0){
             helix.transform.parent=null;
-            Bullet b=helix.gameObject.AddComponent<Bullet>();
-            b.enabled=false;
-            b.damage=40;
-            b.owner="hel";
             helix.time=Time.time+1;
         }
         base.Die();

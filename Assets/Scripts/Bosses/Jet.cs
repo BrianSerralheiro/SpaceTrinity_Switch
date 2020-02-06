@@ -29,6 +29,7 @@ public class Jet : EnemyBase
 	public override void SetSprites(EnemyInfo ei){
         hp=1000;
         EnemySpawner.boss=true;
+        name+="Boss";
         GameObject g=new GameObject("tail");
         g.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         g.transform.parent=transform;

@@ -12,7 +12,6 @@ public class Pod : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
     {
         if(missile==null)missile=ei.sprites[1];
-        name+="Big";
         BoxCollider2D col=GetComponent<BoxCollider2D>();
         col.isTrigger=true;
         col.size=new Vector2(5,10);
@@ -62,6 +61,7 @@ public class Pod : EnemyBase
             }
             else toremove.Add(t);
         }
+        if(transform.position.y<-Scaler.sizeY-4)Die();
     }
     void OnTriggerStay2D(Collider2D col)
     {
