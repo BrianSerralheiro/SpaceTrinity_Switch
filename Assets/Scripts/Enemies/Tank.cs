@@ -55,14 +55,13 @@ public class Tank : EnemyBase
         float s=v.x>transform.position.x+2?2:v.x+2<transform.position.x?-1:0;
         speed=Mathf.MoveTowards(speed,s,Time.deltaTime/2);
         transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,-15*s),7*Time.deltaTime);
-        v-=turret.position;
-        v.z=0;
-        v=Vector3.Cross(-turret.up,v);
-        turret.Rotate(v*Time.deltaTime*100);
-        float f = turret.eulerAngles.z / 15;
-        turret.rotation = Quaternion.Euler(0,0,Mathf.RoundToInt(f +(f > 0 ? 0.5f : -0.5f))* 15);
+        // v-=turret.position;
+        // v.z=0;
+        // v=Vector3.Cross(-turret.up,v);
+        // turret.Rotate(v*Time.deltaTime*100);
+        turret.rotation = Quaternion.Euler(0,0,Mathf.RoundToInt(Vector2.SignedAngle(Vector3.down,v-turret.position)/15)*15);
 
-        if(timer<=0 && Mathf.Abs(v.z)<0.1f)Shot();
+        if(timer<=0)Shot();
     }
     void Shot()
     {
