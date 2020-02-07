@@ -5,8 +5,8 @@ using UnityEngine;
 public class Fortress : EnemyBase
 {
     Del update;
-    float treadspeed=-1,turretTimer,turretShot,sequence,cannonTime;
-    int turretID,shotId;
+    float treadspeed=-1,turretTimer,turretShot,sequence,cannonTime,rotationSpeed,aim;
+    int turretID,shotId,shotBig;
     bool flag;
     MiniTurret[] turrets=new MiniTurret[4];
     Transform cannon,target;
@@ -32,6 +32,7 @@ public class Fortress : EnemyBase
         _renderer.sprite=ei.sprites[1];
         cannon=g.transform;
         cannon.parent=transform;
+        cannon.Translate(0,2,-0.1f);
         for (int j = 0; j < 2; j++)
         {
             
@@ -51,14 +52,16 @@ public class Fortress : EnemyBase
                 g.transform.localPosition=new Vector3(0,0.9f*i,0);
             }
         }
+        shotId=ei.bulletsID[0];
+        shotBig=ei.bulletsID[2];
         for (int i = 0; i < 4; i++)
         {
             g=new GameObject("turret"+i);
             turrets[i]=g.AddComponent<MiniTurret>();
-            shotId=turrets[i].shotId=ei.bulletsID[0];
+            turrets[i].shotId=shotId;
             g.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
             g.transform.parent=transform;
-            g.transform.localPosition=new Vector3(-3.2f+6.4f*(i%2),2.1f-2.7f*(i/2),-0.1f);
+            g.transform.localPosition=new Vector3(-3.2f+6.4f*(i%2),2.1f-2.7f*(i/2),-0.05f);
             g.transform.localScale=Vector3.one*1.5f;
         }
     }
@@ -96,10 +99,14 @@ public class Fortress : EnemyBase
         }
     }
     void UpdateCannon(){
-        Vector3 v=target.position-cannon.position;
-        v.z=0;
-        cannon.Rotate(Vector3.Cross(-cannon.up,v)*20*Time.deltaTime);
-        if(turretTimer<Time.time+9 && turretTimer>Time.time+1 && cannonTime<Time.time){
+        // Vector3 v=target.position-cannon.position;
+        // v.z=0;
+        // cannon.Rotate(Vector3.Cross(-cannon.up,v)*20*Time.deltaTime);
+        float delta=Vector2.SignedAngle(-cannon.up,target.position-cannon.position);
+        rotationSpeed=Mathf.MoveTowards(rotationSpeed,delta>0?15:-15,Time.deltaTime*15);
+        aim+=rotationSpeed*Time.deltaTime;
+        cannon.rotation=Quaternion.Euler(0,0,aim);
+        if(cannonTime<Time.time && Mathf.Abs(delta)<10){
             Shot();
         }
     }
@@ -141,7 +148,7 @@ public class Fortress : EnemyBase
                         break;
                     }
                     if(turretShot<Time.time){
-                        turrets[2].Prepare(-15,0.3f,100,0.1f);
+                        turrets[2].Prepare(-45,0.9f,100,0.01f);
                         turretTimer=Time.time+15;
                         turretID=Random.Range(0,4);
                     }
@@ -230,29 +237,32 @@ public class Fortress : EnemyBase
     }
     void Shot(){
         cannonTime=+Time.time+2;
-        GameObject game=new GameObject("enemybullet");
-        game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
-        game.AddComponent<BoxCollider2D>();
-        Bullet bu=game.AddComponent<Bullet>();
-        bu.spriteID=shotId;
-        bu.bulleSpeed=10;
-        bu.owner=name;
-        game.transform.position=cannon.position-cannon.up*5+(flag?cannon.right:-cannon.right)-Vector3.forward/10;
-        flag=!flag;
-        game.transform.up=-cannon.up;
-        game.transform.localScale=Vector3.one*5;
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject game=new GameObject("enemybullet");
+            game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotBig];
+            game.AddComponent<BoxCollider2D>();
+            Bullet bu=game.AddComponent<Bullet>();
+            bu.spriteID=shotBig;
+            bu.bulleSpeed=10;
+            bu.owner=name;
+            game.transform.position=cannon.position-cannon.up*5+(flag?cannon.right:-cannon.right)-Vector3.forward/10;
+            flag=!flag;
+            game.transform.up=-cannon.up;
+            game.transform.localScale=Vector3.one*2;
+        }
         target=GetPlayer();
     }
     void ShotBig(){
         GameObject game=new GameObject("enemybullet");
-        game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
+        game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotBig];
         game.AddComponent<BoxCollider2D>();
         Bullet bu=game.AddComponent<Bullet>();
-        bu.spriteID=shotId;
+        bu.spriteID=shotBig;
         bu.bulleSpeed=8;
         bu.owner=name;
         game.transform.position=transform.position-Vector3.up*4-Vector3.forward/10;
-        game.transform.localScale=Vector3.one*8;
+        game.transform.localScale=Vector3.one*5;
         game.transform.up=Vector3.down;
     }
 }
