@@ -5,11 +5,22 @@ public class Core : MonoBehaviour {
 	private SpriteRenderer render;
 	public Color color;
 	public Color white=Color.white;
-	private float value;
+	private float value,time,delta;
 	public void Start()
 	{
 		render=gameObject.GetComponent<SpriteRenderer>();
 		render.color=color;
+	}
+	void Update()
+	{
+		if(time>0){
+			Set((time-Time.time)/delta);
+			if(time<Time.time)Destroy(gameObject);
+		}
+	}
+	public void Auto(float f){
+		delta=f;
+		time=Time.time+delta;
 	}
 	public Core Set(Color w,Color c){
 		white=w;

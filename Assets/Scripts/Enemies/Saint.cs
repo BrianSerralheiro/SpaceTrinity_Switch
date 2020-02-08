@@ -11,6 +11,7 @@ public class Saint : EnemyBase
     int ap,shotId;
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
     Del update;
+	new private Core light;
     new BoxCollider2D collider;
     public override void SetSprites(EnemyInfo ei)
 	{
@@ -64,6 +65,14 @@ public class Saint : EnemyBase
         update=Intro;
         shotId=ei.bulletsID[0];
         fallSpeed=-3;
+        g=new GameObject("light");
+		Texture2D te=new Texture2D(1,1);
+		te.SetPixels(new Color[]{Color.white});
+		te.Apply(false);
+		light=g.AddComponent<Core>().Set(Sprite.Create(te,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(1f,1f,1f,0f));
+		// light.white=new Color(0f,0f,0f,1f);
+		g.transform.localScale=new Vector3(5000,5000);
+		g.transform.position=new Vector3(0,0,-0.1f);
     }
     void Intro(){
         SlowFall();
@@ -202,6 +211,7 @@ public class Saint : EnemyBase
 	{
 		update=Dying;
 		EnemySpawner.points[killerid]+=points;
+        line.enabled=false;
         foreach (Miracle m in miracles)
         {
             m?.Kill(killerid);

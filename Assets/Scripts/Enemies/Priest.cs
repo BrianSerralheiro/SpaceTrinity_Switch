@@ -4,6 +4,7 @@ public class Priest : EnemyBase
 {
     LineRenderer line;
     Vector3[] positions=new Vector3[20];
+	new private Core light;
     float time,timer,posX;
     Transform[] wings=new Transform[4];
     new BoxCollider2D collider;
@@ -30,15 +31,22 @@ public class Priest : EnemyBase
         line=g.AddComponent<LineRenderer>();
         line.positionCount=positions.Length;
         line.enabled=false;
-        timer=Time.time+5;
+        // timer=Time.time+5;
         for (int i = 0; i < positions.Length; i++)
         {
             positions[i].y=i*Scaler.sizeY/9-Scaler.sizeY-1;
             positions[i].z=-0.2f;
         }
-        timer=Time.time+3;
+        g=new GameObject("light");
+		Texture2D t=new Texture2D(1,1);
+		t.SetPixels(new Color[]{Color.white});
+		t.Apply(false);
+		light=g.AddComponent<Core>().Set(Sprite.Create(t,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(1f,1f,1f,0f));
+		// light.white=new Color(0f,0f,0f,1f);
+		g.transform.localScale=new Vector3(5000,5000);
+		g.transform.position=new Vector3(0,0,-0.1f);
         upate=SlowFall;
-        upate+=Divine;
+        upate+=LightOn;
     }
     new void Update()
     {
@@ -78,16 +86,36 @@ public class Priest : EnemyBase
                     line.enabled=false;
                     collider.enabled=false;
                     time=Time.time+3;
-                    if(transform.position.y<0)upate-=Divine;
+                    if(transform.position.y<0){
+                        upate-=Divine;
+                        upate+=LightOff;
+                    }
                 }
             }
         }
+    }
+    void LightOn(){
+        if(transform.position.y<Scaler.sizeY/2)light.Add(Time.deltaTime*2);
+        if(light.Value()>=1){
+            // timer=Time.time+3;
+            upate+=Divine;
+            upate-=LightOn;
+        }
+    }
+    void LightOff(){
+        light.Min(Time.deltaTime);
+        if(light.Value()<=0)upate-=LightOff;
     }
     new void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.otherCollider.name=="enemylaser") return;
 		base.OnCollisionEnter2D(col);
 	}
+    protected override void Die()
+	{
+        light.Auto(0.5f);
+        base.Die();
+    }
     void Show(){
         line.enabled=true;
         line.widthMultiplier=0;

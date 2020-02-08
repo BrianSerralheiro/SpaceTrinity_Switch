@@ -10,7 +10,7 @@ public class ParticleManager : MonoBehaviour {
 	private static Vector3 mod=Vector3.back*0.1f;
 	private static float timer,marker,fraction;
 	private static int id;
-	void Start () {
+	void Awake () {
 		sys=systems;
 	}
 	private void Update()

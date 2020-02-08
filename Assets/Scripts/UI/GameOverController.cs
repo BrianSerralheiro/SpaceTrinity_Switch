@@ -4,43 +4,20 @@ using UnityEngine.UI;
 public class GameOverController : MonoBehaviour 
 {
 	[SerializeField]
-	int id;
+	private Image[] pilots;
 	[SerializeField]
-	private Image panel;
+	private CanvasGroup group;
 	[SerializeField]
-	private Image image;
+	private Text[] Scores;
 	[SerializeField]
-	private Text gameover;
-	[SerializeField]
-	private Text LevelCleared;
-	[SerializeField]
-	private Text Score;
-	[SerializeField]
-	private Text Stars;
-	[SerializeField]
-	private Continue cont;
-	public Sprite[] panels;
-	[SerializeField]
-	private Graphic[] graphics;
+	private Text[] Stars;
 	private static float Timer;
-
 	private static Ship ship;
-
 	private static GameObject menu;
-
 	private bool highscore;
 	public delegate void Dele();
 	private static Dele enable;
-	[SerializeField]
-	private Text gameoverTEXT;
-	
-	[SerializeField]
-	private GameObject noContinues;
-	[SerializeField]
-	private Image gameoverDialog;
-
 	private string fullText;
-
 	private float charCount;
 	private Color color=Color.white;
 	void Start () 
@@ -49,73 +26,36 @@ public class GameOverController : MonoBehaviour
 		menu = gameObject;
 		gameObject.SetActive(false);
 	}
-
 	void Update ()
 	{
 		if(Timer>0)
 		{
 			Timer-=Time.deltaTime;
-			color.a=(2f-Timer)/2f;
-			PilotInfo.pilot[ship.input.id].color.a=color.a;
-			foreach(Graphic g in graphics)
-			{
-				g.color=color;
-			}
-			gameover.color=PilotInfo.pilot[ship.input.id].color;
-			if(Timer<=0)gameoverDialog.gameObject.SetActive(true);
+			group.alpha=(2f-Timer)/2f;
 		}
-		else {
-			if(charCount<fullText.Length)
-			{
-				charCount+=Time.deltaTime * 14;
-				if(gameoverTEXT.text.Length<Mathf.FloorToInt(charCount))gameoverTEXT.text=fullText.Substring(0,Mathf.FloorToInt(charCount));
-			}
-			if(ship.input.GetKeyDown("shoot"))RevivePopUp();
-			if(ship.input.GetKeyDown("special"))QuitGame();
-		}
-
 	}
-	
 	void Enable () 
 	{
-		if(PlayerPrefs.GetInt("highscore") <= EnemySpawner.points[ship.input.id])
-		{
-			highscore = true;
-			PlayerPrefs.SetInt("highscore", EnemySpawner.points[ship.input.id]);
-		}
-		else
-		{
-			highscore = false;
-		}
-		LevelCleared.text = (Transition.worldID + 1).ToString();
-		charCount = 0;
-		gameoverTEXT.text = "";
-		fullText = highscore ? DialogBox.GetText(5):DialogBox.GetText(6);
-		panel.sprite=panels[ship.ID()];
-		image.sprite=highscore ? PilotInfo.pilot[ship.input.id].happy:PilotInfo.pilot[ship.input.id].normal;
-		Score.text = EnemySpawner.points.ToString();
-		int cashStars = EnemySpawner.points[id] / 400;
-		EnemySpawner.points[id]=0;
-		Stars.text = cashStars.ToString();
+		Scores[0].text = EnemySpawner.points[0].ToString();
+		if(PlayerInput.Conected(1))Scores[1].text = EnemySpawner.points[1].ToString();
+		int cashStars = EnemySpawner.points[0] / 400;
+		EnemySpawner.points[0]=0;
+		Stars[0].text = cashStars.ToString();
 		Cash.totalCash += cashStars;
+		cashStars = EnemySpawner.points[1] / 400;
+		EnemySpawner.points[1]=0;
+		Stars[1].text = cashStars.ToString();
+		Cash.totalCash += cashStars;
+		pilots[0].sprite=PilotInfo.pilot[0].sad;
+		pilots[1].sprite=PilotInfo.pilot[1].sad;
+		pilots[1].gameObject.SetActive(PlayerInput.Conected(1));
 		Cash.Save();
-		gameoverDialog.sprite = DialogBox.getBox();
-		gameoverTEXT.fontSize = Mathf.CeilToInt(Screen.height/10/DialogBox.getSize(highscore?5:6));
 	}
-
-	public void Close()
+	public void Quit()
 	{
-		if(charCount>=fullText.Length)
-		{
-			gameoverDialog.gameObject.SetActive(false);
-		}
-		else
-		{
-			charCount=fullText.Length;
-			gameoverTEXT.text=fullText.Substring(0,Mathf.FloorToInt(charCount));
-		}
+		Ship.paused = false;
+		Application.Quit();
 	}
-	
 	public static void Open(Ship s)
 	{
 		if(Ship.continues[0]>0 || Ship.continues[1]>0)return;
@@ -125,22 +65,13 @@ public class GameOverController : MonoBehaviour
 		menu.SetActive(true);
 		Timer = 2f;
 	}
-
-	public void RevivePopUp()
+	public void Retry()
 	{
-		cont.ship=ship;
-		if(cont.HasContinue()){
-			SoundManager.PlayEffects(0);
-			cont.Active=gameObject.SetActive;
-			cont.gameObject.SetActive(true);
-		}
-		else
-		{
-			SoundManager.PlayEffects(11);
-			noContinues.SetActive(true);
-		}
+		Ship.paused = false;
+        PlayerInput.Unload();
+		Loader.Scene("cen");
 	}
-	public void QuitGame()
+	public void Back()
 	{
 		SoundManager.PlayEffects(0);
 		Ship.paused = false;

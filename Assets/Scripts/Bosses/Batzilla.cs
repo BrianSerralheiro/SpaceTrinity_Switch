@@ -77,7 +77,7 @@ public class Batzilla : EnemyBase {
 		dark=go.AddComponent<Core>().Set(Sprite.Create(t,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(0f,0f,0f,0f));
 		dark.white=new Color(0f,0f,0f,1f);
 		go.transform.localScale=new Vector3(5000,5000);
-		go.transform.position=new Vector3(0,0,-0.09f);
+		go.transform.position=new Vector3(0,0,-0.1f);
 		bat=(ei as CarrierInfo).spawnable;
 		shotId=ei.bulletsID[0];
 	}
