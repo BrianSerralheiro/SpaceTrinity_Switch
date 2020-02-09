@@ -1,8 +1,9 @@
-﻿Shader "UI/SelectorShader"
+﻿Shader "UI/Hologram"
 {
     Properties
     {
 		_MainTex("Texture", 2D) = "white" {}
+		_Color("Color",Color)=(0.5,0.5,0.8)
 		_Thicc("Thiccness",Range(0.1,0.5)) = 0.2
 		_Freq("Frequency", float) = 10
 		_Alpha("Alpha", Range(0.1,1)) = 0.5
@@ -71,11 +72,13 @@
             {
 				float2 uv : TEXCOORD0;
 				float4 position : TEXCOORD1;
+				float2 screen:TEXCOORD2;
 				float4 vertex : SV_POSITION;
 				float4 color : COLOR;
             };
 
             sampler2D _MainTex;
+			float4 _Color;
 			float _Freq;
 			float _Thicc;
 			float _Alpha;
@@ -86,6 +89,7 @@
                 v2f o;
 				o.position = v.vertex;
 				o.vertex = UnityObjectToClipPos(o.position);
+				o.screen = ComputeScreenPos(o.position).xy/_ScreenParams.xy;
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.color = v.color;
                 return o;
@@ -94,14 +98,19 @@
             fixed4 frag (v2f i) : SV_Target
             {
 				half4 col = tex2D(_MainTex, i.uv);
-				if (col.a < 1) {
-					float f = _Time.y%_Freq;
-					if (col.a<f && col.a>f - _Thicc)col.a = _Alpha;
-					else col.a = 0;
+				col.a*=i.color.a;
+				i.screen.y+=1;
+				i.screen.y/=2;
+				if (col.a > 0) {
+					float f = _Time.x%_Freq;
+					if (i.screen.y<f && i.screen.y>f - _Thicc/2){
+						float a=_Alpha+floor(i.screen.y%(_Thicc/10)/(_Thicc/10)+0.5)*(1-_Alpha);
+						col.rgb*=1-a;
+						col.rgb += _Color.rgb*a;
+					}
 				}
-                i.color.a = 0;
 				//col.rgb /= 2;
-				return col+i.color;
+				return col;
             }
             ENDCG
         }
