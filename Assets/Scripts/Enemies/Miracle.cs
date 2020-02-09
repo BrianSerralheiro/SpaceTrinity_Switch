@@ -69,7 +69,7 @@ public class Miracle : EnemyBase
         g.transform.position=transform.position;
         g.transform.rotation=Quaternion.Euler(0,0,angle);
         tail.Rotate(0,0,90*Time.deltaTime);
-        angle+=81;
+        angle+=91;
         shots--;
     }
 }

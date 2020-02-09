@@ -79,11 +79,13 @@ public class Saint : EnemyBase
         if(transform.position.y<2)update=Divining;
     }
     void Divining(){
-        mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.zero,Time.deltaTime*3);
-        if(time<Time.time)Divine();
+        mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.zero,Time.deltaTime*5);
+        if(mask.localScale==Vector3.zero)light.Add(Time.deltaTime*10);
+        if(time<Time.time && light.Value()>=1)Divine();
     }
     void Spawning(){
         mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.one*5,Time.deltaTime*5);
+        light.Min(Time.deltaTime*5);
         if(time<Time.time)Spawn();
     }
     void Shooting(){
@@ -201,16 +203,19 @@ public class Saint : EnemyBase
     void Dying(){
         mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.zero,Time.deltaTime);
         transform.GetChild(0).Translate(0,-Time.deltaTime*2,0,Space.World);
+        light.Add(Time.deltaTime/5);
         transform.Translate(0,-Time.deltaTime,0);
         if(transform.position.y<-Scaler.sizeY/2){
+            light.Auto(3);
             Destroy(gameObject);
-            EnemySpawner.boss=true;
+            EnemySpawner.boss=false;
         }
     }
     protected override void Die()
 	{
 		update=Dying;
 		EnemySpawner.points[killerid]+=points;
+        light.Set(0);
         line.enabled=false;
         foreach (Miracle m in miracles)
         {
