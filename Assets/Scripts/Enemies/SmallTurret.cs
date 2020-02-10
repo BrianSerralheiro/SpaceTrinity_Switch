@@ -64,7 +64,7 @@ public class SmallTurret : EnemyBase
         bu.owner="enemy";
         bu.bulleSpeed=5;
         bu.spriteID=shotId;
-        bu.Timer(8);
+        bu.Timer(10);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;

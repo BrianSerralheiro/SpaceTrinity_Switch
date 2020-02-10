@@ -60,7 +60,7 @@ public class InGame_HUD : MonoBehaviour
 					Ship.continues[i]--;
 					Ship.continues[id]=0;
 					shipHealth[id]=1;
-					shipHealth[i]=_currentHP[i]-Time.deltaTime;
+					_currentHP[i]-=Time.deltaTime;
 					Revive(EnemyBase.players[id].GetComponent<Ship>());
 				}
 			}

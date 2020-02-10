@@ -58,7 +58,7 @@ public class GameOverController : MonoBehaviour
 	}
 	public static void Open(Ship s)
 	{
-		if(Ship.continues[0]>0 || Ship.continues[1]>0)return;
+		if(Ship.continues[0]>-1 || Ship.continues[1]>-1)return;
 		Ship.paused = true;
 		ship = s;
 		enable();

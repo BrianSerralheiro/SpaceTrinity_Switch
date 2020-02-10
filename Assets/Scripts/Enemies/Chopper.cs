@@ -33,6 +33,7 @@ public class Chopper : EnemyBase
 		base.Position(i);
         if(i==0)transform.position=new Vector3(-Scaler.sizeX/2-1,Scaler.sizeY-1);
         if(i==19)transform.position=new Vector3(Scaler.sizeX/2+1,Scaler.sizeY-1);
+        transform.Translate(0,0,-0.2f);
         position=transform.position;
         i=i<10?i:(19-i);
         if(i==0)path=around;
@@ -50,8 +51,8 @@ public class Chopper : EnemyBase
         {
             timer-=Time.deltaTime;
             if(timer<0)Shot();
-            transform.position=position+BulletPath.Next(ref path,position.x>0);
 			transform.Rotate(Vector3.Cross(-transform.up,path.Directiom(position.x > 0))*Time.deltaTime*180);
+            transform.position=position+BulletPath.Next(ref path,position.x>0);
         }
     }
     void Shot()

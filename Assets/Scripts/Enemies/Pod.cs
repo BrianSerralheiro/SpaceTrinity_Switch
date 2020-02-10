@@ -72,11 +72,14 @@ public class Pod : EnemyBase
         if(col.transform==target)target=null;
     }
     void Shot(){
-        GameObject go=new GameObject("enemybullet");
+        GameObject go=new GameObject("enemy");
         go.transform.position=transform.position;
         go.transform.localScale=Vector3.one*2;
         Missile bu=go.AddComponent<Missile>();
-        bu.SetHP(20);
+        bu.SetHP(10);
+        Rigidbody2D r = go.AddComponent<Rigidbody2D>();
+		r.isKinematic=true;
+		r.useFullKinematicContacts=true;
         go.AddComponent<SpriteRenderer>().sprite=missile;
         go.AddComponent<BoxCollider2D>();
         go.transform.up=transform.position-target.position;

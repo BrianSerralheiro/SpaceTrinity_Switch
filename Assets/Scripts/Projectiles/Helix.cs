@@ -31,7 +31,7 @@ public class Helix : MonoBehaviour
     {
         ParticleManager.Emit(0,transform.position,1);
     }
-    void OnDisabled()
+    void OnDisable()
     {
         enabled = true;
     }
