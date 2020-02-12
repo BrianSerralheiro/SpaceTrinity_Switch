@@ -26,7 +26,6 @@ public class Bullet : MonoBehaviour {
 	}
 	public static int Register(Sprite sp){
 		if(sprites.Contains(sp)){
-			Debug.Log("Sprite "+sp.name+" alredy added");
 			return sprites.IndexOf(sp);
 		}
 		sprites.Add(sp);
