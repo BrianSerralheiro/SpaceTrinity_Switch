@@ -22,7 +22,7 @@ TextureImporter:
     second: Boss5_6
   - first:
       213: -7989011929301616578
-    second: chin
+    second: light
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -245,13 +245,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chin
+      name: light
       rect:
         serializedVersion: 2
-        x: 1754
-        y: 1479
-        width: 376
-        height: 403
+        x: 446
+        y: 2811
+        width: 380
+        height: 502
       alignment: 2
       pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

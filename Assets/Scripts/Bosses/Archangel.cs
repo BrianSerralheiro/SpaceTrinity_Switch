@@ -8,6 +8,7 @@ public class Archangel : EnemyBase
     Vector3 point=Vector3.up*Scaler.sizeY;
     List<Transform> rings=new List<Transform>();
     Sprite face;
+    Core chin;
     float timer;
     int shotId;
     Del update,check;
@@ -41,6 +42,11 @@ public class Archangel : EnemyBase
             go.transform.Rotate(0,0,35*(i==0?1:-1));
             wings[i]=go.transform;
         }
+        go=new GameObject("chin");
+        chin=go.AddComponent<Core>().Set(ei.sprites[4],Color.clear);
+        chin.white=new Color(0,1,1);
+        go.transform.parent=transform;
+        go.transform.Translate(0,-3.37f,0.01f);
         shotId=ei.bulletsID[0];
         update=Intro;
         check=Check;
@@ -73,9 +79,11 @@ public class Archangel : EnemyBase
         if(transform.position==Vector3.up*Scaler.sizeY/2)
             timer+=Time.deltaTime;
         halo.Rotate(0,0,Mathf.Sin(Time.time)*180*Time.deltaTime);
-        if(timer>1)
+        if(timer>1){
             foreach (Core c in GetComponentsInChildren<Core>())
                 c.Add(Time.deltaTime/4);
+            chin.Add(Time.deltaTime/4);
+        }
         if(timer>4){
             halo.rotation=Quaternion.RotateTowards(halo.rotation,Quaternion.identity,180*Time.deltaTime);
             for(int i = 0; i < 2; i++)
@@ -87,6 +95,7 @@ public class Archangel : EnemyBase
             box.size=new Vector2(2,4);
             box.offset=new Vector2(0,-3);
             update=Creating;
+            chin.Set(Color.white,chin.white);
         }
     }
     void Shot(){
@@ -169,6 +178,7 @@ public class Archangel : EnemyBase
     }
     void Aim(){
         if(halo.parent)halo.rotation=Quaternion.RotateTowards(halo.rotation,Quaternion.identity,30*Time.deltaTime);
+        chin.Min(Time.deltaTime*2);
         Vector3 vector=GetPlayer(transform.position).position;
         transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,Vector2.SignedAngle(Vector2.down,vector-transform.position)),190*Time.deltaTime);
         for(int i = 0; i < 2; i++)
@@ -183,6 +193,7 @@ public class Archangel : EnemyBase
         if(halo.parent)
             halo.Rotate(0,0,Mathf.Sin(Time.time)*360*Time.deltaTime);
         timer+=Time.deltaTime;
+        chin.Add(Time.deltaTime*2);
         transform.Translate(0,-timer*6*Time.deltaTime,0);
         wings[0].localRotation=Quaternion.RotateTowards(wings[0].localRotation,Quaternion.Euler(0,0,35),70*Time.deltaTime);
         wings[1].localRotation=Quaternion.RotateTowards(wings[1].localRotation,Quaternion.Euler(0,0,-35),70*Time.deltaTime);
@@ -200,6 +211,7 @@ public class Archangel : EnemyBase
         if(halo.parent)halo.rotation=Quaternion.RotateTowards(halo.rotation,Quaternion.identity,60*Time.deltaTime);
         transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,90*Time.deltaTime);
         transform.position=Vector3.MoveTowards(transform.position,Vector3.up*Scaler.sizeY/2,Time.deltaTime*3);
+        chin.Min(Time.deltaTime*2);
         for(int i = 0; i < 2; i++)
                 wings[i].localRotation=Quaternion.RotateTowards(wings[i].localRotation,Quaternion.identity,40*Time.deltaTime);
         if(transform.position==Vector3.up*Scaler.sizeY/2){
