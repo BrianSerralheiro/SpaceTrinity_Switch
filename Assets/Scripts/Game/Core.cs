@@ -14,13 +14,14 @@ public class Core : MonoBehaviour {
 	void Update()
 	{
 		if(time>0){
-			Set((time-Time.time)/delta);
-			if(time<Time.time)Destroy(gameObject);
+			Min(Time.deltaTime/delta);
+			if(time<Time.time || value<=0)Destroy(gameObject);
 		}
 	}
 	public void Auto(float f){
 		delta=f;
 		time=Time.time+delta;
+		if(value<=0)Destroy(gameObject);
 	}
 	public Core Set(Color w,Color c){
 		white=w;

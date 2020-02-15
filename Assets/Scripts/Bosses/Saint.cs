@@ -49,6 +49,10 @@ public class Saint : EnemyBase
         line=g.AddComponent<LineRenderer>();
         line.positionCount=positions.Length;
         line.enabled=false;
+        line.material=Priest.material;
+        Gradient gradient=new Gradient();
+		gradient.SetKeys(new GradientColorKey[]{new GradientColorKey(new Color(1,1,0.8f),0)},new GradientAlphaKey[]{new GradientAlphaKey(1,0.5f),new GradientAlphaKey(0,1)});
+		line.colorGradient=gradient;
         timer=Time.time+5;
         for (int i = 0; i < positions.Length; i++)
         {

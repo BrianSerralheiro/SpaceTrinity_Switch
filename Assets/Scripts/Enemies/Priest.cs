@@ -8,6 +8,7 @@ public class Priest : EnemyBase
     float time,timer,posX;
     Transform[] wings=new Transform[4];
     new BoxCollider2D collider;
+    public static Material material;
     Del upate;
     public override void SetSprites(EnemyInfo ei)
 	{
@@ -24,6 +25,7 @@ public class Priest : EnemyBase
             wings[i].parent=transform;
             wings[i].localPosition=new Vector3((0.6f+i/2*0.15f)*(i%2==1?-1:1),0.4f-i/2*0.2f,0.1f);
         }
+        if(!material)material=new Material(Shader.Find("Sprites/Default"));
         g=new GameObject("enemylaser");
         g.transform.parent=transform;
         collider=g.AddComponent<BoxCollider2D>();
@@ -31,6 +33,10 @@ public class Priest : EnemyBase
         line=g.AddComponent<LineRenderer>();
         line.positionCount=positions.Length;
         line.enabled=false;
+        line.material=material;
+        Gradient gradient=new Gradient();
+		gradient.SetKeys(new GradientColorKey[]{new GradientColorKey(new Color(1,1,0.8f),0)},new GradientAlphaKey[]{new GradientAlphaKey(1,0.5f),new GradientAlphaKey(0,1)});
+		line.colorGradient=gradient;
         // timer=Time.time+5;
         for (int i = 0; i < positions.Length; i++)
         {

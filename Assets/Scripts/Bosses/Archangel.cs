@@ -12,6 +12,7 @@ public class Archangel : EnemyBase
     float timer;
     int shotId;
     Del update,check;
+    static Material material;
     public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
@@ -21,7 +22,7 @@ public class Archangel : EnemyBase
 		EnemySpawner.boss=true;
 		hp=1800;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
-        GameObject go=new GameObject("halo");
+        GameObject go=new GameObject("halobig");
         SpriteRenderer sr=go.AddComponent<SpriteRenderer>();
         sr.sprite=ei.sprites[1];
         halo=go.transform;
@@ -48,6 +49,7 @@ public class Archangel : EnemyBase
         go.transform.parent=transform;
         go.transform.Translate(0,-3.37f,0.01f);
         shotId=ei.bulletsID[0];
+        material=new Material(Shader.Find("Sprites/Default"));
         update=Intro;
         check=Check;
     }
@@ -137,6 +139,7 @@ public class Archangel : EnemyBase
         halo.Rotate(0,0,30*Time.deltaTime);
         if(timer<Time.time){
             Shot();
+            target=GetPlayer();
             timer=Time.time+2;
             update=Chase;
         }
@@ -243,6 +246,8 @@ public class Archangel : EnemyBase
         LineRenderer ring=go.AddComponent<LineRenderer>();
         ring.loop=true;
         ring.positionCount=30;
+        ring.material=material;
+        ring.startColor=ring.endColor=new Color(1,1,0.8f);
         float rad=2*Mathf.PI/ring.positionCount;
         // ring.widthMultiplier=0.1f;
         ring.useWorldSpace=false;

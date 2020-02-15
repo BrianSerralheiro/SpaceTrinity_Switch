@@ -22,6 +22,7 @@ public class WorldLoader : MonoBehaviour
     void Start()
     {
         update=Step1;
+        Ship.continues=new int[]{-1,-1};
         InGame_HUD.HUD[0]=HUDs[Ship.player1];
         InGame_HUD.HUD[1]=HUDs[Ship.player2];
         PilotInfo.pilot[0]=pilots[Ship.player1];
