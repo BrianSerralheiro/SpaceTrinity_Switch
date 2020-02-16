@@ -31,9 +31,12 @@ public class Homing : Bullet
     {
         if(col.transform==target)target=null;
     }
-    private void OnTriggerStay2D(Collider2D col) {
-        if(col.name=="enemy"){
-            if(target){
+    private void OnTriggerStay2D(Collider2D col) 
+    {
+        if(col.name.Contains("enemy"))
+        {
+            if(target)
+            {
                 if((target.position-transform.position).sqrMagnitude>(col.transform.position-transform.position).sqrMagnitude)
                     target=col.transform;
             }

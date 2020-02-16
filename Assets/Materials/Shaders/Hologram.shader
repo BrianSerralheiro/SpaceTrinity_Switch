@@ -102,7 +102,7 @@
 				i.screen.y+=1;
 				i.screen.y/=2;
 				if (col.a > 0) {
-					float f = _Time.x%_Freq;
+					float f = _Time.y / 6 %_Freq;
 					if (i.screen.y<f && i.screen.y>f - _Thicc/2){
 						float a=_Alpha+floor(i.screen.y%(_Thicc/10)/(_Thicc/10)+0.5)*(1-_Alpha);
 						col.rgb*=1-a;
