@@ -2,7 +2,7 @@
 [System.Serializable]
 public struct SpecialInfo
 {
-    public Vector2 area,offSet;
+    public Vector3 area,offSet;
     [SerializeField]
     private bool followShip,lockShot;
     [Range(0.1f,1)]
@@ -29,13 +29,13 @@ public struct SpecialInfo
         collider=gameObject.GetComponent<Collider2D>();
         transform=gameObject.transform;
         transform.parent=null;
-        transform.position=t.position+(Vector3)offSet;
-        transform.localScale=new Vector3(area.x,area.y,1);
+        transform.position=t.position+offSet;
+        transform.localScale=area;
         time=Time.time+duration;
         ship=t;
     }
     public void  Update(){
-        if(followShip)transform.position=ship.position+(Vector3)offSet;
+        if(followShip)transform.position=ship.position+offSet;
         if(rotationAround!=0){
             Vector3 v=transform.position-ship.position;
             v=Quaternion.Euler(0,0,rotationAround*Time.deltaTime)*v.normalized;
