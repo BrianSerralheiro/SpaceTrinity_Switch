@@ -17,8 +17,9 @@ public struct PlayerInput{
     public string vertical,horizontal,name;
     public static PlayerInput[] players;
     public bool got,conected;
-    public Vector3 GetAxis(){
-        return new Vector3(Input.GetAxis(horizontal),Input.GetAxis(vertical),0);
+    public Vector3 GetAxis()
+    {
+        return new Vector3(Input.GetAxisRaw(horizontal),Input.GetAxisRaw(vertical),0).normalized;
     }
     public PlayerInput Select(){
         got=true;
