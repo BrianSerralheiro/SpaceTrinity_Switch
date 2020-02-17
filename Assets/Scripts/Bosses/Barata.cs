@@ -14,7 +14,7 @@ public class Barata : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		/*REMOVER*/time=Time.time;
-		name="subBoss";
+		name+="Boss";
 		damageEffect = true;
 		hp=700;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);

@@ -2,8 +2,8 @@
 
 public class Homing : Bullet
 {
-    [SerializeField]
     Transform target;
+    int id;
     protected override void Start()
     {
         base.Start();
@@ -13,7 +13,11 @@ public class Homing : Bullet
     {
         if(Ship.paused) return;
 		ParticleManager.Emit(particleID,transform.position,1);
-		if(bulletTime<=0)renderer.sprite=Bullet.sprites[spriteID+((int)Time.time%4)];
+		if(Time.time>spriteTimer){
+			renderer.sprite=sprites[spriteID+id];
+            if(++id>=4)id=0;
+			spriteTimer=Time.time+blinkTimer;
+		}
         if(target){
             timer=2;
             Vector3 v=transform.position-target.position;

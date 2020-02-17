@@ -44,11 +44,10 @@ public class GravGun : Gun
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
         bull.bulleSpeed=bulletSpeed;
-        bull.Size((int)(timer/(level/2f)));
+        bull.Size((int)timer);
 
 		go.transform.position=transform.position;
-        go.transform.localScale=Vector3.one*(1+(3-level)/2f);
-		//go.transform.rotation=transform.rotation;
+        //go.transform.localScale=Vector3.one*(1+(3-level)/2f);
         timer=0;
     }
     protected override void Update()
@@ -60,9 +59,9 @@ public class GravGun : Gun
         var main=particles.main;
         Color c=main.startColor.color;
         c.a=0;
-        if(timer<level)timer+=Time.deltaTime;
-        if(level<timer && Bullet.blink)c.a=1f;
-        else if(timer>level/2f && Bullet.blink)c.a=0.5f;
+        if(timer<2)timer+=Time.deltaTime;
+        if(2<timer && Bullet.blink)c.a=1f;
+        else if(timer>1 && Bullet.blink)c.a=0.5f;
         main.startColor=c;
     }
 	public override void Level(int i)
