@@ -2,7 +2,7 @@
 
 public class Miracle : EnemyBase
 {
-    int shots=100,shotId;
+    int shots=40,shotId;
     float angle,time,spawn;
     Core core;
     Transform tail,wingL,wingR;

@@ -196,7 +196,7 @@ public class Ship : MonoBehaviour {
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
 		Vector3 v =input.GetAxis() * speed;
-		_renderer.sprite = v.x >= speed * 0.99f  ? skin.right :  v.x <= -speed * 0.99f ? skin.left : skin.iddle;
+		_renderer.sprite = v.x >= speed * 0.5f  ? skin.right :  v.x <= -speed * 0.5f ? skin.left : skin.iddle;
 		v *= Time.deltaTime;
 		if(transform.position.x+v.x>Scaler.sizeX/2)v.x=Scaler.sizeX/2-transform.position.x;
 		if(transform.position.x+v.x<-Scaler.sizeX/2)v.x=-Scaler.sizeX/2-transform.position.x;
