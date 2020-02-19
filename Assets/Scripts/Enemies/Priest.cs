@@ -37,7 +37,6 @@ public class Priest : EnemyBase
         Gradient gradient=new Gradient();
 		gradient.SetKeys(new GradientColorKey[]{new GradientColorKey(new Color(1,1,0.8f),0)},new GradientAlphaKey[]{new GradientAlphaKey(1,0.5f),new GradientAlphaKey(0,1)});
 		line.colorGradient=gradient;
-        // timer=Time.time+5;
         for (int i = 0; i < positions.Length; i++)
         {
             positions[i].y=i*Scaler.sizeY/9-Scaler.sizeY-1;
@@ -52,16 +51,19 @@ public class Priest : EnemyBase
 		g.transform.localScale=new Vector3(5000,5000);
 		g.transform.position=new Vector3(0,0,-0.1f);
         upate=SlowFall;
+        upate+=Divine;
         upate+=LightOn;
+        time=Time.time+5;
+        timer=2;
     }
     new void Update()
     {
         if(Ship.paused)return;
         base.Update();
         upate?.Invoke();
-        if(timer>0){
+        if(timer<2){
             for (int i = 0; i < 4; i++)
-                wings[i].rotation=Quaternion.Euler(0,0,30*(i%2==0?-1:1));
+                wings[i].rotation=Quaternion.RotateTowards(wings[i].rotation,Quaternion.Euler(0,0,-45*(i%2==0?-1:1)),90*Time.deltaTime);
         }
         else{
             for (int i = 0; i < 4; i++)
@@ -75,7 +77,7 @@ public class Priest : EnemyBase
         else{
             if(line.enabled){
                 timer-=Time.deltaTime;
-                if(timer<1)collider.enabled=!collider.enabled;        
+                if(timer<1)collider.enabled=!collider.enabled;     
                 float f=4.5f/line.positionCount;
                 float f1=40f;
                 float t=Time.time*10;
@@ -92,19 +94,17 @@ public class Priest : EnemyBase
                     line.enabled=false;
                     collider.enabled=false;
                     time=Time.time+3;
-                    if(transform.position.y<0){
-                        upate-=Divine;
-                        upate+=LightOff;
-                    }
+                    timer=2;
+                    upate-=Divine;
+                    upate+=LightOff;
                 }
             }
         }
     }
     void LightOn(){
-        if(transform.position.y<Scaler.sizeY/2)light.Add(Time.deltaTime*2);
+        if(timer<1.8)light.Add(Time.deltaTime*5);
         if(light.Value()>=1){
             // timer=Time.time+3;
-            upate+=Divine;
             upate-=LightOn;
         }
     }
@@ -126,7 +126,6 @@ public class Priest : EnemyBase
         line.enabled=true;
         line.widthMultiplier=0;
         posX=GetPlayer().position.x;
-        timer=2;
         for (int i = 0; i < positions.Length; i++)
         {
             positions[i].x=posX;

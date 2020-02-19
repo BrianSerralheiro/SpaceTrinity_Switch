@@ -47,7 +47,7 @@ public class GravGun : Gun
         bull.Size((int)timer);
 
 		go.transform.position=transform.position;
-        //go.transform.localScale=Vector3.one*(1+(3-level)/2f);
+        go.transform.localScale=Vector3.one*(1+(3-level)/2f);
         timer=0;
     }
     protected override void Update()

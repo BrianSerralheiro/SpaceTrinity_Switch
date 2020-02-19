@@ -5,7 +5,7 @@ public class Nun : EnemyBase
 {
     Transform[] wings=new Transform[4];
     static EnemyInfo miracle;
-    float time,offset=2;
+    float time,offset=3;
     int spawns;
 
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
@@ -66,16 +66,17 @@ public class Nun : EnemyBase
         m.SetSprites(miracle);
         m.enabled=false;
         miracles.Add(m);
-        go.transform.position=new Vector3(transform.position.x+Random.Range(-1f,1f),-Scaler.sizeY/2,-0.1f);
+        go.transform.position=new Vector3(transform.position.x-2+spawns%2*4,transform.position.y,-0.1f);
         time=Time.time+offset;
-        if(offset>0.6f)offset-=0.1f;
+        if(offset>1)offset-=1f;
     }
     
 	protected override void Die()
 	{
         foreach (Miracle m in miracles)
         {
-            m?.Kill(killerid);
+            if(hp<=0)m?.Kill(killerid);
+            else m.Free();
         }
         base.Die();
     }

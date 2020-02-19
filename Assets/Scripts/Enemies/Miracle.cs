@@ -51,11 +51,15 @@ public class Miracle : EnemyBase
         }
         spawn+=Time.deltaTime;
         core.Set(Mathf.Cos(Time.time*(10+20*spawn)));
-        if(spawn>4){
-            enabled=true;
-            GetComponent<SpriteRenderer>().color=Color.white;
-            Destroy(core);
+        transform.Translate(0,-Time.deltaTime,0);
+        if(spawn>7){
+            Free();
         }
+    }
+    public void Free(){
+        enabled=true;
+        GetComponent<SpriteRenderer>().color=Color.white;
+        Destroy(core);
     }
     void Shot(){
         time=Time.time+0.01f;

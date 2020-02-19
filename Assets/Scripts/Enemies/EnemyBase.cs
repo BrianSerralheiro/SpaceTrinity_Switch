@@ -49,10 +49,11 @@ public class EnemyBase : MonoBehaviour {
 	}
 	public void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.gameObject.name.Contains("enemybullet"))return;
-		if(col.gameObject.name.Contains("enemy"))return;
-		if(col.gameObject.name.Contains("drone"))return;
-		if(transform.position.y > Scaler.sizeY && !name.Contains("Boss")) return;
+		if(col.gameObject.name.Contains("enemybullet")
+		|| col.gameObject.name.Contains("enemy")
+		|| col.gameObject.name.Contains("drone")
+		|| (transform.position.y > Scaler.sizeY && !name.Contains("Boss"))
+		|| hp<=0) return;
 		int i=1;
 		Bullet bull=col.gameObject.GetComponent<Bullet>();
 		if(bull){

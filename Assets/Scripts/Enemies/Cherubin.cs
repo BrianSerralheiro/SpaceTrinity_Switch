@@ -123,8 +123,9 @@ public class Cherubin : EnemyBase
     {
         if(Ship.paused)return;
         base.Update();
+        transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,Mathf.PingPong(Time.time*15,30)-15),30*Time.deltaTime);
         update?.Invoke();
         for (int i = 0; i < 2; i++)
-            wings[i].rotation=Quaternion.Euler(0,0,Mathf.PingPong(Time.time*(60+i%2*90),45)*(i%2==0?-1:1));
+            wings[i].rotation=Quaternion.Euler(0,0,Mathf.PingPong(Time.time*60,45)*(i%2==0?-1:1));
     }
 }

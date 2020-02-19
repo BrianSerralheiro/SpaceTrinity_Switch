@@ -6,7 +6,7 @@ public class Saint : EnemyBase
     LineRenderer line;
     Transform mask;
     Vector3[] positions=new Vector3[20];
-    float time,timer,posX,offset=2;
+    float time,timer,posX,offset=1;
     static EnemyInfo miracle;
     int ap,shotId;
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
@@ -33,6 +33,7 @@ public class Saint : EnemyBase
             t.localPosition=Vector3.forward/10;
             t.rotation=Quaternion.Euler(0,0,(-135-i/2*45)*(i%2==1?1:-1));
             t.Translate(0,1,0);
+            t.Translate(0,1,0,Space.World);
             g=new GameObject("ligh"+i);
             sp=g.AddComponent<SpriteRenderer>();
             sp.sprite=ei.sprites[2];
@@ -76,7 +77,7 @@ public class Saint : EnemyBase
 		light=g.AddComponent<Core>().Set(Sprite.Create(te,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(1f,1f,1f,0f));
 		// light.white=new Color(0f,0f,0f,1f);
 		g.transform.localScale=new Vector3(5000,5000);
-		g.transform.position=new Vector3(0,0,-0.1f);
+		g.transform.position=new Vector3(0,0,-0.09f);
     }
     void Intro(){
         SlowFall();
@@ -84,22 +85,25 @@ public class Saint : EnemyBase
     }
     void Divining(){
         mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.zero,Time.deltaTime*5);
-        if(mask.localScale==Vector3.zero)light.Add(Time.deltaTime*10);
-        if(time<Time.time && light.Value()>=1)Divine();
+        //if(mask.localScale==Vector3.zero)light.Add(Time.deltaTime*10);
+        transform.position=Vector3.MoveTowards(transform.position,new Vector3(transform.position.x,(2+Mathf.Cos(Time.time))),Time.deltaTime*2);
+        if(time<Time.time)Divine();
     }
     void Spawning(){
         mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.one*5,Time.deltaTime*5);
+        transform.position=Vector3.MoveTowards(transform.position,new Vector3(transform.position.x,(2+Mathf.Cos(Time.time))),Time.deltaTime*2);
         light.Min(Time.deltaTime*5);
-        if(time<Time.time)Spawn();
+        if(time<Time.time && ap++<10)Spawn();
+        if(time<Time.time && miracles.Count==0){
+            update=Shooting;
+            ap=0;
+        }
     }
     void Shooting(){
         Shot();
     }
     void Spawn(){
-        if(ap++>10){
-            update=Shooting;
-            ap=0;
-        }
+        light.Min(Time.deltaTime);
         GameObject go=new GameObject("enemy");
         go.AddComponent<SpriteRenderer>().sprite=miracle.sprites[0];
         go.AddComponent<BoxCollider2D>();
@@ -110,9 +114,16 @@ public class Saint : EnemyBase
         m.SetSprites(miracle);
         m.enabled=false;
         miracles.Add(m);
-        go.transform.position=new Vector3(transform.position.x+Random.Range(-4f,4f),Scaler.sizeY,-0.1f);
+        go.transform.position=new Vector3(transform.position.x-5+ap%2*10,Scaler.sizeY,-0.1f);
         time=Time.time+offset;
         if(offset>0.6f)offset-=0.1f;
+    }
+    void Blinking(){
+        light.Add(Time.deltaTime);
+        if(light.Value()>=1){
+            transform.position=new Vector3(Random.Range(-Scaler.sizeX/4,Scaler.sizeX/4),2);
+            update=Spawning;
+        }
     }
     void Divine(){
         if(!line.enabled && time<Time.time){
@@ -138,8 +149,8 @@ public class Saint : EnemyBase
                     line.enabled=false;
                     collider.enabled=false;
                     time=Time.time+2;
-                    if(ap++>3){
-                        update=Spawning;
+                    if(ap++>1){
+                        update=Blinking;
                         ap=0;
                         offset=2;
                     }
@@ -167,7 +178,7 @@ public class Saint : EnemyBase
     }
     new void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.otherCollider.name=="enemylaser") return;
+		if(col.otherCollider.name=="enemylaser" || update==Intro) return;
 		base.OnCollisionEnter2D(col);
 	}
     public override void Position(int i)
