@@ -19,7 +19,7 @@ public class Ascended : EnemyBase
         else{
             transform.localScale=Vector3.MoveTowards(transform.localScale,Vector3.one,Time.deltaTime*5);
             if(transform.localScale==Vector3.one){
-                fallSpeed=12;
+                fallSpeed=8;
                 SlowFall();
             }
         }
