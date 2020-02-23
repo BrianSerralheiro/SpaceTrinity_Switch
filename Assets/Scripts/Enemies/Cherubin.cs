@@ -9,8 +9,8 @@ public class Cherubin : EnemyBase
     GameObject[] faces=new GameObject[3];
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=40;
-        points=60;
+        hp=100;
+        points=80;
         update=In;
         shotID=ei.bulletsID[0];
         fallSpeed=-4;

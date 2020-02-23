@@ -12,8 +12,8 @@ public class Priest : EnemyBase
     Del upate;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=80;
-        points=60;
+        hp=120;
+        points=90;
         GameObject g;
         for (int i = 0; i < 4; i++)
         {
@@ -47,6 +47,7 @@ public class Priest : EnemyBase
 		t.SetPixels(new Color[]{Color.white});
 		t.Apply(false);
 		light=g.AddComponent<Core>().Set(Sprite.Create(t,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(1f,1f,1f,0f));
+        light.white = new Color(1,1,1,0.6f);
 		// light.white=new Color(0f,0f,0f,1f);
 		g.transform.localScale=new Vector3(5000,5000);
 		g.transform.position=new Vector3(0,0,-0.1f);
@@ -70,7 +71,8 @@ public class Priest : EnemyBase
                 wings[i].rotation=Quaternion.Euler(0,0,Mathf.PingPong(Time.time*(30+i/2*90),45)*(i%2==0?-1:1));
         }
     }
-    void Divine(){
+    void Divine()
+    {
         if(!line.enabled && time<Time.time){
             Show();
         }

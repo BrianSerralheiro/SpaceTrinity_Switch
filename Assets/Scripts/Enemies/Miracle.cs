@@ -2,12 +2,14 @@
 
 public class Miracle : EnemyBase
 {
-    int shots=40,shotId;
+    int shots=36,shotId;
     float angle,time,spawn;
     Core core;
     Transform tail,wingL,wingR;
 	public override void SetSprites(EnemyInfo ei)
 	{
+        fallSpeed = -3f;
+        time = Time.time + 1.5f;
         hp=20;
         points=20;
         GameObject g=new GameObject("wingR");
@@ -30,38 +32,46 @@ public class Miracle : EnemyBase
     {
         if(Ship.paused)return;
         base.Update();
-        if(transform.position.y>-Scaler.sizeY/2){
+        if(time > Time.time)
+        {
             SlowFall();
             wingR.rotation=Quaternion.Euler(0,0,Mathf.Cos(Time.time*45)*30);
             wingL.rotation=Quaternion.Euler(0,0,-Mathf.Cos(Time.time*45)*30);
-        }else{
-            if(shots>0){
+        }
+        else
+        {
+            if(shots>0)
+            {
                 if(time<Time.time)Shot();
             }
-            else {
-                SlowFall();
-                wingR.rotation=Quaternion.Euler(0,0,Mathf.Cos(Time.time*45)*30);
-                wingL.rotation=Quaternion.Euler(0,0,-Mathf.Cos(Time.time*45)*30);
+            else
+            {
+                time = Time.time + 2;
+                shots = 36;
             }
         }
     }
-    public void Spawn(){
+    public void Spawn()
+    {
         if(!core){
             core=gameObject.AddComponent<Core>().Set(new Color(1,1,1,0.8f),new Color(1,1,1,0.2f));
         }
         spawn+=Time.deltaTime;
         core.Set(Mathf.Cos(Time.time*(10+20*spawn)));
         transform.Translate(0,-Time.deltaTime,0);
-        if(spawn>7){
+        if(spawn>3)
+        {
             Free();
         }
     }
-    public void Free(){
+    public void Free()
+    {
         enabled=true;
         GetComponent<SpriteRenderer>().color=Color.white;
         Destroy(core);
     }
-    void Shot(){
+    void Shot()
+    {
         time=Time.time+0.01f;
         GameObject g=new GameObject("enemybullet");
         g.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];

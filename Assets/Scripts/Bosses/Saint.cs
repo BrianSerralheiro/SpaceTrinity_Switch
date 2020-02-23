@@ -89,12 +89,14 @@ public class Saint : EnemyBase
         transform.position=Vector3.MoveTowards(transform.position,new Vector3(transform.position.x,(2+Mathf.Cos(Time.time))),Time.deltaTime*2);
         if(time<Time.time)Divine();
     }
-    void Spawning(){
+    void Spawning()
+    {
         mask.localScale=Vector3.MoveTowards(mask.localScale,Vector3.one*5,Time.deltaTime*5);
         transform.position=Vector3.MoveTowards(transform.position,new Vector3(transform.position.x,(2+Mathf.Cos(Time.time))),Time.deltaTime*2);
         light.Min(Time.deltaTime*5);
-        if(time<Time.time && ap++<10)Spawn();
-        if(time<Time.time && miracles.Count==0){
+        if(time<Time.time && ap++<4)Spawn();
+        if(time<Time.time && miracles.Count==0)
+        {
             update=Shooting;
             ap=0;
         }
@@ -102,7 +104,8 @@ public class Saint : EnemyBase
     void Shooting(){
         Shot();
     }
-    void Spawn(){
+    void Spawn()
+    {
         light.Min(Time.deltaTime);
         GameObject go=new GameObject("enemy");
         go.AddComponent<SpriteRenderer>().sprite=miracle.sprites[0];

@@ -13,8 +13,8 @@ public class Nun : EnemyBase
 	{
         if(!miracle)miracle=((CarrierInfo)ei).spawnable;
         name+="Big";
-        points=120;
-        hp=200;
+        points=100;
+        hp=140;
         time=Time.time+5;
         for (int i = 0; i < 4; i++)
         {
@@ -51,8 +51,10 @@ public class Nun : EnemyBase
         fred.Clear();
         if(transform.position.y>Scaler.sizeY+3)Die();
     }
-    void Spawn(){
-        if(spawns++>15){
+    void Spawn()
+    {
+        if(spawns++>2)
+        {
             fallSpeed=3;
             SlowFall();
         }
