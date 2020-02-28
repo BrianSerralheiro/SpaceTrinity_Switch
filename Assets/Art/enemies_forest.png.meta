@@ -1,0 +1,490 @@
+fileFormatVersion: 2
+guid: d966e844e50141b44af08ec3834af451
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1894772939114522273
+    second: enemies_heaven_0
+  - first:
+      213: -4523341388329936026
+    second: baron
+  - first:
+      213: -9183504083044290125
+    second: ironwing
+  - first:
+      213: 8535906014381199573
+    second: ironfly
+  - first:
+      213: -8975772812808120592
+    second: enemies_heaven_4
+  - first:
+      213: 6805750297639610676
+    second: enemies_heaven_5
+  - first:
+      213: 3668826563477748223
+    second: enemies_heaven_6
+  - first:
+      213: 8031274417691627485
+    second: enemies_heaven_7
+  - first:
+      213: -7051850394636302488
+    second: enemies_heaven_8
+  - first:
+      213: -7071465646507643
+    second: enemies_heaven_9
+  - first:
+      213: 4304640381430488274
+    second: steamturret
+  - first:
+      213: -2110916285841982023
+    second: enemies_heaven_11
+  - first:
+      213: -4348512652862780176
+    second: enemies_heaven_12
+  - first:
+      213: 4096714306208831046
+    second: enemies_heaven_13
+  - first:
+      213: -5372060796806297184
+    second: enemies_heaven_14
+  - first:
+      213: -6113635997141579411
+    second: steamplane
+  - first:
+      213: 3235059281356204650
+    second: zep
+  - first:
+      213: 3701296050588458501
+    second: enemies_heaven_17
+  - first:
+      213: 1704951747049795667
+    second: enemies_heaven_18
+  - first:
+      213: -1661657535068228424
+    second: enemies_heaven_19
+  - first:
+      213: 2901023244073460840
+    second: enemies_heaven_20
+  - first:
+      213: 8734684239226719210
+    second: enemies_heaven_21
+  - first:
+      213: -4747698600929288303
+    second: steamplane mkii
+  - first:
+      213: 4938584202778610930
+    second: enemies_heaven_23
+  - first:
+      213: -456695612540901729
+    second: enemies_heaven_24
+  - first:
+      213: 7895575167439919063
+    second: baloon
+  - first:
+      213: -5245062215958533530
+    second: enemies_heaven_26
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemies_heaven_0
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 2077
+        width: 131
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6311eb7c9c27741baf114aced10aff
+      internalID: -1894772939114522273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baron
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1827
+        width: 184
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45071d1519f87af44b58f75a32687140
+      internalID: -4523341388329936026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironwing
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 2149
+        width: 167
+        height: 26
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37eb3ef0ba840394eb5a066cc07c02e2
+      internalID: -9183504083044290125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironfly
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 2023
+        width: 54
+        height: 173
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911463038d6dbaa4ebcc0d7ddfbe4046
+      internalID: 8535906014381199573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_heaven_6
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1939
+        width: 82
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ba5d148981e0846bcdcc9e326a5506
+      internalID: 3668826563477748223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steamturret
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1694
+        width: 116
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92257a889bee144449fe6f86295a7c9f
+      internalID: 4304640381430488274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steamplane
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 993
+        width: 225
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a782d2db4ff28d49acf83428dda93ae
+      internalID: -6113635997141579411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zep
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1130
+        width: 318
+        height: 472
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8791a3068ba7888478d03185f7d58250
+      internalID: 3235059281356204650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_heaven_17
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 1054
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2129a3252fcd21448ab73ac0bcec3adf
+      internalID: 3701296050588458501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_heaven_18
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 913
+        width: 53
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23b11dae92a598d40b3f161379ee2b7d
+      internalID: 1704951747049795667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_heaven_21
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 764
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5772699dc5726845a5050dac3d4b917
+      internalID: 8734684239226719210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steamplane mkii
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 534
+        width: 226
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4241c6fc07b4b4849a5b49977ece3099
+      internalID: -4747698600929288303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_heaven_23
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 623
+        width: 54
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a114aea64d6744bb6b6ea44a60338d
+      internalID: 4938584202778610930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baloon
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 470
+        width: 164
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3df4ae5579e3dd47aa920e2fa1aa62f
+      internalID: 7895575167439919063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
