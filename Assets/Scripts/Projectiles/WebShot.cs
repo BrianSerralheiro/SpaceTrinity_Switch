@@ -44,7 +44,7 @@ public class WebShot : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.name.Contains(owner) || col.name.Contains("laser"))return;
+        if(col.name.Contains(owner) || col.name.Contains("laser") || col.name.Contains("Boss") || col.name.Contains("big"))return;
         target=transform.position;
         if(!glued.ContainsKey(col.transform))glued.Add(col.transform,col.transform.position);
     }

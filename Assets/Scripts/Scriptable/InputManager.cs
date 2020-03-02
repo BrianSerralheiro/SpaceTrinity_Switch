@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 public class InputManager : ScriptableObject
 {
     public PlayerInput[] players;
@@ -19,7 +17,7 @@ public struct PlayerInput{
     public bool got,conected;
     public Vector3 GetAxis()
     {
-        return new Vector3(Input.GetAxisRaw(horizontal),Input.GetAxisRaw(vertical),0).normalized;
+        return new Vector3(Input.GetAxis(horizontal),Input.GetAxis(vertical),0);
     }
     public PlayerInput Select(){
         got=true;

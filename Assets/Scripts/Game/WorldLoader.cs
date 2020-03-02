@@ -18,6 +18,12 @@ public class WorldLoader : MonoBehaviour
     private PilotInfo[] pilots;
     [SerializeField]
     private Skin[] skins;
+    [SerializeField]
+    Sprite[] webshot;
+    [SerializeField]
+    Sprite[] squidshot;
+    [SerializeField]
+    EnemyInfo batinfo;
 	private ResourceRequest request;
     void Start()
     {
@@ -83,6 +89,13 @@ public class WorldLoader : MonoBehaviour
             worldInfo.subBoss?.Register();
             worldInfo.drone?.Register();
         }
+		Ship.webSprite=Bullet.Register(webshot[0]);
+		Bullet.Register(webshot[1]);
+		Ship.squidSprite=Bullet.Register(squidshot[0]);
+		Bullet.Register(squidshot[1]);
+		Bullet.Register(squidshot[2]);
+		Bullet.Register(squidshot[3]);
+        Ship.batInfo=batinfo;
         update=Step5;
     }
     void Step5(){
