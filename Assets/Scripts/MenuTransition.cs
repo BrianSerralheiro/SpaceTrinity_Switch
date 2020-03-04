@@ -3,13 +3,13 @@ using UnityEngine;
 [System.Serializable]
 public struct MenuTransition
 {
-    public KeyCode key;
+    public string key;
     public MenuSelect menu, closing;
     public Vector3 flow;
     public Image expander;
     private float timer;
     public bool GetKeyDown(){
-        return Input.GetKeyDown(key);
+        return PlayerInput.GetButtomDown(key);
     }
     public void Open(){
         if(flow.z==1)

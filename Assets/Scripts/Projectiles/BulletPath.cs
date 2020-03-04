@@ -46,7 +46,7 @@ public struct BulletPath
         if(b)v.x*=-1;
         return v;
     }
-    public Vector3 Directiom(bool b){
+    public Vector3 Direction(bool b){
         Vector3 v;
         if(nodeID==0)v=nodes[0];
         else v=nodes[nodeID]-nodes[nodeID-1];
@@ -77,6 +77,10 @@ public struct BulletPath
     }
     public bool Finished(){
         return nodeID>=nodes.Length;
+    }
+    public void Restart(){
+        nodeID=0;
+        point=Vector3.zero;
     }
     public static Vector3 Calculate(Vector3 pos,Vector3 prev,Vector3 node,float c){
         float h=Vector3.Distance(prev,node);

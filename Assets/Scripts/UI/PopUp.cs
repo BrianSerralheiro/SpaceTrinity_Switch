@@ -6,9 +6,7 @@ public class PopUp : MonoBehaviour {
 	[SerializeField]
 	private Text text;
 	[SerializeField]
-	KeyCode confirmKey;
-	[SerializeField]
-	KeyCode cancelKey;
+	string confirmKey,cancelKey;
 	UnityAction action,cancel;
 	MenuSelect menu;
 
@@ -18,11 +16,11 @@ public class PopUp : MonoBehaviour {
 	}
 	void Update()
 	{
-		if(Input.GetKeyDown(cancelKey)){
+		if(PlayerInput.GetButtomDown(cancelKey)){
 			cancel?.Invoke();
 			Close();
 		}
-		if(Input.GetKeyDown(confirmKey)){
+		if(PlayerInput.GetButtomDown(confirmKey)){
 			action?.Invoke();
 			Close();
 		}

@@ -18,7 +18,7 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	Sprite[] sprites;
 	[SerializeField]
-	KeyCode confirmKey;
+	string confirmKey;
 	[SerializeField]
 	private string analog,A,B,X,Y,L,R;
 	[SerializeField]
@@ -31,6 +31,7 @@ public class MenuSelect : MonoBehaviour
 	HashSet<Transform> slots=new HashSet<Transform>();
 	Transform[] selected={null,null};
 	Vector3 outVector;
+	float time,time2;
 	public delegate void Del();
 	private Del update;
 	private Del Check;
@@ -169,6 +170,7 @@ public class MenuSelect : MonoBehaviour
 	}
 	void OnValueChanged2(){
 		Check();
+		time2=Time.time+0.2f;
 		if(options[selectionID2])
 		{
 			selector2.rectTransform.position=options[selectionID2].rectTransform.position;
@@ -182,6 +184,7 @@ public class MenuSelect : MonoBehaviour
 	void OnValueChanged()
 	{
 		Check();
+		time=Time.time+0.2f;
 		if(options[selectionID])
 		{
 			selector.rectTransform.position=options[selectionID].rectTransform.position;
@@ -200,10 +203,10 @@ public class MenuSelect : MonoBehaviour
 	void UpdateInput()
 	{
 		int id=selectionID;
-		if(Input.GetKeyDown(KeyCode.UpArrow))selectionID-=rowCount;
-        if(Input.GetKeyDown(KeyCode.DownArrow))selectionID+=rowCount;
-        if(Input.GetKeyDown(KeyCode.RightArrow))if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
-        if(Input.GetKeyDown(KeyCode.LeftArrow))if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
+		if(PlayerInput.GetDir(0,true)==1 && time<Time.time)selectionID-=rowCount;
+        if(PlayerInput.GetDir(0,true)==-1 && time<Time.time)selectionID+=rowCount;
+        if(PlayerInput.GetDir(0,false)==1 && time<Time.time)if(selectionID%rowCount==rowCount-1) selectionID-=rowCount-1;else selectionID++;
+        if(PlayerInput.GetDir(0,false)==-1 && time<Time.time)if(selectionID%rowCount==0) selectionID+=rowCount-1;else selectionID--;
 		if(id!=selectionID)
 		{
 			OnValueChanged();
@@ -211,14 +214,14 @@ public class MenuSelect : MonoBehaviour
 			lightsUP(selectionID, 1);
 		}
 		
-		if(Input.GetKeyDown(confirmKey) && options[selectionID].raycastTarget){
+		if(PlayerInput.GetButtomDown(confirmKey) && options[selectionID].raycastTarget){
 			opt.Select(selectionID,0);
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
 				menus[i].Close(this);
 				menus[i].Open();
-				if(confirmKey==KeyCode.None)
+				if(confirmKey=="")
 					opt.Select(selectionID,0);
 			}
 		}
@@ -229,10 +232,10 @@ public class MenuSelect : MonoBehaviour
 		}
 		int id=selectionID2;
 		int skin = skinId[id];
-		if(Input.GetKeyDown(KeyCode.I)&& p2confirm)skinId[id]++;
-        if(Input.GetKeyDown(KeyCode.K)&& p2confirm)skinId[id]--;
-        if(Input.GetKeyDown(KeyCode.L)&& !p2confirm)selectionID2+=selectionID2+1==selectionID?2:1;
-        if(Input.GetKeyDown(KeyCode.J)&& !p2confirm)selectionID2-=selectionID2-1==selectionID?2:1;
+		if(PlayerInput.GetDir(1,true)==1 && p2confirm && time2<Time.time)skinId[id]++;
+        if(PlayerInput.GetDir(1,true)==-1 && p2confirm && time2<Time.time)skinId[id]--;
+        if(PlayerInput.GetDir(1,false)==1 && !p2confirm && time2<Time.time)selectionID2+=selectionID2+1==selectionID?2:1;
+        if(PlayerInput.GetDir(1,false)==-1 && !p2confirm && time2<Time.time)selectionID2-=selectionID2-1==selectionID?2:1;
 		if(id!=selectionID2 || skin != skinId[id])
 		{
 			OnValueChanged2();
@@ -270,10 +273,10 @@ public class MenuSelect : MonoBehaviour
 	{
 		int id=selectionID;
 		int skin = skinId[id];
-		if(Input.GetKeyDown(KeyCode.W)&& p1confirm)skinId[id]++;
-        if(Input.GetKeyDown(KeyCode.S)&& p1confirm)skinId[id]--;
-        if(Input.GetKeyDown(KeyCode.D)&& !p1confirm)selectionID+=PlayerInput.Conected(1) && selectionID2==selectionID+1?2:1;
-        if(Input.GetKeyDown(KeyCode.A)&& !p1confirm)selectionID-=PlayerInput.Conected(1) && selectionID2==selectionID-1?2:1;
+		if(PlayerInput.GetDir(0,true)==1 && p1confirm && time<Time.time)skinId[id]++;
+        if(PlayerInput.GetDir(0,true)==-1 && p1confirm && time<Time.time)skinId[id]--;
+        if(PlayerInput.GetDir(0,false)==1 && !p1confirm && time<Time.time)selectionID+=PlayerInput.Conected(1) && selectionID2==selectionID+1?2:1;
+        if(PlayerInput.GetDir(0,false)==-1 && !p1confirm && time<Time.time)selectionID-=PlayerInput.Conected(1) && selectionID2==selectionID-1?2:1;
 		if(id!=selectionID || skin != skinId[id])
 		{
 			OnValueChanged();
@@ -322,7 +325,7 @@ public class MenuSelect : MonoBehaviour
 				}else if(!p2confirm){
 				menus[i].Close(this);
 				menus[i].Open();
-				if(confirmKey==KeyCode.None)
+				if(confirmKey=="")
 					opt.Select(selectionID,skinId[selectionID]-1);
 				}
 			}

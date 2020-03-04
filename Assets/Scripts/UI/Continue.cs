@@ -18,7 +18,7 @@ public class Continue : MonoBehaviour
 			gameObject.SetActive(false);
 			Active(false);
 		}
-		if(ship.input.GetKeyDown("shoot"))buyContinue();
+		if(PlayerInput.GetButtomDown("shoot"))buyContinue();
 	}
 	private void OnEnable()
 	{

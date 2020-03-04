@@ -320,9 +320,9 @@ public class Ship : MonoBehaviour {
 		if(Input.GetKey(KeyCode.Alpha3))OnLevel(3);
 		if(Input.GetKeyDown(KeyCode.Space) && special.Finished())Special();
 #endregion
-		if(Input.GetKeyDown(input.special) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
-		if(Input.GetKeyDown(input.equip))onUse?.Invoke(this);
-		if(shielded) shield.Add(Time.deltaTime);
+		if(PlayerInput.GetKeySpecialDown(input.id) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
+		if(PlayerInput.GetKeyEquipDown(input.id))onUse?.Invoke(this);
+		if(shielded)shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)
 		{
@@ -344,7 +344,7 @@ public class Ship : MonoBehaviour {
 		if(transform.position.y+v.y>Scaler.sizeY)v.y=Scaler.sizeY-transform.position.y;
 		if(transform.position.y+v.y<-Scaler.sizeY)v.y=-Scaler.sizeY-transform.position.y;
 		transform.Translate(v);
-		if(special.AllowShot() && Input.GetKey(input.shoot))
+		if(special.AllowShot() && PlayerInput.GetKeyShot(input.id))
 		{
 			onShot?.Invoke(this);
 			if(id!=2)SoundManager.PlayEffects(2 + id,0.1f,0.5f);

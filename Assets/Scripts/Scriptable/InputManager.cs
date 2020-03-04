@@ -11,8 +11,7 @@ public class InputManager : ScriptableObject
 public struct PlayerInput{
     public static bool recentConect,recentDisconect;
     public int id;
-    public KeyCode shoot,special,equip;
-    public string vertical,horizontal,name;
+    public string shoot,special,equip1,equip2,Lbumper,Rbumper,vertical,horizontal,name;
     public static PlayerInput[] players;
     public bool got,conected;
     public Vector3 GetAxis()
@@ -23,51 +22,62 @@ public struct PlayerInput{
         got=true;
         return this;
     }
-    public bool GetKeyDown(string s){
+    public static bool GetButtomDown(string s){
         switch(s){
-            case "shoot":
-                return Input.GetKeyDown(shoot);
+            case "shot":
+                return Input.GetButtonDown(players[0].shoot);
             case "special":
-                return Input.GetKeyDown(special);
-            case "equip":
-                return Input.GetKeyDown(equip);
+                return Input.GetButtonDown(players[0].special);
+            case "equip1":
+                return Input.GetButtonDown(players[0].equip1);
+            case "equip2":
+                return Input.GetButtonDown(players[0].equip2);
+            case "Lbumper":
+                return Input.GetButtonDown(players[0].Lbumper);
+            case "Rbumper":
+                return Input.GetButtonDown(players[0].Rbumper);
             default:
                 return false;
         }
     }public bool GetKey(string s){
         switch(s){
             case "shoot":
-                return Input.GetKey(shoot);
+                return Input.GetButton(shoot);
             case "special":
-                return Input.GetKey(special);
+                return Input.GetButton(special);
             case "equip":
-                return Input.GetKey(equip);
+                return Input.GetButton(equip1);
             default:
                 return false;
         }
     }
+    public static float GetDir(int i,bool vert){
+        if(vert)
+            return Input.GetAxisRaw(players[i].vertical);
+        return Input.GetAxisRaw(players[i].horizontal);
+    }
     public static bool GetKeyEquip(int i){
-        if(i<players.Length)return players[i].GetKey("equip");
+        if(i<players.Length)return Input.GetButton(players[i].equip1);
         return false;
     }
     public static bool GetKeySpecial(int i){
-        if(i<players.Length)return players[i].GetKey("special");
+        if(i<players.Length)return Input.GetButton(players[i].special);
         return false;
     }
     public static bool GetKeyShot(int i){
-        if(i<players.Length)return players[i].GetKey("shoot");
+        if(i<players.Length)return Input.GetButton(players[i].shoot);
         return false;
     }
     public static bool GetKeyEquipDown(int i){
-        if(i<players.Length)return players[i].GetKeyDown("equip");
+        if(i<players.Length)return Input.GetButtonDown(players[i].equip1);
         return false;
     }
     public static bool GetKeySpecialDown(int i){
-        if(i<players.Length)return players[i].GetKeyDown("special");
+        if(i<players.Length)return Input.GetButtonDown(players[i].special);
         return false;
     }
     public static bool GetKeyShotDown(int i){
-        if(i<players.Length)return players[i].GetKeyDown("shoot");
+        if(i<players.Length)return Input.GetButtonDown(players[i].shoot);
         return false;
     }
     public static void WaitInput(){
@@ -75,10 +85,10 @@ public struct PlayerInput{
         recentDisconect=false;
         for(int i=0;i<players.Length;i++){
             if(players[i].conected){
-                if(Input.GetKeyDown(players[i].equip))DisConnected(i);
+                if(Input.GetButtonDown(players[i].equip1))DisConnected(i);
             }
             else{
-                if(Input.GetKeyDown(players[i].special))Connect(i);
+                if(Input.GetButtonDown(players[i].special))Connect(i);
             }
         }
     }
