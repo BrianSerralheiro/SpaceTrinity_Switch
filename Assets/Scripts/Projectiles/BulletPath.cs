@@ -14,6 +14,9 @@ public struct BulletPath
         curves=new float[n.Length];
         return this;
     }
+    public void Next(){
+        nodeID++;
+    }
     public static Vector3 Next(ref BulletPath path,bool b){
         float c=path.GetCurve();
         Vector3 p=path.point;
@@ -65,7 +68,7 @@ public struct BulletPath
         if(b)v.x*=-1;
         return v;
     }
-    private Vector3 GetNode(){
+    public Vector3 GetNode(){
         return nodes[nodeID];
     }
     private float GetCurve(){

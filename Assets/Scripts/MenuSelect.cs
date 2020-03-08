@@ -18,7 +18,7 @@ public class MenuSelect : MonoBehaviour
 	[SerializeField]
 	Sprite[] sprites;
 	[SerializeField]
-	string confirmKey;
+	string confirmKey,cancelKey;
 	[SerializeField]
 	private string analog,A,B,X,Y,L,R;
 	[SerializeField]
@@ -210,12 +210,15 @@ public class MenuSelect : MonoBehaviour
 		if(id!=selectionID)
 		{
 			OnValueChanged();
-			lightsUP(id, 0.5f);
-			lightsUP(selectionID, 1);
+			// lightsUP(id, 0.5f);
+			// lightsUP(selectionID, 1);
 		}
-		
+		if(selector)selector.color=options[selectionID].color;
 		if(PlayerInput.GetButtomDown(confirmKey) && options[selectionID].raycastTarget){
-			opt.Select(selectionID,0);
+			opt.Select(selectionID+1,0);
+		}
+		if(PlayerInput.GetButtomDown(cancelKey)){
+			opt.Cancel(selectionID+1);
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
@@ -411,11 +414,20 @@ public struct Menuoptions
 				return;
 			case SelectionType.Weapon:
 				//implementar equips
+				if(Ship.equips[0]==0)Ship.equips[0]=i;
+				else if(Ship.equips[1]==0)Ship.equips[1]=i;
 				return;
 			case SelectionType.Shop:
 				ShopManager.buyID=i;
 				comand?.Invoke();
 				return;
+		}
+	}
+	public void Cancel(int i){
+		//SWTCH APENAS CASO PRECISAR
+		if(selection==SelectionType.Weapon){
+			if(Ship.equips[0]==i)Ship.equips[0]=0;
+			if(Ship.equips[1]==i)Ship.equips[1]=0;
 		}
 	}
 }

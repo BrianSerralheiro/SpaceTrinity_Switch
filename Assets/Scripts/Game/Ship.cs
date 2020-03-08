@@ -39,7 +39,7 @@ public class Ship : MonoBehaviour {
 	[SerializeField]
 	private int id;
 	public static int player1,player2=5;
-	public static int[] skinID={-1,-1,-1,-1,-1,-1};
+	public static int[] skinID={-1,-1,-1,-1,-1,-1},equips={0,0};
 	public float immuneTime;
 	public PlayerInput input;
 	public static Skin[] skins=new Skin[2];
@@ -182,6 +182,9 @@ public class Ship : MonoBehaviour {
 		normalSpeed=speed;
 		input=PlayerInput.Get();
 		continues[input.id]=PlayerInput.Conected(1)?2:4;
+		_renderer = GetComponent<SpriteRenderer>();
+		Equip(equips[input.id]);
+		// if(!PlayerInput.Conected(1) && input.id==0)Equip(equips[1]);
 		InGame_HUD.shipHealth[input.id] = 1;
 		InGame_HUD.special[input.id] = 0;
 		name=input.name;
@@ -191,7 +194,6 @@ public class Ship : MonoBehaviour {
 		}
 		hp=maxhp;
 		onRevive?.Invoke(this);
-		_renderer = GetComponent<SpriteRenderer>();
 		// specialMat.mainTexture=specials[0];
 		DialogBox.Texts(falas,sizes);
 		DialogBox.Chars(charPics);

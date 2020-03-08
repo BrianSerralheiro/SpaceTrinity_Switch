@@ -23,6 +23,8 @@ public class MenuEditor : Editor
         EditorGUILayout.PropertyField(p,true);}
         p= serializedObject.FindProperty("confirmKey");
         EditorGUILayout.PropertyField(p);
+        p= serializedObject.FindProperty("cancelKey");
+        EditorGUILayout.PropertyField(p);
         p= serializedObject.FindProperty("analog");
         p.isExpanded=EditorGUILayout.BeginFoldoutHeaderGroup(p.isExpanded,"Comands");
             if(p.isExpanded){
