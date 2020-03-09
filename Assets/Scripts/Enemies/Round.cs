@@ -4,7 +4,6 @@ public class Round : EnemyBase
 {
 
 	private float shoottimer = 1.4f;
-	private Vector3 vector=new Vector3();
 	private static int shootId;
 
 	private int shootCount;
@@ -23,8 +22,7 @@ public class Round : EnemyBase
 		shoottimer-=Time.deltaTime;
 		transform.Translate(0,-Time.deltaTime * 2,0,Space.World);
 		if(transform.position.y<-Scaler.sizeY-1)Destroy(gameObject);
-		vector.z=shoottimer/0.2f*90f;
-		transform.eulerAngles=vector;
+		if(!stopMovement)transform.rotation=Quaternion.Euler(0,0,shoottimer/0.2f*90f);
 		if(shoottimer<=0)
 		{
 			SoundManager.PlayEffects(12, 0.1f, 0.5f);

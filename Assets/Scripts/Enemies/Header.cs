@@ -36,7 +36,7 @@ public class Header : EnemyBase {
 	void Pathing(){
 		core.Min(Time.deltaTime);
 		eyes.Set(Mathf.PingPong(Time.time/2,1));
-		transform.position=position+BulletPath.Next(ref path,position.x>0);
+		if(!stopMovement)transform.position=position+BulletPath.Next(ref path,position.x>0);
 		if(path.Finished()){
 			Shoot();
 			movement=SlowFall;

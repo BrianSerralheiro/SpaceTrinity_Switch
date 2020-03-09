@@ -52,7 +52,7 @@ public class Chopper : EnemyBase
             timer-=Time.deltaTime;
             if(timer<0)Shot();
 			transform.Rotate(Vector3.Cross(-transform.up,path.Direction(position.x > 0))*Time.deltaTime*180);
-            transform.position=position+BulletPath.Next(ref path,position.x>0);
+            if(!stopMovement)transform.position=position+BulletPath.Next(ref path,position.x>0);
         }
     }
     void Shot()

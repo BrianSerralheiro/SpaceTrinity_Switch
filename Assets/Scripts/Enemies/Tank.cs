@@ -9,7 +9,7 @@ public class Tank : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
     {
         hp=60;
-        name+="big";
+        name+="biggr";
         GameObject go=new GameObject("enemy");
         go.transform.parent=transform;
         turret=go.transform;

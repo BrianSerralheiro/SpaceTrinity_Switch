@@ -33,7 +33,7 @@ public class MFBat : EnemyBase {
 		else Shoot();
 		if(sprite>0)sprite-=Time.deltaTime;
 		_renderer.flipX=transform.position.x<GetPlayer(transform.position).position.x;
-		transform.position=position+BulletPath.Next(ref path,inv);
+		if(!stopMovement)transform.position=position+BulletPath.Next(ref path,inv);
 		if(path.Finished())update=SlowFall;
 		if(sprite<=0)_renderer.sprite=bats[Mathf.RoundToInt(Mathf.PingPong(Time.time*3,1f))];
 	}

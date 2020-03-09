@@ -8,7 +8,7 @@ public class Machinegun : EnemyBase
     Transform turret;
     public override void SetSprites(EnemyInfo ei){
         hp=30;
-        GameObject go=new GameObject("enemybig");
+        GameObject go=new GameObject("enemybiggr");
         go.transform.parent=transform;
         turret=go.transform;
         turret.localPosition=Vector3.zero+Vector3.back/10;
@@ -56,6 +56,7 @@ public class Machinegun : EnemyBase
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
         bu.bulleSpeed=8;
+        bu.Timer(5);
         bu.spriteID=shotId;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();

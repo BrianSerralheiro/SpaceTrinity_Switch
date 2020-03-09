@@ -33,6 +33,6 @@ public class Ironfly : EnemyBase
         {
             rend.enabled=b;
         }
-        if(transform.position.y<Scaler.sizeY-3)Die();
+        if(transform.position.y<-Scaler.sizeY-3)Die();
     }
 }

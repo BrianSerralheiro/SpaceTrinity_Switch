@@ -48,7 +48,7 @@ public class Grabber : EnemyBase {
 		}
 		else {
 			transform.Rotate(Vector3.Cross(-transform.up,path.Direction(position.x>0))*180*Time.deltaTime);
-			transform.position=position+BulletPath.Next(ref path,position.x>0);
+			if(!stopMovement)transform.position=position+BulletPath.Next(ref path,position.x>0);
 		}
 		if(timer>0 && grabed){
 			timer-=Time.deltaTime;

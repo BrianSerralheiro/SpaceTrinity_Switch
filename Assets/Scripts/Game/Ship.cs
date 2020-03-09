@@ -220,6 +220,7 @@ public class Ship : MonoBehaviour {
 		if(immuneTime > 0) return;
 		if(col.gameObject.name.Contains("Player")
 		|| col.gameObject.name.Contains("playerbullet")
+		|| col.gameObject.name.Contains("gr")
 		|| col.gameObject.name=="drone"
 		||col.otherCollider.name=="laser") return;
 		if(shielded)

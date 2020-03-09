@@ -14,7 +14,7 @@ public class Baloon : EnemyBase
 	{
 		if(Ship.paused) return;
 		base.Update();
-        transform.Translate(0,-Time.deltaTime*2,0);
+        transform.Translate(0,-Time.deltaTime*4,0);
         if(rotation>0)transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,rotation*Time.deltaTime);
         transform.localScale=Vector3.MoveTowards(transform.localScale,scale,Time.deltaTime/10);
         if(transform.localScale==scale){

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WebShot : MonoBehaviour
@@ -40,12 +39,23 @@ public class WebShot : MonoBehaviour
             transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*speed);
             transform.Rotate(0,0,45*Time.deltaTime);
         }
-        if(Time.time>timer)Destroy(gameObject);
+        if(Time.time>timer){
+            foreach (Transform t in glued.Keys)
+            {
+                if(t){
+                    EnemyBase e=t.GetComponent<EnemyBase>();
+                    if(e)e.stopMovement=false;
+                }
+            }
+            Destroy(gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.name.Contains(owner) || col.name.Contains("laser") || col.name.Contains("Boss") || col.name.Contains("big"))return;
         target=transform.position;
         if(!glued.ContainsKey(col.transform))glued.Add(col.transform,col.transform.position);
+        EnemyBase en=col.GetComponent<EnemyBase>();
+        if(en)en.stopMovement=true;
     }
 }

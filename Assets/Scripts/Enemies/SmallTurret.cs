@@ -15,7 +15,7 @@ public class SmallTurret : EnemyBase
         SpriteRenderer sr=go.AddComponent<SpriteRenderer>();
         sr.sprite=ei.sprites[1];
         sr.maskInteraction=SpriteMaskInteraction.VisibleInsideMask;
-        go=new GameObject("enemybig");
+        go=new GameObject("enemybiggr");
         turret=go.transform;
         go.transform.parent=transform;
         go.transform.localPosition=Vector3.zero;

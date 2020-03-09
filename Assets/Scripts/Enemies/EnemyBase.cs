@@ -7,6 +7,7 @@ public class EnemyBase : MonoBehaviour {
 	public static Transform[] players;
 	protected float damageTimer,fallSpeed=-1;
 	protected SpriteRenderer _renderer;
+	public bool stopMovement;
 
 	protected bool damageEffect,killed;
 	protected delegate void Del();
@@ -52,6 +53,7 @@ public class EnemyBase : MonoBehaviour {
 		if(col.gameObject.name.Contains("enemybullet")
 		|| col.gameObject.name.Contains("enemy")
 		|| col.gameObject.name.Contains("drone")
+		|| col.gameObject.name.Contains("Player") && name.Contains("gr")
 		|| (transform.position.y > Scaler.sizeY && !name.Contains("Boss"))
 		|| hp<=0) return;
 		int i=1;
