@@ -68,8 +68,12 @@ public struct PlayerInput{
         if(i<players.Length)return Input.GetButton(players[i].shoot);
         return false;
     }
-    public static bool GetKeyEquipDown(int i){
+    public static bool GetKeyEquip1Down(int i){
         if(i<players.Length)return Input.GetButtonDown(players[i].equip1);
+        return false;
+    }
+    public static bool GetKeyEquip2Down(int i){
+        if(i<players.Length)return Input.GetButtonDown(players[i].equip2);
         return false;
     }
     public static bool GetKeySpecialDown(int i){

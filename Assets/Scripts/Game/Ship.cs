@@ -47,14 +47,14 @@ public class Ship : MonoBehaviour {
 	private Skin skin;
 #region EQUIPS
 	void Equip(int i){
-		onShot=onDamage=onRevive=onUse=onUpdate=null;
-		equipTime=0;
+		if(i>0)equipTime[i-1]=0;
 		_renderer.color=Color.white;
 		speed=normalSpeed;
 		switch (i)
 		{
 			case 1:
-				onUse=WebShot;
+				if(onUse1==null)onUse1=WebShot;
+				else onUse2=WebShot;
 				break;
 			case 2:
 				onShot=SquidShot;
@@ -64,34 +64,37 @@ public class Ship : MonoBehaviour {
 				onDamage=RemovePlate;
 				break;
 			case 4:
-				onUse=Camouflage;
+				if(onUse1==null)onUse1=Camouflage;
+				else onUse2=Camouflage;
 				break;
 			case 5:
-				onUse=SpeedUp;
+				if(onUse1==null)onUse1=SpeedUp;
+				else onUse2=SpeedUp;
 				break;
 			case 6:
-				onUse=Bat;
+				if(onUse1==null)onUse1=Bat;
+				else onUse2=Bat;
 				break;
 		}
 
 	}
 	delegate void EquipAction(Ship s);
-	EquipAction onShot,onDamage,onRevive,onUse,onUpdate;
-	float equipTime;
+	EquipAction onShot,onDamage,onRevive,onUse1,onUse2,onUpdate;
+	public static float[] equipTime={0,0,0,0,0,0};
 	public static int webSprite;
 	static void WebShot(Ship s){
-		if(s.equipTime>Time.time)return;
+		if(equipTime[0]>Time.time)return;
 		GameObject web=new GameObject("playerbullet");
 		web.AddComponent<WebShot>().Set(webSprite,s.transform.position+Vector3.up*5,10,3,4,1,s.name);
 		web.transform.position=s.transform.position;
 		//cooldown 120 seconds
-		s.equipTime=Time.time+120;
+		equipTime[0]=Time.time+120;
 	}
 	public static int squidSprite;
 	static void SquidShot(Ship s){
-		if(s.equipTime>Time.time)return;
+		if(equipTime[1]>Time.time)return;
 		//cooldown 1 second
-		s.equipTime = Time.time+1;
+		equipTime[1] = Time.time+1;
 		GameObject go=new GameObject("playerbullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[squidSprite];
 		go.AddComponent<BoxCollider2D>();
@@ -108,57 +111,57 @@ public class Ship : MonoBehaviour {
 	}
 	static void AddPlate(Ship s){
 		//add plate
-		s.equipTime=0;
+		equipTime[2]=0;
 	}
 	static void RemovePlate(Ship s){
-		if(s.equipTime==0){
+		if(equipTime[2]==0){
 			//remove plate and give hp
-			s.equipTime=1;
+			equipTime[2]=1;
 			s.hp++;
 		}
 	}
 	static void Camouflage(Ship s){
-		if(s.equipTime>Time.time)return;
+		if(equipTime[3]>Time.time)return;
 		//start invisibility
 		s.GetComponent<BoxCollider2D>().enabled=false;
 		s._renderer.color=new Color(0,1,1,0.5f);
 		s.immuneTime=0;
 		s.damageTimer=0;
-		s.onUpdate=Reveal;
+		s.onUpdate+=Reveal;
 		//invisibility duration;
-		s.equipTime=Time.time+1;
+		equipTime[3]=Time.time+1;
 	}
 	static void Reveal(Ship s){
-		if(s.equipTime<Time.time){
+		if(equipTime[3]<Time.time){
 			s.GetComponent<BoxCollider2D>().enabled=true;
 			s._renderer.color=Color.white;
 			s.immuneTime=0.5f;
 			//invisibility cooldown 60 seconds
-			s.equipTime=Time.time+60;
-			s.onUpdate=null;
+			equipTime[3]=Time.time+60;
+			s.onUpdate-=Reveal;
 		}
 	}
 	float normalSpeed;
 	static void SpeedUp(Ship s){
-		if(s.equipTime>Time.time)return;
+		if(equipTime[4]>Time.time)return;
 		s.normalSpeed=s.speed;
 		//power up duration
-		s.equipTime=Time.time+5;
+		equipTime[4]=Time.time+5;
 		//speed up bonus
 		s.speed+=6;
-		s.onUpdate=SpeedDown;
+		s.onUpdate+=SpeedDown;
 	}
 	static void SpeedDown(Ship s){
-		if(s.equipTime<Time.time){
+		if(equipTime[4]<Time.time){
 			s.speed=s.normalSpeed;
-			s.onUpdate=null;
+			s.onUpdate-=SpeedDown;
 			//speed up cooldown
-			s.equipTime=Time.time+60;
+			equipTime[4]=Time.time+60;
 		}
 	}
 	public static EnemyInfo batInfo;
 	static void Bat(Ship s){
-		if(s.equipTime>Time.time)return;
+		if(equipTime[5]>Time.time)return;
 		GameObject go=new GameObject(s.name);
 		BatAlly bat=go.AddComponent<BatAlly>();
 		bat.SetSprites(batInfo);
@@ -174,7 +177,7 @@ public class Ship : MonoBehaviour {
 		bat.hp=10;
 		go.transform.position=s.transform.position;
 		//bat spawn cooldown
-		s.equipTime=Time.time+15;
+		equipTime[5]=Time.time+15;
 	}
 #endregion
 	void Start()
@@ -184,7 +187,7 @@ public class Ship : MonoBehaviour {
 		continues[input.id]=PlayerInput.Conected(1)?2:4;
 		_renderer = GetComponent<SpriteRenderer>();
 		Equip(equips[input.id]);
-		// if(!PlayerInput.Conected(1) && input.id==0)Equip(equips[1]);
+		if(!PlayerInput.Conected(1) && input.id==0)Equip(equips[1]);
 		InGame_HUD.shipHealth[input.id] = 1;
 		InGame_HUD.special[input.id] = 0;
 		name=input.name;
@@ -324,7 +327,8 @@ public class Ship : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space) && special.Finished())Special();
 #endregion
 		if(PlayerInput.GetKeySpecialDown(input.id) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
-		if(PlayerInput.GetKeyEquipDown(input.id))onUse?.Invoke(this);
+		if(PlayerInput.GetKeyEquip1Down(input.id))onUse1?.Invoke(this);
+		if(PlayerInput.GetKeyEquip2Down(input.id))onUse2?.Invoke(this);
 		if(shielded)shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)

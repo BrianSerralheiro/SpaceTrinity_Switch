@@ -90,7 +90,7 @@ public class InGame_HUD : MonoBehaviour
 			specialFill.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.time*8));
 		}else specialFill.color=color;
 		specialFill.fillAmount=special[id];
-		foreach (Ship s in shipsToRevive)
+		if(p1)foreach (Ship s in shipsToRevive)
 		{
 			s.reviveTimer-=Time.deltaTime;
 			if(s.reviveTimer<=0){
