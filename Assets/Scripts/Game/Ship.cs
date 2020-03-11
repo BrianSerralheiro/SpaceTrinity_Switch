@@ -88,7 +88,7 @@ public class Ship : MonoBehaviour {
 		web.AddComponent<WebShot>().Set(webSprite,s.transform.position+Vector3.up*5,10,3,4,1,s.name);
 		web.transform.position=s.transform.position;
 		//cooldown 120 seconds
-		equipTime[0]=Time.time+120;
+		equipTime[0]=Time.time+10;
 	}
 	public static int squidSprite;
 	static void SquidShot(Ship s){
@@ -137,7 +137,7 @@ public class Ship : MonoBehaviour {
 			s._renderer.color=Color.white;
 			s.immuneTime=0.5f;
 			//invisibility cooldown 60 seconds
-			equipTime[3]=Time.time+60;
+			equipTime[3]=Time.time+10;
 			s.onUpdate-=Reveal;
 		}
 	}
@@ -156,7 +156,7 @@ public class Ship : MonoBehaviour {
 			s.speed=s.normalSpeed;
 			s.onUpdate-=SpeedDown;
 			//speed up cooldown
-			equipTime[4]=Time.time+60;
+			equipTime[4]=Time.time+10;
 		}
 	}
 	public static EnemyInfo batInfo;
@@ -177,7 +177,7 @@ public class Ship : MonoBehaviour {
 		bat.hp=10;
 		go.transform.position=s.transform.position;
 		//bat spawn cooldown
-		equipTime[5]=Time.time+15;
+		equipTime[5]=Time.time+10;
 	}
 #endregion
 	void Start()
