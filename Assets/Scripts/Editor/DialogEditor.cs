@@ -18,7 +18,7 @@ public class DialogEditor : Editor
         for (int i = 0; i < p.arraySize; i++)
         {
             Rect rect=new Rect(x+w-h*5,y,h*2,h);
-            ShowDialog(p.GetArrayElementAtIndex(i),i);
+            ShowDialog(p.GetArrayElementAtIndex(i),"Dialog "+(i+1));
             GUI.Button(rect,"/\\");
             rect.x+=h*2;
             GUI.Button(rect,"\\/");
@@ -39,8 +39,8 @@ public class DialogEditor : Editor
         EditorGUILayout.GetControlRect(false,y+h);
 
     }
-    void ShowDialog(SerializedProperty p,int id){
-        p.isExpanded=EditorGUI.BeginFoldoutHeaderGroup(new Rect(x,y,w-h*5,h),p.isExpanded,"Dialog"+id);
+    void ShowDialog(SerializedProperty p,string s){
+        p.isExpanded=EditorGUI.BeginFoldoutHeaderGroup(new Rect(x,y,w-h*5,h),p.isExpanded,s);
         y+=h;
         if(!p.isExpanded){
             EditorGUI.EndFoldoutHeaderGroup();
@@ -89,8 +89,17 @@ public class DialogEditor : Editor
             w+=4;
         }
         // y+=h;
-        prop=p.FindPropertyRelative("entries");
-        prop.isExpanded=EditorGUI.Foldout(new Rect(x,y,w,h),prop.isExpanded,"Entries");
+        ShowSpeech(p.FindPropertyRelative("entries"),"Entries");
+        x+=10;
+        w-=10;
+        ShowSpeech(p.FindPropertyRelative("failed"),"Sub-Entries");
+        
+        x=10;
+        w+=20;
+        EditorGUI.EndFoldoutHeaderGroup();
+    }
+    void ShowSpeech(SerializedProperty prop,string  n){
+        prop.isExpanded=EditorGUI.Foldout(new Rect(x,y,w,h),prop.isExpanded,n);
         if(prop.isExpanded)y+=h;
         for (int i = 0; i < prop.arraySize && prop.isExpanded; i++)
         {
@@ -150,8 +159,5 @@ public class DialogEditor : Editor
             prop.serializedObject.ApplyModifiedProperties();
         }
         y+=h;
-        x=10;
-        w+=20;
-        EditorGUI.EndFoldoutHeaderGroup();
     }
 }

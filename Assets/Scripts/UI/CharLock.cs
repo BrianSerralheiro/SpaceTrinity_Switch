@@ -16,10 +16,5 @@ public class CharLock : MonoBehaviour {
 	}
 	void Update()
 	{
-		if(button)
-		{
-			 button.interactable=Locks.Char(charId);
-		}
-		else Debug.LogError("CharLock needs a button to work");
 	}
 }

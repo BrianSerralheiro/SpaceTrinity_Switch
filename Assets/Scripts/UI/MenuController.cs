@@ -79,11 +79,7 @@ public class MenuController : MonoBehaviour
 	public void SwitchMenu(int i)
 	{
 		SoundManager.PlayEffects(0);
-		if(Locks.IsPremium() && (i==2 || i==3))
-		{
-			Warning.Open("You are a premium user, you already owns everything!");
-			return;
-		}
+		
 		if(i == 0)
 		{
 			IAPManager.Denitialize();

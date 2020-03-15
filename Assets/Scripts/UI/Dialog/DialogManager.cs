@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 public class DialogManager : MonoBehaviour
@@ -14,13 +12,17 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     Color lit,unlit;
     [SerializeField]
+    [Range(0.1f,1)]
+    float  speed=1;
+    [SerializeField]
+    [Range(0.5f,2)]
+    float expand=2;
+    [SerializeField]
+    int cps=15;
     DialogInfo dialogInfo;
-    [SerializeField]
     Dialog dialog;
-    [SerializeField]
     Speech speech;
     float charCount;
-    int cps=15;
     void Start()
     {
         dialogInfo=EnemySpawner.world.begining;
@@ -29,12 +31,14 @@ public class DialogManager : MonoBehaviour
             return;
         }
         dialogInfo.id=0;
+        Ship.paused=true;
         dialog=dialogInfo.Next();
         if(dialog.IsEmpty())gameObject.SetActive(false);
         if(dialog.HasSpeech())Speech(dialog.GetSpeech());
     }
     void OnDisable()
     {
+        Ship.paused=false;
         spawner.SetActive(true);
     }
     void Update()
@@ -60,9 +64,9 @@ public class DialogManager : MonoBehaviour
         {
             if(actors[i].sprite){
                 float f=speech.characters[i].proportion;
-                actors[i].transform.localScale=Vector3.MoveTowards(actors[i].transform.localScale,new Vector3(f,Mathf.Abs(f)),Time.deltaTime*2);
+                actors[i].transform.localScale=Vector3.MoveTowards(actors[i].transform.localScale,new Vector3(f,Mathf.Abs(f)),Time.deltaTime*expand);
                 Vector3 pos=actors[i].transform.position;
-                pos.x=Mathf.MoveTowards(pos.x,speech.characters[i].position*Screen.width,Screen.width*Time.deltaTime);
+                pos.x=Mathf.MoveTowards(pos.x,speech.characters[i].position*Screen.width,speed*Screen.width*Time.deltaTime);
                 actors[i].transform.position=pos;
             }
         }

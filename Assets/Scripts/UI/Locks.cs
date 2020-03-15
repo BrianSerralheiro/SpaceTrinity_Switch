@@ -5,20 +5,17 @@ using UnityEngine;
 public static class Locks {
 	
 	private static string skins="000000000000000000000";
-	private static string chars="0000000";
-	private static bool premium;
+	private static string bosses="000000";
 
 	public static void Load()
 	{
-		premium=PlayerPrefs.HasKey("premium");
 		if(PlayerPrefs.HasKey("skins"))skins=PlayerPrefs.GetString("skins");
-		if(PlayerPrefs.HasKey("chars"))chars=PlayerPrefs.GetString("chars");
+		if(PlayerPrefs.HasKey("bosses"))bosses=PlayerPrefs.GetString("bosses");
 	}
 	public static void Save()
 	{
 		PlayerPrefs.SetString("skins",skins);
-		PlayerPrefs.SetString("chars",chars);
-		if(premium)PlayerPrefs.SetInt("premium",0);
+		PlayerPrefs.SetString("bosses",bosses);
 	}
 	public static bool Skin(int i)
 	{
@@ -29,26 +26,22 @@ public static class Locks {
 		skins=skins.Substring(0,i)+"1"+skins.Substring(i+1,skins.Length-1-i);
 		Save();
 	}
-	public static bool Char(int i)
+	public static bool Boss(int i)
 	{
-		return chars[i]!='0';
+		if(i<0)return false;
+		return bosses[i]!='0';
 	}
-	public static void Char(int i,bool b)
+	public static void Boss(int i,bool b)
 	{
-		chars=chars.Substring(0,i)+"1"+chars.Substring(i+1,chars.Length-1-i);
+		bosses=bosses.Substring(0,i)+"1"+bosses.Substring(i+1,bosses.Length-1-i);
 		Save();
 	}
 	public static void UnlockAll()
 	{
-		premium=true;
 		for(int i = 0; i<skins.Length; i++)
 		{
-			if(i<chars.Length)Char(i,true);
+			if(i<bosses.Length)Boss(i,true);
 			Skin(i,true);
 		}
-	}
-	public static bool IsPremium()
-	{
-		return premium;
 	}
 }

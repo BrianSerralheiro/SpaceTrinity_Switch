@@ -215,10 +215,10 @@ public class MenuSelect : MonoBehaviour
 		}
 		if(selector)selector.color=options[selectionID].color;
 		if(PlayerInput.GetButtomDown(confirmKey) && options[selectionID].raycastTarget){
-			opt.Select(selectionID+1,0);
+			opt.Select(selectionID,0);
 		}
 		if(PlayerInput.GetButtomDown(cancelKey)){
-			opt.Cancel(selectionID+1);
+			opt.Cancel(selectionID);
 		}
 		for(int i=0;i<menus.Length;i++){
 			if(menus[i].GetKeyDown()){
@@ -414,8 +414,8 @@ public struct Menuoptions
 				return;
 			case SelectionType.Weapon:
 				//implementar equips
-				if(Ship.equips[0]==0)Ship.equips[0]=i;
-				else if(Ship.equips[1]==0)Ship.equips[1]=i;
+				if(Ship.equips[0]==0)Ship.equips[0]=i+1;
+				else if(Ship.equips[1]==0)Ship.equips[1]=i+1;
 				return;
 			case SelectionType.Shop:
 				ShopManager.buyID=i;

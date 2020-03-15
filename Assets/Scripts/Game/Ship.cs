@@ -21,7 +21,7 @@ public class Ship : MonoBehaviour {
 	private Vector3 offset = Vector3.up;
 	[SerializeField]
 	private float speed=5f;
-	public static bool paused;
+	public static bool paused{set{ Time.timeScale=value?0:1;paused=value;}get{return paused;}}
 	[SerializeField]
 	private Core shield;
 	[SerializeField]
@@ -329,6 +329,7 @@ public class Ship : MonoBehaviour {
 		if(PlayerInput.GetKeySpecialDown(input.id) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
 		if(PlayerInput.GetKeyEquip1Down(input.id))onUse1?.Invoke(this);
 		if(PlayerInput.GetKeyEquip2Down(input.id))onUse2?.Invoke(this);
+		if(PlayerInput.GetKeyPauseDown(input.id))PauseMenu.Pause(input.id);
 		if(shielded)shield.Add(Time.deltaTime);
 		else shield.Min(Time.deltaTime);
 		if(Bullet.bulletTime<=0)

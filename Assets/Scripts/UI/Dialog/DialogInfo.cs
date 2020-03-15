@@ -23,9 +23,16 @@ public class DialogInfo:ScriptableObject{
 [System.Serializable]
 public struct Dialog{
     public DialogCondition[] conditions;
-    public Speech[] entries;
+    public Speech[] entries,failed;
     public Vector2 vector;
     int id;
+    public Dialog(Speech[]  s){
+        entries=s;
+        conditions=null;
+        failed=null;
+        vector=Vector3.zero;
+        id=0;
+    }
     bool CanShow(){
         foreach (DialogCondition condition in conditions)
         {
@@ -34,19 +41,20 @@ public struct Dialog{
         return true;
     }
     public Speech GetSpeech(){
-        if(id<entries.Length)return  entries[id++];
+        if(id<entries.Length)return entries[id++];
         return new Speech();
     }
     public bool HasSpeech(){
         return entries!=null && id<entries.Length;
     }
     public bool Show(){
-        return  CanShow();
+        return failed!=null || CanShow();
     }
     public bool IsEmpty(){
         return entries==null || entries.Length==0;
     }
     public Dialog GetDialog(){
+        if(failed !=null && !CanShow())return new Dialog(failed);
         return this;
     }
 

@@ -41,7 +41,7 @@ public class Mercenary : EnemyBase {
 	}
 	protected override void Die()
 	{
-		Locks.Char(2,true);
+		// Locks.Char(2,true);
 		EnemySpawner.boss=false;
 		BossDialog.Open(1,"WOW! I am impressed, i will help you protect earth... but it will cost you! owo");
 		defeat=true;

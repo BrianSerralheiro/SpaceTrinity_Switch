@@ -11,6 +11,10 @@ public class EquipLock : MonoBehaviour
     void Start()
     {
         image=GetComponent<Image>();
+        if(!Locks.Boss(id-1)){
+            image.raycastTarget=false;
+            image.color=Color.black;
+        }
     }
 
     // Update is called once per frame

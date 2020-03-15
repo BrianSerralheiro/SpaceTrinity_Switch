@@ -84,6 +84,10 @@ public struct PlayerInput{
         if(i<players.Length)return Input.GetButtonDown(players[i].shoot);
         return false;
     }
+    public static bool GetKeyPauseDown(int i){
+        if(i<players.Length)return Input.GetButton(players[i].Lbumper) && Input.GetButtonDown(players[i].Rbumper);
+        return false;
+    }
     public static void WaitInput(){
         recentConect=false;
         recentDisconect=false;
