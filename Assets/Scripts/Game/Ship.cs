@@ -21,7 +21,8 @@ public class Ship : MonoBehaviour {
 	private Vector3 offset = Vector3.up;
 	[SerializeField]
 	private float speed=5f;
-	public static bool paused{set{ Time.timeScale=value?0:1;paused=value;}get{return paused;}}
+	public static bool paused{set{ Time.timeScale=value?0:1;_paused=value;}get{return _paused;}}
+	private static bool _paused;
 	[SerializeField]
 	private Core shield;
 	[SerializeField]

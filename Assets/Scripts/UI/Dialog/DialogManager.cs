@@ -43,7 +43,8 @@ public class DialogManager : MonoBehaviour
     }
     void Update()
     {
-        charCount+=cps*Time.deltaTime;
+        charCount+=cps*Time.unscaledDeltaTime;
+        Debug.Log(Time.unscaledDeltaTime);
         if(speechText.text.Length<(int)charCount && charCount<=speech.text.Length+1)
             speechText.text=speech.text.Substring(0,(int)charCount);
         if(PlayerInput.GetKeyShotDown(0)){
@@ -64,9 +65,9 @@ public class DialogManager : MonoBehaviour
         {
             if(actors[i].sprite){
                 float f=speech.characters[i].proportion;
-                actors[i].transform.localScale=Vector3.MoveTowards(actors[i].transform.localScale,new Vector3(f,Mathf.Abs(f)),Time.deltaTime*expand);
+                actors[i].transform.localScale=Vector3.MoveTowards(actors[i].transform.localScale,new Vector3(f,Mathf.Abs(f)),Time.unscaledDeltaTime*expand);
                 Vector3 pos=actors[i].transform.position;
-                pos.x=Mathf.MoveTowards(pos.x,speech.characters[i].position*Screen.width,speed*Screen.width*Time.deltaTime);
+                pos.x=Mathf.MoveTowards(pos.x,speech.characters[i].position*Screen.width,speed*Screen.width*Time.unscaledDeltaTime);
                 actors[i].transform.position=pos;
             }
         }
