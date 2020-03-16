@@ -44,7 +44,6 @@ public class DialogManager : MonoBehaviour
     void Update()
     {
         charCount+=cps*Time.unscaledDeltaTime;
-        Debug.Log(Time.unscaledDeltaTime);
         if(speechText.text.Length<(int)charCount && charCount<=speech.text.Length+1)
             speechText.text=speech.text.Substring(0,(int)charCount);
         if(PlayerInput.GetKeyShotDown(0)){

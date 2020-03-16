@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(fileName="Dialog",menuName="DialogInfo")]
 public class DialogInfo:ScriptableObject{
     public Dialog[] dialogs;
@@ -48,13 +46,13 @@ public struct Dialog{
         return entries!=null && id<entries.Length;
     }
     public bool Show(){
-        return failed!=null || CanShow();
+        return (failed!=null && failed.Length>0) || CanShow();
     }
     public bool IsEmpty(){
         return entries==null || entries.Length==0;
     }
     public Dialog GetDialog(){
-        if(failed !=null && !CanShow())return new Dialog(failed);
+        if((failed !=null && failed.Length>0) && !CanShow())return new Dialog(failed);
         return this;
     }
 
