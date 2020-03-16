@@ -213,9 +213,9 @@ public class MenuSelect : MonoBehaviour
 			// lightsUP(id, 0.5f);
 			// lightsUP(selectionID, 1);
 		}
-		if(selector)selector.color=options[selectionID].color;
 		if(PlayerInput.GetButtomDown(confirmKey) && options[selectionID].raycastTarget){
 			opt.Select(selectionID,0);
+			if(selector)selector.color=options[selectionID].color;
 		}
 		if(PlayerInput.GetButtomDown(cancelKey)){
 			opt.Cancel(selectionID);
@@ -398,7 +398,7 @@ public struct Menuoptions
 {
 	public enum SelectionType
 	{
-		World,Character,Weapon,Shop,None
+		World,Character,Weapon,Shop,None,Gallery
 	}
 	public SelectionType selection;
 	public UnityEvent comand;
@@ -421,13 +421,16 @@ public struct Menuoptions
 				ShopManager.buyID=i;
 				comand?.Invoke();
 				return;
+			case SelectionType.Gallery:
+				GalleryManager.id=GalleryManager.id==i?-1:i;
+				return;
 		}
 	}
 	public void Cancel(int i){
 		//SWTCH APENAS CASO PRECISAR
 		if(selection==SelectionType.Weapon){
-			if(Ship.equips[0]==i)Ship.equips[0]=0;
-			if(Ship.equips[1]==i)Ship.equips[1]=0;
+			if(Ship.equips[0]==i+1)Ship.equips[0]=0;
+			if(Ship.equips[1]==i+1)Ship.equips[1]=0;
 		}
 	}
 }

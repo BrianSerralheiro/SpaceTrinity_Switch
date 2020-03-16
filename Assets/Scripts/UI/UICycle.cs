@@ -28,7 +28,7 @@ public class UICycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float f = Time.time%cycleTime;
+        float f = Time.unscaledTime%cycleTime;
         graphic.color=Color.Lerp(color1,color2,Mathf.Min(f-OnTimer+Delay,OnTimer+Delay - f)/Delay);
     }
 }
