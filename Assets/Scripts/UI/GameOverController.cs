@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class GameOverController : MonoBehaviour 
 {
@@ -30,7 +31,7 @@ public class GameOverController : MonoBehaviour
 	{
 		if(Timer>0)
 		{
-			Timer-=Time.deltaTime;
+			Timer-=Time.unscaledDeltaTime;
 			group.alpha=(2f-Timer)/2f;
 		}
 	}
@@ -54,6 +55,9 @@ public class GameOverController : MonoBehaviour
 	public void Quit()
 	{
 		Ship.paused = false;
+		#if UNITY_EDITOR
+			EditorApplication.isPlaying=false;
+		#endif
 		Application.Quit();
 	}
 	public static void Open(Ship s)

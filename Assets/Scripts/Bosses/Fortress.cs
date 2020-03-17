@@ -73,6 +73,7 @@ public class Fortress : EnemyBase
     protected override void Die()
 	{
 		update=Dying;
+		Locks.Boss(3,true);
 		EnemySpawner.points[killerid]+=1000;
         tracks[0].Rotate(0,0,35);
         tracks[1].Rotate(0,0,35);

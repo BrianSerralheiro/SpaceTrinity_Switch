@@ -200,6 +200,7 @@ public class Batzilla : EnemyBase {
 		{
 			ParticleManager.Emit(9,(Vector3)Random.insideUnitCircle*1.5f+head.transform.position,1);
 		}
+		Locks.Boss(5,true);
 		Destroy(head.gameObject);
 		Destroy(slash.gameObject);
 		Destroy(dark.gameObject);

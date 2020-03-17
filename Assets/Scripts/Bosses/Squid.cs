@@ -218,6 +218,7 @@ public class Squid : EnemyBase {
 	{
 		EnemySpawner.points[killerid]+=1000;
 		update=Dying;
+		Locks.Boss(1,true);
 		timer=3;
 	}
 	void Dying(){

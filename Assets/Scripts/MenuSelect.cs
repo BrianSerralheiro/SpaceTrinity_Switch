@@ -41,7 +41,7 @@ public class MenuSelect : MonoBehaviour
 	void Awake()
     {
         //if(rowCount<2)rowCount=2;
-		//Locks.Load();
+		// Locks.Load();
 		Check=CheckSelection;
 		if(opt.selection==Menuoptions.SelectionType.Character){
 			selectionID=Ship.player1;

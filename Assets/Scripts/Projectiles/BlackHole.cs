@@ -13,7 +13,7 @@ public class BlackHole : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.name.Contains("Player") || col.name.Contains("big") || col.name.Contains("Item") || col.name.Contains("Boss") || col.name.Contains("player") || col.isTrigger)return;
+        if(col.name.Contains("Player") || col.name.Contains("big") || col.name.Contains("Item") || col.name.Contains("Boss") || col.name.Contains("player") || col.name.Contains("laser") || col.isTrigger)return;
         EnemyBase en=col.GetComponent<EnemyBase>();
         if(en)en.enabled=false;
         Bullet bullet=col.GetComponent<Bullet>();

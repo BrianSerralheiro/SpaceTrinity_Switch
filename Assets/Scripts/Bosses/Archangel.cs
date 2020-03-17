@@ -264,6 +264,7 @@ public class Archangel : EnemyBase
     protected override void Die()
 	{
         update=Dying;
+		Locks.Boss(4,true);
         foreach (Transform t in rings)
         {
             Destroy(t.gameObject);

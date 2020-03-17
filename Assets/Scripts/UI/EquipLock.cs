@@ -14,6 +14,7 @@ public class EquipLock : MonoBehaviour
         if(!Locks.Boss(id-1)){
             image.raycastTarget=false;
             image.color=Color.black;
+            enabled=false;
         }
     }
 

@@ -1,8 +1,10 @@
 ﻿using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-public class RectEditor
+public class UIExtras
 {
 	[MenuItem("UI/Parent size")]
 	public static void ParentSize(){
@@ -75,6 +77,35 @@ public class RectEditor
 		}
 		for(int i=0;i<go.transform.childCount;i++){
 			ClearObject(list,go.transform.GetChild(i).gameObject);
+		}
+	}
+}
+
+public class FontWindows : EditorWindow
+{
+	Font font;
+	Rect rect=new Rect();
+	[MenuItem("UI/Font Swaper")]
+	public static void ShowWindow()
+	{
+		EditorWindow.GetWindow(typeof(FontWindows));
+	}
+	void OnGUI()
+	{
+		position=rect;
+		font=EditorGUILayout.ObjectField(font,typeof(Font),false)as Font;
+		if(font && GUILayout.Button("Swap")){
+			Scene currentScene = SceneManager.GetActiveScene();
+			GameObject[] rootObjects = currentScene.GetRootGameObjects();
+			foreach (GameObject g in rootObjects)
+			{
+				foreach (Text t in g.GetComponentsInChildren<Text>())
+				{
+					t.font=font;
+				}
+			}
+			EditorSceneManager.MarkSceneDirty(currentScene);
+			Close();
 		}
 	}
 }

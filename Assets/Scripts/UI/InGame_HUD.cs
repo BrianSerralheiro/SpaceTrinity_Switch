@@ -47,7 +47,7 @@ public class InGame_HUD : MonoBehaviour
 	void Update()
 	{
 		if(Ship.continues[id]<0){
-			steal.color=Color.Lerp(Color.white,Color.clear,Mathf.Cos(Time.time*8));
+			steal.color=Color.Lerp(Color.white,Color.clear,Mathf.Cos(Time.unscaledTime*8));
 			if(!hide){
 				hide=true;
 				lifeBar.enabled=lifeFill.enabled=specialFill.enabled=pilotMask.enabled=pilotPic.enabled=pilotName.enabled=
@@ -60,7 +60,7 @@ public class InGame_HUD : MonoBehaviour
 					Ship.continues[i]--;
 					Ship.continues[id]=0;
 					shipHealth[id]=1;
-					_currentHP[i]-=Time.deltaTime;
+					_currentHP[i]-=Time.unscaledDeltaTime;
 					Revive(EnemyBase.players[id].GetComponent<Ship>());
 				}
 			}
@@ -72,12 +72,12 @@ public class InGame_HUD : MonoBehaviour
 				steal.enabled=false;
 			}
 		if(shipHealth[id]<_currentHP[id]){
-			_currentHP[id]-=Time.deltaTime;
+			_currentHP[id]-=Time.unscaledDeltaTime;
 			if(shipHealth[id]>_currentHP[id])_currentHP[id]=shipHealth[id];
 			lifeFill.material.SetFloat("_CurrentHP",_currentHP[id]);
 		}
 		if(shipHealth[id]>_currentHP[id]){
-			_currentHP[id]+=Time.deltaTime;
+			_currentHP[id]+=Time.unscaledDeltaTime;
 			for (int i = 0; i < lifes.Length; i++)
 				lifes[i].gameObject.SetActive(i<Ship.continues[id]);
 			if(shipHealth[id]<_currentHP[id])_currentHP[id]=shipHealth[id];
@@ -87,12 +87,12 @@ public class InGame_HUD : MonoBehaviour
 		if(special[id] >=1)
 		{
 			special[id] = 1;
-			specialFill.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.time*8));
+			specialFill.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.unscaledTime*8));
 		}else specialFill.color=color;
 		specialFill.fillAmount=special[id];
 		if(p1)foreach (Ship s in shipsToRevive)
 		{
-			s.reviveTimer-=Time.deltaTime;
+			s.reviveTimer-=Time.unscaledDeltaTime;
 			if(s.reviveTimer<=0){
 				s.Revive();
 				shipsToRevive.Remove(s);

@@ -86,7 +86,7 @@ public struct DialogCondition{
             case Type.ship:
                 return Ship.player1==id || Ship.player2==id;
             case Type.boss:
-                return false;//BOSS DERROTADO
+                return !Locks.Boss(id);
             default:
                 return true;
         }

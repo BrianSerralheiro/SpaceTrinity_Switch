@@ -270,6 +270,7 @@ public class Spider : EnemyBase {
 	{
 		update=Dying;
 		timer=3;
+		Locks.Boss(0,true);
 		EnemySpawner.points[killerid]+=1000;
 	}
 	void Spawn(int i)
