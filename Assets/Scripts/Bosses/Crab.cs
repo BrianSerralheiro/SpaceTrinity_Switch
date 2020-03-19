@@ -206,7 +206,7 @@ public class Crab : EnemyBase {
 		}
 		else if(state==State.dead)
 		{
-			ParticleManager.Emit(0,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
+			ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
 			if(timer<0)
 			{
 				EnemySpawner.boss=false;

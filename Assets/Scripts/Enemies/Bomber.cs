@@ -10,7 +10,6 @@ public class Bomber : EnemyBase {
 	{
 		points = 120;
 		name+="big";
-		explosionID = 10;
 		hp=200;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		bomb=ei.sprites[1];

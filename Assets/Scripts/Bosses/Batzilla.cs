@@ -170,7 +170,7 @@ public class Batzilla : EnemyBase {
 		{
 			if(timer>0)
 			{
-				ParticleManager.Emit(9,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
+				ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
 			}
 			else
 			{
@@ -180,7 +180,7 @@ public class Batzilla : EnemyBase {
 					Destroy(wingR.gameObject);
 				}
 				if(timer<-0.2f){
-					ParticleManager.Emit(9,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
+					ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
 					timer=0;
 				}
 				transform.Translate(0,-Time.deltaTime*4,0,Space.World);

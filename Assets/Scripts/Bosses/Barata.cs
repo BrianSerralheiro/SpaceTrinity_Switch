@@ -175,7 +175,7 @@ public class Barata : EnemyBase {
 		diver.transform.rotation=transform.rotation;
 	}
 	void Shot(int c){
-		SoundManager.PlayEffects(12, 0.5f, 0.8f);
+		// SoundManager.PlayEffects(12, 0.5f, 0.8f);
 		float degrees=180f/c;
 		for (int i = 0; i < c; i++)
 		{
@@ -195,6 +195,6 @@ public class Barata : EnemyBase {
 	{
 		if(vector.z>15 && update!=Dying) base.OnCollisionEnter2D(col);
 		else
-			ParticleManager.Emit(16,col.collider.transform.position,1);
+			ParticleManager.Emit(1,col.collider.transform.position,1);
 	}
 }

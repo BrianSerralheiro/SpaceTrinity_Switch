@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Slasher : EnemyBase {
 
@@ -9,7 +7,6 @@ public class Slasher : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
-		explosionID = 10;
 		hp=90;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 	}

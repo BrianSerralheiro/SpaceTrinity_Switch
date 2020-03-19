@@ -308,7 +308,7 @@ public class FinalBoss : EnemyBase {
 		}
 		else if(state==State.dead)
 		{
-			ParticleManager.Emit(10,(Vector3)Random.insideUnitCircle*4+transform.position,1);
+			ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*4+transform.position,1);
 			if(timer<0)
 			{
 				Destroy(gameObject);

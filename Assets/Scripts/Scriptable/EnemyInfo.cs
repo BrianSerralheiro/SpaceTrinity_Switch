@@ -5,9 +5,10 @@ public class EnemyInfo : ScriptableObject
 	public Sprite[] sprites;
 	public float lifeproportion=1;
 	public Sprite[] bullets;
+	public ParticleSystem[] particles;
 	System.Type script;
 	[HideInInspector]
-	public int[] bulletsID;
+	public int[] bulletsID,particleID;
 	public EnemyInfo copy;
 	public System.Type GetScript()
 	{
@@ -21,11 +22,20 @@ public class EnemyInfo : ScriptableObject
 			bulletsID[i]=Bullet.Register(bullets[i]);
 		}
 	}
+	public void Particles(){
+		if(particles==null || particles.Length==0)return;
+		particleID=new int[particles.Length];
+		for(int i = 0; i < particles.Length; i++)
+		{
+			particleID[i]=ParticleManager.Register(particles[i]);
+		}
+	}
 	void OnValidate()
 	{
 		if(copy!=null){
 			copy.sprites=sprites;
 			copy.bullets=bullets;
+			copy.particles=particles;
 			copy.name=name;
 		}
 	} 

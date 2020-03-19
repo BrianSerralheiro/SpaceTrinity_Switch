@@ -15,6 +15,8 @@ public class HomingGun : Gun
                 Bullet.Register(shots[c]);
             }
         }
+		particleID=ParticleManager.Register(shotParticle);
+		shotParticle=null;
 		shots=null;
 	}
     public override void Shoot()

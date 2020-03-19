@@ -12,7 +12,6 @@ public class Bat : EnemyBase
 
 	public override void SetSprites(EnemyInfo ei)
 	{
-		explosionID = 9;
 		hp=10;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=20;

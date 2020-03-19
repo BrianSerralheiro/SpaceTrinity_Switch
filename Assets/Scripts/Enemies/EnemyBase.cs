@@ -11,7 +11,6 @@ public class EnemyBase : MonoBehaviour {
 
 	protected bool damageEffect,killed;
 	protected delegate void Del();
-	protected int explosionID;
 
 	public virtual void SetSprites(EnemyInfo ei){}
 	void Start(){
@@ -88,7 +87,7 @@ public class EnemyBase : MonoBehaviour {
 			}
 			if(!killed){
 				SoundManager.PlayEffects(15, 0.8f, 1.2f);
-				ParticleManager.Emit(explosionID, transform.position,1);
+				ParticleManager.Emit(1, transform.position,1);
 			}
 		}
 	}

@@ -275,7 +275,7 @@ public class Archangel : EnemyBase
     }
     void Dying(){
         halo.Translate(0,-Time.deltaTime,0,Space.World);
-		if(Time.time%1f<0.1f)ParticleManager.Emit(0,transform.position+Random.onUnitSphere,1);
+		if(Time.time%1f<0.1f)ParticleManager.Emit(1,transform.position+Random.onUnitSphere,1);
         if(timer<Time.time)Loader.Scene("SelectionTest");
     }
 }

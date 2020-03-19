@@ -244,7 +244,7 @@ public class Spider : EnemyBase {
 	void Dying(){
 		timer-=Time.deltaTime;
 		if(timer<0)Loader.Scene("SelectionTest");
-		ParticleManager.Emit(0,transform.position+Random.onUnitSphere*2,1);
+		ParticleManager.Emit(1,transform.position+Random.onUnitSphere,1,5);
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{

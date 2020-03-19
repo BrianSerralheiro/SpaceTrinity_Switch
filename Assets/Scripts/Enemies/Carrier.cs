@@ -12,7 +12,6 @@ public class Carrier : EnemyBase {
 	private EnemyInfo div;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		explosionID=8;
 		name+="big";
 		hp=75;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);

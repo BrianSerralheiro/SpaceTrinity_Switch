@@ -14,7 +14,7 @@ public class Shooter : EnemyBase
 	private Vector3 vector = new Vector3();
 	private Vector3 rot = new Vector3();
 	Del movement;
-	private static int shootId;
+	private static int shootId,particleID;
     private int shotCount,cicles;
     private float shotDelay,reloadTime;
 	private BulletPath path;
@@ -22,7 +22,6 @@ public class Shooter : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
-		explosionID=8;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go = new GameObject("legL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
@@ -47,6 +46,7 @@ public class Shooter : EnemyBase
 		fallSpeed=-9;
 		movement=Moving;
 		shootId=ei.bulletsID[0];
+		particleID=ei.particleID[0];
 		MultiPathEnemy pe=(MultiPathEnemy)ei;
 		shotCount=pe.shotCount;
 		cicles=pe.cicles;
@@ -119,6 +119,7 @@ public class Shooter : EnemyBase
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
 		bu.path=path;
+		bu.particleID=particleID;
 		bu.mirror=transform.position.x>0;
 		go.transform.position=crystal.transform.position;
 		go.transform.up=-transform.up;

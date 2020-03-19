@@ -14,7 +14,6 @@ public class Diver : EnemyBase
 	Del movement;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		explosionID=8;
 		hp=12;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 50;

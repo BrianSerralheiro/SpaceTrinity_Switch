@@ -12,7 +12,6 @@ public class Header : EnemyBase {
 	private static int shootId;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		explosionID = 9;
 		hp=70;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=180;

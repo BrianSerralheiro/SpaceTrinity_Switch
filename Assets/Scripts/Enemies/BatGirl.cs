@@ -16,7 +16,6 @@ public class BatGirl : EnemyBase {
 	private int count;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		explosionID = 9;
 		hp=180;
 		name+="big";
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);

@@ -5,6 +5,7 @@ public class WorldInfo : ScriptableObject
 {
 	public string wave;
     public EnemyInfo[] enemies;
+	public ParticleSystem explosion;
 	public Texture[] bgs;
 	public EnemyInfo subBoss;
 	public bool loopWorld=true;

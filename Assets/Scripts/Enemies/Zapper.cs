@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Zapper : EnemyBase {
 	private SpriteRenderer energy;
@@ -12,7 +10,6 @@ public class Zapper : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 150;
-		explosionID = 10;
 		hp=80;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		GameObject go=new GameObject("zap");

@@ -24,6 +24,8 @@ public class WorldLoader : MonoBehaviour
     Sprite[] squidshot;
     [SerializeField]
     EnemyInfo batinfo;
+    [SerializeField]
+    ParticleSystem defaultExplosion;
 	private ResourceRequest request;
     void Start()
     {
@@ -99,6 +101,21 @@ public class WorldLoader : MonoBehaviour
         update=Step5;
     }
     void Step5(){
+        WorldInfo worldInfo=EnemySpawner.world;
+        ParticleManager.Clear();
+        ParticleManager.Register(defaultExplosion);
+        ParticleManager.Register(worldInfo.explosion);
+        if(worldInfo){
+            foreach(EnemyInfo ei in worldInfo.enemies){
+                ei.Particles();
+            }
+            worldInfo.Boss?.Particles();
+            worldInfo.subBoss?.Particles();
+            worldInfo.drone?.Particles();
+        }
+        update=Step6;
+    }
+    void Step6(){
         SceneManager.LoadSceneAsync("cen");
         update=null;
     }

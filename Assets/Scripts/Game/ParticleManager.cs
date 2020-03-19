@@ -3,34 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleManager : MonoBehaviour {
-	[SerializeField]
-	private ParticleSystem[] systems;
-	private static ParticleSystem[] sys;
+	// private static ParticleSystem[] sys;
 	private static Vector3 up=Vector3.up;
 	private static Vector3 mod=Vector3.back*0.1f;
-	private static float timer,marker,fraction;
-	private static int id;
-	void Awake () {
-		sys=systems;
-	}
-	private void Update()
+	private static List<ParticleSystem> sys=new List<ParticleSystem>();
+	static ParticleManager manager;
+	static List<string> names=new List<string>();
+	void Awake()
 	{
-		if(timer>0)
-		{
-			timer-=Time.deltaTime;
-			if(timer <=marker){
-				sys[id].Emit(1);
-				marker-=fraction;
-			}
-		}
+		if(manager)return;
+		DontDestroyOnLoad(gameObject);
+		manager=this;
 	}
-	public static void Emit(int i,Vector3 p,int c,float t)
+	public static int Register(ParticleSystem s) {
+		if(names.Contains(s.name))return names.IndexOf(s.name);
+		names.Add(s.name);
+		s=Instantiate<ParticleSystem>(s);
+		s.name="particle"+sys.Count;
+		sys.Add(s);
+		s.transform.parent=manager.transform;
+		return sys.Count-1;
+	}
+	public static void Clear(){
+		foreach (ParticleSystem item in sys)
+		{
+			Destroy(item.gameObject);
+		}
+		sys.Clear();
+		names.Clear();
+	}
+	public static void Emit(int i,Vector3 p,int c,float s)
 	{
 		sys[i].transform.up=up;
 		sys[i].transform.position=p+mod;
-		id=i;
-		timer=marker=t;
-		fraction=t/(float)c;
+		sys[i].transform.localScale=Vector3.one*s;
+		sys[i].Emit(c);
+		sys[i].transform.localScale=Vector3.one;
 	}
 	public static void Emit(int i,Transform t,int c)
 	{

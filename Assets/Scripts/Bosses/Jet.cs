@@ -79,7 +79,7 @@ public class Jet : EnemyBase
             EnemySpawner.boss=false;
             Destroy(gameObject);
         }
-		if(Time.time%1f<0.1f)ParticleManager.Emit(0,transform.position+Random.onUnitSphere*transform.localScale.sqrMagnitude,1);
+		if(Time.time%1f<0.1f)ParticleManager.Emit(1,transform.position+Random.onUnitSphere*transform.localScale.sqrMagnitude,1);
     }
     protected override void Die()
 	{
