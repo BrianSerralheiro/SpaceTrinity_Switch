@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 [CreateAssetMenu(fileName="Dialog",menuName="DialogInfo")]
 public class DialogInfo:ScriptableObject{
+    public string dialogName;
     public Dialog[] dialogs;
     public int id;
     public Dialog Next(){
@@ -11,11 +12,11 @@ public class DialogInfo:ScriptableObject{
                 return dialogs[i].GetDialog();
             }
         }
-        return new  Dialog();
+        return new Dialog();
     }
     public Dialog GetDialog(int i){
         if(dialogs[i].Show())return dialogs[i].GetDialog();
-        return new  Dialog();
+        return new Dialog();
     }
 }
 [System.Serializable]
@@ -60,7 +61,6 @@ public struct Dialog{
 [System.Serializable]
 public struct Speech 
 {
-    [TextArea(3,3)]
     public string text;
     public Character[] characters;
 }

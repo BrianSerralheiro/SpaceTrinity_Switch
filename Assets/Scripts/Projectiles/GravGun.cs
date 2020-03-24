@@ -31,7 +31,7 @@ public class GravGun : Gun
 	{ 
         if(!gameObject.activeSelf || shotTimer > 0)return;
         shotTimer = fireRate;
-		ParticleManager.Emit(17,transform.position,1);
+		//ParticleManager.Emit(17,transform.position,1);
 		GameObject go=new GameObject("playerbullet");
 		SpriteRenderer sp= go.AddComponent<SpriteRenderer>();
         sp.sprite=Bullet.sprites[shotId];

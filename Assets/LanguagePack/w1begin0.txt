@@ -1,0 +1,2 @@
+001=Dialog to test translation.
+002=Text Translated to various languages.

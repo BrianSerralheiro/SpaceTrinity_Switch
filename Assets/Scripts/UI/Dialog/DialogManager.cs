@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using LanguagePack;
 
 public class DialogManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class DialogManager : MonoBehaviour
     Dialog dialog;
     Speech speech;
     float charCount;
+    string fulltext;
     void Start()
     {
         dialogInfo=EnemySpawner.world.begining;
@@ -34,6 +36,7 @@ public class DialogManager : MonoBehaviour
         Ship.paused=true;
         dialog=dialogInfo.Next();
         if(dialog.IsEmpty())gameObject.SetActive(false);
+        Language.LoadDialog(dialogInfo.dialogName);
         if(dialog.HasSpeech())Speech(dialog.GetSpeech());
     }
     void OnDisable()
@@ -44,10 +47,10 @@ public class DialogManager : MonoBehaviour
     void Update()
     {
         charCount+=cps*Time.unscaledDeltaTime;
-        if(speechText.text.Length<(int)charCount && charCount<=speech.text.Length+1)
-            speechText.text=speech.text.Substring(0,(int)charCount);
+        if(speechText.text.Length<(int)charCount && charCount<=fulltext.Length+1)
+            speechText.text=fulltext.Substring(0,(int)charCount);
         if(PlayerInput.GetKeyShotDown(0)){
-            if(charCount>speech.text.Length){
+            if(charCount>fulltext.Length){
                 if(dialog.HasSpeech())Speech(dialog.GetSpeech());
                 else {
                     dialog=dialogInfo.Next();
@@ -56,8 +59,8 @@ public class DialogManager : MonoBehaviour
                 }
             }
             else {
-                charCount=speech.text.Length;
-                speechText.text=speech.text;
+                charCount=fulltext.Length;
+                speechText.text=fulltext;
             }
         } 
         for (int i = 0; i < actors.Length; i++)
@@ -73,6 +76,7 @@ public class DialogManager : MonoBehaviour
     }
     void Speech(Speech s){
         speech=s;
+        fulltext=Language.GetDialog(s.text);
         charCount=0;
         speechText.text="";
         for (int i = 0; i < actors.Length; i++)

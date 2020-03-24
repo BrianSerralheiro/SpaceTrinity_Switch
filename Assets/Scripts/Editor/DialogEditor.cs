@@ -12,8 +12,10 @@ public class DialogEditor : Editor
         w=EditorGUIUtility.currentViewWidth-20;
         x=10;
         y=0;
-        // GUI.Box(new Rect(x,y,w,h*8),"");
-        // DrawDefaultInspector();
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.PropertyField(new Rect(x,y,w,h),serializedObject.FindProperty("dialogName"));
+        if(EditorGUI.EndChangeCheck())serializedObject.ApplyModifiedPropertiesWithoutUndo();
+        y+=h;
         SerializedProperty p=serializedObject.FindProperty("dialogs");
         for (int i = 0; i < p.arraySize; i++)
         {
@@ -147,11 +149,12 @@ public class DialogEditor : Editor
             }
             y=sy+h;
             x-=20;
-            GUI.Label(new Rect(x,y,w,h),"Text");
+            GUI.Label(new Rect(x,y,w,h),"Text Key");
+            y+=h;
             EditorGUI.BeginChangeCheck();
-            EditorGUI.PropertyField(new Rect(x,y,w,h*3),entry.FindPropertyRelative("text"),GUIContent.none);
+            EditorGUI.PropertyField(new Rect(x,y,w,h),entry.FindPropertyRelative("text"),GUIContent.none);
             if(EditorGUI.EndChangeCheck())entry.serializedObject.ApplyModifiedPropertiesWithoutUndo();
-            y+=h*3;
+            y+=h;
         }
         //y+=h;
         if(prop.isExpanded && GUI.Button(new Rect(x,y,w,h),"Add Speech")){

@@ -4,7 +4,8 @@ public class Grabber : EnemyBase {
 	private Ship grabed;
 	private float timer;
 	private Core core;
-	private Vector3 vector = new Vector3(),local;
+	float vector;
+	Vector3 local;
 	BulletPath path;
 	static BulletPath[] paths;
 	Vector3 position;
@@ -62,10 +63,10 @@ public class Grabber : EnemyBase {
 		}
 		else {
 			core.Min(Time.deltaTime);
-			vector.Set(0,0,Mathf.PingPong(Time.time*100,45f));
+			vector=Mathf.PingPong(Time.time*100,45f);
 		}
-		armL.localEulerAngles=vector;
-		armR.localEulerAngles=-vector;
+		armL.localRotation=Quaternion.Euler(0,0,vector);
+		armR.localRotation=Quaternion.Euler(0,0,-vector);
 	}
 	void Shoot()
 	{
@@ -78,6 +79,14 @@ public class Grabber : EnemyBase {
 		bu.Timer(3);
 		go.transform.position=transform.position;
 		go.transform.up=GetPlayer().position-go.transform.position;
+	}
+	void OnDisable()
+	{
+		if(grabed){
+			grabed.transform.parent=null;
+			grabed.transform.rotation=Quaternion.identity;
+			grabed=null;
+		}
 	}
 	protected override void Die()
 	{
@@ -95,7 +104,7 @@ public class Grabber : EnemyBase {
 			grabed=s;
 			grabed.transform.parent=transform;
 			timer=3;
-			vector.Set(0,0,-30f);
+			vector=-30f;
 		}else 
 			base.OnCollisionEnter2D(col);
 	}
