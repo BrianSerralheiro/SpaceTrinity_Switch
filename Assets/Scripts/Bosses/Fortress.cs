@@ -67,7 +67,7 @@ public class Fortress : EnemyBase
     }
     void Dying(){
         transform.Translate(0,-2*Time.deltaTime,0);
-		if(transform.position.y<-Scaler.sizeY/2)Loader.Scene("SelectionTest");
+		if(transform.position.y<-Scaler.sizeY/2)Loader.Scene("MenuSelection");
 		if(Time.time%1f<0.1f)ParticleManager.Emit(1,transform.position+Random.onUnitSphere*transform.localScale.sqrMagnitude,1);
     }
     protected override void Die()

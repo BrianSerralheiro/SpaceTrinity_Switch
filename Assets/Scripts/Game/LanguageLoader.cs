@@ -1,17 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 namespace LanguagePack{
 public static class Language
 {
     public static Dictionary<string,string> menu=new Dictionary<string, string>(),dialog=new Dictionary<string, string>();
-    public static int id=1;
+    public static int id{
+        set{
+            internalid=value;
+            if(internalid>1)internalid=0;
+            if(internalid<0)internalid=1;
+            LoadMenu();
+            UITranslatorRT.Update();
+            }
+        get{return internalid;}
+    }
+    static  int internalid=1;
     static string menupath="Assets/LanguagePack/menu",dialogpath="Assets/LanguagePack/";
     public static void LoadMenu(){
-        StreamReader reader=new StreamReader(menupath+id+".json");
         menu.Clear();
+        StreamReader reader;
+        try
+        {
+            reader=new StreamReader(menupath+id+".json");
+        }
+        catch (System.Exception)
+        {
+            return;
+        }
         string s=reader.ReadLine();
         while(s!=null)
         {
@@ -22,8 +38,6 @@ public static class Language
         reader.Close();
     }
     public static string GetMenu(string s){
-        //MUDAR DE LUGAR O LOAD
-        if(menu.Count==0)LoadMenu();
         string r;
         if(menu.TryGetValue(s,out r))s=r;
         return s;
@@ -45,6 +59,12 @@ public static class Language
         if(dialog.TryGetValue(key,out s))return s;
         Debug.LogError("No dialog found to key "+key);
         return key;
+    }
+    public static void Save(){
+        PlayerPrefs.SetInt("language",internalid);
+    }
+    public static void Load(){
+        internalid=PlayerPrefs.GetInt("language");
     }
 }
 }

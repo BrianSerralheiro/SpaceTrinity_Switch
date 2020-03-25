@@ -223,7 +223,7 @@ public class Squid : EnemyBase {
 	}
 	void Dying(){
 		timer-=Time.deltaTime;
-		if(timer<0)Loader.Scene("SelectionTest");
+		if(timer<0)Loader.Scene("MenuSelection");
 		if(Time.time%1f<0.1f)ParticleManager.Emit(1,transform.position+Random.onUnitSphere,1,5);
 	}
 	private new void OnCollisionEnter2D(Collision2D col)

@@ -29,6 +29,6 @@ public class PauseMenu : MonoBehaviour
 	public void Exit()
 	{	
 		Ship.paused = false;
-		Loader.Scene("SelectionTest");
+		Loader.Scene("MenuSelection");
 	}
 }

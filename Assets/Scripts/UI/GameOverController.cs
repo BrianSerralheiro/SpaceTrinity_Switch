@@ -79,6 +79,6 @@ public class GameOverController : MonoBehaviour
 	{
 		SoundManager.PlayEffects(0);
 		Ship.paused = false;
-		Loader.Scene("SelectionTest");
+		Loader.Scene("MenuSelection");
 	}
 }

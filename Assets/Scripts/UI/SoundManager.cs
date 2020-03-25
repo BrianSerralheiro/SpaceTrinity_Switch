@@ -124,7 +124,7 @@ public class SoundManager : MonoBehaviour
 	}
 	public static void Load()
 	{
-		if(PlayerPrefs.HasKey("volumeSFX"))volumeSFX =PlayerPrefs.GetFloat("volumeSFX");
-		if(PlayerPrefs.HasKey("volumeSNG")) volumeSNG=PlayerPrefs.GetFloat("volumeSNG");
+		if(PlayerPrefs.HasKey("volumeSFX"))volumeSFX=PlayerPrefs.GetFloat("volumeSFX");
+		if(PlayerPrefs.HasKey("volumeSNG"))volumeSNG=PlayerPrefs.GetFloat("volumeSNG");
 	}
 }
