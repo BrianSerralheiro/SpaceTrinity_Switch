@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using System.IO;
 namespace LanguagePack{
@@ -9,7 +10,7 @@ public static class Language
     public static int id=1;
     static string menupath="Assets/LanguagePack/menu",dialogpath="Assets/LanguagePack/";
     public static void LoadMenu(){
-        StreamReader reader=new StreamReader(menupath+id+".txt");
+        StreamReader reader=new StreamReader(menupath+id+".json");
         menu.Clear();
         string s=reader.ReadLine();
         while(s!=null)
@@ -21,13 +22,15 @@ public static class Language
         reader.Close();
     }
     public static string GetMenu(string s){
+        //MUDAR DE LUGAR O LOAD
+        if(menu.Count==0)LoadMenu();
         string r;
         if(menu.TryGetValue(s,out r))s=r;
         return s;
     }
     public static void LoadDialog(string name){
         dialog.Clear();
-        StreamReader reader=new StreamReader(dialogpath+name+id+".txt");
+        StreamReader reader=new StreamReader(dialogpath+name+id+".json");
         string s=reader.ReadLine();
         while(s!=null)
         {

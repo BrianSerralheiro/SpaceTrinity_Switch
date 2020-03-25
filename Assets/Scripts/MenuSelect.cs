@@ -63,11 +63,11 @@ public class MenuSelect : MonoBehaviour
     }
 	void OnEnable()
 	{
+		if(displayName)displayName.text=name;
 		if(opt.selection==Menuoptions.SelectionType.None)return;
 		OnValueChanged();
 		if(opt.selection==Menuoptions.SelectionType.Character && PlayerInput.Conected(1))OnValueChanged2();
 		selector2?.gameObject.SetActive(PlayerInput.Conected(1));
-		if(displayName)displayName.text=name;
 		analogDisplay.gameObject.SetActive(!string.IsNullOrEmpty(analog));
 		analogDisplay.text=analog;
 		Adisplay.gameObject.SetActive(!string.IsNullOrEmpty(A));

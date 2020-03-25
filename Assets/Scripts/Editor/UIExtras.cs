@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using LanguagePack;
 public class UIExtras
 {
 	[MenuItem("UI/Parent size")]
@@ -79,6 +80,21 @@ public class UIExtras
 			ClearObject(list,go.transform.GetChild(i).gameObject);
 		}
 	}
+	[MenuItem("UI/Add UItranslator")]
+	static void AddComponent(){
+        Scene currentScene = SceneManager.GetActiveScene();
+        GameObject[] rootObjects = currentScene.GetRootGameObjects();
+		foreach (GameObject g in rootObjects)
+		{
+			foreach (Text t in g.GetComponentsInChildren<Text>())
+			{
+				if(!t.GetComponent<UITranslator>())t.gameObject.AddComponent<UITranslator>();
+			}
+		}
+		EditorSceneManager.MarkSceneDirty(currentScene);
+
+	}
+
 }
 
 public class FontWindows : EditorWindow
