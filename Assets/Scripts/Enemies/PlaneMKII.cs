@@ -3,13 +3,15 @@
 public class PlaneMKII : EnemyBase
 {
     Transform[] helix=new Transform[3];
-    bool charge;
+    int charge = 3;
     bool right;
     static Sprite bomb;
+    float time;
     public override void SetSprites(EnemyInfo ei)
 	{
         hp=30;
         points=60;
+        time = Time.time + 1;
         for (int i = 0; i < 3; i++)
         {
             GameObject go =new GameObject("helix");
@@ -29,10 +31,11 @@ public class PlaneMKII : EnemyBase
 	{
 		if(Ship.paused) return;
 		base.Update();
-        if(transform.position.y<Scaler.sizeY/2+2){
-            transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,right?90:-90),60*Time.deltaTime);
-            if(!charge)Bomb();
+        if(charge <= 0)
+        {
+            transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,right?90:-90),60*Time.deltaTime);  
         }
+        if(time< Time.time && charge>0)Bomb();
         transform.Translate(0,-Time.deltaTime*3,0);
         foreach (Transform t in helix)
         {
@@ -42,7 +45,8 @@ public class PlaneMKII : EnemyBase
     }
     void Bomb()
 	{
-		charge=true;
+		--charge;
+        time = Time.time + 1;
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=bomb;
 		go.transform.position=transform.position;

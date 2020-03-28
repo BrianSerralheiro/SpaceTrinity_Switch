@@ -3,7 +3,7 @@
 public class Plane : EnemyBase
 {
     Transform[] helix=new Transform[3];
-    int bullets=5,shotId;
+    int bullets=6,shotId;
     float time;
     bool right;
     public override void SetSprites(EnemyInfo ei)
