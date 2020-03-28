@@ -16,9 +16,9 @@ public class Baloon : EnemyBase
 		base.Update();
         transform.Translate(0,-Time.deltaTime*4,0);
         if(rotation>0)transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,rotation*Time.deltaTime);
-        transform.localScale=Vector3.MoveTowards(transform.localScale,scale,Time.deltaTime/10);
+        transform.localScale=Vector3.MoveTowards(transform.localScale,scale,Time.deltaTime * 0.5f);
         if(transform.localScale==scale){
-            if(scale==Vector3.one*0.9f)scale=Vector3.one*1.1f;
+            if(scale==Vector3.one*0.9f)scale=Vector3.one*1.3f;
             else scale=Vector3.one*0.9f;
         }
         if(transform.position.y<-Scaler.sizeY-2)Die();

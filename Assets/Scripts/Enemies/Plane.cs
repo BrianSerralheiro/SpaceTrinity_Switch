@@ -30,7 +30,7 @@ public class Plane : EnemyBase
 		if(Ship.paused) return;
 		base.Update();
         if(time<Time.time && bullets>0 && transform.position.y<Scaler.sizeY/2+2)Shot();
-        if(bullets<=0)transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,right?-35:35,right?90:-90),60*Time.deltaTime);
+        if(bullets<=0)transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,right?90:-90),60*Time.deltaTime);
         transform.Translate(0,-Time.deltaTime*3,0);
         foreach (Transform t in helix)
         {
@@ -49,7 +49,9 @@ public class Plane : EnemyBase
 		b.spriteID=shotId;
         b.bulleSpeed = 8;
 		go.transform.position=transform.position+new Vector3(-0.5f+bullets%2,-1,0);
-		go.transform.up=-transform.up;
+		Vector3 v = GetPlayer(transform.position).position - transform.position;
+        v.z = 0;
+        go.transform.up=v;
         bullets--;
     }
 }

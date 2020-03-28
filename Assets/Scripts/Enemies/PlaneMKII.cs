@@ -30,7 +30,7 @@ public class PlaneMKII : EnemyBase
 		if(Ship.paused) return;
 		base.Update();
         if(transform.position.y<Scaler.sizeY/2+2){
-            transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,right?-35:35,right?90:-90),60*Time.deltaTime);
+            transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,right?90:-90),60*Time.deltaTime);
             if(!charge)Bomb();
         }
         transform.Translate(0,-Time.deltaTime*3,0);
