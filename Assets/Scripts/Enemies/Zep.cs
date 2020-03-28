@@ -8,8 +8,8 @@ public class Zep : EnemyBase
     Vector3 scale=Vector3.one*0.9f;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=300;
-        points=200;
+        hp=120;
+        points=150;
         name+="big";
         fallSpeed=-2;
         time=Time.time+2;

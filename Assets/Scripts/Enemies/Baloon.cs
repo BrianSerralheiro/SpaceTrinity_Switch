@@ -7,8 +7,8 @@ public class Baloon : EnemyBase
     
 	public override void SetSprites(EnemyInfo ei)
 	{
-        hp=30;
-        points=50;
+        hp=20;
+        points=20;
     }
     new void Update () 
 	{

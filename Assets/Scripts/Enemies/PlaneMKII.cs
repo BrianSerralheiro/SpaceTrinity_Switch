@@ -8,8 +8,8 @@ public class PlaneMKII : EnemyBase
     static Sprite bomb;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=60;
-        points=100;
+        hp=30;
+        points=60;
         for (int i = 0; i < 3; i++)
         {
             GameObject go =new GameObject("helix");
@@ -33,7 +33,7 @@ public class PlaneMKII : EnemyBase
             transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,right?-35:35,right?90:-90),60*Time.deltaTime);
             if(!charge)Bomb();
         }
-        transform.Translate(0,-Time.deltaTime*6,0);
+        transform.Translate(0,-Time.deltaTime*3,0);
         foreach (Transform t in helix)
         {
             t.Rotate(0,0,90*Time.deltaTime,Space.Self);

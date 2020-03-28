@@ -2,11 +2,11 @@
 
 public class Ironfly : EnemyBase
 {
-    float time,variant=0.5f,angle;
+    float time,variant=1,angle;
     SpriteRenderer[] wings=new SpriteRenderer[4];
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=30;
+        hp=20;
         points=50;
         for (int i = 0; i < wings.Length; i++)
         {
@@ -27,7 +27,7 @@ public class Ironfly : EnemyBase
             time=Time.time+variant;
             transform.rotation=Quaternion.Euler(0,0,Random.Range(-15f,15f));
         }
-        if(time>Time.time)transform.Translate(0,-Time.deltaTime*12,0);
+        if(time>Time.time)transform.Translate(0,-Time.deltaTime*8,0);
         bool b=Time.time%0.4f<0.1f;
         foreach (SpriteRenderer rend in wings)
         {
