@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleManager : MonoBehaviour {
@@ -11,7 +10,10 @@ public class ParticleManager : MonoBehaviour {
 	static List<string> names=new List<string>();
 	void Awake()
 	{
-		if(manager)return;
+		if(manager){
+			Destroy(gameObject);
+			return;
+		}
 		DontDestroyOnLoad(gameObject);
 		manager=this;
 	}
@@ -38,13 +40,13 @@ public class ParticleManager : MonoBehaviour {
 		sys[i].transform.position=p+mod;
 		sys[i].transform.localScale=Vector3.one*s;
 		sys[i].Emit(c);
-		sys[i].transform.localScale=Vector3.one;
 	}
 	public static void Emit(int i,Transform t,int c)
 	{
 		sys[i].transform.forward=-t.up;
 		sys[i].transform.position=t.position+mod;
 		sys[i].transform.rotation=t.rotation;
+		sys[i].transform.localScale=Vector3.one;
 		sys[i].Emit(c);
 	}
 	public static void Emit(int i,Vector3 p,int c)
@@ -52,6 +54,7 @@ public class ParticleManager : MonoBehaviour {
 		if(sys==null)return;
 		sys[i].transform.up=up;
 		sys[i].transform.position=p+mod;
+		sys[i].transform.localScale=Vector3.one;
 		sys[i].Emit(c);
 	}
 }

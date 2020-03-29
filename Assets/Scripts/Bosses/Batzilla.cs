@@ -225,7 +225,7 @@ public class Batzilla : EnemyBase {
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
 		if(state!=State.slashing && state!=State.dead && state!=State.intro) base.OnCollisionEnter2D(col);
-		else ParticleManager.Emit(16,col.collider.transform.position,1);
+		else ParticleManager.Emit(3,col.collider.transform.position,1);
 	}
 	void Bat()
 	{

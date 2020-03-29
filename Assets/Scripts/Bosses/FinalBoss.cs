@@ -96,7 +96,7 @@ public class FinalBoss : EnemyBase {
 	{
 		if(col.otherCollider.name=="zap") return;
 		if(state!=State.intro && state!=State.flee && state!=State.dead) base.OnCollisionEnter2D(col);
-		else ParticleManager.Emit(16,col.collider.transform.position,1);
+		else ParticleManager.Emit(3,col.collider.transform.position,1);
 		if(damageTimer>0)Screen(1,0.5f);
 	}
 	public override void Position(int i)

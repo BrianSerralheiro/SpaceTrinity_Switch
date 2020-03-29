@@ -216,9 +216,9 @@ public class Fortress : EnemyBase
 	{
 		if(update!=Intro && update!=Dying) base.OnCollisionEnter2D(col);
 		else
-			ParticleManager.Emit(16,col.collider.transform.position,1);
+			ParticleManager.Emit(3,col.collider.transform.position,1);
         if(hp<1500 && cannon){
-            ParticleManager.Emit(0,cannon.position,1);
+            ParticleManager.Emit(1,cannon.position,1,1.5f);
             Destroy(cannon.gameObject);
             _renderer=GetComponent<SpriteRenderer>();
             update-=UpdateCannon;

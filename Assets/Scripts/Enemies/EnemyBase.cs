@@ -61,10 +61,10 @@ public class EnemyBase : MonoBehaviour {
 			i=bull.damage;
 			int.TryParse(bull.owner[7].ToString(),out killerid);
 		}
-		ParticleManager.Emit(1,col.collider.transform.position,1);
+		ParticleManager.Emit(2,col.collider.transform.position,1);
 		hp-=i;
 		if(hp<=0)Die();
-		killerid=1;
+		// killerid=1;
 		if(!damageEffect || damageTimer <= 0)
 		{
 			damageTimer = 1;

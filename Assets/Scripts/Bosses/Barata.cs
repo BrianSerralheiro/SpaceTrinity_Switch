@@ -195,6 +195,6 @@ public class Barata : EnemyBase {
 	{
 		if(vector.z>15 && update!=Dying) base.OnCollisionEnter2D(col);
 		else
-			ParticleManager.Emit(1,col.collider.transform.position,1);
+			ParticleManager.Emit(3,col.collider.transform.position,1);
 	}
 }

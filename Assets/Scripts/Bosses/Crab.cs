@@ -322,7 +322,7 @@ public class Crab : EnemyBase {
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
 		if(vectorB.y<-1.3f*1.5f && state!=State.dead) base.OnCollisionEnter2D(col);
-		else ParticleManager.Emit(16,col.collider.transform.position,1);
+		else ParticleManager.Emit(3,col.collider.transform.position,1);
 	}
 	public override void Position(int i)
 	{

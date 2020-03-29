@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Carrier : EnemyBase {
 	private float timer=-2f;
@@ -81,10 +79,8 @@ public class Carrier : EnemyBase {
 	}
 	protected override void Die()
 	{
+		killed=true;
 		base.Die();
-		for(int i = 0; i<10; i++)
-		{
-			ParticleManager.Emit(8,(Vector3)Random.insideUnitCircle*1.5f+transform.position+transform.up*Random.value*2,1);
-		}
+		ParticleManager.Emit(1,transform.position+transform.up*3,1,10f);
 	}
 }

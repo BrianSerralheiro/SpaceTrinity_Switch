@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Drone : EnemyBase {
 	private int id;
@@ -38,6 +36,7 @@ public class Drone : EnemyBase {
 		if(hp<=0 && !dropped)
 		{
 			dropped = true;
+			ParticleManager.Emit(0, transform.position,1);
 			EnemySpawner.points[killerid-1]+=points;
 			GameObject go = new GameObject("ItemDrop");
 			go.AddComponent<SpriteRenderer>();
