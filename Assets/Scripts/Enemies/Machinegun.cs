@@ -57,7 +57,7 @@ public class Machinegun : EnemyBase
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
         bu.bulleSpeed=8;
-        bu.Timer(5);
+        bu.Timer(8);
         bu.spriteID=shotId;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
