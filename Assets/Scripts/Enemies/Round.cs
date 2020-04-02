@@ -36,7 +36,6 @@ public class Round : EnemyBase
 			{
 				shoottimer = 0.2f;
 			}
-			
 			for(int i=0;i<4;i++){
 				Shoot(i);
 			}
@@ -52,7 +51,7 @@ public class Round : EnemyBase
 		bu.spriteID=shootId;
 		Vector3 v= new Vector3(i%2,i/2,0) *2 -Vector3.one;
 		go.transform.position=transform.position+v;
-		go.transform.eulerAngles=new Vector3(0,0,135+i*90)*(i<2?1:-1);
+		go.transform.rotation=Quaternion.Euler(0,0,((1-i/2)*90+45)*(i%2==0?1:-1));
 	}
 
 }

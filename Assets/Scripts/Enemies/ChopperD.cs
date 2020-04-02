@@ -10,7 +10,7 @@ public class ChopperD : EnemyBase
         go.transform.parent=transform;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
-        fallSpeed-=6;
+        fallSpeed=-8;
     }
     new void Update()
     {

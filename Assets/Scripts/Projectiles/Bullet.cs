@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
 	public static float bulletTime;
 	public static bool blink;
 	public int spriteID;
-	public int particleID = 2;
+	public int particleID = 4;
 	public float bulleSpeed=12.5f, maxSpeed, _time;
 	new protected SpriteRenderer renderer;
 	public static List<Sprite> sprites=new List<Sprite>();

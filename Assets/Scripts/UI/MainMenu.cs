@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
 	[SerializeField]
 	RectTransform selector,follow;
 	[SerializeField]
+	WorldInfo tutorial;
+	[SerializeField]
 	Slider music,sfx;
 	int id,sub,spd;
 	bool seleted;
@@ -77,9 +79,14 @@ public class MainMenu : MonoBehaviour
 			suboption=MainControl;
 		}
 		if(PlayerInput.GetButtomDown("shot")){
-			if(sub==0)Loader.Scene("Intro");
-			else suboption=MainControl;
-			follow=options[id];
+			if(sub==0){
+				Loader.Scene("WorldLoader");
+				EnemySpawner.world=tutorial;
+			}
+			else {
+				suboption=MainControl;
+				follow=options[id];
+			}
 		}
 		groups[id].anchorMin=Vector2.MoveTowards(groups[id].anchorMin,marks[id].anchorMin,Time.deltaTime);
 		groups[id].anchorMax=Vector2.MoveTowards(groups[id].anchorMax,marks[id].anchorMax,Time.deltaTime);
@@ -96,8 +103,10 @@ public class MainMenu : MonoBehaviour
 		}
 		if(PlayerInput.GetButtomDown("shot")){
 			if(sub==0)Loader.Scene("MenuSelection");
-			else suboption=MainControl;
-			follow=options[id];
+			else {
+				suboption=MainControl;
+				follow=options[id];
+			}
 		}
 		groups[id].anchorMin=Vector2.MoveTowards(groups[id].anchorMin,marks[id].anchorMin,Time.deltaTime);
 		groups[id].anchorMax=Vector2.MoveTowards(groups[id].anchorMax,marks[id].anchorMax,Time.deltaTime);
@@ -173,8 +182,10 @@ public class MainMenu : MonoBehaviour
 					EditorApplication.isPlaying=false;
 				#endif
 			}
-			else suboption=MainControl;
-			follow=options[id];
+			else {
+				suboption=MainControl;
+				follow=options[id];
+			}
 		}
 		groups[id].anchorMin=Vector2.MoveTowards(groups[id].anchorMin,marks[id].anchorMin,Time.deltaTime);
 		groups[id].anchorMax=Vector2.MoveTowards(groups[id].anchorMax,marks[id].anchorMax,Time.deltaTime);

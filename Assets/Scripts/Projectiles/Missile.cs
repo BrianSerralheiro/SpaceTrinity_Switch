@@ -2,6 +2,7 @@
 
 public class Missile : EnemyBase {
 	public bool release;
+	public float time;
 	public override void SetSprites(EnemyInfo ei)
 	{
 	}
