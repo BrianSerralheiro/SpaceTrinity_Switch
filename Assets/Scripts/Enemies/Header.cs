@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 
 public class Header : EnemyBase {
-	private int  prev=1;
-	private Vector3 rot;
+	private int  prev=1,shots=5;
+	private Vector3 position;
 	private float timer;
 	private Core eyes;
 	private Core core;
 	Del movement;
-	BulletPath path;
-	Vector3 position;
 	private static int shootId;
+	static Vector3[] dir={Vector3.left,Vector3.down,Vector3.right};
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=70;
@@ -25,21 +24,35 @@ public class Header : EnemyBase {
 		go.transform.localPosition=new Vector3(0,0.42f);
 		movement=Pathing;
 		shootId=ei.bulletsID[0];
-		path=(ei as PathEnemy).bulletPath;
 		fallSpeed=-4;
 	}
 	public override void Position(int i){
 		base.Position(i);
-		position=transform.position;
+		position=transform.position+dir[1]*3;
 	}
 	void Pathing(){
-		core.Min(Time.deltaTime);
 		eyes.Set(Mathf.PingPong(Time.time/2,1));
-		if(!stopMovement)transform.position=position+BulletPath.Next(ref path,position.x>0);
-		if(path.Finished()){
+		transform.position=Vector3.MoveTowards(transform.position,position,Time.deltaTime*4);
+		if(transform.position==position){
+			int i=0;
 			Shoot();
-			movement=SlowFall;
+			while (true)
+			{
+				i=Random.Range(0,3);
+				if(position.x<-Scaler.sizeX/2+4 &&  i==0)continue;
+				if(position.x>Scaler.sizeX/2-4 &&  i==2)continue;
+				if(i!=prev){
+					prev=i;
+					position+=dir[i]*4;
+					break;
+				}
+			}
+			if(shots<=0)movement=Flee;
 		}
+	}
+	void Flee(){
+		transform.Translate((transform.position.x>0?Time.deltaTime:-Time.deltaTime)*10,0,0);
+		if(Mathf.Abs(transform.position.x)>Scaler.sizeX/2+2)Die();
 	}
 	new void Update () {
 		if(Ship.paused) return;
@@ -50,7 +63,8 @@ public class Header : EnemyBase {
 	void Shoot()
 	{
 		core.Set(1);
-		SoundManager.PlayEffects(12, 0.5f, 0.8f);
+		shots--;
+		// SoundManager.PlayEffects(12, 0.5f, 0.8f);
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
@@ -60,7 +74,7 @@ public class Header : EnemyBase {
 		go.transform.position=transform.position;
 		Vector3 v=GetPlayer(transform.position).position-transform.position;
 		v.z=0;
-		go.transform.Rotate(Vector3.Cross(go.transform.up,v));
+		go.transform.up=v.normalized;
 	}
 
 }
