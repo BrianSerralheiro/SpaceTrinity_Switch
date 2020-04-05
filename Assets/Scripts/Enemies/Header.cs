@@ -34,7 +34,7 @@ public class Header : EnemyBase {
 		eyes.Set(Mathf.PingPong(Time.time/2,1));
 		if(timer<Time.time)
 		{
-			transform.position=Vector3.MoveTowards(transform.position,position,Time.deltaTime*4);
+			transform.position=Vector3.MoveTowards(transform.position,position,Time.deltaTime*5);
 			if(transform.position==position){
 				int i=0;
 				Shoot();
@@ -45,7 +45,7 @@ public class Header : EnemyBase {
 					if(position.x>Scaler.sizeX/2-4 &&  i==2)continue;
 					if(i!=prev){
 						prev=i;
-						position+=dir[i]*4;
+						position+=dir[i]*6;
 						break;
 					}
 				}
