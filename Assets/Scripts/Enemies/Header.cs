@@ -32,26 +32,29 @@ public class Header : EnemyBase {
 	}
 	void Pathing(){
 		eyes.Set(Mathf.PingPong(Time.time/2,1));
-		transform.position=Vector3.MoveTowards(transform.position,position,Time.deltaTime*4);
-		if(transform.position==position){
-			int i=0;
-			Shoot();
-			while (true)
-			{
-				i=Random.Range(0,3);
-				if(position.x<-Scaler.sizeX/2+4 &&  i==0)continue;
-				if(position.x>Scaler.sizeX/2-4 &&  i==2)continue;
-				if(i!=prev){
-					prev=i;
-					position+=dir[i]*4;
-					break;
+		if(timer<Time.time)
+		{
+			transform.position=Vector3.MoveTowards(transform.position,position,Time.deltaTime*4);
+			if(transform.position==position){
+				int i=0;
+				Shoot();
+				while (true)
+				{
+					i=Random.Range(0,3);
+					if(position.x<-Scaler.sizeX/2+4 &&  i==0)continue;
+					if(position.x>Scaler.sizeX/2-4 &&  i==2)continue;
+					if(i!=prev){
+						prev=i;
+						position+=dir[i]*4;
+						break;
+					}
 				}
+				if(shots<=0)movement=Flee;
 			}
-			if(shots<=0)movement=Flee;
 		}
 	}
 	void Flee(){
-		transform.Translate((transform.position.x>0?Time.deltaTime:-Time.deltaTime)*10,0,0);
+		transform.Translate((transform.position.x>0?Time.deltaTime:-Time.deltaTime)*5,0,0);
 		if(Mathf.Abs(transform.position.x)>Scaler.sizeX/2+2)Die();
 	}
 	new void Update () {
@@ -62,6 +65,7 @@ public class Header : EnemyBase {
 	}
 	void Shoot()
 	{
+		timer = Time.time + 0.5f;
 		core.Set(1);
 		shots--;
 		// SoundManager.PlayEffects(12, 0.5f, 0.8f);

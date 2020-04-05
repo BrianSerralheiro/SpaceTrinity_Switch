@@ -115,8 +115,9 @@ public class Barata : EnemyBase {
 		crystal.Set(0);
 		transform.Translate(0,-Time.deltaTime*3,0,Space.World);
 		transform.Rotate(0,0,Time.deltaTime*3);
-		ParticleManager.Emit(8,(Vector3)Random.insideUnitCircle*2+transform.position,1);
-		if(transform.position.y<-Scaler.sizeY-5){
+		ParticleManager.Emit(1,transform.position,1);
+		if(transform.position.y<-Scaler.sizeY-5)
+		{
 			Destroy(gameObject);
 			EnemySpawner.boss=false;
 			SoundManager.Play(3);
