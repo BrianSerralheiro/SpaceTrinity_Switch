@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Header : EnemyBase {
 	private int  prev=1,shots=5;
@@ -6,6 +7,7 @@ public class Header : EnemyBase {
 	private float timer;
 	private Core eyes;
 	private Core core;
+	List<Transform> headers=new List<Transform>();
 	Del movement;
 	private static int shootId;
 	static Vector3[] dir={Vector3.left,Vector3.down,Vector3.right};
@@ -25,6 +27,9 @@ public class Header : EnemyBase {
 		movement=Pathing;
 		shootId=ei.bulletsID[0];
 		fallSpeed=-4;
+		CircleCollider2D cir=gameObject.AddComponent<CircleCollider2D>();
+		cir.radius=3;
+		cir.isTrigger=true;
 	}
 	public override void Position(int i){
 		base.Position(i);
@@ -43,6 +48,19 @@ public class Header : EnemyBase {
 					i=Random.Range(0,3);
 					if(position.x<-Scaler.sizeX/2+4 &&  i==0)continue;
 					if(position.x>Scaler.sizeX/2-4 &&  i==2)continue;
+					foreach (Transform t in headers)
+					{
+						if(i==0 && t.position.x<transform.position.x){
+							prev=0;
+							i=1;
+							break;
+						}
+						if(i==2 && t.position.x>transform.position.x){
+							prev=0;
+							i=1;
+							break;
+						}
+					}
 					if(i!=prev){
 						prev=i;
 						position+=dir[i]*6;
@@ -56,6 +74,14 @@ public class Header : EnemyBase {
 	void Flee(){
 		transform.Translate((transform.position.x>0?Time.deltaTime:-Time.deltaTime)*5,0,0);
 		if(Mathf.Abs(transform.position.x)>Scaler.sizeX/2+2)Die();
+	}
+	void OnTriggerExit2D(Collider2D col)
+	{
+		headers.Remove(col.transform);
+	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.GetComponent<Header>())headers.Add(col.transform);
 	}
 	new void Update () {
 		if(Ship.paused) return;
