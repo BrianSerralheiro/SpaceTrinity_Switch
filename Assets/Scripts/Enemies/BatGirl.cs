@@ -16,7 +16,7 @@ public class BatGirl : EnemyBase {
 	private int count;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=180;
+		hp=120;
 		name+="big";
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=150;
@@ -40,9 +40,11 @@ public class BatGirl : EnemyBase {
 		movement=Fall;
 		movement+=UpdateSpawn;
 	}
-	void Fall(){
+	void Fall()
+	{
 		transform.Translate(0,-Time.deltaTime*2,0);
-		if(transform.position.y<0 && movement.GetInvocationList().Length>1){
+		if(transform.position.y<Scaler.sizeY / 10 && movement.GetInvocationList().Length>1)
+		{
 			movement=UpdateSpawn;
 			count=2;
 		}
