@@ -43,7 +43,7 @@ public class BatGirl : EnemyBase {
 	void Fall()
 	{
 		transform.Translate(0,-Time.deltaTime*2,0);
-		if(transform.position.y<Scaler.sizeY / 10 && movement.GetInvocationList().Length>1)
+		if(transform.position.y<Scaler.sizeY / 12 && movement.GetInvocationList().Length>1)
 		{
 			movement=UpdateSpawn;
 			count=2;

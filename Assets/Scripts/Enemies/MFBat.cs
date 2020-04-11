@@ -56,7 +56,7 @@ public class MFBat : EnemyBase {
 		go.transform.localScale=Vector3.right*3+Vector3.up*2;
 		sprite=0.3f;
 		_renderer.sprite=bats[2];
-		timer=1.4f;
+		timer=1.5f;
 		//go.transform.localScale=Vector3.one*2;
 	}
 }
