@@ -11,7 +11,7 @@ public class MFBat : EnemyBase {
 	Del update;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=50;
+		hp=20;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=100;
 		shootId=ei.bulletsID[0];
