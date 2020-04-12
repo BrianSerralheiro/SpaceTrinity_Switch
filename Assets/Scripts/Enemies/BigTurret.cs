@@ -8,7 +8,7 @@ public class BigTurret : EnemyBase
     Transform turret;
 	public override void SetSprites(EnemyInfo ei){
         hp=30;
-        GameObject go=new GameObject("enemybiggr");
+        GameObject go=new GameObject("enemybigr");
         go.transform.parent=transform;
         turret=go.transform;
         turret.localPosition=Vector3.zero+Vector3.back/10;

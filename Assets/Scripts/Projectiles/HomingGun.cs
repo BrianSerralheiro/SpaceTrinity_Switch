@@ -23,7 +23,7 @@ public class HomingGun : Gun
 	{
         if(!gameObject.activeSelf || shotTimer > 0)return;
 		shotTimer = fireRate;
-		ParticleManager.Emit(17,transform.position,1);
+		// ParticleManager.Emit(17,transform.position,1);
 		GameObject go=new GameObject("playerbullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId+((int)Time.time%4)];
 		go.AddComponent<BoxCollider2D>();
