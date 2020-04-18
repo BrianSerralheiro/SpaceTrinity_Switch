@@ -12,7 +12,7 @@ public class MagTrap : EnemyBase
     static float rad;
     public override void SetSprites(EnemyInfo ei)
     {
-        hp=60;
+        hp=40;
         points=40;
         circle=gameObject.AddComponent<CircleCollider2D>();
         for (int i = 0; i < 3; i++)
