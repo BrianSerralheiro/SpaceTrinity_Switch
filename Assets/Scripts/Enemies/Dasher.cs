@@ -8,7 +8,7 @@ public class Dasher : EnemyBase
     {
         hp=20;
         points=60;
-        fallSpeed=-8;
+        fallSpeed=-6;
         trailID=ei.particleID[0];
     }
     new void Update()
