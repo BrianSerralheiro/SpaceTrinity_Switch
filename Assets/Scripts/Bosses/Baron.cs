@@ -67,6 +67,14 @@ public class Baron : EnemyBase
     void Bombing(){
         rotation=270;
         transform.Translate(0,-Time.deltaTime*8,0);
+        if(time<Time.time){
+            GameObject g=new GameObject("enemy");
+            g.AddComponent<CircleCollider2D>().radius=3;
+            g.transform.position=_renderer.transform.position+Vector3.forward/5;
+            ParticleManager.Emit(0,g.transform.position,1,2);
+            time=Time.time+0.8f;
+            Destroy(g,0.6f);
+        }
         if(transform.position.y<-Scaler.sizeY-3){
             transform.position=Vector3.up*(Scaler.sizeY+2);
             time=Time.time+2;

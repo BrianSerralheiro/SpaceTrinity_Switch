@@ -20,8 +20,12 @@ public class PathWindow : EditorWindow
         wantsMouseMove=true;
         if(property==null)return;
         SerializedProperty nodes=property.FindPropertyRelative("nodes");
-        SerializedProperty curves=property.FindPropertyRelative("curves");
-        
+        if(Event.current.isScrollWheel){
+            limit.y+=Event.current.delta.y;
+            limit.x+=Event.current.delta.y;
+            mid=limit/2;
+            Repaint();
+        }            
         Vector3 proportion=new Vector3(position.width/limit.x,position.height/limit.y);
         // for (int j = 0; j < limit.x && !toggle; j++)
         // {
@@ -33,16 +37,14 @@ public class PathWindow : EditorWindow
         GUILayout.BeginHorizontal();
             if(GUILayout.Button("Clear")){
                 nodes.ClearArray();
-                curves.ClearArray();
                 nodes.serializedObject.ApplyModifiedProperties();
             }
             toggle=EditorGUILayout.Toggle("Show fields",toggle);
-
+            EditorGUILayout.LabelField("Scale "+(int)limit.x+"X");
         GUILayout.EndHorizontal();
         if(toggle){
             scroll=EditorGUILayout.BeginScrollView(scroll,false,false);
             EditorGUILayout.PropertyField(nodes,true);
-            EditorGUILayout.PropertyField(curves,true);
             nodes.serializedObject.ApplyModifiedProperties();
             EditorGUILayout.EndScrollView();
         }
@@ -50,6 +52,7 @@ public class PathWindow : EditorWindow
         Vector3 v1;
         int i;
         bool draging=Event.current.type==EventType.MouseDown && Event.current.button==0;
+        
         if(Event.current.type==EventType.MouseUp && Event.current.button==0 && dragID>=0){
             nodes.GetArrayElementAtIndex(dragID).vector3Value=Round(nodes.GetArrayElementAtIndex(dragID).vector3Value);
             dragID=-1;
@@ -62,6 +65,7 @@ public class PathWindow : EditorWindow
                 dragID=i;
             else if(dragID==i){
                 v1=Inv(Div(Event.current.mousePosition,proportion)-mid);
+                v1=Round(v1);
                 nodes.GetArrayElementAtIndex(i).vector3Value=v1;
                 Repaint();
             }
@@ -72,14 +76,12 @@ public class PathWindow : EditorWindow
         }
         if(dragID==-1 && Event.current.type==EventType.MouseUp && Event.current.button==1){
             nodes.InsertArrayElementAtIndex(nodes.arraySize);
-            curves.InsertArrayElementAtIndex(curves.arraySize);
             nodes.GetArrayElementAtIndex(nodes.arraySize-1).vector3Value=Round(Inv(Div(Event.current.mousePosition,proportion)-mid));
             Repaint();
             nodes.serializedObject.ApplyModifiedProperties();
         }
         if(dragID!=-1 && Event.current.keyCode==KeyCode.X){
             nodes.DeleteArrayElementAtIndex(dragID);
-            curves.DeleteArrayElementAtIndex(dragID);
             nodes.serializedObject.ApplyModifiedProperties();
             dragID=-1;
         }
@@ -90,8 +92,8 @@ public class PathWindow : EditorWindow
         return v;
     }
     Vector3 Round(Vector3 v){
-        v.x=(int)((v.x+0.05f)*10)/10f;
-        v.y=(int)((v.y+0.05f)*10)/10f;
+        v.x=(int)((v.x)*10)/10f;
+        v.y=(int)((v.y)*10)/10f;
         return v;
     }
     bool MouseAround(Vector3 v){

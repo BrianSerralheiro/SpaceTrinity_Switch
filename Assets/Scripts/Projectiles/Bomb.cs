@@ -6,9 +6,11 @@ public class Bomb : EnemyBase {
 	private Vector3 pos;
 	private Vector3 aim;
 	private float speed=2;
-	public override void SetSprites(EnemyInfo ei)
+	int explosionID;
+	public void Set(int h,int id)
 	{
-		hp=5;
+		hp=h;
+		explosionID=id;
 		pos=transform.position;
 		aim=(GetPlayer(pos).position-pos).normalized*20+pos;
 	}
@@ -32,7 +34,7 @@ public class Bomb : EnemyBase {
 	protected override void Die()
 	{
 		Destroy(gameObject);
-		ParticleManager.Emit(10,transform.position,1);
+		ParticleManager.Emit(1,transform.position,1,0.5f);
 	}
 	private void Explode()
 	{
@@ -43,6 +45,6 @@ public class Bomb : EnemyBase {
 		go.AddComponent<BoxCollider2D>().size=new Vector2(0.5f,2.5f);
 		go.AddComponent<BoxCollider2D>().size=new Vector2(2.5f,0.5f);
 		Destroy(go,0.3f);
-		ParticleManager.Emit(11,transform,1);
+		ParticleManager.Emit(explosionID,transform.position,1,2);
 	}
 }

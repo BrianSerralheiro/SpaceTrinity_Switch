@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bomber : EnemyBase {
 	private float timer=4;
 	private Vector3 local=new Vector3(-3.5f,-0.2f);
-	private Sprite bomb;
+	private static Sprite bomb;
+	int explosionID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
 		name+="big";
 		hp=200;
+		explosionID=ei.particleID[0];
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		bomb=ei.sprites[1];
 	}
@@ -38,7 +38,7 @@ public class Bomber : EnemyBase {
 		go.transform.parent=transform;
 		go.transform.localPosition=local;
 		go.transform.parent=null;
-		go.AddComponent<Bomb>().SetSprites(null);
+		go.AddComponent<Bomb>().Set(5,explosionID);
 	}
 
 	protected override void Die()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MagTrap : EnemyBase
 {
@@ -57,7 +55,7 @@ public class MagTrap : EnemyBase
             }
         }
         if(timer==0){
-            if(Vector3.Distance(GetPlayer(transform.position).position,transform.position)<3)timer=1;
+            if(Vector3.Distance(GetPlayer(transform.position).position,transform.position)<6)timer=1;
         }
         else
         {

@@ -6,19 +6,29 @@ public struct BulletPath
     public float speed;
     private Vector3 point;
     public Vector3[] nodes;
-    public float[] curves;
     private static float rad=90f*Mathf.Deg2Rad;
     public BulletPath Set(float s,Vector3[] n){
         speed=s;
-        nodes=n;
-        curves=new float[n.Length];
+        nodes=new Vector3[n.Length];
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i]=n[i];
+        }
         return this;
     }
     public void Next(){
         nodeID++;
     }
+    public static BulletPath Upscale(BulletPath path){
+        path=new BulletPath().Set(path.speed,path.nodes);
+        for (int i = 0; i < path.nodes.Length; i++)
+        {
+            path.nodes[i].x*=Scaler.sizeX/2;
+            path.nodes[i].y*=Scaler.sizeY;
+        }
+        return path;
+    }
     public static Vector3 Next(ref BulletPath path,bool b){
-        float c=path.GetCurve();
         Vector3 p=path.point;
         path.point=Calculate(path.point,path.GetNode(),path.speed*Time.deltaTime);
         Vector3 v=path.point;
@@ -29,12 +39,11 @@ public struct BulletPath
                f=path.speed*Time.deltaTime-f;
                return Recalculate(ref path,b,f);
             }
-        }else if(c!=0)v+=Calculate(path.point,path.PrevNode(),path.GetNode(),c);
+        }
         if(b)v.x*=-1;
         return v;
     }
     private static Vector3 Recalculate(ref BulletPath path,bool b,float s){
-        float c=path.GetCurve();
         Vector3 p=path.point;
         path.point=Calculate(path.point,path.GetNode(),s);
         Vector3 v=path.point;
@@ -45,7 +54,7 @@ public struct BulletPath
                f=s-f;
                return Recalculate(ref path,b,f);
             }
-        }else if(c!=0)v+=Calculate(path.point,path.PrevNode(),path.GetNode(),c);
+        }
         if(b)v.x*=-1;
         return v;
     }
@@ -71,9 +80,6 @@ public struct BulletPath
     public Vector3 GetNode(){
         return nodes[nodeID];
     }
-    private float GetCurve(){
-        return curves[nodeID];
-    }
     private Vector2 PrevNode(){
         if(nodeID==0)return Vector3.zero;
         return nodes[nodeID-1];
@@ -84,15 +90,6 @@ public struct BulletPath
     public void Restart(){
         nodeID=0;
         point=Vector3.zero;
-    }
-    public static Vector3 Calculate(Vector3 pos,Vector3 prev,Vector3 node,float c){
-        float h=Vector3.Distance(prev,node);
-        float d=Vector3.Distance(pos,prev);
-        float p=d/h;
-        p=Mathf.Sin(p*rad);
-        Vector3 v=node-prev;
-        v=new Vector3(-v.y,v.x,v.z)*p*c;
-        return v;
     }
     public static Vector3 Calculate(Vector3 pos,Vector3 node,float speed){
         return Vector3.MoveTowards(pos,node,speed);

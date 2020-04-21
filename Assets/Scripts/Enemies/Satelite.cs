@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Satelite : EnemyBase
 {
     static int shotID;
-    bool up;
+    bool up=true;
     float time;
     public override void SetSprites(EnemyInfo ei)
     {

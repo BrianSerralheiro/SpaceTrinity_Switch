@@ -47,7 +47,7 @@ public class EnemyBase : MonoBehaviour {
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
 	}
-	public void OnCollisionEnter2D(Collision2D col)
+	public virtual void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.gameObject.name.Contains("enemybullet")
 		|| col.gameObject.name.Contains("enemy")

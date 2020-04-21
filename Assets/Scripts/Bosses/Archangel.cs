@@ -132,7 +132,7 @@ public class Archangel : EnemyBase
             halo.gameObject.AddComponent<CircleCollider2D>().radius=1.2f;
         }
 		if(update!=Intro && update!=Dying)base.OnCollisionEnter2D(col);
-		else ParticleManager.Emit(16,col.collider.transform.position,1);
+		else ParticleManager.Emit(3,col.collider.transform.position,1);
         check?.Invoke();
 	}
     void Shooting(){
