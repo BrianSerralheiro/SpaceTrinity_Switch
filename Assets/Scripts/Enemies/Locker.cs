@@ -13,7 +13,7 @@ public class Locker : EnemyBase
     static int trailID;
     public override void SetSprites(EnemyInfo ei)
     {
-        hp=120;
+        hp=130;
         name+="big";
         points=200;
 		GameObject go=new GameObject("aim");

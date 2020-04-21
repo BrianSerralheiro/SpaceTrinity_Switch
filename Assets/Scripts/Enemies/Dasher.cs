@@ -6,8 +6,9 @@ public class Dasher : EnemyBase
     static int trailID;
     public override void SetSprites(EnemyInfo ei)
     {
-        hp=50;
-        fallSpeed=-12;
+        hp=20;
+        points=60;
+        fallSpeed=-6;
         trailID=ei.particleID[0];
     }
     new void Update()
