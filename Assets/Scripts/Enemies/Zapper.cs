@@ -51,7 +51,7 @@ public class Zapper : EnemyBase {
 			transform.Translate(0,-Time.deltaTime,0,Space.World);
 			Vector3 v=GetPlayer(transform.position).position-transform.position;
             v.z=0;
-            v=Vector3.Cross(-transform.up,v);
+            v=Vector3.Cross(transform.up,v);
             transform.Rotate(v*Time.deltaTime*15);
 		}else if(timer >0.1f)
 		{

@@ -4,10 +4,12 @@ public class Slasher : EnemyBase {
 
 	private float timer = 3;
 	private Vector3 mod =new Vector3(0,-1f,0.1f);
+	static int shotID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
 		hp=90;
+		shotID=ei.bulletsID[0];
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 	}
 
@@ -30,9 +32,9 @@ public class Slasher : EnemyBase {
 	void Shoot()
 	{
 		GameObject go = new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[16];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotID];
 		go.AddComponent<BoxCollider2D>();
-		go.AddComponent<Slash>().spriteID=16;
+		go.AddComponent<Slash>().spriteID=shotID;
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;

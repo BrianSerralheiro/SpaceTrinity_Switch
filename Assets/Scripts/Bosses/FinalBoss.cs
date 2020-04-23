@@ -28,12 +28,13 @@ public class FinalBoss : EnemyBase {
 	private SpriteRenderer zap;
 	private Transform final;
 	private Sprite[] screens;
-	private Sprite screen;
+	private Sprite screen,bomb;
 	private SpriteRenderer screenren;
 	private SpriteRenderer overlay;
 	private float screentimer;
 	Transform target;
 	public static bool last;
+	int shotID,slashID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		SoundManager.Play(last?2:3);
@@ -41,6 +42,9 @@ public class FinalBoss : EnemyBase {
 		BossWarning.Show();
 		damageEffect = true;
 		EnemySpawner.boss=true;
+		shotID=ei.bulletsID[0];
+		slashID=ei.bulletsID[2];
+		bomb=ei.sprites[4];
 		hp=1600;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		screens=SpriteBase.I.screens;
@@ -296,7 +300,7 @@ public class FinalBoss : EnemyBase {
 		}
 		else if(state==State.flee)
 		{
-			ParticleManager.Emit(10,(Vector3)Random.insideUnitCircle*2+transform.position,1);
+			ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*2+transform.position,1);
 			screenren.sprite=screens[4];
 			transform.Translate(Random.value*2*Time.deltaTime,Random.value*3*Time.deltaTime,0);
 			if(transform.position.y>Scaler.sizeY+2 || transform.position.x>Scaler.sizeX+3)
@@ -320,11 +324,11 @@ public class FinalBoss : EnemyBase {
 	{
 		SoundManager.PlayEffects(12, 0.1f, 0.5f);
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[14];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotID];
 		go.AddComponent<BoxCollider2D>();
 		Bullet b = go.AddComponent<Bullet>();
 		b.owner=name;
-		b.spriteID=14;
+		b.spriteID=shotID;
 		go.transform.position=transform.position+vec*(left ? 1 : -1)+mod;
 		go.transform.up=-transform.up;
 		go.transform.localScale=Vector3.one*2f;
@@ -336,9 +340,9 @@ public class FinalBoss : EnemyBase {
 	{
 		SoundManager.PlayEffects(16, 0.1f, 0.5f);
 		GameObject go = new GameObject("enemy");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[16];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[slashID];
 		go.AddComponent<BoxCollider2D>();
-		go.AddComponent<Slash>().spriteID=16;
+		go.AddComponent<Slash>().spriteID=slashID;
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
@@ -354,7 +358,7 @@ public class FinalBoss : EnemyBase {
 	void Bomb()
 	{
 		GameObject go = new GameObject("enemy");
-		//go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bomber[1];
+		go.AddComponent<SpriteRenderer>().sprite=bomb;
 		go.AddComponent<Bomb>();
 		go.transform.position=transform.position+vec*(left ? 1 : -1)+mod;
 		left=!left;

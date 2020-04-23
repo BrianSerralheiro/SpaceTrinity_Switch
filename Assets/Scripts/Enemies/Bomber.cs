@@ -43,10 +43,8 @@ public class Bomber : EnemyBase {
 
 	protected override void Die()
 	{
+		killed=true;
 		base.Die();
-		for(int i = 0; i<10; i++)
-		{
-			ParticleManager.Emit(9,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
-		}
+		ParticleManager.Emit(1,transform.position-transform.right*3,1,6);
 	}
 }
