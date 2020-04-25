@@ -109,7 +109,7 @@ public class Archangel : EnemyBase
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotId;
-            bu.bulleSpeed=10;
+            bu.bulletSpeed=10;
             bu.Timer(4);
             go.transform.position=halo.position-Vector3.forward/10;
             go.transform.rotation=Quaternion.Euler(0,0,i*30);

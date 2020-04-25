@@ -43,7 +43,7 @@ public class GravGun : Gun
 		bull.sizeDamage=damageBySize;
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
-        bull.bulleSpeed=bulletSpeed;
+        bull.bulletSpeed=bulletSpeed;
         bull.Size((int)timer);
 
 		go.transform.position=transform.position;

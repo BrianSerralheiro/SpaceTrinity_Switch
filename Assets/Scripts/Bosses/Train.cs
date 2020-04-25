@@ -165,7 +165,7 @@ public class Train : EnemyBase
         go.AddComponent<BoxCollider2D>();
         Bullet bu=go.AddComponent<Bullet>();
         bu.spriteID=shotID;
-        bu.bulleSpeed=12;
+        bu.bulletSpeed=12;
         bu.owner=name;
         go.transform.position=t.position-Vector3.forward/10;
         go.transform.up=-t.up;

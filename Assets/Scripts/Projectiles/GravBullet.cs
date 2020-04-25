@@ -12,7 +12,7 @@ public class GravBullet : Bullet
         if(Ship.paused) return;
         update?.Invoke();
         timer-=Time.deltaTime;
-		transform.Translate(0,Time.deltaTime*bulleSpeed,0);
+		transform.Translate(0,Time.deltaTime*bulletSpeed,0);
 		if(timer<=0)Destroy(gameObject);
     }
     public void Size(int i){

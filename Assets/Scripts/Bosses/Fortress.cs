@@ -231,7 +231,7 @@ public class Fortress : EnemyBase
         game.AddComponent<BoxCollider2D>();
         Bullet bu=game.AddComponent<Bullet>();
         bu.spriteID=shotId;
-        bu.bulleSpeed=12;
+        bu.bulletSpeed=12;
         bu.owner=name;
         game.transform.position=transform.position-Vector3.forward/10;
         game.transform.rotation=Quaternion.Euler(0,0,f);
@@ -245,7 +245,7 @@ public class Fortress : EnemyBase
             game.AddComponent<BoxCollider2D>();
             Bullet bu=game.AddComponent<Bullet>();
             bu.spriteID=shotBig;
-            bu.bulleSpeed=10;
+            bu.bulletSpeed=10;
             bu.owner=name;
             game.transform.position=cannon.position-cannon.up*5+(flag?cannon.right:-cannon.right)-Vector3.forward/10;
             flag=!flag;
@@ -260,7 +260,7 @@ public class Fortress : EnemyBase
         game.AddComponent<BoxCollider2D>();
         Bullet bu=game.AddComponent<Bullet>();
         bu.spriteID=shotBig;
-        bu.bulleSpeed=8;
+        bu.bulletSpeed=8;
         bu.owner=name;
         game.transform.position=transform.position-Vector3.up*4-Vector3.forward/10;
         game.transform.localScale=Vector3.one*5;

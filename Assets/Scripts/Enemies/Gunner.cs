@@ -40,7 +40,7 @@ public class Gunner : EnemyBase
         go.transform.position=transform.position-transform.up;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
-        bu.bulleSpeed=10;
+        bu.bulletSpeed=10;
         bu.Timer(8);
         bu.spriteID=shotID;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotID];

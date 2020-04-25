@@ -61,7 +61,7 @@ public class Chopper : EnemyBase
         go.transform.position=transform.position-transform.up;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
-        bu.bulleSpeed=10;
+        bu.bulletSpeed=10;
         bu.spriteID=shotId;
         bu.Timer(5);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];

@@ -47,7 +47,7 @@ public class Plane : EnemyBase
 		Bullet b= go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shotId;
-        b.bulleSpeed = 8;
+        b.bulletSpeed = 8;
 		go.transform.position=transform.position+new Vector3(-0.5f+bullets%2,-1,0);
 		Vector3 v = GetPlayer(transform.position).position - transform.position;
         v.z = 0;

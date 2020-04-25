@@ -107,7 +107,7 @@ public class Ship : MonoBehaviour {
 		bull.damage=2;
 		// bull.particleID=particleID;
 		bull.spriteID=squidSprite;
-		bull.bulleSpeed=6;
+		bull.bulletSpeed=6;
 		go.transform.position=s.transform.position;
 	}
 	static void AddPlate(Ship s){

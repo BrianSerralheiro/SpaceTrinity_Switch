@@ -75,7 +75,7 @@ public class Cherubin : EnemyBase
             go.AddComponent<BoxCollider2D>();
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
-            bu.bulleSpeed=12;
+            bu.bulletSpeed=12;
             bu.spriteID=shotID;
             go.transform.position=transform.position+Vector3.left/2-Vector3.forward/10+Vector3.down*i;
             go.transform.up=Vector3.down;
@@ -93,7 +93,7 @@ public class Cherubin : EnemyBase
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotID;
-            bu.bulleSpeed=6;
+            bu.bulletSpeed=6;
             bu.Timer(4);
             go.transform.position=transform.position-Vector3.forward/10;
             go.transform.rotation=Quaternion.Euler(0,0,i*30);
@@ -109,7 +109,7 @@ public class Cherubin : EnemyBase
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner=name;
         bu.spriteID=shotID;
-        bu.bulleSpeed=12;
+        bu.bulletSpeed=12;
         go.transform.position=transform.position+Vector3.right/2-Vector3.forward/10;
         Vector3 vector=GetPlayer().position-go.transform.position;
         vector.z=0;

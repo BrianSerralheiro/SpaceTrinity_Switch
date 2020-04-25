@@ -58,7 +58,7 @@ public class SmallTurret : EnemyBase
         go.transform.position=turret.position-turret.up;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
-        bu.bulleSpeed=5;
+        bu.bulletSpeed=5;
         bu.spriteID=shotId;
         bu.particleID=particleID;
         bu.Timer(10);

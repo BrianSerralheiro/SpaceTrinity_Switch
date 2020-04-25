@@ -70,7 +70,7 @@ public class Tank : EnemyBase
         go.transform.localScale=Vector3.one*2;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
-        bu.bulleSpeed=12;
+        bu.bulletSpeed=12;
         bu.spriteID=shotId;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();

@@ -79,7 +79,7 @@ public class Miracle : EnemyBase
         Bullet bu=g.AddComponent<Bullet>();
         bu.owner=name;
         bu.Timer(10);
-        bu.bulleSpeed=5;
+        bu.bulletSpeed=5;
         g.transform.position=transform.position;
         g.transform.rotation=Quaternion.Euler(0,0,angle);
         tail.Rotate(0,0,90*Time.deltaTime);

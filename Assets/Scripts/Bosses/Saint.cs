@@ -171,7 +171,7 @@ public class Saint : EnemyBase
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotId;
-            bu.bulleSpeed=6;
+            bu.bulletSpeed=6;
             bu.Timer(8);
             go.transform.position=v-Vector3.forward/10;
             go.transform.rotation=Quaternion.Euler(0,0,-90+i*-18);

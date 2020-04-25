@@ -186,7 +186,7 @@ public class Barata : EnemyBase {
 			Bullet bu=go.AddComponent<Bullet>();
 			bu.owner=name;
 			bu.spriteID=shotId;
-			bu.bulleSpeed=8f;
+			bu.bulletSpeed=8f;
 			bu.Timer(10);
 			go.transform.position=crystal.transform.position;
 			go.transform.eulerAngles=new Vector3(0,0,90f+degrees*i);

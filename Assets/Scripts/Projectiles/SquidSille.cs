@@ -26,7 +26,7 @@ public class SquidSille : EnemyBase
 			Bullet bu=go.AddComponent<Bullet>();
 			bu.owner=name;
 			bu.spriteID=shotId;
-			bu.bulleSpeed=12;
+			bu.bulletSpeed=12;
 			bu.Timer(2);
 			go.transform.position=transform.position;
 			go.transform.eulerAngles=new Vector3(0,0,degrees*i);

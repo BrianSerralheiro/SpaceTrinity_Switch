@@ -56,7 +56,7 @@ public class Machinegun : EnemyBase
         go.transform.position=transform.position-turret.up;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
-        bu.bulleSpeed=8;
+        bu.bulletSpeed=8;
         bu.Timer(8);
         bu.spriteID=shotId;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];

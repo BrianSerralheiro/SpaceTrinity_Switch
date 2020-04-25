@@ -21,7 +21,7 @@ public struct SpecialInfo
         bu.damage=damage;
         bu.pierce=true;
         bu.enabled=false;
-        bu.bulleSpeed=0;
+        bu.bulletSpeed=0;
         bu.owner=t.name;
         bu.Timer(10);
         // renderer=gameObject.AddComponent<SpriteRenderer>();
