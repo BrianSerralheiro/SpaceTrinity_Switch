@@ -207,7 +207,7 @@ public class Brother : EnemyBase
         Jet(10);
         rocket.Rotate(0,0,25*Time.deltaTime);
         transform.Rotate(0,0,-15*Time.deltaTime);
-        SlowFall();
+        transform.Translate(0, fallSpeed*Time.deltaTime,0);
         rocket.Translate(0,-fallSpeed*Time.deltaTime,0);
         fallSpeed=Mathf.MoveTowards(fallSpeed,-4,Time.deltaTime*2);
         if(time<Time.time){
