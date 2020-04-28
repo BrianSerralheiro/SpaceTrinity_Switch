@@ -39,7 +39,7 @@ public class Bat : EnemyBase
 		wingR.eulerAngles=-vector;
 		Vector3 pos=transform.position;
 		pos=Vector3.MoveTowards(pos,target,Time.deltaTime*3);
-		if((target-pos).sqrMagnitude<0.2f){
+		if(target==pos){
 			if(count--==0)
 			target=new Vector3(pos.x,Scaler.sizeY+4,pos.z);
 			else

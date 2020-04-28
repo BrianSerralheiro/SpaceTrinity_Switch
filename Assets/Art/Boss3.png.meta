@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 21300000
-    second: body
+    second: legs
   - first:
       213: 21300002
     second: laser_boss
@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: 21300014
     second: wingR
+  - first:
+      213: -4572287376209641149
+    second: bosstorso
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -69,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,15 +125,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: body
+      name: legs
       rect:
         serializedVersion: 2
-        x: 1697
-        y: 1285
-        width: 513
-        height: 1019
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1744
+        y: 1158
+        width: 437
+        height: 702
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,10 +212,10 @@ TextureImporter:
       name: wingL
       rect:
         serializedVersion: 2
-        x: 1173
-        y: 456
-        width: 596
-        height: 810
+        x: 1177
+        y: 462
+        width: 592
+        height: 804
       alignment: 9
       pivot: {x: 0.9, y: 0.79}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,9 +234,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2154
-        y: 424
-        width: 594
-        height: 808
+        y: 425
+        width: 587
+        height: 807
       alignment: 9
       pivot: {x: 0.1, y: 0.79}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +250,31 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: bosstorso
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 1842
+        width: 509
+        height: 346
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58037e3bb9726024b8fd8b07648a90ab
+      internalID: -4572287376209641149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1a306247e48e9044a8f01e0e7a1e2eb3
     internalID: 0
     vertices: []
     indices: 

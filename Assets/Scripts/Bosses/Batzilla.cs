@@ -1,32 +1,26 @@
 ﻿using UnityEngine;
 
 public class Batzilla : EnemyBase {
-	private Transform body;
-	private Transform head;
-	private Transform wingL;
-	private Transform wingR;
-	private SpriteRenderer henderer;
-	private Core slash;
+	private Transform torso,head,target;
+	private Transform[] arms=new Transform[2];
+	private SpriteRenderer headRenderer,torsoRenderer;
 	private Core dark;
-	private BoxCollider2D slashcod;
-	private Vector3 slashscl=new Vector3(5000,0,0);
-	private Vector3 slashrot=new Vector3(0,0,0);
-	private float timer=1.5f;
-	private float time=0;
-	private Vector3 left=new Vector3(-0.64f,0.24f,-0.2f);
-	private Vector3 right=new Vector3(0.64f,0.24f,-0.2f);
+	private TrailRenderer[] slash=new TrailRenderer[2];
+	private Vector3 slashscl=new Vector3(5000,0,0),slashrot=new Vector3(0,0,0);
+	private float timer=1.5f,time=0,torsoAngle,armSpeed=30,offset;
+	private float[] armAngle=new float[2];
+	private Vector3 hor=new Vector3(2,0),ver=new Vector3(0,2,0.01f),armOffset=new Vector3(0,0.1f);
 	private EnemyInfo bat;
-	private int shotId;
-	enum State
-	{
-		intro,
-		wating,
-		shooting,
-		calling,
-		slashing,
-		dead
+	private int shotId,armID;
+	private bool colliders{
+		set{
+			foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
+			{
+				col.enabled=value;
+			}
+		}
 	}
-	State state;
+	Del update;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
@@ -35,40 +29,67 @@ public class Batzilla : EnemyBase {
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		hp=1800;
+		fallSpeed=0;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
-		GameObject go=new GameObject("body");
+		GameObject go=new GameObject("legs");
 		_renderer=go.AddComponent<SpriteRenderer>();
 		_renderer.sprite=ei.sprites[1];
-		body=go.transform;
+		go.transform.parent=transform;
+		go.transform.localPosition=Vector3.back/50;
+		Transform trans=go.transform;
+		go=new GameObject("torso");
+		torsoRenderer=go.AddComponent<SpriteRenderer>();
+		torsoRenderer.sprite=ei.sprites[2];
+		torso=go.transform;
+		torso.parent=trans;
+		go.transform.localPosition=new Vector3(0,-0.3f,0.01f);
 		go=new GameObject("head");
-		henderer=go.AddComponent<SpriteRenderer>();
-		henderer.sprite=ei.sprites[2];
+		headRenderer=go.AddComponent<SpriteRenderer>();
+		headRenderer.sprite=ei.sprites[3];
 		head=go.transform;
-		body.parent=head.parent=transform;
+		head.parent=torso;
+		go.transform.localPosition=new Vector3(0,3.7f,-0.01f);
 		go=new GameObject("eyes");
-		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[5];
-		go.transform.parent=head;
-		body.parent=head.parent=transform;
-		go.transform.localPosition=new Vector3(0,-0.29f,-0.1f);
-		go=new GameObject("wingL");
-		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
-		go.transform.parent=transform;
-		wingL=go.transform;
-		go=new GameObject("wingR");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
-		go.transform.parent=transform;
-		wingR=go.transform;
-		wingL.localPosition=new Vector3(-0.95f,1);
-		wingR.localPosition=new Vector3(0.95f,1);
-		body.localPosition=new Vector3(0,-0.9f,-0.01f);
-		head.localPosition=new Vector3(0,1.5f,-0.02f);
-
+		go.transform.parent=head;
+		go.transform.localPosition=new Vector3(0,-0.29f,-0.1f);
+		go=new GameObject("wingLbig");
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[5];
+		go.AddComponent<PolygonCollider2D>();
+		go.transform.parent=torso;
+		go.transform.localPosition=new Vector3(-2,2,0.01f);
+		arms[0]=go.transform;
 		go=new GameObject("slash");
+		slash[0]=go.AddComponent<TrailRenderer>();
+		slash[0].enabled=false;
+		slash[0].time=0.8f;
+		slash[0].startWidth=1.2f;
+		slash[0].endWidth=0.1f;
+        slash[0].material=new Material(Shader.Find("Sprites/Default"));
+		go.transform.parent=arms[0];
+		go.transform.localPosition=new Vector3(-4,1,0.01f);
+		go=new GameObject("wingRbig");
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[6];
+		go.AddComponent<PolygonCollider2D>();
+		go.transform.parent=torso;
+		go.transform.localPosition=new Vector3(2,2,0.01f);
+		arms[1]=go.transform;
+		go=new GameObject("slash");
+		slash[1]=go.AddComponent<TrailRenderer>();
+		slash[1].enabled=false;
+		slash[1].time=0.8f;
+		slash[1].startWidth=1.2f;
+		slash[1].endWidth=0.1f;
+        slash[1].material=slash[0].material;
+		go.transform.parent=arms[1];
+		go.transform.localPosition=new Vector3(4,1,0.01f);
+
+		/*go=new GameObject("slash");
 		slash=go.AddComponent<Core>().Set(Sprite.Create(new Texture2D(1,1),new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(0.6f,0f,0.1f));
 		slash.transform.localScale=slashscl;
 		slash.Set(1);
 		slashcod=go.AddComponent<BoxCollider2D>();
-		slashcod.enabled=false;
+		slashcod.enabled=false;*/
 
 		go=new GameObject("dark");
 		Texture2D t=new Texture2D(1,1);
@@ -77,161 +98,161 @@ public class Batzilla : EnemyBase {
 		dark=go.AddComponent<Core>().Set(Sprite.Create(t,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(0f,0f,0f,0f));
 		dark.white=new Color(0f,0f,0f,1f);
 		go.transform.localScale=new Vector3(5000,5000);
-		go.transform.position=new Vector3(0,0,-0.1f);
+		go.transform.position=new Vector3(0,0,-0.09f);
 		bat=(ei as CarrierInfo).spawnable;
 		shotId=ei.bulletsID[0];
+		update=Intro;
 	}
-	
+	void Intro(){
+		transform.Translate(0,-Time.deltaTime*2,0);
+        if(arms[0].localPosition==-hor+ver+armOffset*offset){
+            if(offset==1)offset=-1;
+            else offset=1;
+        }
+        if(transform.position.y<Scaler.sizeY/2)update=Wait;
+	}
+	void Wait(){
+        if(!target)target=GetPlayer();
+        if(Mathf.Abs(target.position.x-transform.position.x)>5)transform.Translate((transform.position.x>target.position.x?-2:2)*Time.deltaTime,0,0,Space.World);
+		torsoAngle=0;
+		transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,Time.deltaTime*20);
+		if(transform.position.y>Scaler.sizeY/2+1)transform.Translate(0,-Time.deltaTime*2,0,Space.World);
+		if(transform.position.y<Scaler.sizeY/2){
+            transform.Translate(0,Time.deltaTime*3,0);
+            if(transform.position.y>Scaler.sizeY/2)time=Time.time+2;
+        }
+		else if(time<Time.time){
+			switch (Random.Range(0,3))
+			{
+				case 0:
+					update=Rise;
+					armID=Random.Range(0,2);
+					break;
+				case 1:
+					Shoot(new Vector3(-2,4,-0.01f));
+					Shoot(new Vector3(2,4,-0.01f));
+					break;
+				case 2:
+					Bat();
+					break;
+			}
+		}
+	}
+	void Rise(){
+		if(time<Time.time){
+			transform.Translate(0,Time.deltaTime*3,0);
+			fallSpeed=Mathf.MoveTowards(fallSpeed,0,Time.deltaTime*4);
+			dark.Add(Time.deltaTime*2);
+			if(arms[0].localPosition==-hor+ver+armOffset*offset){
+				if(offset==1)offset=-1;
+				else offset=1;
+			}
+			if(transform.position.y>Scaler.sizeY-2){
+				time=Time.time+4;
+				colliders=false;
+			}
+		}
+		else
+		{
+			if(time<Time.time+1f){
+				if(hp<500 && Random.value>0.5f){
+					Vector3 h=head.position,v=target.position;
+					for (int i = 0; i < 8; i++)
+					{
+						head.position=new Vector3(v.x+Mathf.Sin(i*45)*10,v.y+Mathf.Cos(i*45)*10,0.1f);
+						Bat();
+					}
+					head.position=h;
+					update=Wait;
+					dark.Set(0);
+					colliders=true;
+					time=Time.time+4;
+				}else{
+					transform.position=new Vector3(target.position.x+(armID==0?4:-4),transform.position.y);
+					slash[armID].enabled=true;
+					update=Fall;
+					colliders=true;
+				}
+			}
+		}
+	}
+	void Fall(){
+		offset=0;
+		dark.Min(Time.deltaTime*10);
+		transform.Translate(0,fallSpeed*Time.deltaTime,0,Space.World);
+		transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,armID==0?15:-15),10*Time.deltaTime);
+		torsoAngle=armID==0?10:-10;
+		fallSpeed=Mathf.MoveTowards(fallSpeed,-8,Time.deltaTime*4);
+		armAngle[0]=armID==0?-15:-5;
+		armAngle[1]=armID==0?5:15;
+		if(transform.position.y<-Scaler.sizeY/2){
+			armAngle[armID]=armID==0?45:-45;
+			armSpeed=180;
+			torsoAngle=armID==0?15:-15;
+			update=Slash;
+		}
+	}
+	void Slash(){
+		transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,10*Time.deltaTime);
+		if(arms[armID].localRotation==Quaternion.Euler(0,0,armAngle[armID])){
+			update=Wait;
+			armAngle[0]=armAngle[1]=0;
+			torsoAngle=0;
+			slash[armID].enabled=false;
+			time=Time.time+2;
+		}
+	}
 	new void Update () {
 		if(Ship.paused) return;
 		base.Update();
-		if(head){
-			henderer.color=_renderer.color;
-		}
-		timer-=Time.deltaTime;
-		if(state==State.intro)
-		{
-			transform.Translate(0,-Time.deltaTime,0);
-			dark.Add(Time.deltaTime);
-			if(transform.position.y<Scaler.sizeY/2f){
-				state=State.slashing;
-				timer=1.5f;
-				slash.transform.position=GetPlayer().position;
-				slashrot.z=Random.Range(-45f,45f);
-				slash.transform.eulerAngles=slashrot;
-			}
-		}
-		else if(state==State.wating)
-		{
-			time+=Time.deltaTime;
-			transform.Translate(Mathf.Cos(time)*Time.deltaTime*2,0,0);
-			head.Translate(0,Mathf.Cos(time/2)*Time.deltaTime/10,0);
-			wingR.Translate(0,Mathf.Cos(time*5)*Time.deltaTime/5,0);
-			wingL.Translate(0,Mathf.Cos(time*5)*Time.deltaTime/5,0);
-			if(timer<=0)
-			{
-				timer=1.5f;
-				float f=Random.value;
-				if(f>0.5f)state=State.shooting;
-				else if(f>0.2f)state=State.calling;
-				else {
-					state=State.slashing;
-					slash.transform.position=GetPlayer().position;
-					slashrot.z=Random.Range(-45f,45f);
-					if(slashrot.z>0)wingR.eulerAngles=Vector3.forward*45f;
-					else wingL.eulerAngles=Vector3.forward*-45f;
-					slash.transform.eulerAngles=slashrot;
-				}
-			}
-		}
-		else if(state==State.shooting)
-		{
-			state=State.wating;
-			timer=1;
-			Shoot(left);
-			Shoot(right);
-		}
-		else if(state==State.slashing)
-		{
-			if(timer>1f)
-			{
-				//slashcol.a=(1.5f-timer)*2;
-				dark.Add(Time.deltaTime*5);
-			}
-			else if(timer>0.5f)
-			{
-				SoundManager.PlayEffects(16, 5, 2);
-				slashscl.y=(1-timer)*200;
-			}
-			else if(timer>0)
-			{
-				slash.Min(Time.deltaTime*10);
-				slashcod.enabled=true;
-			}
-			else
-			{
-				state=State.wating;
-				timer=1;
-				slash.Set(1);
-				dark.Set(0);
-				slashscl.y=0;
-				slashcod.enabled=false;
-				wingL.rotation=wingR.rotation=Quaternion.identity;
-			}
-			slash.transform.localScale=slashscl;
-		}
-		else if(state==State.calling)
-		{
-			state=State.wating;
-			Bat();
-			timer=1;
-		}
-		else if(state==State.dead)
-		{
-			if(timer>0)
-			{
-				ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
-			}
-			else
-			{
-				if(body){
-					Destroy(body.gameObject);
-					Destroy(wingL.gameObject);
-					Destroy(wingR.gameObject);
-				}
-				if(timer<-0.2f){
-					ParticleManager.Emit(1,(Vector3)Random.insideUnitCircle*1.5f+transform.position,1);
-					timer=0;
-				}
-				transform.Translate(0,-Time.deltaTime*4,0,Space.World);
-				transform.Rotate(0,0,Time.deltaTime*4);
-				if(transform.position.y<-Scaler.sizeY-2)
-				{
-					SoundManager.Play(7);
-					Destroy(gameObject);
-					EnemySpawner.boss=false;
-				}
-			}
-		}
+		update?.Invoke();
+		arms[0].localRotation=Quaternion.RotateTowards(arms[0].localRotation,Quaternion.Euler(0,0,armAngle[0]),armSpeed*Time.deltaTime);
+		arms[1].localRotation=Quaternion.RotateTowards(arms[1].localRotation,Quaternion.Euler(0,0,armAngle[1]),armSpeed*Time.deltaTime);
+		torso.localRotation=Quaternion.RotateTowards(torso.localRotation,Quaternion.Euler(0,0,torsoAngle),armSpeed*Time.deltaTime);
+		arms[0].localPosition=Vector3.MoveTowards(arms[0].localPosition,-hor+ver+armOffset*offset,Time.deltaTime/2);
+		arms[1].localPosition=Vector3.MoveTowards(arms[1].localPosition,hor+ver+armOffset*offset,Time.deltaTime/2);
 	}
-	protected override void Die()
-	{
-		for(int i = 0; i<10; i++)
-		{
-			ParticleManager.Emit(9,(Vector3)Random.insideUnitCircle*1.5f+head.transform.position,1);
-		}
+	protected override void Die(){
+		
+		ParticleManager.Emit(1,head.position,1,2);
 		Locks.Boss(5,true);
 		Destroy(head.gameObject);
-		Destroy(slash.gameObject);
 		Destroy(dark.gameObject);
-		state=State.dead;
 		EnemySpawner.points[killerid]+=1000;
-		timer=1;
-		GetComponent<BoxCollider2D>().enabled = false;
+		time=Time.time+3;
+		colliders = false;
+		update=Dying;
 	}
-	void Shoot(Vector3 v)
-	{
+	void Dying(){
+		if(time<Time.time+2 && torso){
+			Destroy(torso.parent.gameObject);
+		}
+		transform.Rotate(0,0,5*Time.deltaTime);
+		transform.Translate(0,-Time.deltaTime,0);
+		if(Time.time%0.5f<0.1f)ParticleManager.Emit(1,transform.position,1,Random.value*3);
+		if(time<Time.time)Loader.Scene("MenuSelection");
+	}
+	void Shoot(Vector3 v){
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=SpriteBase.I.bullets[12];
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
 		go.AddComponent<BoxCollider2D>();
 		Bullet b=go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shotId;
 		go.transform.position=transform.position+v;
 		go.transform.up=-transform.up;
-		//go.transform.localScale=Vector3.one*2;
+		time=Time.time+0.5f;
 	}
-
 	private new void OnCollisionEnter2D(Collision2D col)
 	{
-		if(state!=State.slashing && state!=State.dead && state!=State.intro) base.OnCollisionEnter2D(col);
+		if(update!=Intro && !col.otherCollider.name.Contains("wing"))base.OnCollisionEnter2D(col);
 		else ParticleManager.Emit(3,col.collider.transform.position,1);
 	}
 	void Bat()
 	{
 		GameObject go = new GameObject("enemy");
 		Bat b=go.AddComponent<Bat>();
-		b.target=head.position+(GetPlayer().position-head.position)*5f;
+		b.target=head.position+(GetPlayer().position-head.position).normalized*5f;
 		b.SetSprites(bat);
 		go.AddComponent<SpriteRenderer>().sprite=bat.sprites[0];
 		go.AddComponent<BoxCollider2D>();
@@ -239,6 +260,7 @@ public class Batzilla : EnemyBase {
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
 		go.transform.position=head.position;
+		time=Time.time+1;
 	}
 	public override void Position(int i)
 	{
