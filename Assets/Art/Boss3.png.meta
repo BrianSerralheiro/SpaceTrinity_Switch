@@ -29,6 +29,18 @@ TextureImporter:
   - first:
       213: -4572287376209641149
     second: bosstorso
+  - first:
+      213: 5175838921592809592
+    second: wave0
+  - first:
+      213: 1735708174894468793
+    second: wave1
+  - first:
+      213: -6644009175882021050
+    second: wave2
+  - first:
+      213: -4724087562626211996
+    second: gleam
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -191,10 +203,10 @@ TextureImporter:
       name: eyes
       rect:
         serializedVersion: 2
-        x: 3651
-        y: 1601
-        width: 98
-        height: 41
+        x: 3701
+        y: 1629
+        width: 97
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,6 +279,90 @@ TextureImporter:
       bones: []
       spriteID: 58037e3bb9726024b8fd8b07648a90ab
       internalID: -4572287376209641149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wave0
+      rect:
+        serializedVersion: 2
+        x: 2543
+        y: 1705
+        width: 132
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ab66fca6844444aaa37b6e509866c2
+      internalID: 5175838921592809592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wave1
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1615
+        width: 164
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52f77c62b0c2d847b0cd89456d0b855
+      internalID: 1735708174894468793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wave2
+      rect:
+        serializedVersion: 2
+        x: 2491
+        y: 1511
+        width: 201
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854dd64d4855c0a439f4abcb162c43d5
+      internalID: -6644009175882021050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gleam
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 1915
+        width: 328
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b223925d910c94aac29fae01f1164c
+      internalID: -4724087562626211996
       vertices: []
       indices: 
       edges: []

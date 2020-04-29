@@ -144,11 +144,11 @@ public class Brother : EnemyBase
             else angleL=15;
         }
         if(!laser.enabled){
-            elbow.rotation=Quaternion.RotateTowards(elbow.rotation,Quaternion.Euler(0,0,45),90*Time.deltaTime);
+            elbow.rotation=Quaternion.RotateTowards(elbow.rotation,Quaternion.Euler(0,0,45),30*Time.deltaTime);
             if(elbow.rotation==Quaternion.Euler(0,0,45))laser.enabled=col.enabled=true;
         }
         else{
-            elbow.rotation=Quaternion.RotateTowards(elbow.rotation,Quaternion.Euler(0,0,-15),180*Time.deltaTime);
+            elbow.rotation=Quaternion.RotateTowards(elbow.rotation,Quaternion.Euler(0,0,-15),90*Time.deltaTime);
             if(elbow.rotation==Quaternion.Euler(0,0,-15)){
                 laser.enabled=col.enabled=false;
                 update=Wait;
@@ -176,7 +176,7 @@ public class Brother : EnemyBase
 		if(Ship.paused)return;
 		base.Update();
         update?.Invoke();
-        ParticleManager.Emit(jetID,rocket.position-rocket.up*3.7f+rocket.right*1.1f,(int)jet);
+        ParticleManager.Emit(jetID,rocket.position-rocket.up*3.7f+rocket.right*1.1f,rocket.up,(int)jet);
         arml.rotation=Quaternion.RotateTowards(arml.rotation,Quaternion.Euler(0,0,angleL),armSpeed*Time.deltaTime);
         armr.rotation=Quaternion.RotateTowards(armr.rotation,Quaternion.Euler(0,0,angleR),10*Time.deltaTime);
     }

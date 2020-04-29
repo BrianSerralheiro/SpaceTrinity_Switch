@@ -11,7 +11,7 @@ public class Batzilla : EnemyBase {
 	private float[] armAngle=new float[2];
 	private Vector3 hor=new Vector3(2,0),ver=new Vector3(0,2,0.01f),armOffset=new Vector3(0,0.1f);
 	private EnemyInfo bat;
-	private int shotId,armID;
+	private int shotId,armID,waveID,eyes;
 	private bool colliders{
 		set{
 			foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
@@ -49,12 +49,8 @@ public class Batzilla : EnemyBase {
 		head=go.transform;
 		head.parent=torso;
 		go.transform.localPosition=new Vector3(0,3.7f,-0.01f);
-		go=new GameObject("eyes");
-		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
-		go.transform.parent=head;
-		go.transform.localPosition=new Vector3(0,-0.29f,-0.1f);
 		go=new GameObject("wingLbig");
-		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[5];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
 		go.AddComponent<PolygonCollider2D>();
 		go.transform.parent=torso;
 		go.transform.localPosition=new Vector3(-2,2,0.01f);
@@ -69,7 +65,7 @@ public class Batzilla : EnemyBase {
 		go.transform.parent=arms[0];
 		go.transform.localPosition=new Vector3(-4,1,0.01f);
 		go=new GameObject("wingRbig");
-		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[6];
+		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[5];
 		go.AddComponent<PolygonCollider2D>();
 		go.transform.parent=torso;
 		go.transform.localPosition=new Vector3(2,2,0.01f);
@@ -101,8 +97,11 @@ public class Batzilla : EnemyBase {
 		go.transform.position=new Vector3(0,0,-0.09f);
 		bat=(ei as CarrierInfo).spawnable;
 		shotId=ei.bulletsID[0];
+		waveID=ei.particleID[0];
+		eyes=ei.particleID[1];
 		update=Intro;
 	}
+	void Start(){}
 	void Intro(){
 		transform.Translate(0,-Time.deltaTime*2,0);
         if(arms[0].localPosition==-hor+ver+armOffset*offset){
@@ -149,7 +148,9 @@ public class Batzilla : EnemyBase {
 			}
 			if(transform.position.y>Scaler.sizeY-2){
 				time=Time.time+4;
+				dark.Set(1);
 				colliders=false;
+				ParticleManager.Emit(eyes,target.position+Vector3.up*2,1);
 			}
 		}
 		else
@@ -199,6 +200,7 @@ public class Batzilla : EnemyBase {
 			armAngle[0]=armAngle[1]=0;
 			torsoAngle=0;
 			slash[armID].enabled=false;
+			target=null;
 			time=Time.time+2;
 		}
 	}
@@ -206,11 +208,14 @@ public class Batzilla : EnemyBase {
 		if(Ship.paused) return;
 		base.Update();
 		update?.Invoke();
-		arms[0].localRotation=Quaternion.RotateTowards(arms[0].localRotation,Quaternion.Euler(0,0,armAngle[0]),armSpeed*Time.deltaTime);
-		arms[1].localRotation=Quaternion.RotateTowards(arms[1].localRotation,Quaternion.Euler(0,0,armAngle[1]),armSpeed*Time.deltaTime);
-		torso.localRotation=Quaternion.RotateTowards(torso.localRotation,Quaternion.Euler(0,0,torsoAngle),armSpeed*Time.deltaTime);
-		arms[0].localPosition=Vector3.MoveTowards(arms[0].localPosition,-hor+ver+armOffset*offset,Time.deltaTime/2);
-		arms[1].localPosition=Vector3.MoveTowards(arms[1].localPosition,hor+ver+armOffset*offset,Time.deltaTime/2);
+		ParticleManager.Emit(waveID,transform.position-transform.up*3,transform.up,1);
+		if(torso){
+			arms[0].localRotation=Quaternion.RotateTowards(arms[0].localRotation,Quaternion.Euler(0,0,armAngle[0]),armSpeed*Time.deltaTime);
+			arms[1].localRotation=Quaternion.RotateTowards(arms[1].localRotation,Quaternion.Euler(0,0,armAngle[1]),armSpeed*Time.deltaTime);
+			torso.localRotation=Quaternion.RotateTowards(torso.localRotation,Quaternion.Euler(0,0,torsoAngle),armSpeed*Time.deltaTime);
+			arms[0].localPosition=Vector3.MoveTowards(arms[0].localPosition,-hor+ver+armOffset*offset,Time.deltaTime/2);
+			arms[1].localPosition=Vector3.MoveTowards(arms[1].localPosition,hor+ver+armOffset*offset,Time.deltaTime/2);
+		}
 	}
 	protected override void Die(){
 		

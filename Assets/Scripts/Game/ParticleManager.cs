@@ -49,6 +49,10 @@ public class ParticleManager : MonoBehaviour {
 		sys[i].transform.localScale=Vector3.one;
 		sys[i].Emit(c);
 	}
+	public static void Emit(int i,Vector3 p,Vector3 up,int c){
+		sys[i].transform.up=up;
+		Emit(i,p,c);
+	}
 	public static void Emit(int i,Vector3 p,int c)
 	{
 		if(sys==null)return;
