@@ -12,6 +12,7 @@ public class Zapper : EnemyBase {
 		points = 150;
 		hp=80;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		fallSpeed=-1;
 		GameObject go=new GameObject("zap");
 		if(sprites==null){
 			sprites=new Sprite[4];
@@ -45,10 +46,14 @@ public class Zapper : EnemyBase {
 	new void Update () {
 		if(Ship.paused) return;
 		base.Update();
+		if(transform.position.y<-Scaler.sizeY/2){
+			transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,10*Time.deltaTime);
+			SlowFall();
+			return;
+		}
 		timer-=Time.deltaTime;
-		if(transform.position.y<-Scaler.sizeY-2)Die();
 		if(timer>1){
-			transform.Translate(0,-Time.deltaTime,0,Space.World);
+			SlowFall();
 			Vector3 v=GetPlayer(transform.position).position-transform.position;
             v.z=0;
             v=Vector3.Cross(transform.up,v);

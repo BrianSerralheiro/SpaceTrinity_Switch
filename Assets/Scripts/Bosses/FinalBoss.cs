@@ -322,7 +322,7 @@ public class FinalBoss : EnemyBase {
 	}
 	void Shoot()
 	{
-		SoundManager.PlayEffects(12, 0.1f, 0.5f);
+		// SoundManager.PlayEffects(12, 0.1f, 0.5f);
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotID];
 		go.AddComponent<BoxCollider2D>();
@@ -338,7 +338,7 @@ public class FinalBoss : EnemyBase {
 	}
 	void Slash()
 	{
-		SoundManager.PlayEffects(16, 0.1f, 0.5f);
+		// SoundManager.PlayEffects(16, 0.1f, 0.5f);
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[slashID];
 		go.AddComponent<BoxCollider2D>();

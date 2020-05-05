@@ -15,10 +15,12 @@ public class Invader : EnemyBase {
 	}
 	void Shoot()
 	{
-		SoundManager.PlayEffects(12, 0.1f, 0.5f);
+		//SoundManager.PlayEffects(12, 0.1f, 0.5f);
+		if(shoottimer>Time.time)return;
+		shoottimer=Time.time+1;
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
-		go.AddComponent<BoxCollider2D>();
+		go.AddComponent<CircleCollider2D>();
 		Bullet b= go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shootId;
@@ -27,16 +29,14 @@ public class Invader : EnemyBase {
 		left=!left;
 	}
 	new void Update () {
-		if(Ship.paused) return;
+		if(Ship.paused)return;
 		base.Update();
-		shoottimer-=Time.deltaTime;
-		if(shoottimer<=0)
-		{
-			shoottimer=0.5f;
-			Shoot();
-		}
-		if(GetPlayer(transform.position).position.x<transform.position.x)transform.Translate(-Time.deltaTime*2,0,0);
-		else transform.Translate(Time.deltaTime*2,0,0);
-		if(transform.position.y>Scaler.sizeY/2)transform.Translate(0,-Time.deltaTime,0);
+		int i=(int)(Time.time%5f*2);
+		Vector3 v=Vector3.zero;
+		if(i==4||i==9)Shoot();
+		else if(i%2==0)v=Vector3.down;
+			else if(i>1&&i<7)v=Vector3.right;
+				else v=Vector3.left;
+		transform.Translate(v*Time.deltaTime*2f);
 	}
 }

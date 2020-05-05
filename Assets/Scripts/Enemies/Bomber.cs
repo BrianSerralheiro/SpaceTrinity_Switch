@@ -4,7 +4,7 @@ public class Bomber : EnemyBase {
 	private float timer=4;
 	private Vector3 local=new Vector3(-3.5f,-0.2f);
 	private static Sprite bomb;
-	int explosionID;
+	static int explosionID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
@@ -27,7 +27,7 @@ public class Bomber : EnemyBase {
 		transform.Translate(Time.deltaTime,0,0);
 		timer-=Time.deltaTime;
 		if(timer<0)Bomb();
-		if(transform.position.x<-Scaler.sizeX/2f-4.2F || transform.position.x>Scaler.sizeX/2f+4.2F || transform.position.y<-Scaler.sizeY-4.2F) Die();
+		if(transform.position.x<-Scaler.sizeX/2f-4.2F || transform.position.x>Scaler.sizeX/2f+4.2F || transform.position.y<-Scaler.sizeY-8.4F) Die();
 
 	}
 	void Bomb()
@@ -45,6 +45,6 @@ public class Bomber : EnemyBase {
 	{
 		killed=true;
 		base.Die();
-		ParticleManager.Emit(1,transform.position-transform.right*3,1,6);
+		if(hp<=0)ParticleManager.Emit(1,transform.position-transform.right*3,1,6);
 	}
 }
