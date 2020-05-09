@@ -160,20 +160,19 @@ public class Batzilla : EnemyBase {
 					Vector3 h=head.position,v=target.position;
 					for (int i = 0; i < 8; i++)
 					{
-						head.position=new Vector3(v.x+Mathf.Sin(i*45)*10,v.y+Mathf.Cos(i*45)*10,0.1f);
+						head.position=new Vector3(v.x+Mathf.Sin(i*22.5f)*10,v.y+Mathf.Cos(i*22.5f)*10,0.1f);
 						Bat();
 					}
 					head.position=h;
 					update=Wait;
 					dark.Set(0);
-					colliders=true;
 					time=Time.time+4;
 				}else{
 					transform.position=new Vector3(target.position.x+(armID==0?4:-4),transform.position.y);
 					slash[armID].enabled=true;
 					update=Fall;
-					colliders=true;
 				}
+				colliders=true;
 			}
 		}
 	}

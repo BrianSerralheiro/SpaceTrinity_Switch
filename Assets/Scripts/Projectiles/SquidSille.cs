@@ -16,7 +16,7 @@ public class SquidSille : EnemyBase
         transform.up=Vector3.down;
     }
 	void Shot(int c){
-		SoundManager.PlayEffects(12, 0.5f, 0.8f);
+		// SoundManager.PlayEffects(12, 0.5f, 0.8f);
 		float degrees=360f/c;
 		for (int i = 0; i < c; i++)
 		{
@@ -37,8 +37,9 @@ public class SquidSille : EnemyBase
         if(Ship.paused)return;
         base.Update();
         target.z=transform.position.z;
-        Vector3 vector=target - transform.position;
-        transform.Rotate(Vector3.Cross(transform.up,vector)*Time.deltaTime*60);
+        Vector3 v=target - transform.position;
+        v.z=0;
+        transform.Rotate(Vector3.Cross(transform.up,v)*Time.deltaTime*60);
         //transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*6);
         transform.Translate(0,Time.deltaTime*6,0);
         if(Vector3.Distance(transform.position,target)<0.5)
