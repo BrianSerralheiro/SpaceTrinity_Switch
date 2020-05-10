@@ -9,7 +9,7 @@ public class Invader : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 50;
-		hp=30;
+		hp=20;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		shootId=ei.bulletsID[0];
 	}
