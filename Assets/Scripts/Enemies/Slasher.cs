@@ -8,7 +8,7 @@ public class Slasher : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
-		hp=90;
+		hp=40;
 		fallSpeed=-1;
 		shotID=ei.bulletsID[0];
 		timer=Time.time+2;
