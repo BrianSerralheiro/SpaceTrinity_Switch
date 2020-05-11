@@ -20,7 +20,7 @@ public class Invader : EnemyBase {
 		shoottimer=Time.time+1;
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
-		go.AddComponent<CircleCollider2D>();
+		go.AddComponent<CircleCollider2D>().radius=0.3f;
 		Bullet b= go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shootId;

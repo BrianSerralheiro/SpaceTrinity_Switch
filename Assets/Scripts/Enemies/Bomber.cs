@@ -2,7 +2,7 @@
 
 public class Bomber : EnemyBase {
 	private float timer=4;
-	private Vector3 local=new Vector3(-3.5f,-0.2f);
+	private Vector3 local=new Vector3(-7f,-0.2f);
 	private static Sprite bomb;
 	static int explosionID;
 	public override void SetSprites(EnemyInfo ei)
