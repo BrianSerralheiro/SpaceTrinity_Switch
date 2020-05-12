@@ -78,7 +78,7 @@ public class Barata : EnemyBase {
 		if(transform.position.y>Scaler.sizeY+5){
 			if(charges++>2){
 				EnemySpawner.boss=true;
-				/*REMOVER*/Debug.Log(Time.time-time);
+				// /*REMOVER*/Debug.Log(Time.time-time);
 				Shot(12);
 				update=Spawning;
 			}

@@ -45,6 +45,7 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		if(!world)world=world1;
 		if(!world.Boss)enabled=false;
+		DialogManager.open=world.begining;
 		boss = false;
 		freeze=false;
 		FinalBoss.last=false;
@@ -75,7 +76,10 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		}
 		while(timer<=0 && counter<world.wave.Length && !boss);
-		if(counter>=world.wave.Length && !boss)Spawn(world.Boss).Position(0);
+		if(counter>=world.wave.Length && !boss){
+			DialogManager.open=world.end;
+			Spawn(world.Boss).Position(0);
+		}
 		if(timer>0 && !boss) timer-=Time.deltaTime;
 		Vector2 v= bg.mainTextureOffset;
 		if(!freeze)v.y+=Time.deltaTime/world.scroll;

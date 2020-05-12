@@ -13,7 +13,7 @@ public class WorldInfo : ScriptableObject
 	public EnemyInfo Boss;
 	public Sprite bossFace;
 	public EnemyInfo drone;
-	public DialogInfo  begining;
+	public DialogInfo  begining,end;
 	[HideInInspector]
 	public string songName;
 	[HideInInspector]

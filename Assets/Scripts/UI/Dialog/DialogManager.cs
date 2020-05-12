@@ -20,18 +20,30 @@ public class DialogManager : MonoBehaviour
     float expand=2;
     [SerializeField]
     int cps=15;
+    [SerializeField]
     DialogInfo dialogInfo;
     Dialog dialog;
     Speech speech;
     float charCount;
     string fulltext;
-    void Start()
+    static DialogManager manager;
+    public static DialogInfo open{
+        set{
+            manager.dialogInfo=value;
+            if(value)manager.gameObject.SetActive(true);
+        }
+    }
+    void Awake()
     {
-        dialogInfo=EnemySpawner.world.begining;
+        manager=this;
+    }
+    void OnEnable(){
+        // dialogInfo=EnemySpawner.world.begining;
         if(!dialogInfo){
             gameObject.SetActive(false);
             return;
         }
+        //spawner.SetActive(false);
         dialogInfo.id=0;
         Ship.paused=true;
         dialog=dialogInfo.Next();
@@ -42,7 +54,7 @@ public class DialogManager : MonoBehaviour
     void OnDisable()
     {
         Ship.paused=false;
-        spawner.SetActive(true);
+        // spawner.SetActive(true);
     }
     void Update()
     {
