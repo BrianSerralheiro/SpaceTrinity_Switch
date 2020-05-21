@@ -5,7 +5,7 @@ using UnityEngine;
 public static class Locks {
 	
 	private static string skins="000000000000000000000";
-	private static string bosses="000000";
+	private static string bosses="0000000";
 
 	public static void Load()
 	{
@@ -30,6 +30,14 @@ public static class Locks {
 	{
 		if(i<0)return false;
 		return bosses[i]!='0';
+	}
+	public static int Boss(){
+		int i=0;
+		foreach (char c in bosses)
+		{
+			if(c=='1')i++;
+		}
+		return i;
 	}
 	public static void Boss(int i,bool b)
 	{

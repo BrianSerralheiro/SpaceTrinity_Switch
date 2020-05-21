@@ -38,6 +38,9 @@ public class MenuSelect : MonoBehaviour
 	private RectTransform rect;
 	private Vector2 min,max;
 	bool p1confirm,p2confirm;
+	public RectTransform GetOption(){
+		return options[selectionID].rectTransform;
+	}
 	void Awake()
     {
         //if(rowCount<2)rowCount=2;

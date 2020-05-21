@@ -5,7 +5,7 @@ using LanguagePack;
 public class DialogManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject spawner;
+    bool auto;
     [SerializeField]
     Text speechText;
     [SerializeField]
@@ -54,7 +54,7 @@ public class DialogManager : MonoBehaviour
     void OnDisable()
     {
         Ship.paused=false;
-        // spawner.SetActive(true);
+        if(auto)Loader.Scene("MenuSelection");
     }
     void Update()
     {

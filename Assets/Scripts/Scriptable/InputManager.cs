@@ -56,8 +56,12 @@ public struct PlayerInput{
             return Input.GetAxisRaw(players[i].vertical);
         return Input.GetAxisRaw(players[i].horizontal);
     }
-    public static bool GetKeyEquip(int i){
+    public static bool GetKeyEquip1(int i){
         if(i<players.Length)return Input.GetButton(players[i].equip1);
+        return false;
+    }
+    public static bool GetKeyEquip2(int i){
+        if(i<players.Length)return Input.GetButton(players[i].equip2);
         return false;
     }
     public static bool GetKeySpecial(int i){
