@@ -115,7 +115,7 @@ public class Barata : EnemyBase {
 		crystal.Set(0);
 		transform.Translate(0,-Time.deltaTime*3,0,Space.World);
 		transform.Rotate(0,0,Time.deltaTime*3);
-		ParticleManager.Emit(1,transform.position,1);
+		if(Random.value<0.2f)ParticleManager.Emit(1,transform.position+(Vector3)Random.insideUnitCircle*3,20);
 		if(transform.position.y<-Scaler.sizeY-5)
 		{
 			Destroy(gameObject);

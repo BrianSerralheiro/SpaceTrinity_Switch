@@ -86,8 +86,8 @@ public class EnemyBase : MonoBehaviour {
 				EnemySpawner.points[killerid-1]+=points;
 			}
 			if(!killed){
-				SoundManager.PlayEffects(15, 0.8f, 1.2f);
-				ParticleManager.Emit(1, transform.position,1);
+				//SoundManager.PlayEffects(15, 0.8f, 1.2f);
+				ParticleManager.Emit(1, transform.position,5);
 			}
 		}
 	}

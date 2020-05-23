@@ -81,6 +81,6 @@ public class Carrier : EnemyBase {
 	{
 		killed=true;
 		base.Die();
-		ParticleManager.Emit(1,transform.position+transform.up*3,1,6f);
+		ParticleManager.Emit(1,transform.position+transform.up*3,10);
 	}
 }

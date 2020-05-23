@@ -7,7 +7,6 @@ public class Spider : EnemyBase {
 	private int charges,spawns,webshot;
 	private Transform[] legs;
 	private Core crystal,headCrystal;
-	private Spiderling diver;
 	private EnemyInfo spiderling,info;
 	private Vector3[] rot;
 	private Transform[] webs;
@@ -244,12 +243,12 @@ public class Spider : EnemyBase {
 	void Dying(){
 		timer-=Time.deltaTime;
 		if(timer<0)Loader.Scene("MenuSelection");
-		ParticleManager.Emit(1,transform.position+Random.onUnitSphere,1,5);
+		ParticleManager.Emit(1,transform.position+(Vector3)Random.insideUnitCircle*4,20);
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		Ship ship=other.GetComponent<Ship>();
-		if(ship){
+		if(ship && update!=Dying && update!=Intro){
 			ship.enabled=false;
 			bitting=ship.transform;
 			timer=2;
@@ -271,6 +270,10 @@ public class Spider : EnemyBase {
 		update=Dying;
 		timer=3;
 		Locks.Boss(0,true);
+		foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
+		{
+			col.enabled=false;
+		}
 		EnemySpawner.points[killerid]+=1000;
 	}
 	void Spawn(int i)
@@ -300,7 +303,7 @@ public class Spider : EnemyBase {
 	{
 		if(update!=Dying && update!=Intro && update!=Building) base.OnCollisionEnter2D(col);
 		else
-			ParticleManager.Emit(16,col.collider.transform.position,1);
+			ParticleManager.Emit(3,col.collider.transform.position,1);
 		//speed=hp<350 ? 12 : 8;
 	}
 }
