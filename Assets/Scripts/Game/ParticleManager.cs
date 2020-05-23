@@ -34,19 +34,20 @@ public class ParticleManager : MonoBehaviour {
 		sys.Clear();
 		names.Clear();
 	}
-	public static void Emit(int i,Vector3 p,int c,float s)
+	public static void Emit(int i,Vector3 p,int c,float a)
 	{
 		sys[i].transform.up=up;
-		sys[i].transform.position=p+mod;
-		sys[i].transform.localScale=Vector3.one*s;
-		sys[i].Emit(c);
+		for (int j = 0; j < c; j++)
+		{		
+			sys[i].transform.position=(Vector3)Random.insideUnitCircle*a+p+mod;
+			sys[i].Emit(1);
+		}
 	}
 	public static void Emit(int i,Transform t,int c)
 	{
 		sys[i].transform.forward=-t.up;
 		sys[i].transform.position=t.position+mod;
 		sys[i].transform.rotation=t.rotation;
-		sys[i].transform.localScale=Vector3.one;
 		sys[i].Emit(c);
 	}
 	public static void Emit(int i,Vector3 p,Vector3 up,int c){
@@ -58,7 +59,6 @@ public class ParticleManager : MonoBehaviour {
 		if(sys==null)return;
 		sys[i].transform.up=up;
 		sys[i].transform.position=p+mod;
-		sys[i].transform.localScale=Vector3.one;
 		sys[i].Emit(c);
 	}
 }
