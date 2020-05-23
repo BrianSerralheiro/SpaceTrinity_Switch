@@ -25,7 +25,7 @@ public class WorldLoader : MonoBehaviour
     [SerializeField]
     EnemyInfo batinfo;
     [SerializeField]
-    ParticleSystem defaultExplosion,inpact,block,trail;
+    ParticleSystem defaultExplosion,inpact,block,trail,pickUp;
 	private ResourceRequest request;
     void Start()
     {
@@ -108,6 +108,7 @@ public class WorldLoader : MonoBehaviour
         ParticleManager.Register(inpact);
         ParticleManager.Register(block);
         ParticleManager.Register(trail);
+        ParticleManager.Register(pickUp);
         if(worldInfo){
             foreach(EnemyInfo ei in worldInfo.enemies){
                 ei.Particles();
