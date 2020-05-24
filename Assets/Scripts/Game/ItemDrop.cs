@@ -45,7 +45,7 @@ public class ItemDrop : MonoBehaviour
 		if (s != null && (id<2 || s.input.id==playerID))
 		{
 			SoundManager.PlayEffects(21);
-			ParticleManager.Emit(4,s.transform,4);
+			ParticleManager.Emit(5,s.transform,1);
 			if(id == 0)
 			{
 				s.Shield();
