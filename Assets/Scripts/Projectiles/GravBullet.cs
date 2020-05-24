@@ -3,6 +3,7 @@
 public class GravBullet : Bullet
 {
     private static int count=6;
+    public static int impactID;
     private int size;
     private delegate void Del();
     public int sizeDamage;
@@ -10,8 +11,9 @@ public class GravBullet : Bullet
     void Update()
     {
         if(Ship.paused) return;
-        update?.Invoke();
+        renderer.sprite=Bullet.sprites[spriteID+(int)((2-timer)*4%2)];
         timer-=Time.deltaTime;
+		ParticleManager.Emit(particleID,transform.position,size+1);
 		transform.Translate(0,Time.deltaTime*bulletSpeed,0);
 		if(timer<=0)Destroy(gameObject);
     }
@@ -19,23 +21,7 @@ public class GravBullet : Bullet
         size=i;
         pierce=i>0;
         damage+=i*sizeDamage;
-        BoxCollider2D c=GetComponent<BoxCollider2D>();
-        Vector2 v2=c.size;
-        switch(i){
-            case 0:
-                update=UpdateSprite0;
-                v2.x=1;
-                break;
-            case 1:
-                update=UpdateSprite1;
-                v2.x=1;
-                break;
-            default:
-                update=UpdateSprite2;
-                v2.x=3;
-                break;
-        }
-        c.size=v2;
+        transform.localScale=Vector3.one*(i+1)*0.5f;
     }
     void UpdateSprite0(){
         renderer.sprite=Bullet.sprites[spriteID+(int)((2-timer)*4%2)];
@@ -46,6 +32,8 @@ public class GravBullet : Bullet
     }
 	new void OnCollisionEnter2D(Collision2D col)
 	{
+        if(col.collider.name.Contains("player"))return;
         base.OnCollisionEnter2D(col);
+        if(size==0)ParticleManager.Emit(impactID,col.contacts[0].point,1);
     }
 }

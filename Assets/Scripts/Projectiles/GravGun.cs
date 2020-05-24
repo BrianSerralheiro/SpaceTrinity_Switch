@@ -2,31 +2,36 @@
 
 public class GravGun : Gun
 {
-    private int count=14;
     [SerializeField]
     private int damageBySize,damageByLevel;
     [SerializeField]
     private Material material;
     private int finalDamage;
     private float timer;
-    private ParticleSystem particles;
+    [SerializeField]
+    private ParticleSystem impact,particles;
     public override void Load(int i)
 	{
-        finalDamage=damage;
-		if(Ship.skinID[i]>=0 && Locks.Skin(i*3+Ship.skinID[i])){
-            shotId=Bullet.Register(shots[(Ship.skinID[i]+1)*count]);
-            for(int c=1;c<count;c++){
-                Bullet.Register(shots[(Ship.skinID[i]+1)*count+c]);
-            }
-        }else{
-            shotId=Bullet.Register(shots[0]);
-            for(int c=1;c<count;c++){
-                Bullet.Register(shots[c]);
-            }
-        }
+        base.Load(i);
         particles=GetComponent<ParticleSystem>();
-		shots=null;
-	}
+		GravBullet.impactID=ParticleManager.Register(impact);
+        finalDamage=damage;
+    }
+    //     finalDamage=damage;
+	// 	if(Ship.skinID[i]>=0 && Locks.Skin(i*3+Ship.skinID[i])){
+    //         shotId=Bullet.Register(shots[(Ship.skinID[i]+1)*count]);
+    //         for(int c=1;c<count;c++){
+    //             Bullet.Register(shots[(Ship.skinID[i]+1)*count+c]);
+    //         }
+    //     }else{
+    //         shotId=Bullet.Register(shots[0]);
+    //         for(int c=1;c<count;c++){
+    //             Bullet.Register(shots[c]);
+    //         }
+    //     }
+    //     particles=GetComponent<ParticleSystem>();
+	// 	shots=null;
+	// }
 	public override void Shoot()
 	{ 
         if(!gameObject.activeSelf || shotTimer > 0)return;
@@ -36,7 +41,7 @@ public class GravGun : Gun
 		SpriteRenderer sp= go.AddComponent<SpriteRenderer>();
         sp.sprite=Bullet.sprites[shotId];
         sp.material=material;
-		go.AddComponent<BoxCollider2D>();
+		go.AddComponent<PolygonCollider2D>();
 		GravBullet bull= go.AddComponent<GravBullet>();
 		bull.owner=transform.parent.name;
 		bull.damage=finalDamage;
@@ -47,7 +52,7 @@ public class GravGun : Gun
         bull.Size((int)timer);
 
 		go.transform.position=transform.position;
-        go.transform.localScale=Vector3.one*(1+(3-level)/2f);
+        go.transform.localScale+=Vector3.one/2f*(1+(3-level)/2f);
         timer=0;
     }
     protected override void Update()
