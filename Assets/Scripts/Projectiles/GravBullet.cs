@@ -33,6 +33,7 @@ public class GravBullet : Bullet
 	new void OnCollisionEnter2D(Collision2D col)
 	{
         if(col.collider.name.Contains("player"))return;
+        if(col.collider.name.Contains("Player"))return;
         base.OnCollisionEnter2D(col);
         if(size==0)ParticleManager.Emit(impactID,col.contacts[0].point,1);
     }

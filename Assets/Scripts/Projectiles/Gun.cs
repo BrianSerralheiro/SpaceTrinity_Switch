@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour {
 	protected int particleID;
 
 	[SerializeField]
-	GameObject Shot;
+	protected GameObject Shot;
 
 	public bool minusPower;
 	public virtual void Load(int i)
