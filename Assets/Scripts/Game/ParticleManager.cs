@@ -17,7 +17,12 @@ public class ParticleManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 		manager=this;
 	}
-	public static int Register(ParticleSystem s) {
+	public static int Register(ParticleSystem s) 
+	{
+		if(!s)
+		{
+			return -1;
+		}
 		if(names.Contains(s.name))return names.IndexOf(s.name);
 		names.Add(s.name);
 		s=Instantiate<ParticleSystem>(s);
@@ -56,6 +61,10 @@ public class ParticleManager : MonoBehaviour {
 	}
 	public static void Emit(int i,Vector3 p,int c)
 	{
+		if(i<0)
+		{
+			return;
+		}
 		if(sys==null)return;
 		sys[i].transform.up=up;
 		sys[i].transform.position=p+mod;

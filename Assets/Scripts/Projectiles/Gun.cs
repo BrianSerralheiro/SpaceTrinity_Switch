@@ -22,6 +22,9 @@ public class Gun : MonoBehaviour {
 	protected ParticleSystem shotParticle;
 	protected int particleID;
 
+	[SerializeField]
+	GameObject Shot;
+
 	public bool minusPower;
 	public virtual void Load(int i)
 	{
@@ -42,7 +45,8 @@ public class Gun : MonoBehaviour {
 		if(!gameObject.activeSelf || shotTimer > 0)return;
 		shotTimer = fireRate;		
 		// muzzle flash ParticleManager.Emit(17,transform.position,1);
-		GameObject go=new GameObject("playerbullet");
+		GameObject go = Shot?Instantiate(Shot): new GameObject("playerbullet");
+		go.name = "playerbullet";
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId+(Bullet.blink ? 0 : 1)];
 		go.AddComponent<BoxCollider2D>();
 		Bullet bull= go.AddComponent<Bullet>();
