@@ -14,7 +14,7 @@ public class PathBullet : Bullet
     void Update()
     {
 		if(Ship.paused) return;
-		ParticleManager.Emit(particleID,transform.position,1);
+        ParticleManager.Emit(particleID,transform.position,1);
 		if(bulletTime<=0)renderer.sprite=sprites[spriteID+(blink?0:1)];
         transform.up=path.Direction(mirror);
         transform.position=position+BulletPath.Next(ref path,mirror);

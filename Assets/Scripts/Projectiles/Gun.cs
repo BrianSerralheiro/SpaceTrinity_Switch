@@ -19,8 +19,8 @@ public class Gun : MonoBehaviour {
 	protected float shotTimer;
 
 	[SerializeField]
-	protected ParticleSystem shotParticle;
-	protected int particleID;
+	protected ParticleSystem shotParticle, impactParticle;
+	protected int particleID, impactID;
 
 	[SerializeField]
 	protected GameObject Shot;
@@ -37,6 +37,8 @@ public class Gun : MonoBehaviour {
 			Bullet.Register(shots[1]);
 		}
 		particleID=ParticleManager.Register(shotParticle);
+		impactID=ParticleManager.Register(impactParticle);
+		impactParticle=null;
 		shotParticle=null;
 		shots=null;
 	}
@@ -56,7 +58,8 @@ public class Gun : MonoBehaviour {
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
 		bull.bulletSpeed=bulletSpeed;
-		bull.maxSpeed=maxSpeed;	
+		bull.maxSpeed=maxSpeed;
+		bull.impactID=impactID;	
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
 	}
