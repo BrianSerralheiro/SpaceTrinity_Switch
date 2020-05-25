@@ -44,7 +44,7 @@ public class ParticleManager : MonoBehaviour {
 		sys[i].transform.up=up;
 		for (int j = 0; j < c; j++)
 		{		
-			sys[i].transform.position=(Vector3)Random.insideUnitCircle*a+p+mod;
+			sys[i].transform.position=(Vector3)Random.insideUnitCircle.normalized*a+p+mod;
 			sys[i].Emit(1);
 		}
 	}

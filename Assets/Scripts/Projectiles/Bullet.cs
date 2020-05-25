@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour {
 	public static bool blink;
 	public int spriteID;
 	public int particleID = 4;
-	public int impactID = 5;
+	public int impactID = 3;
 	public float bulletSpeed=12.5f, maxSpeed, _time, delay;
 	new protected SpriteRenderer renderer;
 	public static List<Sprite> sprites=new List<Sprite>();
@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour {
 	void Update()
 	{
 		if(Ship.paused) return;
-		if(Random.value>delay)ParticleManager.Emit(particleID,transform.position,1);
+		ParticleManager.Emit(particleID,transform.position,1);
 		transform.Translate(0,Time.deltaTime*(maxSpeed > 0? Mathf.Clamp((Time.time -_time) / maxSpeed*bulletSpeed , 0 , bulletSpeed): bulletSpeed),0);
 		if(Time.time>spriteTimer){
 			renderer.sprite=sprites[spriteID+(renderer.sprite==sprites[spriteID]?1:0)];

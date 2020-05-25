@@ -3,19 +3,12 @@
 public class GravGun : Gun
 {
     [SerializeField]
-    private int damageBySize,damageByLevel;
-    [SerializeField]
-    private Material material;
-    private int finalDamage;
-    private float timer;
-    [SerializeField]
-    private ParticleSystem impact,particles;
+    private int explosionDamage;
+    private ParticleSystem particles;
     public override void Load(int i)
 	{
         base.Load(i);
         particles=GetComponent<ParticleSystem>();
-		GravBullet.impactID=ParticleManager.Register(impact);
-        finalDamage=damage;
     }
     //     finalDamage=damage;
 	// 	if(Ship.skinID[i]>=0 && Locks.Skin(i*3+Ship.skinID[i])){
@@ -39,42 +32,38 @@ public class GravGun : Gun
 		//ParticleManager.Emit(17,transform.position,1);
 		GameObject go = Shot?Instantiate(Shot): new GameObject("playerbullet");
 		go.name = "playerbullet";
-		SpriteRenderer sp= go.AddComponent<SpriteRenderer>();
-        sp.sprite=Bullet.sprites[shotId];
-        sp.material=material;
+		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
 		go.AddComponent<PolygonCollider2D>();
 		GravBullet bull= go.AddComponent<GravBullet>();
 		bull.owner=transform.parent.name;
-		bull.damage=finalDamage;
-		bull.sizeDamage=damageBySize;
+		bull.damage=damage;
+		bull.areaDamage=explosionDamage;
 		bull.particleID=particleID;
+        bull.impactID=impactID;
 		bull.spriteID=shotId;
         bull.bulletSpeed=bulletSpeed;
-        bull.Size((int)timer);
+        bull.Size(level);
 
 		go.transform.position=transform.position;
-        go.transform.localScale+=Vector3.one/2f*(1+(3-level)/2f);
-        timer=0;
     }
-    protected override void Update()
-    {
-        if(shotTimer > 0)
-		{
-			shotTimer -= Time.deltaTime;
-		}
-        var main=particles.main;
-        Color c=main.startColor.color;
-        c.a=0;
-        if(timer<2)timer+=Time.deltaTime;
-        if(2<timer && Bullet.blink)c.a=1f;
-        else if(timer>1 && Bullet.blink)c.a=0.5f;
-        main.startColor=c;
-    }
+    // protected override void Update()
+    // {
+    //     if(shotTimer > 0)
+	// 	{
+	// 		shotTimer -= Time.deltaTime;
+	// 	}
+    //     var main=particles.main;
+    //     Color c=main.startColor.color;
+    //     c.a=0;
+    //     if(timer<2)timer+=Time.deltaTime;
+    //     if(2<timer && Bullet.blink)c.a=1f;
+    //     else if(timer>1 && Bullet.blink)c.a=0.5f;
+    //     main.startColor=c;
+    // }
 	public override void Level(int i)
 	{
         if(i<4){
-            level=4-i;
-            finalDamage=damage+damageByLevel*(i-1);
+            level=i;
         }
     }
 }
