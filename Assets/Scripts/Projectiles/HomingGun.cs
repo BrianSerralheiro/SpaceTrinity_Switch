@@ -16,6 +16,8 @@ public class HomingGun : Gun
             }
         }
 		particleID=ParticleManager.Register(shotParticle);
+		impactID=ParticleManager.Register(impactParticle);
+		impactParticle=null;
 		shotParticle=null;
 		shots=null;
 	}
@@ -37,6 +39,7 @@ public class HomingGun : Gun
 		bull.particleID=particleID;
 		bull.spriteID=shotId;
 		bull.bulletSpeed=bulletSpeed;
+		bull.impactID=impactID;
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
     }
