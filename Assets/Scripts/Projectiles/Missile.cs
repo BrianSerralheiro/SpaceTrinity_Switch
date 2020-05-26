@@ -3,6 +3,7 @@
 public class Missile : EnemyBase {
 	public bool release;
 	public float time;
+	public int trailID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 	}
@@ -21,6 +22,7 @@ public class Missile : EnemyBase {
 		base.Update();
 		if(release){
 			transform.Translate(0,Time.deltaTime*8,0);
+			ParticleManager.Emit(trailID,transform.position-transform.up+Vector3.forward/5f,1);
 			if(transform.position.x<-Scaler.sizeX/2-2 || transform.position.x>Scaler.sizeX/2+2 || transform.position.y<-Scaler.sizeY-2 || transform.position.y>Scaler.sizeY+2)Destroy(gameObject);
 		}
 	}
