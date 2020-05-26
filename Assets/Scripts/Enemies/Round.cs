@@ -4,7 +4,8 @@ public class Round : EnemyBase
 {
 
 	private float shoottimer = 1.4f;
-	private static int shootId;
+	public static int shootId,trailID,impactID;
+	public static Material shotMaterial;
 
 	private int shootCount;
 	public override void SetSprites(EnemyInfo ei)
@@ -13,6 +14,12 @@ public class Round : EnemyBase
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 150;
 		shootId=ei.bulletsID[0];
+		trailID = ei.particleID[0];
+		impactID = ei.particleID[1];
+		if(!shotMaterial)
+		{
+			shotMaterial = ei.material;
+		}
 	}
 
 	new void Update()
@@ -44,9 +51,14 @@ public class Round : EnemyBase
 	void Shoot(int i)
 	{
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
+		SpriteRenderer r = go.AddComponent<SpriteRenderer>(); 
+		r.sprite=Bullet.sprites[shootId];
+		r.material = shotMaterial;
+		r.color = new Color(0.5f,0.5f,0.5f);
 		go.AddComponent<CircleCollider2D>();
 		Bullet bu = go.AddComponent<Bullet>();
+		bu.particleID=trailID;
+		bu.impactID=impactID;
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
 		Vector3 v= new Vector3(i%2,i/2,0) *2 -Vector3.one;

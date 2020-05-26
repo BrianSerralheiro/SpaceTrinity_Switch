@@ -6,6 +6,7 @@ public class EnemyInfo : ScriptableObject
 	public float lifeproportion=1;
 	public Sprite[] bullets;
 	public ParticleSystem[] particles;
+	public Material material;
 	System.Type script;
 	[HideInInspector]
 	public int[] bulletsID,particleID;

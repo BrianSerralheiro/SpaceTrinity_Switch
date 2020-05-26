@@ -71,14 +71,19 @@ public class Grabber : EnemyBase {
 	void Shoot()
 	{
 		GameObject go = new GameObject("enemybullet");
-		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
+		SpriteRenderer r = go.AddComponent<SpriteRenderer>();
+		r.sprite=Bullet.sprites[shotId];
+		r.material = Round.shotMaterial;
 		go.AddComponent<CircleCollider2D>();
 		Bullet bu = go.AddComponent<Bullet>();
+		r.color = new Color(0.5f,0.5f,0.5f);
 		bu.owner=transform.name;
 		bu.spriteID=shotId;
 		bu.Timer(3);
 		go.transform.position=transform.position;
 		go.transform.up=GetPlayer().position-go.transform.position;
+		bu.particleID=Round.trailID;
+		bu.impactID=Round.impactID;
 	}
 	void OnDisable()
 	{
