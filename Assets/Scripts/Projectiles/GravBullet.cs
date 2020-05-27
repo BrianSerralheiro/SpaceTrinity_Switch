@@ -5,6 +5,7 @@ public class GravBullet : Bullet
     private static int count=6;
     private int size;
     public int areaDamage;
+    public static GameObject impact;
     // void Update()
     // {
     //     if(Ship.paused) return;
@@ -20,8 +21,8 @@ public class GravBullet : Bullet
     }
 	new void OnCollisionEnter2D(Collision2D col)
 	{
-        if(col.collider.name.Contains("player") || col.collider.name.Contains("Player"))return;
-        ParticleManager.Emit(impactID,col.contacts[0].point,size*8,size*2);
+        if(col.collider.name.Contains("layer") || col.collider.name.Contains("laser"))return;
+        Instantiate(impact,transform.position,Quaternion.identity).transform.localScale=Vector3.one*size*2;
         GameObject go = new GameObject("playerbullet");
 		go.AddComponent<CircleCollider2D>().radius=size*2;
 		Bullet bull= go.AddComponent<Bullet>();

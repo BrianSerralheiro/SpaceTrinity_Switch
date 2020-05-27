@@ -20,7 +20,7 @@ public class Brother : EnemyBase
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         go.transform.parent=transform;
         go.transform.localPosition=new Vector3(0,2.3f,-0.01f);
-        go=new GameObject("armL");
+        go=new GameObject("armLbig");
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
         go.AddComponent<PolygonCollider2D>();
         arml=go.transform;
@@ -35,7 +35,7 @@ public class Brother : EnemyBase
         slash.material=new Material(Shader.Find("Sprites/Default"));
         go.transform.parent=arml;
         go.transform.localPosition=new Vector3(-3.5f,-1f,0.01f);
-        go=new GameObject("armR");
+        go=new GameObject("armRbig");
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
         armr=go.transform;
         go.transform.parent=transform;
@@ -55,7 +55,7 @@ public class Brother : EnemyBase
         elbow=go.transform;
         go.transform.parent=armr;
         go.transform.localPosition=new Vector3(2.5f,1,-0.01f);
-        go=new GameObject("rocket");
+        go=new GameObject("rocketbig");
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[5];
         go.AddComponent<PolygonCollider2D>();
         rocket=go.transform;

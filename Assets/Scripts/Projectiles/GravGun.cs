@@ -4,11 +4,11 @@ public class GravGun : Gun
 {
     [SerializeField]
     private int explosionDamage;
-    private ParticleSystem particles;
     public override void Load(int i)
 	{
+        GravBullet.impact=impactParticle.gameObject;
+        impactParticle=null;
         base.Load(i);
-        particles=GetComponent<ParticleSystem>();
     }
     //     finalDamage=damage;
 	// 	if(Ship.skinID[i]>=0 && Locks.Skin(i*3+Ship.skinID[i])){
@@ -32,8 +32,6 @@ public class GravGun : Gun
 		//ParticleManager.Emit(17,transform.position,1);
 		GameObject go = Shot?Instantiate(Shot): new GameObject("playerbullet");
 		go.name = "playerbullet";
-		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
-		go.AddComponent<PolygonCollider2D>();
 		GravBullet bull= go.AddComponent<GravBullet>();
 		bull.owner=transform.parent.name;
 		bull.damage=damage;
