@@ -9,7 +9,7 @@ public class Chopper : EnemyBase
     BulletPath path;
 	Vector3 position;
     Helix helix;
-    static int trailID,impactId;
+    static int trailID,impactID;
     static BulletPath around;
 	public override void SetSprites(EnemyInfo ei)
     {
@@ -21,7 +21,7 @@ public class Chopper : EnemyBase
         helix=go.AddComponent<Helix>();
         shotId=ei.bulletsID[0];
         trailID=ei.particleID[0];
-        impactId=ei.particleID[1];
+        impactID=ei.particleID[1];
         MultiPathEnemy enemy=(MultiPathEnemy)ei;
         counter=shots=enemy.shotCount;
         delay=enemy.shotDelay;
@@ -65,7 +65,7 @@ public class Chopper : EnemyBase
         bu.bulletSpeed=10;
         bu.spriteID=shotId;
         bu.particleID=trailID;
-        bu.impactID=impactId;
+        bu.impactID=impactID;
         bu.Timer(5);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();

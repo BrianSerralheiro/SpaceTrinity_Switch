@@ -4,7 +4,7 @@ public class BigTurret : EnemyBase
 {
     float timer,delay=0.5f,reload=5f;
     int shotId,counter=5,shots=5,cicles=4;
-    static int trailID,impactId;
+    static int trailID,impactID;
     Transform turret;
 	public override void SetSprites(EnemyInfo ei){
         hp=30;
@@ -17,7 +17,7 @@ public class BigTurret : EnemyBase
         Destroy(GetComponent<Collider2D>());
         shotId=ei.bulletsID[0];
         trailID=ei.particleID[0];
-        impactId=ei.particleID[1];
+        impactID=ei.particleID[1];
     }
     void Start()
     {
@@ -46,7 +46,7 @@ public class BigTurret : EnemyBase
         bu.bulletSpeed=8;
         bu.spriteID=shotId;
         bu.particleID=trailID;
-        bu.particleID=trailID;
+        bu.impactID=impactID;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;

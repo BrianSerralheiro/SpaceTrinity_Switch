@@ -75,7 +75,7 @@ public class Tank : EnemyBase
         bu.bulletSpeed=12;
         bu.spriteID=shotId;
         bu.particleID=trailID;
-        bu.particleID=trailID;
+        bu.impactID=impactID;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;

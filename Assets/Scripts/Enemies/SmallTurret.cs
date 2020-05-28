@@ -5,7 +5,7 @@ public class SmallTurret : EnemyBase
     Transform turret,lid;
     float timer,delay=0.1f,reload=2;
     int shotId,counter,shots=4,dir;
-    static int trailID,impactId;
+    static int trailID,impactID;
 	public override void SetSprites(EnemyInfo ei){
         hp=5;
         gameObject.AddComponent<SpriteMask>().sprite=ei.sprites[0];
@@ -24,7 +24,7 @@ public class SmallTurret : EnemyBase
         go.AddComponent<CircleCollider2D>();
         shotId=ei.bulletsID[0];
         trailID=ei.particleID[0];
-        impactId=ei.particleID[1];
+        impactID=ei.particleID[1];
         Destroy(GetComponent<Collider2D>());
         dir=Random.Range(0,8);
     }
@@ -63,7 +63,7 @@ public class SmallTurret : EnemyBase
         bu.bulletSpeed=5;
         bu.spriteID=shotId;
         bu.particleID=trailID;
-        bu.impactID=impactId;
+        bu.impactID=impactID;
         bu.Timer(10);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();

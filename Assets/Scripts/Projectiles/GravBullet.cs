@@ -15,6 +15,14 @@ public class GravBullet : Bullet
 	// 	transform.Translate(0,Time.deltaTime*bulletSpeed,0);
 	// 	if(timer<=0)Destroy(gameObject);
     // }
+    void Update()
+	{
+		if(Ship.paused) return;
+		ParticleManager.Emit(particleID,transform.position,1);
+		transform.Translate(0,Time.deltaTime* bulletSpeed,0);
+		timer-=Time.deltaTime;
+		if(timer<=0)Destroy(gameObject);
+	}
     public void Size(int i){
         size=i;
         transform.localScale=Vector3.one*i;
