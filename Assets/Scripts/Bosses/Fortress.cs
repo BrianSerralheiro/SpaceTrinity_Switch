@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Fortress : EnemyBase
 {
     Del update;
     float treadspeed=-1,turretTimer,turretShot,sequence,cannonTime,rotationSpeed,aim;
-    int turretID,shotId,shotBig;
+    int turretID,shotId,trailID,impactID;
     bool flag;
     MiniTurret[] turrets=new MiniTurret[4];
     Transform cannon,target;
@@ -53,12 +51,15 @@ public class Fortress : EnemyBase
             }
         }
         shotId=ei.bulletsID[0];
-        shotBig=ei.bulletsID[2];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         for (int i = 0; i < 4; i++)
         {
             g=new GameObject("turret"+i);
             turrets[i]=g.AddComponent<MiniTurret>();
             turrets[i].shotId=shotId;
+            turrets[i].trailID=ei.particleID[0];
+            turrets[i].impactID=ei.particleID[1];
             g.AddComponent<SpriteRenderer>().sprite=ei.sprites[3];
             g.transform.parent=transform;
             g.transform.localPosition=new Vector3(-3.2f+6.4f*(i%2),2.1f-2.7f*(i/2),-0.05f);
@@ -231,6 +232,8 @@ public class Fortress : EnemyBase
         game.AddComponent<BoxCollider2D>();
         Bullet bu=game.AddComponent<Bullet>();
         bu.spriteID=shotId;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         bu.bulletSpeed=12;
         bu.owner=name;
         game.transform.position=transform.position-Vector3.forward/10;
@@ -241,10 +244,12 @@ public class Fortress : EnemyBase
         for (int i = 0; i < 2; i++)
         {
             GameObject game=new GameObject("enemybullet");
-            game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotBig];
+            game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
             game.AddComponent<BoxCollider2D>();
             Bullet bu=game.AddComponent<Bullet>();
-            bu.spriteID=shotBig;
+            bu.spriteID=shotId;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             bu.bulletSpeed=10;
             bu.owner=name;
             game.transform.position=cannon.position-cannon.up*5+(flag?cannon.right:-cannon.right)-Vector3.forward/10;
@@ -256,10 +261,12 @@ public class Fortress : EnemyBase
     }
     void ShotBig(){
         GameObject game=new GameObject("enemybullet");
-        game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotBig];
+        game.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         game.AddComponent<BoxCollider2D>();
         Bullet bu=game.AddComponent<Bullet>();
-        bu.spriteID=shotBig;
+        bu.spriteID=shotId;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         bu.bulletSpeed=8;
         bu.owner=name;
         game.transform.position=transform.position-Vector3.up*4-Vector3.forward/10;

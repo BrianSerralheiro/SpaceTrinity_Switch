@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Chopper : EnemyBase
 {
@@ -11,6 +9,7 @@ public class Chopper : EnemyBase
     BulletPath path;
 	Vector3 position;
     Helix helix;
+    static int trailID,impactId;
     static BulletPath around;
 	public override void SetSprites(EnemyInfo ei)
     {
@@ -21,6 +20,8 @@ public class Chopper : EnemyBase
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactId=ei.particleID[1];
         MultiPathEnemy enemy=(MultiPathEnemy)ei;
         counter=shots=enemy.shotCount;
         delay=enemy.shotDelay;
@@ -63,6 +64,8 @@ public class Chopper : EnemyBase
         bu.owner="enemy";
         bu.bulletSpeed=10;
         bu.spriteID=shotId;
+        bu.particleID=trailID;
+        bu.impactID=impactId;
         bu.Timer(5);
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();

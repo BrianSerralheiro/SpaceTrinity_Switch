@@ -5,7 +5,7 @@ public class Tank : EnemyBase
     float timer,speed,wait;
     Transform turret;
     int shotId;
-    
+    static int trailID,impactID;
 	public override void SetSprites(EnemyInfo ei)
     {
         hp=60;
@@ -17,6 +17,8 @@ public class Tank : EnemyBase
         turret.Rotate(0,0,180);
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
     }
     void Start()
     {
@@ -72,6 +74,8 @@ public class Tank : EnemyBase
         bu.owner="enemy";
         bu.bulletSpeed=12;
         bu.spriteID=shotId;
+        bu.particleID=trailID;
+        bu.particleID=trailID;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;

@@ -4,7 +4,7 @@ public class MiniTurret : MonoBehaviour
 {
     float angle,angledelta,timer,shooterTimer;
     int shots,hp;
-    public int shotId;
+    public int shotId,trailID,impactID;
     public float variant=1;
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.name.Contains("Player") && hp--<=0){
@@ -42,6 +42,8 @@ public class MiniTurret : MonoBehaviour
         bu.bulletSpeed=5;
         bu.Timer(5);
         bu.spriteID=shotId;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         go.AddComponent<BoxCollider2D>();
         go.transform.position=transform.position-transform.up;
         go.transform.up=-transform.up;

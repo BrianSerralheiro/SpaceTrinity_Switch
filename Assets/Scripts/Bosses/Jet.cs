@@ -40,6 +40,8 @@ public class Jet : EnemyBase
             g.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
             turrets[i]=g.AddComponent<MiniTurret>();
             turrets[i].shotId=ei.bulletsID[0];
+            turrets[i].trailID=ei.particleID[0];
+            turrets[i].impactID=ei.particleID[1];
             turrets[i].transform.parent=transform;
         }
         turrets[0].transform.localPosition=new Vector3(1.2f,-0.8f,-0.1f);
