@@ -4,11 +4,13 @@ public class Baloon : EnemyBase
 {
     public int rotation;
     Vector3 scale=Vector3.one*0.9f;
+    static int puffID;
     
 	public override void SetSprites(EnemyInfo ei)
 	{
         hp=20;
         points=20;
+        puffID=ei.particleID[0];
     }
     new void Update () 
 	{
@@ -20,6 +22,7 @@ public class Baloon : EnemyBase
         if(transform.localScale==scale){
             if(scale==Vector3.one*0.9f)scale=Vector3.one*1.3f;
             else scale=Vector3.one*0.9f;
+            ParticleManager.Emit(puffID,transform.position+transform.up,1);
         }
         if(transform.position.y<-Scaler.sizeY-2)Die();
     }

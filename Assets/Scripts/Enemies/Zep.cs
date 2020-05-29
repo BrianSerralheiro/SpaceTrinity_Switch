@@ -5,13 +5,16 @@ public class Zep : EnemyBase
     static EnemyInfo balloon;
     float time;
     int spawn=6;
+    static int puffID;
     Vector3 scale=Vector3.one*0.9f;
+    
     public override void SetSprites(EnemyInfo ei)
 	{
         hp=80;
         points=150;
         name+="big";
         fallSpeed=-2;
+        puffID=ei.particleID[0];
         time=Time.time+2;
         if(!balloon)balloon=((CarrierInfo)ei).spawnable;
     }
@@ -21,10 +24,12 @@ public class Zep : EnemyBase
 		if(Ship.paused) return;
 		base.Update();
         SlowFall();
-        transform.localScale=Vector3.MoveTowards(transform.localScale,scale,Time.deltaTime/20);
+        transform.localScale=Vector3.MoveTowards(transform.localScale,scale,Time.deltaTime/10);
         if(transform.localScale==scale){
             if(scale==Vector3.one*0.9f)scale=Vector3.one*1.1f;
             else scale=Vector3.one*0.9f;
+            ParticleManager.Emit(puffID,transform.position+transform.up*2+transform.right,1);
+            ParticleManager.Emit(puffID,transform.position+transform.up*2-transform.right,1);
         }
         if(time<Time.time && spawn>0)Spawn();
     }
