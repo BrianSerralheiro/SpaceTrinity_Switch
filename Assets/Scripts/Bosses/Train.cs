@@ -10,7 +10,7 @@ public class Train : EnemyBase
     Queue<Vector3> pos=new Queue<Vector3>();
     public Vector3[] vec;
     float queueTime,proportion,time;
-    int shotID,pathID,nextPath;
+    int shotID,pathID,nextPath,trailID,impactID;
     Core lights;
     public List<Transform> cars=new List<Transform>();
     [SerializeField]
@@ -26,6 +26,8 @@ public class Train : EnemyBase
         path=BulletPath.Upscale(path);
 		EnemySpawner.boss=true;
         shotID=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         action=Movement;
         action+=Shot;
         GameObject go=new GameObject("lights");
@@ -165,6 +167,8 @@ public class Train : EnemyBase
         go.AddComponent<BoxCollider2D>();
         Bullet bu=go.AddComponent<Bullet>();
         bu.spriteID=shotID;
+		bu.particleID=trailID;
+		bu.impactID=impactID;
         bu.bulletSpeed=12;
         bu.owner=name;
         go.transform.position=t.position-Vector3.forward/10;
@@ -176,8 +180,8 @@ public class Train : EnemyBase
         if(time<Time.time){
             GameObject g=new GameObject("enemy");
             g.AddComponent<CircleCollider2D>().radius=5;
-            g.transform.position=_renderer.transform.position+Vector3.forward/5;
-            ParticleManager.Emit(0,g.transform.position,1,4);
+            g.transform.position=v+Vector3.forward/5;
+            ParticleManager.Emit(0,v,1);
             time=Time.time+2;
             Destroy(g,0.6f);
         }

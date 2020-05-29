@@ -2,7 +2,7 @@
 
 public class Machinegun : EnemyBase
 {
-    int shotId;
+    static int shotId,trailID,impactID;
     float time,heat,firerate=1,minrate=1;
     bool overheat;
     Transform turret;
@@ -17,6 +17,8 @@ public class Machinegun : EnemyBase
         go.AddComponent<CircleCollider2D>();
         Destroy(GetComponent<Collider2D>());
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         time=Time.time+2;
     }
     void Start()
@@ -59,6 +61,8 @@ public class Machinegun : EnemyBase
         bu.bulletSpeed=8;
         bu.Timer(8);
         bu.spriteID=shotId;
+		bu.particleID=trailID;
+		bu.impactID=impactID;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;

@@ -3,7 +3,8 @@
 public class Plane : EnemyBase
 {
     Transform[] helix=new Transform[3];
-    int bullets=6,shotId;
+    int bullets=6;
+    static int shotId,trailID,impactID;
     float time;
     bool right;
     public override void SetSprites(EnemyInfo ei)
@@ -19,6 +20,8 @@ public class Plane : EnemyBase
             helix[i]=go.transform;
         }
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
     }
 	public override void Position(int i)
 	{
@@ -47,6 +50,8 @@ public class Plane : EnemyBase
 		Bullet b= go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shotId;
+		b.particleID=trailID;
+		b.impactID=impactID;
         b.bulletSpeed = 8;
 		go.transform.position=transform.position+new Vector3(-0.5f+bullets%2,-1,0);
 		Vector3 v = GetPlayer(transform.position).position - transform.position;

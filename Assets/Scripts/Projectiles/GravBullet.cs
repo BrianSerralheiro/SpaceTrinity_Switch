@@ -21,18 +21,19 @@ public class GravBullet : Bullet
 		ParticleManager.Emit(particleID,transform.position,1);
 		transform.Translate(0,Time.deltaTime* bulletSpeed,0);
 		timer-=Time.deltaTime;
+        transform.localScale=Vector3.MoveTowards(transform.localScale,Vector3.one*size,Time.deltaTime*size*2);
 		if(timer<=0)Destroy(gameObject);
 	}
     public void Size(int i){
         size=i;
-        transform.localScale=Vector3.one*i;
+        transform.localScale=Vector3.one/10f;
     }
 	new void OnCollisionEnter2D(Collision2D col)
 	{
         if(col.collider.name.Contains("layer") || col.collider.name.Contains("laser"))return;
-        Instantiate(impact,transform.position,Quaternion.identity).transform.localScale=Vector3.one*size*2;
+        Instantiate(impact,transform.position,Quaternion.identity).transform.localScale=Vector3.one*(size+1);
         GameObject go = new GameObject("playerbullet");
-		go.AddComponent<CircleCollider2D>().radius=size*2;
+		go.AddComponent<CircleCollider2D>().radius=size+1;
 		Bullet bull= go.AddComponent<Bullet>();
 		bull.owner=owner;
 		bull.damage=areaDamage;

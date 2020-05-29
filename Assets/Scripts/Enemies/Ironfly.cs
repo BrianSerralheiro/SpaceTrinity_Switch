@@ -8,6 +8,7 @@ public class Ironfly : EnemyBase
 	{
         hp=20;
         points=50;
+        Instantiate(ei.particles[0],transform).transform.localPosition=Vector3.up+Vector3.forward/10f;
         for (int i = 0; i < wings.Length; i++)
         {
             GameObject go=new GameObject("wing"+i);

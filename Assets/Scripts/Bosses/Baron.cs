@@ -6,7 +6,7 @@ public class Baron : EnemyBase
     Transform target;
     Transform[] helix=new Transform[2];
     Vector3 pos=new Vector3(0,Scaler.sizeY/2+2);
-    int bullets,shotId;
+    int bullets,shotId,trailID,impactID;
     float dir,closest=10,rotation=90,time;
     public override void SetSprites(EnemyInfo ei)
 	{
@@ -27,6 +27,9 @@ public class Baron : EnemyBase
             helix[i]=go.transform;
         }
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
+        Instantiate(ei.particles[2],transform);
         update=Intro;
     }
     void Intro(){
@@ -95,7 +98,7 @@ public class Baron : EnemyBase
         v.z=0;
         transform.Rotate(Vector3.Cross(-transform.up,v)*Time.deltaTime*30);
         transform.Translate(0,-Time.deltaTime*3,0);
-        if(Vector3.Distance(target.position,transform.position)<5){
+        if(Vector3.Distance(target.position,transform.position)<8){
             bullets=50;
             update=Shoting;
         }
@@ -151,6 +154,8 @@ public class Baron : EnemyBase
 		Bullet b= go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shotId;
+		b.particleID=trailID;
+		b.impactID=impactID;
 		go.transform.position=transform.position+transform.right*(-0.5f+bullets%2)-transform.up;
 		go.transform.up=-transform.up;
         bullets--;

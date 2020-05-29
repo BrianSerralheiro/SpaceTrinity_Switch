@@ -59,6 +59,12 @@ TextureImporter:
   - first:
       213: 4925891014036338146
     second: miracle tail
+  - first:
+      213: 4789141271079605839
+    second: holy_shot1
+  - first:
+      213: 7830390872146733210
+    second: holy_shot2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -516,6 +522,48 @@ TextureImporter:
       bones: []
       spriteID: d81e8d297b8918b49aca03a5a6436f58
       internalID: 4925891014036338146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_shot1
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 1748
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af14111e7cf7064da73be2e97e7a94d
+      internalID: 4789141271079605839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_shot2
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 1746
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919a5333830f46148a5d9c3048e68af4
+      internalID: 7830390872146733210
       vertices: []
       indices: 
       edges: []
