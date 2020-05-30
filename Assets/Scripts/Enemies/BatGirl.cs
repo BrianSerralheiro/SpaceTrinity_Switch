@@ -2,18 +2,17 @@
 
 public class BatGirl : EnemyBase {
 
-	private Transform wingL;
-	private Transform wingR;
+	private Transform wingL, wingR;
 	private SpriteRenderer render;
-	private Sprite left;
-	private Sprite closed;
+	static Sprite left,closed;
 	private Vector3 vector = new Vector3();
 	private Vector3 pos = new Vector3(0.7f,1.32f,0.1f);
 	private static Vector3[] poses={new Vector3(-1,-1,0).normalized,new Vector3(0,-1,0).normalized,new Vector3(1,-1,0).normalized };
 	private float timer=3;
-	private EnemyInfo bat;
+	static  EnemyInfo bat;
 	private Del movement;
 	private int count;
+	static int pullID,birthID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=120;
@@ -24,6 +23,8 @@ public class BatGirl : EnemyBase {
 		render=go.AddComponent<SpriteRenderer>();
 		left=ei.sprites[2];
 		closed=ei.sprites[4];
+		pullID=ei.particleID[0];
+		birthID=ei.particleID[1];
 		render.sprite=left;
 		wingL=go.transform;
 		go = new GameObject("wingR");
@@ -57,6 +58,7 @@ public class BatGirl : EnemyBase {
 			render.sprite=closed;
 			wingR.gameObject.SetActive(false);
 			vector.Set(0,0,0);
+			ParticleManager.Emit(pullID,transform.position,1);
 			pos.z=-0.1f;
 		}
 		if(timer<0)
@@ -64,6 +66,7 @@ public class BatGirl : EnemyBase {
 			render.sprite=left;
 			wingR.gameObject.SetActive(true);
 			pos.z=0.1f;
+			ParticleManager.Emit(birthID,transform.position,1);
 			for(int i = 0; i<3; i++)
 			{
 				Bat(i);

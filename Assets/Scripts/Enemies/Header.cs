@@ -9,7 +9,7 @@ public class Header : EnemyBase {
 	private Core core;
 	List<Transform> headers=new List<Transform>();
 	Del movement;
-	private static int shootId;
+	private static int shootId,trailID,impactID;
 	static Vector3[] dir={Vector3.left,Vector3.down,Vector3.right};
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -26,6 +26,8 @@ public class Header : EnemyBase {
 		go.transform.localPosition=new Vector3(0,0.42f);
 		movement=Pathing;
 		shootId=ei.bulletsID[0];
+		trailID=ei.particleID[0];
+		impactID=ei.particleID[1];
 		fallSpeed=-4;
 		CircleCollider2D cir=gameObject.AddComponent<CircleCollider2D>();
 		cir.radius=3;
@@ -101,6 +103,8 @@ public class Header : EnemyBase {
 		Bullet bu=go.AddComponent<Bullet>();
 		bu.owner=name;
 		bu.spriteID=shootId;
+		bu.particleID=trailID;
+		bu.impactID=impactID;
 		go.transform.position=transform.position;
 		Vector3 v=GetPlayer(transform.position).position-transform.position;
 		v.z=0;

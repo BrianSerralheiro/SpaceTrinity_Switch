@@ -6,7 +6,7 @@ public class Brother : EnemyBase
     LineRenderer laser;
     BoxCollider2D col;
     float angleR,angleL,time,armSpeed=30,jet=1;
-    int shotID,jetID;
+    int shotID,jetID,trailID,impactID,chargeID;
     Del update;
     public override void SetSprites(EnemyInfo ei)
 	{
@@ -16,6 +16,9 @@ public class Brother : EnemyBase
         damageEffect=true;
         shotID=ei.bulletsID[0];
         jetID=ei.particleID[0];
+        trailID=ei.particleID[1];
+        impactID=ei.particleID[2];
+        chargeID=ei.particleID[3];
         GameObject go=new GameObject("Head");
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         go.transform.parent=transform;
@@ -29,10 +32,10 @@ public class Brother : EnemyBase
         go=new GameObject("slash");
         slash=go.AddComponent<TrailRenderer>();
         slash.enabled=false;
-        slash.time=0.3f;
+        slash.time=0.6f;
         slash.startWidth=0.7f;
         slash.endWidth=0.1f;
-        slash.material=new Material(Shader.Find("Sprites/Default"));
+        slash.material=ei.material;
         go.transform.parent=arml;
         go.transform.localPosition=new Vector3(-3.5f,-1f,0.01f);
         go=new GameObject("armRbig");
@@ -145,6 +148,7 @@ public class Brother : EnemyBase
         }
         if(!laser.enabled){
             elbow.rotation=Quaternion.RotateTowards(elbow.rotation,Quaternion.Euler(0,0,45),30*Time.deltaTime);
+            ParticleManager.Emit(chargeID,elbow.position,1);
             if(elbow.rotation==Quaternion.Euler(0,0,45))laser.enabled=col.enabled=true;
         }
         else{
@@ -163,6 +167,8 @@ public class Brother : EnemyBase
             go.AddComponent<CircleCollider2D>();
             Bullet bu=go.AddComponent<Bullet>();
             bu.spriteID=shotID;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             bu.bulletSpeed=8;
             bu.Timer(5);
             bu.owner=name;

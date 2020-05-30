@@ -11,7 +11,7 @@ public class Batzilla : EnemyBase {
 	private float[] armAngle=new float[2];
 	private Vector3 hor=new Vector3(2,0),ver=new Vector3(0,2,0.01f),armOffset=new Vector3(0,0.1f);
 	private EnemyInfo bat;
-	private int shotId,armID,waveID,eyes;
+	private int shotId,armID,waveID,eyes,trailID,impactID;
 	private bool colliders{
 		set{
 			foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
@@ -58,10 +58,10 @@ public class Batzilla : EnemyBase {
 		go=new GameObject("slash");
 		slash[0]=go.AddComponent<TrailRenderer>();
 		slash[0].enabled=false;
-		slash[0].time=0.8f;
+		slash[0].time=1;
 		slash[0].startWidth=1.2f;
 		slash[0].endWidth=0.1f;
-        slash[0].material=new Material(Shader.Find("Sprites/Default"));
+        slash[0].material=ei.material;
 		go.transform.parent=arms[0];
 		go.transform.localPosition=new Vector3(-4,1,0.01f);
 		go=new GameObject("wingRbig");
@@ -73,7 +73,7 @@ public class Batzilla : EnemyBase {
 		go=new GameObject("slash");
 		slash[1]=go.AddComponent<TrailRenderer>();
 		slash[1].enabled=false;
-		slash[1].time=0.8f;
+		slash[1].time=1f;
 		slash[1].startWidth=1.2f;
 		slash[1].endWidth=0.1f;
         slash[1].material=slash[0].material;
@@ -99,6 +99,8 @@ public class Batzilla : EnemyBase {
 		shotId=ei.bulletsID[0];
 		waveID=ei.particleID[0];
 		eyes=ei.particleID[1];
+		trailID=ei.particleID[2];
+		impactID=ei.particleID[3];
 		update=Intro;
 	}
 	void Start(){}
@@ -150,7 +152,7 @@ public class Batzilla : EnemyBase {
 				time=Time.time+4;
 				dark.Set(1);
 				colliders=false;
-				ParticleManager.Emit(eyes,target.position+Vector3.up*2,1);
+				ParticleManager.Emit(eyes,target.position+Vector3.up*3,1);
 			}
 		}
 		else
@@ -243,6 +245,8 @@ public class Batzilla : EnemyBase {
 		Bullet b=go.AddComponent<Bullet>();
 		b.owner=name;
 		b.spriteID=shotId;
+		b.particleID=trailID;
+		b.impactID=impactID;
 		go.transform.position=transform.position+v;
 		go.transform.up=-transform.up;
 		time=Time.time+0.5f;
