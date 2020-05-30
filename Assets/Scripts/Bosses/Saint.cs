@@ -8,7 +8,7 @@ public class Saint : EnemyBase
     Vector3[] positions=new Vector3[20];
     float time,timer,posX,offset=1;
     static EnemyInfo miracle;
-    int ap,shotId;
+    int ap,shotId,trailID,impactID,haloID;
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
     Del update;
 	new private Core light;
@@ -69,11 +69,12 @@ public class Saint : EnemyBase
         timer=Time.time+3;
         update=Intro;
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
+        haloID=ei.particleID[2];
         fallSpeed=-3;
         g=new GameObject("light");
-		Texture2D te=new Texture2D(1,1);
-		te.SetPixels(new Color[]{Color.white});
-		te.Apply(false);
+		Texture2D te=Texture2D.whiteTexture;
 		light=g.AddComponent<Core>().Set(Sprite.Create(te,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(1f,1f,1f,0f));
 		// light.white=new Color(0f,0f,0f,1f);
 		g.transform.localScale=new Vector3(5000,5000);
@@ -107,6 +108,7 @@ public class Saint : EnemyBase
     void Spawn()
     {
         light.Min(Time.deltaTime);
+        ParticleManager.Emit(haloID,transform.position+Vector3.forward/2,1);
         GameObject go=new GameObject("enemy");
         go.AddComponent<SpriteRenderer>().sprite=miracle.sprites[0];
         go.AddComponent<BoxCollider2D>();
@@ -171,6 +173,8 @@ public class Saint : EnemyBase
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotId;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             bu.bulletSpeed=6;
             bu.Timer(8);
             go.transform.position=v-Vector3.forward/10;

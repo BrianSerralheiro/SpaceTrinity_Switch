@@ -10,9 +10,9 @@ public class Archangel : EnemyBase
     Sprite face;
     Core chin;
     float timer;
-    int shotId;
+    int shotId,trailID,impactID;
     Del update,check;
-    static Material material;
+    Material material;
     public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
@@ -49,6 +49,8 @@ public class Archangel : EnemyBase
         go.transform.parent=transform;
         go.transform.Translate(0,-3.37f,0.01f);
         shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         material=new Material(Shader.Find("Sprites/Default"));
         update=Intro;
         check=Check;

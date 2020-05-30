@@ -2,7 +2,8 @@
 
 public class Miracle : EnemyBase
 {
-    int shots=36,shotId;
+    int shots=36;
+    static int shotId,trailID,impactID,chargeID;
     float angle,time,spawn;
     Core core;
     Transform tail,wingL,wingR;
@@ -27,6 +28,10 @@ public class Miracle : EnemyBase
         wingR.localPosition=Vector3.right*0.4f+Vector3.forward/10;
         wingL.localPosition=Vector3.left*0.4f+Vector3.forward/10;
         // tail.localPosition=Vector3.down*0.3f;
+        shotId=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
+        chargeID=ei.particleID[2];
     }
     new void Update()
     {
@@ -59,6 +64,7 @@ public class Miracle : EnemyBase
         spawn+=Time.deltaTime;
         core.Set(Mathf.Cos(Time.time*(10+20*spawn)));
         transform.Translate(0,-Time.deltaTime,0);
+        ParticleManager.Emit(chargeID,transform.position,1);
         if(spawn>3)
         {
             Free();
@@ -78,6 +84,9 @@ public class Miracle : EnemyBase
         g.AddComponent<CircleCollider2D>();
         Bullet bu=g.AddComponent<Bullet>();
         bu.owner=name;
+        bu.spriteID=shotId;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         bu.Timer(10);
         bu.bulletSpeed=5;
         g.transform.position=transform.position;

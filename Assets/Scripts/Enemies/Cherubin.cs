@@ -4,7 +4,8 @@ public class Cherubin : EnemyBase
 {
     Del update;
     float time;
-    int shots,shotID;
+    int shots;
+    static int shotID,trailID,impactID;
     Transform[] wings=new Transform[2];
     GameObject[] faces=new GameObject[3];
     public override void SetSprites(EnemyInfo ei)
@@ -13,6 +14,8 @@ public class Cherubin : EnemyBase
         points=80;
         update=In;
         shotID=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         fallSpeed=-4;
         GameObject g;
         for (int i = 0; i < 3; i++)
@@ -77,6 +80,8 @@ public class Cherubin : EnemyBase
             bu.owner=name;
             bu.bulletSpeed=12;
             bu.spriteID=shotID;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             go.transform.position=transform.position+Vector3.left/2-Vector3.forward/10+Vector3.down*i;
             go.transform.up=Vector3.down;
         }
@@ -93,6 +98,8 @@ public class Cherubin : EnemyBase
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotID;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             bu.bulletSpeed=6;
             bu.Timer(4);
             go.transform.position=transform.position-Vector3.forward/10;
@@ -109,6 +116,8 @@ public class Cherubin : EnemyBase
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner=name;
         bu.spriteID=shotID;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         bu.bulletSpeed=12;
         go.transform.position=transform.position+Vector3.right/2-Vector3.forward/10;
         Vector3 vector=GetPlayer().position-go.transform.position;

@@ -9,8 +9,10 @@ public class Ascended : EnemyBase
         points=60;
         transform.localScale=new Vector3(1,-1,1);
         fallSpeed=-6;
+        TrailRenderer t=gameObject.AddComponent<TrailRenderer>();
+        t.material=ei.material;
+        t.time=0.8f;
     }
-
     new void Update()
     {
         if(Ship.paused)return;

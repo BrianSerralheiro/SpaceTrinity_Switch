@@ -7,6 +7,7 @@ public class Nun : EnemyBase
     static EnemyInfo miracle;
     float time,offset=3;
     int spawns;
+    static int haloID;
 
     HashSet<Miracle> miracles=new HashSet<Miracle>(),fred=new HashSet<Miracle>();
 	public override void SetSprites(EnemyInfo ei)
@@ -16,6 +17,7 @@ public class Nun : EnemyBase
         points=100;
         hp=140;
         time=Time.time+5;
+        haloID=ei.particleID[0];
         for (int i = 0; i < 4; i++)
         {
             GameObject g=new GameObject("wing"+i);
@@ -58,6 +60,7 @@ public class Nun : EnemyBase
             fallSpeed=3;
             SlowFall();
         }
+        ParticleManager.Emit(haloID,transform.position+Vector3.forward/2,1);
         GameObject go=new GameObject("enemy");
         go.AddComponent<SpriteRenderer>().sprite=miracle.sprites[0];
         go.AddComponent<BoxCollider2D>();
