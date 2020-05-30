@@ -9,6 +9,7 @@ public class MFBat : EnemyBase {
 	Vector3 position;
 	bool inv;
 	Del update;
+	static GameObject trail;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=20;
@@ -16,6 +17,7 @@ public class MFBat : EnemyBase {
 		points=100;
 		shootId=ei.bulletsID[0];
 		if(bats==null)bats=ei.sprites;
+		if(!trail)trail=ei.particles[0].gameObject;
 		PathEnemy pe=(PathEnemy)ei;
 		path=pe.bulletPath;
 		inv=Random.value>0.5;
@@ -49,6 +51,7 @@ public class MFBat : EnemyBase {
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
 		go.AddComponent<Slash>().spriteID=shootId;
+		Instantiate(trail,go.transform);
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
