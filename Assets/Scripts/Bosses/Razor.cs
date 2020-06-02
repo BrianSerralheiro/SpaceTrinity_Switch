@@ -2,7 +2,7 @@
 
 public class Razor : EnemyBase
 {
-    int shotID;
+    int shotID,trailID,impactID;
     float time,spd=6;
     bool revert;
     public override void SetSprites(EnemyInfo ei)
@@ -10,6 +10,8 @@ public class Razor : EnemyBase
         hp=1000;
         points=1000;
         shotID=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         name+="Boss";
         EnemySpawner.boss=true;
         fallSpeed=-4;
@@ -44,6 +46,8 @@ public class Razor : EnemyBase
         Bullet bu = go.AddComponent<Bullet>();
         bu.owner=name;
         bu.spriteID=shotID;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         go.transform.position=transform.position-transform.up*2;
         go.transform.up=-transform.up;
         time=Time.time+3;

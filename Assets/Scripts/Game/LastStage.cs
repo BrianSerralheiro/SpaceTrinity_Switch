@@ -26,10 +26,10 @@ public class LastStage : MonoBehaviour
                 selected=menu.GetOption();
                 time=Time.time+2;
             }
-            selector.position=Vector3.MoveTowards(selector.position,transform.position,10*Time.deltaTime);
-            selector.anchorMin=Vector2.MoveTowards(selector.anchorMin,((RectTransform)transform).anchorMin,10*Time.deltaTime);
-            selector.anchorMax=Vector2.MoveTowards(selector.anchorMax,((RectTransform)transform).anchorMax,10*Time.deltaTime);
-            selector.rotation=Quaternion.RotateTowards(selector.rotation,transform.rotation,90*Time.deltaTime);
+            selector.position=Vector3.MoveTowards(selector.position,transform.position,Time.deltaTime/2);
+            selector.anchorMin=Vector2.MoveTowards(selector.anchorMin,((RectTransform)transform).anchorMin,Time.deltaTime/2);
+            selector.anchorMax=Vector2.MoveTowards(selector.anchorMax,((RectTransform)transform).anchorMax,Time.deltaTime/2);
+            selector.rotation=Quaternion.RotateTowards(selector.rotation,transform.rotation,30*Time.deltaTime);
             menu.enabled=false;
             if(time<Time.time){
                 Loader.Scene("WorldLoader");

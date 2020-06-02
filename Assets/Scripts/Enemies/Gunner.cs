@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gunner : EnemyBase
 {
-    static int shotID;
+    static int shotID,trailID,impactID;
     float time;
     int shot=1;
     public override void SetSprites(EnemyInfo ei)
@@ -13,6 +13,9 @@ public class Gunner : EnemyBase
 		hp=10;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		shotID=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
+        Instantiate(ei.particles[2],transform).transform.localPosition=new Vector3(0,1);
         fallSpeed=-4;
 	}
 
@@ -43,6 +46,8 @@ public class Gunner : EnemyBase
         bu.bulletSpeed=10;
         bu.Timer(8);
         bu.spriteID=shotID;
+        bu.particleID=trailID;
+        bu.impactID=impactID;
         go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotID];
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-transform.up;

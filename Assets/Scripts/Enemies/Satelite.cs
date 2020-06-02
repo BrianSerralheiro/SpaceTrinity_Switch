@@ -2,7 +2,7 @@
 
 public class Satelite : EnemyBase
 {
-    static int shotID;
+    static int shotID,trailID,impactID;
     bool up=true;
     float time;
     public override void SetSprites(EnemyInfo ei)
@@ -11,6 +11,8 @@ public class Satelite : EnemyBase
         points=300;
         name+="big";
         shotID=ei.bulletsID[0];
+        trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
         fallSpeed=-2;
     }
     new void Update()
@@ -29,6 +31,8 @@ public class Satelite : EnemyBase
             Bullet bu = go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotID;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             Vector3 v =up?new Vector3(1.8f,1.5f):new Vector3(0.6f,-3.5f);
             if(i==0)v.x*=-1;
             go.transform.position=transform.position+v;

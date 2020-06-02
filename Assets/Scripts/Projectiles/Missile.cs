@@ -3,7 +3,7 @@
 public class Missile : EnemyBase {
 	public bool release;
 	public float time;
-	public int trailID;
+	public int trailID,impactID;
 	public override void SetSprites(EnemyInfo ei)
 	{
 	}
@@ -28,6 +28,6 @@ public class Missile : EnemyBase {
 	}
 	void OnDestroy()
 	{
-		ParticleManager.Emit(0,transform.position,1);
+		ParticleManager.Emit(impactID,transform.position,1);
 	}
 }

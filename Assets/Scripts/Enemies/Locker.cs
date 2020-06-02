@@ -10,7 +10,7 @@ public class Locker : EnemyBase
     int count,bateries=2;
     static Sprite rocket;
     bool right;
-    static int trailID;
+    static int trailID,impactID;
     public override void SetSprites(EnemyInfo ei)
     {
         hp=130;
@@ -21,6 +21,7 @@ public class Locker : EnemyBase
         aim.transform.parent=transform;
         if(!rocket)rocket=ei.sprites[1];
         trailID=ei.particleID[0];
+        impactID=ei.particleID[1];
     }
     new void Update()
     {
@@ -101,6 +102,8 @@ public class Locker : EnemyBase
 		Missile mi=go.AddComponent<Missile>();
         mi.SetHP(20);
         mi.time=Time.time+3;
+        mi.trailID=trailID;
+        mi.impactID=impactID;
 		rockets.Add(mi);
 		go.AddComponent<BoxCollider2D>();
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();

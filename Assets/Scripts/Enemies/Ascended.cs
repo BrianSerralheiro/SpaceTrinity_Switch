@@ -2,7 +2,6 @@
 
 public class Ascended : EnemyBase
 {
-    
     public override void SetSprites(EnemyInfo ei)
 	{
         hp=10;
