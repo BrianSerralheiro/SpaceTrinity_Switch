@@ -14,7 +14,7 @@ public class Shooter : EnemyBase
 	private Vector3 vector = new Vector3();
 	private Vector3 rot = new Vector3();
 	Del movement;
-	private static int shootId,particleID;
+	private static int shootId,trailID,impactID;
     private int shotCount,cicles;
     private float shotDelay,reloadTime;
 	private BulletPath path;
@@ -46,7 +46,8 @@ public class Shooter : EnemyBase
 		fallSpeed=-9;
 		movement=Moving;
 		shootId=ei.bulletsID[0];
-		particleID=ei.particleID[0];
+		trailID=ei.particleID[0];
+		impactID=ei.particleID[1];
 		MultiPathEnemy pe=(MultiPathEnemy)ei;
 		shotCount=pe.shotCount;
 		cicles=pe.cicles;
@@ -111,7 +112,7 @@ public class Shooter : EnemyBase
 	}
 	void Shoot()
 	{
-		SoundManager.PlayEffects(12, 0.5f, 0.8f);
+		// SoundManager.PlayEffects(12, 0.5f, 0.8f);
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
@@ -119,7 +120,8 @@ public class Shooter : EnemyBase
 		bu.owner=transform.name;
 		bu.spriteID=shootId;
 		bu.path=path;
-		bu.particleID=particleID;
+		bu.particleID=trailID;
+		bu.impactID=impactID;
 		bu.mirror=transform.position.x>0;
 		go.transform.position=crystal.transform.position;
 		go.transform.up=-transform.up;

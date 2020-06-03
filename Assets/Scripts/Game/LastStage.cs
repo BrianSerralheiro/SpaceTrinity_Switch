@@ -17,7 +17,7 @@ public class LastStage : MonoBehaviour
     void Start()
     {
         crack.SetActive(Locks.Boss(6));
-        if(Locks.Boss()<6)gameObject.SetActive(false);
+        // if(Locks.Boss()<6)gameObject.SetActive(false);
     }
     void Update()
     {
