@@ -102,8 +102,8 @@ public class BatGirl : EnemyBase {
 	}
 	protected override void Die()
 	{
-		killed=true;
+		// killed=true;
 		base.Die();
-		ParticleManager.Emit(1,transform.position,1,5);
+		ParticleManager.Emit(1,transform.position,3,1);
 	}
 }

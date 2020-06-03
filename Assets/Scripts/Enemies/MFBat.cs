@@ -4,7 +4,7 @@ public class MFBat : EnemyBase {
 	private float timer=2;
 	private float sprite;
 	private static Sprite[] bats;
-	private static int shootId;
+	private static int shootId,impactID;
 	private BulletPath path;
 	Vector3 position;
 	bool inv;
@@ -18,6 +18,7 @@ public class MFBat : EnemyBase {
 		shootId=ei.bulletsID[0];
 		if(bats==null)bats=ei.sprites;
 		if(!trail)trail=ei.particles[0].gameObject;
+		impactID=ei.particleID[1];
 		PathEnemy pe=(PathEnemy)ei;
 		path=pe.bulletPath;
 		inv=Random.value>0.5;
@@ -50,7 +51,9 @@ public class MFBat : EnemyBase {
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();
-		go.AddComponent<Slash>().spriteID=shootId;
+		Slash s=go.AddComponent<Slash>();
+		s.spriteID=shootId;
+		s.impactID=impactID;
 		Instantiate(trail,go.transform);
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;

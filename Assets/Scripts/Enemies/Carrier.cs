@@ -79,8 +79,8 @@ public class Carrier : EnemyBase {
 	}
 	protected override void Die()
 	{
-		killed=true;
+		// killed=true;
 		base.Die();
-		ParticleManager.Emit(1,transform.position+transform.up*3,10);
+		ParticleManager.Emit(1,transform.position+transform.up*3,2,0.5f);
 	}
 }

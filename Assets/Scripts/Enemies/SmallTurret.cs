@@ -12,14 +12,14 @@ public class SmallTurret : EnemyBase
         GameObject go=new GameObject("lid");
         lid=go.transform;
         go.transform.parent=transform;
-        go.transform.localPosition=Vector3.zero;
+        go.transform.localPosition=Vector3.back/10f;
         SpriteRenderer sr=go.AddComponent<SpriteRenderer>();
         sr.sprite=ei.sprites[1];
         sr.maskInteraction=SpriteMaskInteraction.VisibleInsideMask;
         go=new GameObject("enemybigr");
         turret=go.transform;
         go.transform.parent=transform;
-        go.transform.localPosition=Vector3.zero;
+        go.transform.localPosition=Vector3.back/20f;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
         go.AddComponent<CircleCollider2D>();
         shotId=ei.bulletsID[0];
@@ -38,10 +38,10 @@ public class SmallTurret : EnemyBase
         base.Update();
         timer-=Time.deltaTime;
         transform.Translate(0,-Time.deltaTime*2,0);
-        if(timer>reload){
+        if(timer>reload-1){
             turret.gameObject.SetActive(false);
-            lid.localPosition=Vector3.MoveTowards(lid.localPosition,Vector3.zero+Vector3.back/10,Time.deltaTime*2);
-            lid.Rotate(0,0,40*Time.deltaTime);
+            lid.localPosition=Vector3.MoveTowards(lid.localPosition,Vector3.back/10f,Time.deltaTime*2);
+            if(lid.localPosition!=Vector3.back/10f)lid.Rotate(0,0,60*Time.deltaTime);
         }
         else if(timer<1){
             lid.localPosition=Vector3.MoveTowards(lid.localPosition,Vector3.right+Vector3.back/10,Time.deltaTime);
@@ -49,7 +49,7 @@ public class SmallTurret : EnemyBase
                 turret.rotation=Quaternion.Euler(0,0,dir*45);
                 turret.gameObject.SetActive(true);
             }
-            lid.Rotate(0,0,-40*Time.deltaTime);
+            if(lid.localPosition!=Vector3.right+Vector3.back/10f)lid.Rotate(0,0,-40*Time.deltaTime);
             if(timer<=0)
                 Shot();
         }

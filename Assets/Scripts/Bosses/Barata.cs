@@ -8,12 +8,10 @@ public class Barata : EnemyBase {
 	private Core crystal;
 	private Vector3 rot = Vector3.zero,vector=Vector3.zero,mouthRot=Vector3.zero;
     Del update;
-	int charges,spawns,shotId;
+	int charges,spawns,shotId,trailD,impactID;
 	private EnemyInfo div;
-	/*REMOVER AQUI*/float time;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		/*REMOVER*/time=Time.time;
 		name+="Boss";
 		damageEffect = true;
 		hp=700;
@@ -61,6 +59,8 @@ public class Barata : EnemyBase {
         update=Intro;
 		div=(ei as CarrierInfo).spawnable;
 		shotId=ei.bulletsID[0];
+		trailD=ei.particleID[0];
+		impactID=ei.particleID[1];
 	}
     void Intro(){
         transform.Translate(0,-Time.deltaTime*2,0);
@@ -186,10 +186,12 @@ public class Barata : EnemyBase {
 			Bullet bu=go.AddComponent<Bullet>();
 			bu.owner=name;
 			bu.spriteID=shotId;
+			bu.particleID=trailD;
+			bu.impactID=impactID;
 			bu.bulletSpeed=8f;
 			bu.Timer(10);
 			go.transform.position=crystal.transform.position;
-			go.transform.eulerAngles=new Vector3(0,0,90f+degrees*i);
+			go.transform.rotation=Quaternion.Euler(0,0,90f+degrees*i);
 		}
 	}
 	private new void OnCollisionEnter2D(Collision2D col)

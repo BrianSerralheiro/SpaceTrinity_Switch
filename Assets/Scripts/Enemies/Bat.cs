@@ -9,6 +9,7 @@ public class Bat : EnemyBase
 	private Vector3 vector=new Vector3();
 	public Vector3 target=new Vector3();
 	int count=3;
+	static int deathID;
 
 	public override void SetSprites(EnemyInfo ei)
 	{
@@ -24,6 +25,7 @@ public class Bat : EnemyBase
 		wingL.parent=wingR.parent=transform;
 		wingL.localPosition=new Vector3(0.2f,-0.2f,0.1f);
 		wingR.localPosition=new Vector3(-0.2f,-0.2f,0.1f);
+		deathID=ei.particleID[0];
 	}
 	public override void Position(int i)
 	{
@@ -47,5 +49,11 @@ public class Bat : EnemyBase
 		}
 		if(transform.position.y>Scaler.sizeY+3)Die();
 		transform.position=pos;
+	}
+	protected override void Die()
+	{
+		killed=true;
+		base.Die();
+		ParticleManager.Emit(deathID,transform.position,1);
 	}
 }

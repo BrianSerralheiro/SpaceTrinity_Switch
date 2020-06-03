@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Slash : MonoBehaviour {
-	public int spriteID;
+	public int spriteID,impactID;
 	SpriteRenderer _renderer;
 	float spriteTimer,blinkTimer=0.1f;
 	private void Start()
@@ -11,7 +11,10 @@ public class Slash : MonoBehaviour {
 		spriteTimer=Time.time+blinkTimer;
 		_renderer=GetComponent<SpriteRenderer>();
 	}
-
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if(col.gameObject.GetComponent<Ship>())ParticleManager.Emit(impactID,col.contacts[0].point,1);
+	}
 	void Update () {
 		if(Ship.paused) return;
 		transform.Translate(0,-Time.deltaTime*8,0);
