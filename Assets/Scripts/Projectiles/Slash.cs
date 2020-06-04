@@ -22,6 +22,6 @@ public class Slash : MonoBehaviour {
 			_renderer.sprite=Bullet.sprites[spriteID+(_renderer.sprite==Bullet.sprites[spriteID]?1:0)];
 			spriteTimer=Time.time+blinkTimer;
 		}
-		if(transform.position.y<-Scaler.sizeY)Destroy(gameObject);
+		if(transform.position.y<-Scaler.sizeY-2)Destroy(gameObject);
 	}
 }

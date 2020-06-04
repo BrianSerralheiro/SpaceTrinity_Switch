@@ -4,14 +4,13 @@ public class MagTrap : EnemyBase
 {
     Transform[] parts=new Transform[3];
     float timer;
-    LineRenderer ring;
-    CircleCollider2D circle;
-    static Material material;
+    static Transform field;
+    Transform magField;
+
     public override void SetSprites(EnemyInfo ei)
     {
         hp=40;
         points=40;
-        circle=gameObject.AddComponent<CircleCollider2D>();
         for (int i = 0; i < 3; i++)
         {
             GameObject go=new GameObject("part");
@@ -22,20 +21,7 @@ public class MagTrap : EnemyBase
             go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
             
         }
-        if(!material)material=ei.material;
-        ring=gameObject.AddComponent<LineRenderer>();
-        ring.loop=true;
-        ring.enabled=false;
-        ring.positionCount=6;
-        ring.material=material;
-        ring.startColor=ring.endColor=new Color(0.6f,1,1,0.6f);
-        ring.widthMultiplier=0;
-        ring.useWorldSpace=false;
-        ring.textureMode=LineTextureMode.RepeatPerSegment;
-        // for (int i = 0; i < ring.positionCount; i++)
-        // {
-        //     ring.SetPosition(i,parts[i].localPosition+parts[i].up);
-        // }
+        if(!field)field=ei.particles[0].transform;
         fallSpeed=-3;
     }
     new void Update()
@@ -45,9 +31,7 @@ public class MagTrap : EnemyBase
         transform.Rotate(0,0,fallSpeed*10*Time.deltaTime);
         if(timer>0){
             timer-=Time.deltaTime;
-            ring.widthMultiplier=Mathf.MoveTowards(ring.widthMultiplier,0.8f,Time.deltaTime/3);
-            circle.radius=Mathf.MoveTowards(circle.radius,1.2f,Time.deltaTime);
-            ring.enabled=true;
+            magField.localScale=Vector3.MoveTowards(magField.localScale,Vector3.one,Time.deltaTime);
             fallSpeed=-1;
             foreach (Transform t in parts)
             {
@@ -55,14 +39,11 @@ public class MagTrap : EnemyBase
             }
         }
         if(timer==0){
-            if(Vector3.Distance(GetPlayer(transform.position).position,transform.position)<6)timer=1;
-        }
-        else
-        {
-            for (int i = 0; i < ring.positionCount; i++)
-            {
-                if(i%2==0)ring.SetPosition(i,parts[i/2].localPosition*1.2f+Vector3.forward/10f);
-                else ring.SetPosition(i,(parts[i/2].localPosition+parts[(i/2+1)%3].localPosition)*1.2f+Vector3.forward/10f);
+            if(Vector3.Distance(GetPlayer(transform.position).position,transform.position)<6){
+                timer=1;
+                magField=Instantiate<Transform>(field,transform);
+                magField.gameObject.SetActive(true);
+                magField.name="enemybullet";
             }
         }
         SlowFall();
