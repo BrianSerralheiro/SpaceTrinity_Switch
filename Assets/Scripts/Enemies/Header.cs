@@ -5,8 +5,7 @@ public class Header : EnemyBase {
 	private int  prev=1,shots=5;
 	private Vector3 position;
 	private float timer;
-	private Core eyes;
-	private Core core;
+	private Core eyes,core;
 	List<Transform> headers=new List<Transform>();
 	Del movement;
 	private static int shootId,trailID,impactID;

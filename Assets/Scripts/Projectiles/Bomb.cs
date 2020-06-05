@@ -19,11 +19,10 @@ public class Bomb : EnemyBase {
 		if(Ship.paused) return;
 		base.Update();
 		pos=Vector3.MoveTowards(pos,aim,Time.deltaTime*speed);
-		speed+=Time.deltaTime;
-		if(speed>8)speed=8;
+		speed=Mathf.MoveTowards(speed,8,Time.deltaTime+2);
 		transform.position=pos;
 		transform.Rotate(0,0,Time.deltaTime*90);
-		if((pos-GetPlayer(transform.position).position).sqrMagnitude<2.25f)Explode();
+		if((pos-GetPlayer(transform.position).position).sqrMagnitude<10)Explode();
 		if((pos-aim).sqrMagnitude<0.1f)Die();
 	}
 	public new void OnCollisionEnter2D(Collision2D col)
@@ -34,7 +33,7 @@ public class Bomb : EnemyBase {
 	protected override void Die()
 	{
 		Destroy(gameObject);
-		ParticleManager.Emit(1,transform.position,1,0.5f);
+		ParticleManager.Emit(1,transform.position,1);
 	}
 	private void Explode()
 	{
@@ -42,9 +41,9 @@ public class Bomb : EnemyBase {
 		GameObject go=new GameObject("enemy");
 		go.transform.position=transform.position;
 		go.transform.rotation=transform.rotation;
-		go.AddComponent<BoxCollider2D>().size=new Vector2(0.5f,2.5f);
-		go.AddComponent<BoxCollider2D>().size=new Vector2(2.5f,0.5f);
-		Destroy(go,0.3f);
-		ParticleManager.Emit(explosionID,transform.position,1,2);
+		go.AddComponent<BoxCollider2D>().size=new Vector2(1f,8f);
+		go.AddComponent<BoxCollider2D>().size=new Vector2(8f,1f);
+		Destroy(go,0.2f);
+		ParticleManager.Emit(explosionID,transform.position,transform.up,1);
 	}
 }

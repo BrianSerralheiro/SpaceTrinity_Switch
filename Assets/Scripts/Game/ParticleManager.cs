@@ -55,9 +55,15 @@ public class ParticleManager : MonoBehaviour {
 		sys[i].transform.rotation=t.rotation;
 		sys[i].Emit(c);
 	}
-	public static void Emit(int i,Vector3 p,Vector3 up,int c){
-		sys[i].transform.up=up;
-		Emit(i,p,c);
+	public static void Emit(int i,Vector3 p,Vector3 u,int c){
+		if(i<0)
+		{
+			return;
+		}
+		if(sys==null)return;
+		sys[i].transform.up=u;
+		sys[i].transform.position=p+mod;
+		sys[i].Emit(c);
 	}
 	public static void Emit(int i,Vector3 p,int c)
 	{

@@ -4,13 +4,16 @@ public class Bomber : EnemyBase {
 	private float timer=4;
 	private Vector3 local=new Vector3(-7f,-0.2f);
 	private static Sprite bomb;
-	static int explosionID;
+	static int explosionID,spawnID;
+	static GameObject trail;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
 		name+="big";
 		hp=140;
 		explosionID=ei.particleID[0];
+		spawnID=ei.particleID[1];
+		if(!trail)trail=ei.particles[2].gameObject;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		bomb=ei.sprites[1];
 	}
@@ -19,7 +22,6 @@ public class Bomber : EnemyBase {
 	{
 		base.Position(i);
 		transform.Rotate(0,0,-90f);
-
 	}
 	new void Update () {
 		if(Ship.paused) return;
@@ -34,10 +36,12 @@ public class Bomber : EnemyBase {
 	{
 		timer=2;
 		GameObject go = new GameObject("enemy");
+		Instantiate(trail,go.transform);
 		go.AddComponent<SpriteRenderer>().sprite=bomb;
 		go.transform.parent=transform;
 		go.transform.localPosition=local;
 		go.transform.parent=null;
+		ParticleManager.Emit(spawnID,go.transform.position,1);
 		go.AddComponent<Bomb>().Set(5,explosionID);
 	}
 
@@ -45,6 +49,6 @@ public class Bomber : EnemyBase {
 	{
 		killed=true;
 		base.Die();
-		if(hp<=0)ParticleManager.Emit(1,transform.position-transform.right*3,1,6);
+		if(hp<=0)ParticleManager.Emit(1,transform.position-transform.right*3,3,1);
 	}
 }
