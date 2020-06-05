@@ -6,24 +6,20 @@ public class Lasor : EnemyBase
 	private Vector3 dir;
 	private new BoxCollider2D collider;
 	private Core core;
-	ParticleSystem charge,laser;
+	GameObject laser;
 	public override void SetSprites(EnemyInfo ei)
 	{
 		hp=30;
 		fallSpeed=-1;
-		charge=Instantiate(ei.particles[0]);
-		laser=Instantiate(ei.particles[1]);
+		laser=Instantiate(ei.particles[0].gameObject,transform);
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 120;
-		charge.transform.parent=transform;
 		GameObject go = laser.gameObject;
 		go.name="enemylaser";
 		collider=go.AddComponent<BoxCollider2D>();
 		collider.enabled=false;
 		collider.size=new Vector2(2,30);
 		collider.offset=new Vector2(0,-15);
-		go.transform.parent=transform;
-		go.transform.localPosition=new Vector3();
 		go=new GameObject("core");
 		core=go.AddComponent<Core>().Set(ei.sprites[4],new Color(0.5f,0.1f,0.05f));
 		core.transform.parent=transform;
@@ -49,24 +45,19 @@ public class Lasor : EnemyBase
 		else{
 			timer-=Time.deltaTime;
 			if(timer<0){
-				dir.x=1+timer;
 				collider.enabled=!collider.enabled;
 				if(timer<-1){
 					timer=3;
 					collider.enabled=false;
-					laser.gameObject.SetActive(false);
 				}
 			}
 			else if(timer<1)
 			{
-				dir.Set(1-timer,1,1);
-				laser.gameObject.SetActive(true);
-				charge.gameObject.SetActive(false);
 				core.Set(timer);
 				collider.enabled=!collider.enabled;
 			}else if(timer<2)
 			{
-				charge.gameObject.SetActive(true);
+				laser.SetActive(true);
 				core.Set(2f-timer);
 			}
 			SlowFall();
