@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: 21300024
     second: energy2
+  - first:
+      213: 5425179031553992619
+    second: razor
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -242,27 +245,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zap1
-      rect:
-        serializedVersion: 2
-        x: 1386
-        y: 884
-        width: 94
-        height: 633
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2305410000000000800000000000000
-      internalID: 21300010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: bomb
       rect:
         serializedVersion: 2
@@ -279,27 +261,6 @@ TextureImporter:
       bones: []
       spriteID: c2305410000000000800000000000000
       internalID: 21300012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: energy1
-      rect:
-        serializedVersion: 2
-        x: 980
-        y: 754
-        width: 121
-        height: 127
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2305410000000000800000000000000
-      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -368,43 +329,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zap2
+      name: razor
       rect:
         serializedVersion: 2
-        x: 1201
-        y: 889
-        width: 94
-        height: 633
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63305410000000000800000000000000
-      internalID: 21300022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: energy2
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 749
-        width: 121
-        height: 127
+        x: 1165
+        y: 1878
+        width: 403
+        height: 279
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83305410000000000800000000000000
-      internalID: 21300024
+      spriteID: 0110db7a1d88c3645b4c576632e59292
+      internalID: 5425179031553992619
       vertices: []
       indices: 
       edges: []
@@ -412,7 +352,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: aaa3090d9f50f384e8b33dda3ba40562
     internalID: 0
     vertices: []
     indices: 

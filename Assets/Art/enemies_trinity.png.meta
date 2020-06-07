@@ -38,6 +38,21 @@ TextureImporter:
   - first:
       213: -4697056162448178795
     second: gunner
+  - first:
+      213: -2074233696835568602
+    second: trishot_blue1
+  - first:
+      213: 1725995243553702233
+    second: trishot_blue2
+  - first:
+      213: 5990988776677803283
+    second: trishot_green1
+  - first:
+      213: 3625412320758395548
+    second: trishot_green2
+  - first:
+      213: -8603527421335735835
+    second: trimissile
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -276,6 +291,111 @@ TextureImporter:
       bones: []
       spriteID: 0f8e639f655842041ba5a1b18efbe508
       internalID: -4697056162448178795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trishot_blue1
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 368
+        width: 66
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a16129926eb6344395f54f7f8baa022
+      internalID: -2074233696835568602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trishot_blue2
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 372
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2dc08902a35f97459966a5d1f36ad3e
+      internalID: 1725995243553702233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trishot_green1
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 138
+        width: 66
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c34ea8c515ed104e8411a2d7e180e74
+      internalID: 5990988776677803283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trishot_green2
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 144
+        width: 72
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81472393112402a41a6692cfbc3f9c0e
+      internalID: 3625412320758395548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trimissile
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1455
+        width: 65
+        height: 118
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd080a000b3e2a44b121d5b3308742c
+      internalID: -8603527421335735835
       vertices: []
       indices: 
       edges: []

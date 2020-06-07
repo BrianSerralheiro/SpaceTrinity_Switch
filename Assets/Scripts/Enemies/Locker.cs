@@ -76,8 +76,8 @@ public class Locker : EnemyBase
             }
             Vector3 v=target.position-rocket.transform.position;
             v.z=0;
-            rocket.transform.Rotate(Vector3.Cross(-rocket.transform.up,v)*Time.deltaTime*15);
-            rocket.transform.Translate(0,-Time.deltaTime*8,0);
+            rocket.transform.Rotate(Vector3.Cross(rocket.transform.up,v)*Time.deltaTime*15);
+            rocket.transform.Translate(0,Time.deltaTime*8,0);
             ParticleManager.Emit(trailID,rocket.transform.position,1);
             if(rocket.time<Time.time){
                 rocket.release=true;
@@ -110,7 +110,7 @@ public class Locker : EnemyBase
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
 		go.transform.position=transform.position+transform.right*(right?1.2f:-1.2f);
-        go.transform.up=transform.up;
+        go.transform.up=-transform.up;
         right=!right;
         count++;
         delay=Time.time+0.5f;

@@ -17,6 +17,7 @@ public class LaserGun : Gun {
 	
 	public override void Load(int i){
 		particleID=ParticleManager.Register(shotParticle);
+		impactID=ParticleManager.Register(impactParticle);
 	}
 	void Start () {
 		if(Ship.skinID[2]!=-1 && Locks.Skin(6+Ship.skinID[2]))lasermaterial.mainTexture=lasers[Ship.skinID[2]+1];
@@ -29,6 +30,7 @@ public class LaserGun : Gun {
 		b.owner=transform.parent.name;
 		b.damage=damage;
 		col=gameObject.AddComponent<PolygonCollider2D>();
+		col.enabled=false;
 	}
 	public override void Shoot()
 	{
@@ -67,7 +69,7 @@ public class LaserGun : Gun {
 	}
 	void OnCollisionStay2D(Collision2D collision)
 	{
-		if(collision.otherCollider==col)ParticleManager.Emit(particleID,collision.contacts[0].point,1);
+		if(collision.otherCollider==col)ParticleManager.Emit(impactID,collision.contacts[0].point,1);
 	}
 	new void Update()
 	{
