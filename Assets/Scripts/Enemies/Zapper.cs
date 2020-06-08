@@ -13,8 +13,8 @@ public class Zapper : EnemyBase {
 		fallSpeed=-1;
 		zap=Instantiate(ei.particles[0],transform).gameObject;
 		collider2D=zap.AddComponent<BoxCollider2D>();
-		collider2D.size=new Vector2(1f,9);
-		collider2D.offset=new Vector2(0,5f);
+		collider2D.size=new Vector2(1f,17);
+		collider2D.offset=new Vector2(0,8f);
 		collider2D.enabled=false;
 		// zap.transform.localPosition=new Vector3(0,2,0.1f);
 		

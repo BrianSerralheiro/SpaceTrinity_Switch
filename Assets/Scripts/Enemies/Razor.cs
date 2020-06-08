@@ -3,26 +3,26 @@
 public class Razor : EnemyBase
 {
     int shotID,trailID,impactID;
-    float time,spd=6;
+    float time,lifetime,spd=6;
     bool revert;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=1000;
-        points=1000;
+        hp=200;
+        points=500;
         shotID=ei.bulletsID[0];
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];
-        name+="Boss";
-        EnemySpawner.boss=true;
+        name+="big";
         fallSpeed=-4;
+        lifetime=Time.time+12;
     }
-    
     new void Update()
     {
         if(Ship.paused)return;
         base.Update();
-        if(transform.position.y>Scaler.sizeY-4){
+        if(transform.position.y>Scaler.sizeY-4 || lifetime<Time.time){
             SlowFall();
+            transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,Time.deltaTime*10);
         }
         else{
             Transform target=GetPlayer(transform.position);
@@ -55,7 +55,6 @@ public class Razor : EnemyBase
     
     protected override void Die()
 	{
-        EnemySpawner.boss=false;
         base.Die();
     }
 }

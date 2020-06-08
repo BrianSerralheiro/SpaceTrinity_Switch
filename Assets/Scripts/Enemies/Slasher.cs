@@ -14,6 +14,7 @@ public class Slasher : EnemyBase {
 		shotID=ei.bulletsID[0];
 		if(!trail)trail=ei.particles[0].gameObject;
 		impactID=ei.particleID[1];
+		Instantiate(ei.particles[2],transform);
 		timer=Time.time+2;
 		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 	}
@@ -22,12 +23,12 @@ public class Slasher : EnemyBase {
 	{
 		if(Ship.paused)return;
 		base.Update();
-		if(timer>Time.time+1){
+		if(timer<Time.time+1){
 			if(GetPlayer(transform.position).position.x<transform.position.x)transform.Translate(-Time.deltaTime,0,0);
 			else transform.Translate(Time.deltaTime,0,0);
 		}
 		SlowFall();
-		if(transform.position.y>Scaler.sizeY/3 && timer<Time.time)
+		if(transform.position.y>0 && Mathf.Abs(transform.position.x-GetPlayer(transform.position).position.x)<2 && timer<Time.time)
 		{
 			Shoot();
 		}

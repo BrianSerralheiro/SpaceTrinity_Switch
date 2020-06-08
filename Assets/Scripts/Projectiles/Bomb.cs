@@ -5,29 +5,33 @@ using UnityEngine;
 public class Bomb : EnemyBase {
 	private Vector3 pos;
 	private Vector3 aim;
-	private float speed=2;
+	private float currentSpeed=2,maxSpeed,rotaion;
 	int explosionID;
-	public void Set(int h,int id)
+	public void Set(int h,float r,int id,Vector3 t,float s1,float s2)
 	{
 		hp=h;
+		rotaion=r;
+		transform.rotation=Quaternion.Euler(0,0,r*Random.value);
+		currentSpeed=s1;
+		maxSpeed=s2;
 		explosionID=id;
 		pos=transform.position;
-		aim=(GetPlayer(pos).position-pos).normalized*20+pos;
+		aim=t;
 	}
 	
 	new void Update () {
 		if(Ship.paused) return;
 		base.Update();
-		pos=Vector3.MoveTowards(pos,aim,Time.deltaTime*speed);
-		speed=Mathf.MoveTowards(speed,8,Time.deltaTime+2);
+		pos=Vector3.MoveTowards(pos,aim,Time.deltaTime*currentSpeed);
+		currentSpeed=Mathf.MoveTowards(currentSpeed,maxSpeed,Time.deltaTime*2);
 		transform.position=pos;
-		transform.Rotate(0,0,Time.deltaTime*90);
-		if((pos-GetPlayer(transform.position).position).sqrMagnitude<10)Explode();
-		if((pos-aim).sqrMagnitude<0.1f)Die();
+		transform.Rotate(0,0,Time.deltaTime*rotaion);
+		// if((pos-GetPlayer(transform.position).position).sqrMagnitude<10)Explode();
+		if(pos==aim)Explode();
 	}
 	public new void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.gameObject.name.Contains("Ship")) Explode();
+		if(col.gameObject.name.Contains("Player"))Explode();
 		base.OnCollisionEnter2D(col);
 	}
 	protected override void Die()
