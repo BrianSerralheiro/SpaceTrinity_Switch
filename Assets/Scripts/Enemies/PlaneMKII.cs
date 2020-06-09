@@ -3,7 +3,7 @@
 public class PlaneMKII : EnemyBase
 {
     Transform[] helix=new Transform[3];
-    int charge = 3;
+    int charge = 1;
     bool right;
     static Sprite bomb;
     float time;
@@ -11,7 +11,7 @@ public class PlaneMKII : EnemyBase
 	{
         hp=30;
         points=60;
-        time = Time.time + 1;
+        time = Time.time + 2;
         for (int i = 0; i < 3; i++)
         {
             GameObject go =new GameObject("helix");
@@ -50,6 +50,9 @@ public class PlaneMKII : EnemyBase
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=bomb;
 		go.transform.position=transform.position;
-		go.AddComponent<Bomb>().SetSprites(null);
+        GameObject ex=new GameObject("enemy");
+        ex.SetActive(false);
+        ex.AddComponent<CircleCollider2D>().radius=2;
+		go.AddComponent<Bomb>().Set(5,0,0,GetPlayer().position,6,6,ex);
 	}
 }

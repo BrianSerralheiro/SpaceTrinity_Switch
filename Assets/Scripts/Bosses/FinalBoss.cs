@@ -356,7 +356,12 @@ public class FinalBoss : EnemyBase {
 		go.AddComponent<SpriteRenderer>().sprite=bomb;
 		go.transform.position=transform.position+vec*2*(left?1:-1)+mod+Vector3.down*3.5f;
 		ParticleManager.Emit(spawnID,go.transform.position-mod,1);
-		go.AddComponent<Bomb>().Set(50,90,explosionID,GetPlayer().position,2,8);
+		GameObject ex=new GameObject("enemy");
+		ex.SetActive(false);
+		// go.transform.rotation=transform.rotation;
+		ex.AddComponent<BoxCollider2D>().size=new Vector2(1f,8f);
+		ex.AddComponent<BoxCollider2D>().size=new Vector2(8f,1f);
+		go.AddComponent<Bomb>().Set(50,90,explosionID,GetPlayer().position,2,8,ex);
 		left=!left;
 		Screen(5,1);
 

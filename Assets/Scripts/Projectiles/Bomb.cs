@@ -5,18 +5,20 @@ using UnityEngine;
 public class Bomb : EnemyBase {
 	private Vector3 pos;
 	private Vector3 aim;
-	private float currentSpeed=2,maxSpeed,rotaion;
+	private float currentSpeed=2,maxSpeed,rotation;
 	int explosionID;
-	public void Set(int h,float r,int id,Vector3 t,float s1,float s2)
+	GameObject explosion;
+	public void Set(int h,float r,int id,Vector3 t,float s1,float s2,GameObject ex)
 	{
 		hp=h;
-		rotaion=r;
+		rotation=r;
 		transform.rotation=Quaternion.Euler(0,0,r*Random.value);
 		currentSpeed=s1;
 		maxSpeed=s2;
 		explosionID=id;
 		pos=transform.position;
 		aim=t;
+		explosion=ex;
 	}
 	
 	new void Update () {
@@ -25,7 +27,8 @@ public class Bomb : EnemyBase {
 		pos=Vector3.MoveTowards(pos,aim,Time.deltaTime*currentSpeed);
 		currentSpeed=Mathf.MoveTowards(currentSpeed,maxSpeed,Time.deltaTime*2);
 		transform.position=pos;
-		transform.Rotate(0,0,Time.deltaTime*rotaion);
+		if(rotation!=0)transform.Rotate(0,0,Time.deltaTime*rotation);
+		else transform.up=pos-aim;
 		// if((pos-GetPlayer(transform.position).position).sqrMagnitude<10)Explode();
 		if(pos==aim)Explode();
 	}
@@ -37,17 +40,15 @@ public class Bomb : EnemyBase {
 	protected override void Die()
 	{
 		Destroy(gameObject);
+		Destroy(explosion);
 		ParticleManager.Emit(1,transform.position,1);
 	}
 	private void Explode()
 	{
 		Destroy(gameObject);
-		GameObject go=new GameObject("enemy");
-		go.transform.position=transform.position;
-		go.transform.rotation=transform.rotation;
-		go.AddComponent<BoxCollider2D>().size=new Vector2(1f,8f);
-		go.AddComponent<BoxCollider2D>().size=new Vector2(8f,1f);
-		Destroy(go,0.2f);
+		explosion.transform.position=transform.position;
+		explosion.SetActive(true);
+		Destroy(explosion,0.2f);
 		ParticleManager.Emit(explosionID,transform.position,transform.up,1);
 	}
 }

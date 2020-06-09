@@ -62,7 +62,11 @@ public class Bomber : EnemyBase {
 		go.AddComponent<SpriteRenderer>().sprite=bomb;
 		go.transform.position=transform.position+local;
 		ParticleManager.Emit(spawnID,go.transform.position,1);
-		go.AddComponent<Bomb>().Set(5,90,explosionID,new Vector3(go.transform.position.x,-Scaler.sizeY/2),2,8);
+		GameObject ex=new GameObject("enemy");
+		ex.SetActive(false);
+		ex.AddComponent<BoxCollider2D>().size=new Vector2(1f,8f);
+		ex.AddComponent<BoxCollider2D>().size=new Vector2(8f,1f);
+		go.AddComponent<Bomb>().Set(5,90,explosionID,new Vector3(go.transform.position.x,-Scaler.sizeY/2),2,8,ex);
 	}
 
 	protected override void Die()
