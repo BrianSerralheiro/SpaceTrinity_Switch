@@ -3,24 +3,24 @@
 public class Razor : EnemyBase
 {
     int shotID,trailID,impactID;
-    float time,lifetime,spd=6;
+    float time,spd=6;
     bool revert;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=200;
+        SetHP(150,ei.lifeproportion);
         points=500;
         shotID=ei.bulletsID[0];
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];
         name+="big";
         fallSpeed=-4;
-        lifetime=Time.time+12;
+        // lifetime=Time.time+12;
     }
     new void Update()
     {
         if(Ship.paused)return;
         base.Update();
-        if(transform.position.y>Scaler.sizeY-4 || lifetime<Time.time){
+        if(transform.position.y>Scaler.sizeY-4){
             SlowFall();
             transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,Time.deltaTime*10);
         }

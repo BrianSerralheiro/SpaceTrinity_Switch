@@ -7,7 +7,7 @@ public class SmallTurret : EnemyBase
     int shotId,counter,shots=4,dir;
     static int trailID,impactID;
 	public override void SetSprites(EnemyInfo ei){
-        hp=5;
+        SetHP(5,ei.lifeproportion);
         gameObject.AddComponent<SpriteMask>().sprite=ei.sprites[0];
         GameObject go=new GameObject("lid");
         lid=go.transform;

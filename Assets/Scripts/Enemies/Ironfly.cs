@@ -6,7 +6,7 @@ public class Ironfly : EnemyBase
     SpriteRenderer[] wings=new SpriteRenderer[4];
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=20;
+        SetHP(20,ei.lifeproportion);
         points=50;
         Instantiate(ei.particles[0],transform).transform.localPosition=Vector3.up+Vector3.forward/10f;
         for (int i = 0; i < wings.Length; i++)

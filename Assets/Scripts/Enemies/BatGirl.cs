@@ -15,9 +15,8 @@ public class BatGirl : EnemyBase {
 	static int pullID,birthID;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=120;
+		SetHP(120,ei.lifeproportion);
 		name+="big";
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points=150;
 		GameObject go = new GameObject("wingL");
 		render=go.AddComponent<SpriteRenderer>();

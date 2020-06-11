@@ -21,8 +21,7 @@ public class Squid : EnemyBase {
 		SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;
-		hp=1200;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(1200,ei.lifeproportion);
 		GameObject go;
 		SpriteRenderer sr;
 		tentacle=new Transform[2,tentacleSize];

@@ -18,7 +18,7 @@ public class Train : EnemyBase
     Del action;
     public override void SetSprites(EnemyInfo ei){
         proportion=ei.lifeproportion;
-        hp=(int)(200*proportion);
+        SetHP(200,ei.lifeproportion);
 		name+="Boss";
 		damageEffect = true;
         paths=((MultiPathEnemy)ei).paths;
@@ -83,10 +83,10 @@ public class Train : EnemyBase
                 _renderer=cars[i].GetComponent<SpriteRenderer>();
                 lights=_renderer.GetComponentInChildren<Core>();
                 action=Movement;
-                hp=200;
+                SetHP(200,proportion);
                 if(int.TryParse(_renderer.name.Substring(5,1),out i)){
                     if(i%3==0)action+=Bomb;
-                    if(i%3==1)hp=100;
+                    if(i%3==1)SetHP(100,proportion);
                     if(i%3==2)action+=Shot;
                 }
             }

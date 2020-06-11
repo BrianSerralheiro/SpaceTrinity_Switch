@@ -8,7 +8,7 @@ public class Baloon : EnemyBase
     
 	public override void SetSprites(EnemyInfo ei)
 	{
-        hp=20;
+        SetHP(20,ei.lifeproportion);
         points=20;
         puffID=ei.particleID[0];
     }

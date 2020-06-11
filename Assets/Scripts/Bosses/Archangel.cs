@@ -20,8 +20,7 @@ public class Archangel : EnemyBase
 		name+="Boss";
 		damageEffect = true;
 		EnemySpawner.boss=true;
-		hp=1800;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(1800,ei.lifeproportion);
         GameObject go=new GameObject("halobig");
         SpriteRenderer sr=go.AddComponent<SpriteRenderer>();
         sr.sprite=ei.sprites[1];

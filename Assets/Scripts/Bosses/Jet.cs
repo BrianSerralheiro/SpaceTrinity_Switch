@@ -27,7 +27,7 @@ public class Jet : EnemyBase
 		transform.position=new Vector3(0,Scaler.sizeY+5,0);
 	}
 	public override void SetSprites(EnemyInfo ei){
-        hp=1000;
+        SetHP(1000,ei.lifeproportion);
         EnemySpawner.boss=true;
         name+="Boss";
         GameObject g=new GameObject("tail");

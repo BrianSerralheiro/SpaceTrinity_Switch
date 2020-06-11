@@ -13,8 +13,7 @@ public class Baron : EnemyBase
 		name+="Boss";
 		damageEffect = true;
 		EnemySpawner.boss=true;
-		hp=1800;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(1800,ei.lifeproportion);
         CircleCollider2D col=gameObject.AddComponent<CircleCollider2D>();
         col.isTrigger=true;
         col.radius=5;

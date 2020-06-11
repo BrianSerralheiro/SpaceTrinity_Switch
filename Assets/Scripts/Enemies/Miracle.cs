@@ -11,7 +11,7 @@ public class Miracle : EnemyBase
 	{
         fallSpeed = -3f;
         time = Time.time + 1.5f;
-        hp=10;
+        SetHP(10,ei.lifeproportion);
         points=20;
         GameObject g=new GameObject("wingR");
         g.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];

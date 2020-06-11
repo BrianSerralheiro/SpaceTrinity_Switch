@@ -15,7 +15,7 @@ public class Nun : EnemyBase
         if(!miracle)miracle=((CarrierInfo)ei).spawnable;
         name+="Big";
         points=100;
-        hp=140;
+        SetHP(140,ei.lifeproportion);
         time=Time.time+5;
         haloID=ei.particleID[0];
         for (int i = 0; i < 4; i++)

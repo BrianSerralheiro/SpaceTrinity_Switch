@@ -8,8 +8,7 @@ public class Zapper : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 150;
-		hp=80;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(80,ei.lifeproportion);
 		fallSpeed=-1;
 		zap=Instantiate(ei.particles[0],transform).gameObject;
 		collider2D=zap.AddComponent<BoxCollider2D>();

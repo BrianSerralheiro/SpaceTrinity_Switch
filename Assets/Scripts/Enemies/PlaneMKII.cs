@@ -9,7 +9,7 @@ public class PlaneMKII : EnemyBase
     float time;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=30;
+        SetHP(30,ei.lifeproportion);
         points=60;
         time = Time.time + 2;
         for (int i = 0; i < 3; i++)

@@ -10,7 +10,7 @@ public class Zep : EnemyBase
     
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=80;
+        SetHP(80,ei.lifeproportion);
         points=150;
         name+="big";
         fallSpeed=-2;

@@ -9,14 +9,13 @@ public class Slasher : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 120;
-		hp=40;
+		SetHP(40,ei.lifeproportion);
 		fallSpeed=-1;
 		shotID=ei.bulletsID[0];
 		if(!trail)trail=ei.particles[0].gameObject;
 		impactID=ei.particleID[1];
 		Instantiate(ei.particles[2],transform);
 		timer=Time.time+2;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 	}
 
 	new void Update()

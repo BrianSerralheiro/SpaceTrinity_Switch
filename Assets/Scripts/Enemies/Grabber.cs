@@ -12,8 +12,7 @@ public class Grabber : EnemyBase {
 	private int shotId;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=10;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(10,ei.lifeproportion);
 		points = 50;
 		GameObject go = new GameObject("armL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];

@@ -7,7 +7,7 @@ public class BigTurret : EnemyBase
     static int trailID,impactID;
     Transform turret;
 	public override void SetSprites(EnemyInfo ei){
-        hp=30;
+        SetHP(30,ei.lifeproportion);
         GameObject go=new GameObject("enemybigr");
         go.transform.parent=transform;
         turret=go.transform;

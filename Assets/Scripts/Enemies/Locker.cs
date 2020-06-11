@@ -13,7 +13,7 @@ public class Locker : EnemyBase
     static int trailID,impactID;
     public override void SetSprites(EnemyInfo ei)
     {
-        hp=130;
+        SetHP(130,ei.lifeproportion);
         name+="big";
         points=200;
 		GameObject go=new GameObject("aim");
@@ -100,7 +100,7 @@ public class Locker : EnemyBase
 		GameObject go = new GameObject("enemy");
 		go.AddComponent<SpriteRenderer>().sprite=rocket;
 		Missile mi=go.AddComponent<Missile>();
-        mi.SetHP(20);
+        mi.SetHP(20,1.5f);
         mi.time=Time.time+3;
         mi.trailID=trailID;
         mi.impactID=impactID;

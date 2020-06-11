@@ -8,7 +8,7 @@ public class Tank : EnemyBase
     static int trailID,impactID;
 	public override void SetSprites(EnemyInfo ei)
     {
-        hp=60;
+        SetHP(60,ei.lifeproportion);
         name+="bigr";
         GameObject go=new GameObject("enemy");
         go.transform.parent=transform;

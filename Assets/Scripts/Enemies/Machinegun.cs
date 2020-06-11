@@ -7,7 +7,7 @@ public class Machinegun : EnemyBase
     bool overheat;
     Transform turret;
     public override void SetSprites(EnemyInfo ei){
-        hp=30;
+        SetHP(30,ei.lifeproportion);
         points=40; 
         GameObject go=new GameObject("enemybiggr");
         go.transform.parent=transform;

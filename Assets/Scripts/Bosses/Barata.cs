@@ -14,8 +14,7 @@ public class Barata : EnemyBase {
 	{
 		name+="Boss";
 		damageEffect = true;
-		hp=700;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(700,ei.lifeproportion);
 		GameObject go = new GameObject("BosswingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		BoxCollider2D box = go.AddComponent<BoxCollider2D>();

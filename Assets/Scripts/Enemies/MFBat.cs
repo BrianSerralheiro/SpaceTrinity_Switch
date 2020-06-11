@@ -12,8 +12,7 @@ public class MFBat : EnemyBase {
 	static GameObject trail;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=20;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(20,ei.lifeproportion);
 		points=100;
 		shootId=ei.bulletsID[0];
 		if(bats==null)bats=ei.sprites;

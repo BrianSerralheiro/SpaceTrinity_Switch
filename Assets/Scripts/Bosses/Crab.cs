@@ -40,14 +40,13 @@ public class Crab : EnemyBase {
 	{
 		BossWarning.Show();
 		name+="Boss";
-		SoundManager.Play(2);
+		// SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;
-		hp=1200;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(1200,ei.lifeproportion);
 		GameObject go = new GameObject("enemy");
 		clawL=go.AddComponent<EnemyBase>();
-		clawL.SetHP(150);
+		clawL.SetHP(150,1.2f);
 		lineclawL=go.AddComponent<LineRenderer>();
 		Config(lineclawL);
 		Rigidbody2D r = go.AddComponent<Rigidbody2D>();
@@ -68,7 +67,7 @@ public class Crab : EnemyBase {
 		lineclawR=go.AddComponent<LineRenderer>();
 		Config(lineclawR);
 		clawR=go.AddComponent<EnemyBase>();
-		clawR.SetHP(150);
+		clawR.SetHP(150,1.2f);
 		r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;
@@ -119,11 +118,11 @@ public class Crab : EnemyBase {
 			transform.Translate(0,-Time.deltaTime*2,0);
 			if(clawL){
 				clawL.transform.position=transform.position+left;
-				clawL.SetHP(400);
+				clawL.SetHP(400,1.2f);
 			}
 			if(clawR){
 				clawR.transform.position=transform.position+right;
-				clawR.SetHP(400);
+				clawR.SetHP(400,1.2f);
 			}
 			if(transform.position.y<Scaler.sizeY/2f){state=State.waiting;
 			timer=3;}

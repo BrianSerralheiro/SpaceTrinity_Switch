@@ -13,9 +13,8 @@ public class Invader : EnemyBase {
 	static Vector3[] dir={Vector3.left,Vector3.down,Vector3.right};
 	public override void SetSprites(EnemyInfo ei)
 	{
-		points = 50;
+		SetHP(50,ei.lifeproportion);
 		hp=20;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		shootId=ei.bulletsID[0];
 		Instantiate(ei.particles[0],transform);
 		trailID=ei.particleID[1];

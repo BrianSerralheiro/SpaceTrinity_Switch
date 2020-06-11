@@ -16,7 +16,7 @@ public class Saint : EnemyBase
     public override void SetSprites(EnemyInfo ei)
 	{
         if(!miracle)miracle=((CarrierInfo)ei).spawnable;
-        hp=1000;
+        SetHP(1000,ei.lifeproportion);
         points=800;
         name+="Boss";
         EnemySpawner.boss=true;

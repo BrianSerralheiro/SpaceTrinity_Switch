@@ -43,8 +43,7 @@ public class FinalBoss : EnemyBase {
 		sparkles2=ei.particles[5].gameObject;
 		explosionID=ei.particleID[6];
 		bomb=ei.sprites[4];
-		hp=1600;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(1600,ei.lifeproportion);
 		screens=SpriteBase.I.screens;
 		GameObject go=new GameObject("screen");
 		screenren=go.AddComponent<SpriteRenderer>();
@@ -62,7 +61,7 @@ public class FinalBoss : EnemyBase {
 		if(last)
 		{
 			go.transform.localScale+=Vector3.up;
-			hp=3200;
+			SetHP(3200,ei.lifeproportion);
 			local.Set(0,-2.8f,-0.1f);
 			screenren.sprite=screens[4];
 			screen=null;

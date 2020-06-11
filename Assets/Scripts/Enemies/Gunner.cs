@@ -10,8 +10,7 @@ public class Gunner : EnemyBase
     public override void SetSprites(EnemyInfo ei)
 	{
 		points = 30;
-		hp=10;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(20,ei.lifeproportion);
 		shotID=ei.bulletsID[0];
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];

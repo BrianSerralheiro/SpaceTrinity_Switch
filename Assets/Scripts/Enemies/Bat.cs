@@ -13,8 +13,7 @@ public class Bat : EnemyBase
 
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=5;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(5,ei.lifeproportion);
 		points=20;
 		GameObject go=new GameObject("wingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];

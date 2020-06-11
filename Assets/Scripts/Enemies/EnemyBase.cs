@@ -16,9 +16,10 @@ public class EnemyBase : MonoBehaviour {
 	void Start(){
 		_renderer = GetComponent<SpriteRenderer>();
 	}
-	public void SetHP(int i)
+	public void SetHP(int i,float f)
 	{
 		hp=i;
+		if(Ship.player2>=0)hp=(int)(hp*f);
 	}
 	protected static Transform GetPlayer(Vector3 v){
 		if(players[1]==null || !players[1].gameObject.activeSelf)

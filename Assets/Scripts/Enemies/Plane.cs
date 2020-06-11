@@ -9,7 +9,7 @@ public class Plane : EnemyBase
     bool right;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=30;
+        SetHP(30,ei.lifeproportion);
         points=60;
         for (int i = 0; i < 3; i++)
         {

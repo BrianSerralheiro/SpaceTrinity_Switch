@@ -10,7 +10,7 @@ public class Brother : EnemyBase
     Del update;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=1400;
+        SetHP(1400,ei.lifeproportion);
         name+="Boss";
         EnemySpawner.boss=true;
         damageEffect=true;

@@ -10,8 +10,7 @@ public class Bomber : EnemyBase {
 	{
 		points = 120;
 		name+="big";
-		hp=150;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(150,ei.lifeproportion);
 		bombtime=Time.time+4;
 		explosionID=ei.particleID[0];
 		spawnID=ei.particleID[1];

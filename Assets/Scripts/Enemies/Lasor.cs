@@ -9,10 +9,9 @@ public class Lasor : EnemyBase
 	GameObject laser;
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=30;
+		SetHP(30,ei.lifeproportion);
 		fallSpeed=-1;
 		laser=Instantiate(ei.particles[0].gameObject,transform);
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
 		points = 120;
 		GameObject go = laser.gameObject;
 		go.name="enemylaser";

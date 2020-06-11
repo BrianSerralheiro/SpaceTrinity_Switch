@@ -18,7 +18,7 @@ public class Fortress : EnemyBase
 		transform.position=new Vector3(0,Scaler.sizeY+5,0);
 	}
 	public override void SetSprites(EnemyInfo ei){
-        hp=2000;
+        SetHP(2000,ei.lifeproportion);
 		BossWarning.Show();
 		name+="Boss";
 		SoundManager.Play(2);

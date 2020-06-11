@@ -7,7 +7,7 @@ public class Satelite : EnemyBase
     float time;
     public override void SetSprites(EnemyInfo ei)
     {
-        hp=90;
+        SetHP(90,ei.lifeproportion);
         points=300;
         name+="big";
         shotID=ei.bulletsID[0];

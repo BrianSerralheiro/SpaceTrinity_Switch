@@ -76,7 +76,7 @@ public class Pod : EnemyBase
         go.transform.position=transform.position;
         go.transform.localScale=Vector3.one*2;
         Missile bu=go.AddComponent<Missile>();
-        bu.SetHP(10);
+        bu.SetHP(10,1.2f);
         Rigidbody2D r = go.AddComponent<Rigidbody2D>();
 		r.isKinematic=true;
 		r.useFullKinematicContacts=true;

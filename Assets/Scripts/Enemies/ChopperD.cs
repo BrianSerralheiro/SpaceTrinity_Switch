@@ -5,7 +5,7 @@ public class ChopperD : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
     {
         transform.localScale = Vector3.one * 0.8f;
-        hp=10;
+        SetHP(10,ei.lifeproportion);
         GameObject go=new GameObject("Helix");
         go.transform.parent=transform;
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];

@@ -12,7 +12,7 @@ public class Priest : EnemyBase
     Del upate;
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=120;
+        SetHP(120,ei.lifeproportion);
         points=90;
         GameObject g;
         for (int i = 0; i < 4; i++)

@@ -22,7 +22,7 @@ public class Shooter : EnemyBase
 	public override void SetSprites(EnemyInfo ei)
 	{
 		points = 100;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(8,ei.lifeproportion);
 		GameObject go = new GameObject("legL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
 		legL=go.transform;

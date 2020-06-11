@@ -9,7 +9,7 @@ public class MagTrap : EnemyBase
 
     public override void SetSprites(EnemyInfo ei)
     {
-        hp=40;
+        SetHP(40,ei.lifeproportion);
         points=40;
         for (int i = 0; i < 3; i++)
         {

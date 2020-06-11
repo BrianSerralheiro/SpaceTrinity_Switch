@@ -12,8 +12,7 @@ public class Header : EnemyBase {
 	static Vector3[] dir={Vector3.left,Vector3.down,Vector3.right};
 	public override void SetSprites(EnemyInfo ei)
 	{
-		hp=70;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(70,ei.lifeproportion);
 		points=180;
 		GameObject go=new GameObject("eyes");
 		eyes=go.AddComponent<Core>().Set(ei.sprites[1],new Color(0.4f,0f,0f));

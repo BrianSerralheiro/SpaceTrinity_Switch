@@ -11,8 +11,7 @@ public class Carrier : EnemyBase {
 	public override void SetSprites(EnemyInfo ei)
 	{
 		name+="big";
-		hp=75;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(75,ei.lifeproportion);
 		points = 150;
 		legs=new Transform[6];
 		GameObject go = new GameObject("crystal");

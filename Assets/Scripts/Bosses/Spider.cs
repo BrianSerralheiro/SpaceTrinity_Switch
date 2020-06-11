@@ -18,13 +18,12 @@ public class Spider : EnemyBase {
 		info=ei;
 		BossWarning.Show();
 		name+="Boss";
-		SoundManager.Play(2);
+		// SoundManager.Play(2);
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		BoxCollider2D collider2D=GetComponent<BoxCollider2D>();
 		collider2D.size=new Vector2(3.7f,9);
-		hp=1000;
-		if(PlayerInput.Conected(1))hp=(int)(hp*ei.lifeproportion);
+		SetHP(1000,ei.lifeproportion);
 		BoxCollider2D trigger=gameObject.AddComponent<BoxCollider2D>();
 		trigger.isTrigger=true;
 		trigger.offset=Vector2.up*-5;

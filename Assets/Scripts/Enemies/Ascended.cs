@@ -4,7 +4,7 @@ public class Ascended : EnemyBase
 {
     public override void SetSprites(EnemyInfo ei)
 	{
-        hp=10;
+        SetHP(10,ei.lifeproportion);
         points=60;
         transform.localScale=new Vector3(1,-1,1);
         fallSpeed=-6;
