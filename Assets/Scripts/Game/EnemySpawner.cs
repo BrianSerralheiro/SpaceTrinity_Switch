@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour {
 		}
 		if(timer>0 && !boss) timer-=Time.deltaTime;
 		Vector2 v= bg.mainTextureOffset;
-		if(!freeze)v.y+=Time.deltaTime/world.scroll;
+		if(!freeze)v.y+=Time.deltaTime*world.scroll/100f;
 		if(world.loopWorld)
 			{if(v.y>1) v.y-=1;}
 		else

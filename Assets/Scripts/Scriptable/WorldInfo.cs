@@ -7,6 +7,7 @@ public class WorldInfo : ScriptableObject
     public EnemyInfo[] enemies;
 	public ParticleSystem explosion;
 	public Texture[] bgs;
+	public BGProp[] props;
 	public EnemyInfo subBoss;
 	public bool loopWorld=true;
 	public float scroll=60;
