@@ -7,6 +7,8 @@ public class PlaneMKII : EnemyBase
     bool right;
     static Sprite bomb;
     float time;
+    static GameObject smoke;
+    static int nitro;
     public override void SetSprites(EnemyInfo ei)
 	{
         SetHP(30,ei.lifeproportion);
@@ -21,6 +23,8 @@ public class PlaneMKII : EnemyBase
             helix[i]=go.transform;
         }
         if(!bomb)bomb=ei.sprites[2];
+        if(!smoke)smoke=ei.particles[0].gameObject;
+        nitro=ei.particleID[1];
     }
 	public override void Position(int i)
 	{
@@ -48,11 +52,13 @@ public class PlaneMKII : EnemyBase
 		--charge;
         time = Time.time + 1;
 		GameObject go = new GameObject("enemy");
+        Instantiate(smoke,go.transform);
 		go.AddComponent<SpriteRenderer>().sprite=bomb;
+		go.AddComponent<BoxCollider2D>();
 		go.transform.position=transform.position;
         GameObject ex=new GameObject("enemy");
         ex.SetActive(false);
         ex.AddComponent<CircleCollider2D>().radius=2;
-		go.AddComponent<Bomb>().Set(5,0,0,GetPlayer().position,6,6,ex);
+		go.AddComponent<Bomb>().Set(5,0,nitro,GetPlayer().position,6,6,ex);
 	}
 }
