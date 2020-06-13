@@ -14,18 +14,16 @@ public class Barata : EnemyBase {
 	{
 		name+="Boss";
 		damageEffect = true;
+		Destroy(gameObject.GetComponent<BoxCollider2D>());
+		gameObject.AddComponent<PolygonCollider2D>();
 		SetHP(700,ei.lifeproportion);
 		GameObject go = new GameObject("BosswingL");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
-		BoxCollider2D box = go.AddComponent<BoxCollider2D>();
-		box.size = new Vector2(2.4f,8);
-		box.offset = new Vector2(0,-4f);
+		go.AddComponent<PolygonCollider2D>();
 		wingL=go.transform;
 		go = new GameObject("BosswingR");
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[2];
-		box = go.AddComponent<BoxCollider2D>();
-		box.size = new Vector2(2.4f,8);
-		box.offset = new Vector2(0,-4f);
+		go.AddComponent<PolygonCollider2D>();
 		wingR=go.transform;
 		wingL.parent=wingR.parent=transform;
 		wingL.localPosition=new Vector3(1.4f,3.8f,-0.1f);

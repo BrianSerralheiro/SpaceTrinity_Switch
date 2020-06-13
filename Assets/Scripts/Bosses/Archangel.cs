@@ -9,14 +9,15 @@ public class Archangel : EnemyBase
     List<Transform> rings=new List<Transform>();
     Sprite face;
     Core chin;
-    float timer;
+    float timer,shottime;
     int shotId,trailID,impactID;
     Del update,check;
     Material material;
+    GameObject haloTrail;
     public override void SetSprites(EnemyInfo ei)
 	{
 		BossWarning.Show();
-		SoundManager.Play(2);
+		// SoundManager.Play(2);
 		name+="Boss";
 		damageEffect = true;
 		EnemySpawner.boss=true;
@@ -47,10 +48,13 @@ public class Archangel : EnemyBase
         chin.white=new Color(0,1,1);
         go.transform.parent=transform;
         go.transform.Translate(0,-3.37f,0.01f);
+        Instantiate(ei.particles[4],go.transform).transform.localPosition=new Vector3(0,-1);
         shotId=ei.bulletsID[0];
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];
-        material=new Material(Shader.Find("Sprites/Default"));
+        haloTrail=ei.particles[2].gameObject;
+        Instantiate(ei.particles[3],transform);
+        material=ei.material;
         update=Intro;
         check=Check;
     }
@@ -69,7 +73,7 @@ public class Archangel : EnemyBase
         if(hp<1500){
             damageTimer=0;
             GetComponent<Core>().Set(0);
-            GetComponent<Collider2D>().enabled=false;
+            Destroy(GetComponent<Collider2D>());
             timer=0;
             _renderer.sprite=face;
             _renderer.color=Color.clear;
@@ -93,10 +97,7 @@ public class Archangel : EnemyBase
                 wings[i].rotation=Quaternion.RotateTowards(wings[i].rotation,Quaternion.identity,40*Time.deltaTime);
         }
         if(timer>5){
-            BoxCollider2D box=GetComponent<BoxCollider2D>();
-            box.enabled=true;
-            box.size=new Vector2(2,4);
-            box.offset=new Vector2(0,-3);
+            gameObject.AddComponent<PolygonCollider2D>();
             update=Creating;
             chin.Set(Color.white,chin.white);
         }
@@ -106,10 +107,12 @@ public class Archangel : EnemyBase
         {
             GameObject go=new GameObject("enemybullet");
             go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shotId];
-            go.AddComponent<BoxCollider2D>();
+            go.AddComponent<CircleCollider2D>();
             Bullet bu=go.AddComponent<Bullet>();
             bu.owner=name;
             bu.spriteID=shotId;
+            bu.particleID=trailID;
+            bu.impactID=impactID;
             bu.bulletSpeed=10;
             bu.Timer(4);
             go.transform.position=halo.position-Vector3.forward/10;
@@ -133,7 +136,7 @@ public class Archangel : EnemyBase
             halo.gameObject.AddComponent<CircleCollider2D>().radius=1.2f;
         }
 		if(update!=Intro && update!=Dying)base.OnCollisionEnter2D(col);
-		else ParticleManager.Emit(3,col.collider.transform.position,1);
+		else ParticleManager.Emit(3,col.contacts[0].point,1);
         check?.Invoke();
 	}
     void Shooting(){
@@ -148,16 +151,23 @@ public class Archangel : EnemyBase
     void Creating(){
         if(halo.parent)
             halo.Rotate(0,0,Mathf.Sin(Time.time)*360*Time.deltaTime);
+        transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,60*Time.deltaTime);
+        for(int i = 0; i < 2; i++)
+            wings[i].localRotation=Quaternion.RotateTowards(wings[i].localRotation,Quaternion.identity,40*Time.deltaTime);
         if(timer<=Time.time)
             Create(new Vector3(-Scaler.sizeX/4+Scaler.sizeX/4*rings.Count,transform.position.y));
     }
     void Sending(){
         if(halo.parent)
             halo.Rotate(0,0,Mathf.Sin(Time.time)*270*Time.deltaTime);
+        transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,60*Time.deltaTime);
+        for(int i = 0; i < 2; i++)
+            wings[i].localRotation=Quaternion.RotateTowards(wings[i].localRotation,Quaternion.identity,40*Time.deltaTime);
         if(!target){
             if(rings.Count==0){
                 update-=Sending;
                 update+=Aim;
+                chin.transform.GetChild(0).gameObject.SetActive(true);
                 timer=Time.time+2;
             }
             else{
@@ -167,7 +177,7 @@ public class Archangel : EnemyBase
             }
         }
         else{
-            timer+=Time.deltaTime*10;
+            timer+=Time.deltaTime*100;
             target.Translate(0,-Time.deltaTime*timer,0);
             if(target.position.y<-Scaler.sizeY-2)Destroy(target.gameObject);
         }
@@ -175,8 +185,11 @@ public class Archangel : EnemyBase
     void Halo(){
         halo.Rotate(0,0,Mathf.Sin(Time.time)*180*Time.deltaTime);
         if(halo.position==point){
-            Shot();
             point.Set(Random.Range(-Scaler.sizeX/2+2,Scaler.sizeX/2-2),Random.Range(Scaler.sizeY/4,Scaler.sizeY-1),0);
+        }
+        if(shottime<Time.time){
+            Shot();
+            shottime=Time.time+5;
         }
         halo.position=Vector3.MoveTowards(halo.position,point,Time.deltaTime);
     }
@@ -201,11 +214,12 @@ public class Archangel : EnemyBase
         transform.Translate(0,-timer*6*Time.deltaTime,0);
         wings[0].localRotation=Quaternion.RotateTowards(wings[0].localRotation,Quaternion.Euler(0,0,35),70*Time.deltaTime);
         wings[1].localRotation=Quaternion.RotateTowards(wings[1].localRotation,Quaternion.Euler(0,0,-35),70*Time.deltaTime);
-        if(timer>2){
+        if(timer>2 || (transform.position.y<-Scaler.sizeY &&timer>1)){
             update-=Dive;
             if(Random.value<0.7f){
                 timer=Time.time+2;
                 update+=Aim;
+                chin.transform.GetChild(0).gameObject.SetActive(true);
             }
             else
                 update+=Resting;
@@ -213,8 +227,8 @@ public class Archangel : EnemyBase
     }
     void Resting(){
         if(halo.parent)halo.rotation=Quaternion.RotateTowards(halo.rotation,Quaternion.identity,60*Time.deltaTime);
-        transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,90*Time.deltaTime);
-        transform.position=Vector3.MoveTowards(transform.position,Vector3.up*Scaler.sizeY/2,Time.deltaTime*3);
+        transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.identity,60*Time.deltaTime);
+        transform.position=Vector3.MoveTowards(transform.position,Vector3.up*Scaler.sizeY/2,Time.deltaTime*5);
         chin.Min(Time.deltaTime*2);
         for(int i = 0; i < 2; i++)
                 wings[i].localRotation=Quaternion.RotateTowards(wings[i].localRotation,Quaternion.identity,40*Time.deltaTime);
@@ -236,6 +250,7 @@ public class Archangel : EnemyBase
     void Create(Vector3 v){
         target=null;
         GameObject go=new GameObject("enemy");
+        Instantiate(haloTrail,go.transform);
         go.transform.position=v;
         rings.Add(go.transform);
         CircleCollider2D col=go.AddComponent<CircleCollider2D>();
@@ -256,7 +271,7 @@ public class Archangel : EnemyBase
         {
             ring.SetPosition(i,new Vector3(Mathf.Cos(i*rad)*4,Mathf.Sin(i*rad)*2,Mathf.Sin(i*rad)));
         }
-        timer=Time.time+0.2f;
+        timer=Time.time+0.1f;
         if(rings.Count>=3){
             update-=Creating;
             update+=Sending;
@@ -272,11 +287,11 @@ public class Archangel : EnemyBase
         }
         if(target)Destroy(target.gameObject);
         GetComponent<Collider2D>().enabled=false;
-        timer=Time.time+3;
+        timer=Time.time+5;
     }
     void Dying(){
         halo.Translate(0,-Time.deltaTime,0,Space.World);
-		if(Time.time%1f<0.1f)ParticleManager.Emit(1,transform.position+Random.onUnitSphere,1);
+		if(Time.time%1f<0.1f)ParticleManager.Emit(1,transform.position,1,2);
         if(timer<Time.time)Loader.Scene("MenuSelection");
     }
 }

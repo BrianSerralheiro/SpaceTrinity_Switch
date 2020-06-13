@@ -212,8 +212,8 @@ public class Brother : EnemyBase
 	void Dying(){
         Jet(10);
         rocket.Rotate(0,0,25*Time.deltaTime);
-        transform.Rotate(0,0,-15*Time.deltaTime);
-        transform.Translate(0, fallSpeed*Time.deltaTime,0);
+        transform.Rotate(0,0,-5*Time.deltaTime);
+        transform.Translate(0, fallSpeed*Time.deltaTime,0,Space.World);
         rocket.Translate(0,-fallSpeed*Time.deltaTime,0);
         fallSpeed=Mathf.MoveTowards(fallSpeed,-4,Time.deltaTime*2);
         if(time<Time.time){
