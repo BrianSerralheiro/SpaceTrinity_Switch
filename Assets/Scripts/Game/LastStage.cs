@@ -13,6 +13,8 @@ public class LastStage : MonoBehaviour
     RectTransform selected;
     [SerializeField]
     GameObject crack;
+    [SerializeField]
+    MenuTransition transition;
     float time;
     void Start()
     {
@@ -21,6 +23,7 @@ public class LastStage : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))Locks.Boss(6,true);
         if(PlayerInput.GetKeySpecial(0)){
             if(PlayerInput.GetKeySpecialDown(0)){
                 selected=menu.GetOption();
@@ -32,7 +35,9 @@ public class LastStage : MonoBehaviour
             selector.rotation=Quaternion.RotateTowards(selector.rotation,transform.rotation,90*Time.deltaTime);
             menu.enabled=false;
             if(time<Time.time){
-                Loader.Scene("WorldLoader");
+                menu.enabled=true;
+                transition.Close(menu);
+                transition.Open();
                 EnemySpawner.world=Locks.Boss(6)?world8:world7;
             }
         }else if(selected){
