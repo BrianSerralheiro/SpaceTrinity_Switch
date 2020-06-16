@@ -13,7 +13,6 @@ public class GameOverController : MonoBehaviour
 	[SerializeField]
 	private Text[] Stars;
 	private static float Timer;
-	private static Ship ship;
 	private static GameObject menu;
 	private bool highscore;
 	public delegate void Dele();
@@ -62,12 +61,15 @@ public class GameOverController : MonoBehaviour
 	}
 	public static void Open(Ship s)
 	{
-		if(Ship.continues[0]>-1 || Ship.continues[1]>-1)return;
-		Ship.paused = true;
-		ship = s;
-		enable();
-		menu.SetActive(true);
-		Timer = 2f;
+		if(Ship.continues[0]>-1 || Ship.continues[1]>-1){
+			Ship.shipToRevive = s;
+			Ship.pointsToRevive=EnemySpawner.points[s.input.id==0?1:0]+1000;
+		}else{
+			Ship.paused = true;
+			enable();
+			menu.SetActive(true);
+			Timer = 2f;
+		}
 	}
 	public void Retry()
 	{

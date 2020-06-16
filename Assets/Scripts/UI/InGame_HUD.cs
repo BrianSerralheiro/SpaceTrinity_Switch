@@ -10,7 +10,8 @@ public class InGame_HUD : MonoBehaviour
 	private int id;
 	private float currentHp,_shipHealth,_special;
 	[SerializeField]
-	private Text scoreHUD,pilotName,steal;
+	private Text scoreHUD,pilotName,steal,pointsToRevive,level;
+	private static int[] levels={1,1};
 	private static float[] _currentHP={1,1};
 	public static float[] shipHealth={1,1},special={0,0};
 
@@ -23,6 +24,7 @@ public class InGame_HUD : MonoBehaviour
 	private Color otherColor=Color.white;
 	public static HUDInfo[] HUD=new HUDInfo[2];
 	private static HashSet<Ship> shipsToRevive=new HashSet<Ship>();
+	private static int levelChanged=-1;
 	void Start()
 	{
 		if(!p1 && !PlayerInput.Conected(1))gameObject.SetActive(false);
@@ -44,18 +46,23 @@ public class InGame_HUD : MonoBehaviour
 		s.reviveTimer=1;
 		shipsToRevive.Add(s);
 	}
+	public static void Level(int i,int l){
+		levels[i]=l;
+		levelChanged=i;
+	}
 	void Update()
 	{
 		if(Ship.continues[id]<0){
-			steal.color=Color.Lerp(Color.white,Color.clear,Mathf.Cos(Time.unscaledTime*8));
+			pointsToRevive.color=steal.color=Color.Lerp(Color.white,Color.clear,Mathf.Cos(Time.unscaledTime*8));
+			int i=p1?1:0;
+			pointsToRevive.text=Ship.revivePoints-(Ship.pointsToRevive-EnemySpawner.points[i])+"/"+Ship.revivePoints;
 			if(!hide){
 				hide=true;
 				lifeBar.enabled=lifeFill.enabled=specialFill.enabled=pilotMask.enabled=pilotPic.enabled=pilotName.enabled=
-				scoreHUD.enabled=false;
-				steal.enabled=true;
+				level.enabled=scoreHUD.enabled=false;
+				pointsToRevive.enabled=steal.enabled=true;
 			}
 			if(PlayerInput.GetKeyShot(id) && PlayerInput.GetKeySpecialDown(id)){
-				int i=p1?1:0;
 				if(Ship.continues[i]>0){
 					Ship.continues[i]--;
 					Ship.continues[id]=0;
@@ -68,8 +75,8 @@ public class InGame_HUD : MonoBehaviour
 		else if(hide){
 				hide=false;
 				lifeBar.enabled=lifeFill.enabled=specialFill.enabled=pilotMask.enabled=pilotPic.enabled=pilotName.enabled=
-				scoreHUD.enabled=true;
-				steal.enabled=false;
+				level.enabled=scoreHUD.enabled=true;
+				pointsToRevive.enabled=steal.enabled=false;
 			}
 		if(shipHealth[id]<_currentHP[id]){
 			_currentHP[id]-=Time.unscaledDeltaTime;
@@ -90,6 +97,10 @@ public class InGame_HUD : MonoBehaviour
 			specialFill.color=Color.Lerp(color,otherColor,Mathf.Cos(Time.unscaledTime*8));
 		}else specialFill.color=color;
 		specialFill.fillAmount=special[id];
+		if(levelChanged==id){
+			level.text="Lv. "+levels[levelChanged];
+			levelChanged=-1;
+		}
 		if(p1)foreach (Ship s in shipsToRevive)
 		{
 			s.reviveTimer-=Time.unscaledDeltaTime;

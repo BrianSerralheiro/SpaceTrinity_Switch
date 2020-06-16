@@ -39,7 +39,10 @@ public class Ship : MonoBehaviour {
 	private int Level = 1;
 	[SerializeField]
 	private int id;
-	public static int player1,player2=5;
+	public static int player1,player2=5,pointsToRevive;
+	//PONTUAÇÃO PARA REVIVER
+	public static readonly int revivePoints=1000;
+	public static Ship shipToRevive;
 	public static int[] skinID={-1,-1,-1,-1,-1,-1},equips={0,0};
 	public float immuneTime;
 	public PlayerInput input;
@@ -199,8 +202,8 @@ public class Ship : MonoBehaviour {
 		hp=maxhp;
 		onRevive?.Invoke(this);
 		// specialMat.mainTexture=specials[0];
-		DialogBox.Texts(falas,sizes);
-		DialogBox.Chars(charPics);
+		// DialogBox.Texts(falas,sizes);
+		// DialogBox.Chars(charPics);
 		falas=null;
 		charPics=null;
 		sizes=null;
@@ -289,6 +292,16 @@ public class Ship : MonoBehaviour {
 		{
 			return;
 		}
+		if(!special.Finished())
+		{
+			special.Update();
+		}
+		if(pointsToRevive>0 && pointsToRevive<=EnemySpawner.points[input.id]){
+			Ship.continues[shipToRevive.input.id]=0;
+			InGame_HUD.shipHealth[shipToRevive.input.id]=1;
+			InGame_HUD.Revive(shipToRevive);
+			pointsToRevive=0;
+		}
 		if(reviveTimer>0){
 			reviveTimer-=Time.deltaTime;
 			transform.Translate(0,4*Time.deltaTime,0);
@@ -310,10 +323,6 @@ public class Ship : MonoBehaviour {
 			
 		}
 		onUpdate?.Invoke(this);
-		if(!special.Finished())
-		{
-			special.Update();
-		}
 #region CHEATS
 		if(Input.GetKeyDown(KeyCode.F10))Equip(0);
 		if(Input.GetKeyDown(KeyCode.F1))Equip(1);
@@ -368,6 +377,7 @@ public class Ship : MonoBehaviour {
 	}
 	void OnLevel(int i)
 	{
+		InGame_HUD.Level(input.id,i);
 		foreach(Gun gun in guns)
 		{
 			gun.Level(i);
@@ -375,7 +385,7 @@ public class Ship : MonoBehaviour {
 	}
 	public void OnLevel()
 	{
-		if(Level<3)
+		if(Level<4)
 		{
 			OnLevel(++Level);
 		}
