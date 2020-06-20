@@ -7,6 +7,7 @@ public class PropSpawner : MonoBehaviour
     List<BGProp> props=new List<BGProp>();
     List<Transform> objects=new List<Transform>();
     float distance,speed;
+    int prev=-1;
     void Start()
     {
         foreach (BGProp prop in EnemySpawner.world.props)
@@ -19,10 +20,14 @@ public class PropSpawner : MonoBehaviour
     void Update()
     {
         if(distance<=0){
-            int i=Random.Range(0,props.Count);
+            int i=0;
+            do{
+                i=Random.Range(0,props.Count);
+            }while(i==prev);
+            prev=i;
             Transform t=Instantiate(props[i].prefab).transform;
             objects.Add(t);
-            t.position=props[i].Position();
+            t.position=props[i].Position(distance-(int)distance);
             distance+=props[i].distance;
         }
         distance-=Time.deltaTime*speed;
@@ -32,7 +37,7 @@ public class PropSpawner : MonoBehaviour
         }
         foreach (Transform t in objects)
         {
-            if(t.position.y<-Scaler.sizeY-4){
+            if(t.position.y<-Scaler.sizeY-15){
                 objects.Remove(t);
                 Destroy(t.gameObject);
                 break;
