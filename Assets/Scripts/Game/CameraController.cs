@@ -8,7 +8,9 @@ public class CameraController : MonoBehaviour
     {
         if(Ship.player2==-1)update=Single;
         else update=Double;
-        Debug.Log(Ship.player2);
+        Light l=gameObject.GetComponent<Light>();
+        l.intensity=EnemySpawner.world.lightIntensity;
+        l.color=EnemySpawner.world.lightColor;
     }
     void Single(){
         Vector3 v=transform.position;

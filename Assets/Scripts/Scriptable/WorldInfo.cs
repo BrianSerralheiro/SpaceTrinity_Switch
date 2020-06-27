@@ -11,6 +11,9 @@ public class WorldInfo : ScriptableObject
 	public EnemyInfo subBoss;
 	public bool loopWorld=true;
 	public float scroll=60;
+	[Range(0,1)]
+	public float lightIntensity=1;
+	public Color lightColor=Color.white;
 	public EnemyInfo Boss;
 	public Sprite bossFace;
 	public EnemyInfo drone;
