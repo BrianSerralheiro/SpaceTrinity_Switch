@@ -7,7 +7,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     bool auto;
     [SerializeField]
-    Text speechText;
+    Text nameText,speechText;
     [SerializeField]
     Image[] actors;
     [SerializeField]
@@ -90,6 +90,7 @@ public class DialogManager : MonoBehaviour
         speech=s;
         fulltext=Language.GetDialog(s.text);
         charCount=0;
+        nameText.text=s.name;
         speechText.text="";
         for (int i = 0; i < actors.Length; i++)
         {

@@ -107,9 +107,9 @@ public class DialogEditor : Editor
         {
             SerializedProperty entry=prop.GetArrayElementAtIndex(i);
             x+=10;
-            entry.isExpanded=EditorGUI.Foldout(new Rect(x,y,w-h,h),entry.isExpanded,"Speech "+i);
+            entry.isExpanded=EditorGUI.Foldout(new Rect(x,y,w-h*2,h),entry.isExpanded,"Speech "+i);
             y+=h;
-            if(GUI.Button(new Rect(x+w-h,y-h,h,h),"X")){
+            if(GUI.Button(new Rect(x+w-h*2,y-h,h,h),"X")){
                 prop.DeleteArrayElementAtIndex(i);
                 prop.serializedObject.ApplyModifiedProperties();
                 continue;
@@ -149,10 +149,13 @@ public class DialogEditor : Editor
             }
             y=sy+h;
             x-=20;
-            GUI.Label(new Rect(x,y,w,h),"Text Key");
+            float dw=w/3;
+            GUI.Label(new Rect(x,y,dw,h),"Name");
+            GUI.Label(new Rect(x+dw,y,w-dw,h),"Text Key");
             y+=h;
             EditorGUI.BeginChangeCheck();
-            EditorGUI.PropertyField(new Rect(x,y,w,h),entry.FindPropertyRelative("text"),GUIContent.none);
+            EditorGUI.PropertyField(new Rect(x,y,dw,h),entry.FindPropertyRelative("name"),GUIContent.none);
+            EditorGUI.PropertyField(new Rect(x+dw,y,w-dw,h),entry.FindPropertyRelative("text"),GUIContent.none);
             if(EditorGUI.EndChangeCheck())entry.serializedObject.ApplyModifiedPropertiesWithoutUndo();
             y+=h;
         }

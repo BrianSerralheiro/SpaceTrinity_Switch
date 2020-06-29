@@ -61,7 +61,7 @@ public struct Dialog{
 [System.Serializable]
 public struct Speech 
 {
-    public string text;
+    public string text,name;
     public Character[] characters;
 }
 [System.Serializable]
