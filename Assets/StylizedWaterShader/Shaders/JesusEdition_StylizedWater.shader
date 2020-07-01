@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 // Shader created with Shader Forge v1.37 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
@@ -130,14 +132,15 @@ Shader "Marc Sureda/StylizedWater" {
                 float node_9794_cos = cos(node_9794_spd*node_9794_ang);
                 float node_9794_sin = sin(node_9794_spd*node_9794_ang);
                 float2 node_9794_piv = float2(0.5,0.5);
-                float2 node_9794 = (mul(o.uv0-node_9794_piv,float2x2( node_9794_cos, -node_9794_sin, node_9794_sin, node_9794_cos))+node_9794_piv);
+                float2 node_9794 = (mul(mul(unity_ObjectToWorld,v.vertex).xz-node_9794_piv,float2x2( node_9794_cos, -node_9794_sin, node_9794_sin, node_9794_cos))+node_9794_piv);
                 float4 _Gradient = tex2Dlod(_DistortionTexture,float4(TRANSFORM_TEX(node_9794, _DistortionTexture),0.0,0));
                 float node_5335 = sin(((node_8260.g*_WavesSpeed)-(_Gradient.b*(_WavesAmplitude*30.0))));
                 float Waves = (node_5335*_WavesIntensity*10.0);
-                v.vertex.xyz += lerp( 0.0, (v.normal*(Waves*0.04)), _VertexOffset );
+                v.vertex.y += lerp( 0.0, (v.normal*(Waves*0.04)), _VertexOffset ).y;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
-                o.pos = UnityObjectToClipPos( v.vertex );
+                o.pos = UnityObjectToClipPos(v.vertex);
+                // o.pos = UnityWorldToClipPos(o.pos);
                 UNITY_TRANSFER_FOG(o,o.pos);
                 o.projPos = ComputeScreenPos (o.pos);
                 COMPUTE_EYEDEPTH(o.projPos.z);
