@@ -27,7 +27,7 @@ public class PropSpawner : MonoBehaviour
             prev=i;
             Transform t=Instantiate(props[i].prefab).transform;
             objects.Add(t);
-            t.position=props[i].Position(distance-(int)distance);
+            t.position=props[i].Position(distance);
             distance+=props[i].distance;
         }
         distance-=Time.deltaTime*speed;
