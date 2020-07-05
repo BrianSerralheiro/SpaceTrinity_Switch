@@ -7,6 +7,7 @@
 		_Wave ("Wave Heigth",float)=1
 		_Bounce ("Bounce",float)=1
 		_Distortion("Distortion",Range(0,1))=0
+		_Direction("Direction",Range(0,1))=0
 		_FoamThicness ("Foam Thiccness",Range(0.0,0.1))=0.05
 		_FoamGradient ("Foam Gradient",Range(0.0,0.4))=0.1
 		_Drift ("Drift Speed X Y, Wave Speed X Y",Vector)=(0,0,0,0)
@@ -19,11 +20,11 @@
     {
         Tags { "RenderType"="Transparent" "Queue"="Transparent"}
         LOD 200
-		ZTest[unity_GUIZTestMode]
+		// Zwrite off
 		Blend SrcAlpha OneMinusSrcAlpha
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows vertex:vert
+        #pragma surface surf Standard fullforwardshadows alpha vertex:vert
 		
         #pragma target 3.0
 
@@ -41,6 +42,7 @@
 		float _Scale;
 		float _Wave;
 		float _Distortion;
+		float _Direction;
 		float _Bounce;
 		float _FoamThicness;
 		float _FoamGradient;
@@ -51,12 +53,15 @@
             if(_Wave>0){
         		float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 				float2 p=(worldPos.xy-_Drift.zw*_Time.y)/_Scale;
-				float wave=cos(p.x)*_Distortion+tex2Dlod(_Noise,float4(p.xy/10,0,0)).rgb*(1-_Distortion);
+				float wave=cos(p.x*_Direction+p.y*(1-_Direction))*_Distortion+tex2Dlod(_Noise,float4(p.xy/10,0,0)).rgb*(1-_Distortion);
 				// v.vertex.xyz+=sin(_Time.z)*v.normal;
 				worldPos.z-=wave*_Wave;
+				// v.normal*=lerp(float3(0,1,0),float3(1,0,0),(wave+1)/2);
+				float3 unvertex=v.vertex;
 				v.vertex=mul(unity_WorldToObject,worldPos);
+				// v.normal=-normalize(v.vertex-unvertex);
 			}
-         }
+        }
 
         float3 voronoiNoise(float2 value){
 			float2 baseCell = floor(value);
