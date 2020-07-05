@@ -6,7 +6,7 @@ public class PropSpawner : MonoBehaviour
 {
     List<BGProp> props=new List<BGProp>();
     List<Transform> objects=new List<Transform>();
-    float distance,speed;
+    float distance=-24,speed;
     int prev=-1;
     void Start()
     {

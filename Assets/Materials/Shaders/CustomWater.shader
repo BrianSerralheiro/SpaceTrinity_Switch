@@ -4,7 +4,9 @@
     {
         _WaterColor ("Water Color", Color) = (1,1,1,1)
         _FoamColor ("Foam Color", Color) = (1,1,1,1)
+		_Wave ("Wave Heigth",float)=1
 		_Bounce ("Bounce",float)=1
+		_Distortion("Distortion",Range(0,1))=0
 		_FoamThicness ("Foam Thiccness",Range(0.0,0.1))=0.05
 		_FoamGradient ("Foam Gradient",Range(0.0,0.4))=0.1
 		_Drift ("Drift Speed X Y, Wave Speed X Y",Vector)=(0,0,0,0)
@@ -21,14 +23,15 @@
 		Blend SrcAlpha OneMinusSrcAlpha
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows vertex:vert
+		
         #pragma target 3.0
 
 
         struct Input
         {
-            float2 uv_MainTex;
             float3 worldPos;
+			float3 vertex;
         };
 
         sampler2D _Noise;
@@ -36,17 +39,28 @@
         fixed4 _FoamColor;
 		float4 _Drift;
 		float _Scale;
+		float _Wave;
+		float _Distortion;
 		float _Bounce;
 		float _FoamThicness;
 		float _FoamGradient;
 		float _Shine;
 		float _Shinyness;
 
+		void vert(inout appdata_full v) {
+            if(_Wave>0){
+        		float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
+				float2 p=(worldPos.xy-_Drift.zw*_Time.y)/_Scale;
+				float wave=cos(p.x)*_Distortion+tex2Dlod(_Noise,float4(p.xy/10,0,0)).rgb*(1-_Distortion);
+				// v.vertex.xyz+=sin(_Time.z)*v.normal;
+				worldPos.z-=wave*_Wave;
+				v.vertex=mul(unity_WorldToObject,worldPos);
+			}
+         }
 
         float3 voronoiNoise(float2 value){
 			float2 baseCell = floor(value);
 
-			//first pass to find the closest cell
 			float minDistToCell = 10;
 			float2 toClosestCell;
 			float2 closestCell;
@@ -93,7 +107,7 @@
         void surf (Input i, inout SurfaceOutputStandard o) {
 			float2 value = (i.worldPos.xy-_Drift.xy*_Time.y) / _Scale;
 			float3 noise = voronoiNoise(value);
-
+			
 			if(noise.z>_FoamThicness+_FoamGradient)o.Albedo=_WaterColor;
 			else if(noise.z<_FoamThicness) o.Albedo = _FoamColor;
 			else o.Albedo=lerp(_FoamColor,_WaterColor,(noise.z-_FoamThicness)/_FoamGradient).rgb;
