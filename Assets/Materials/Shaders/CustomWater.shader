@@ -5,12 +5,13 @@
         _WaterColor ("Water Color", Color) = (1,1,1,1)
         _FoamColor ("Foam Color", Color) = (1,1,1,1)
 		_Wave ("Wave Heigth",float)=1
+		_Fadeout ("Fadeout",float)=1
 		_Bounce ("Bounce",float)=1
 		_Distortion("Distortion",Range(0,1))=0
 		_Direction("Direction",Range(0,1))=0
 		_FoamThicness ("Foam Thiccness",Range(0.0,0.1))=0.05
 		_FoamGradient ("Foam Gradient",Range(0.0,0.4))=0.1
-		_Drift ("Drift Speed X Y, Wave Speed X Y",Vector)=(0,0,0,0)
+		_Drift ("Drift , Wave Speed",Vector)=(0,0,0,0)
 		_Scale ("Scale",float)=2
 		_Shinyness("Shinyness",Range(0,0.3))=0.01
 		_Shine ("Shine",Range(0,1))=0.5
@@ -33,6 +34,7 @@
         {
             float3 worldPos;
 			float3 vertex;
+			float4 screenPos;
         };
 
         sampler2D _Noise;
@@ -48,6 +50,8 @@
 		float _FoamGradient;
 		float _Shine;
 		float _Shinyness;
+		float _Fadeout;
+		sampler2D _CameraDepthTexture;
 
 		void vert(inout appdata_full v) {
             if(_Wave>0){
@@ -121,6 +125,7 @@
 			float f=abs(sin(_Time.y+mod*4))*alb*2-1;
 			if(f>1-_Shine)o.Albedo+=f*_Shinyness;
 			o.Alpha=_WaterColor.a;
+			o.Alpha=saturate((LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r)-i.screenPos.w)/_Fadeout);
 		}
         ENDCG
     }
