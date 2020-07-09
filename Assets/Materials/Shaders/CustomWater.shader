@@ -9,6 +9,7 @@
 		_Bounce ("Bounce",float)=1
 		_Distortion("Distortion",Range(0,1))=0
 		_Direction("Direction",Range(0,1))=0
+		_Reflection("Reflection",Range(0,1))=0.5
 		_FoamThicness ("Foam Thiccness",Range(0.0,0.1))=0.05
 		_FoamGradient ("Foam Gradient",Range(0.0,0.4))=0.1
 		_Drift ("Drift , Wave Speed",Vector)=(0,0,0,0)
@@ -23,7 +24,10 @@
         LOD 200
 		// Zwrite off
 		Blend SrcAlpha OneMinusSrcAlpha
-
+		GrabPass
+        {
+            "_BackgroundTexture"
+        }
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows alpha vertex:vert
 		
@@ -33,16 +37,18 @@
         struct Input
         {
             float3 worldPos;
-			float3 vertex;
+			float4 vertex;
 			float4 screenPos;
         };
 
+        sampler2D _BackgroundTexture;
         sampler2D _Noise;
         fixed4 _WaterColor;
         fixed4 _FoamColor;
 		float4 _Drift;
 		float _Scale;
 		float _Wave;
+		float _Reflection;
 		float _Distortion;
 		float _Direction;
 		float _Bounce;
@@ -120,14 +126,25 @@
 			if(noise.z>_FoamThicness+_FoamGradient)o.Albedo=_WaterColor;
 			else if(noise.z<_FoamThicness) o.Albedo = _FoamColor;
 			else o.Albedo=lerp(_FoamColor,_WaterColor,(noise.z-_FoamThicness)/_FoamGradient).rgb;
+			// float dist=LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r)-i.screenPos.w;
+			float depth=saturate((LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r)-i.screenPos.w)/_Fadeout);
+			float2 p=(i.worldPos.xy-_Drift.zw*_Time.y/5)/_Scale;
+			float wave=tex2D(_Noise,p).rgb;
+			float2 uv=i.screenPos.xy/i.screenPos.w;
+			float4 scrmod=float4(-wave*(uv.x-0.5)*2,-wave*(uv.y-0.5)*2,0,0);
+			float dist=LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos+scrmod)).r)-i.screenPos.w;
+			float2 uvpos=(i.screenPos.xy+scrmod*clamp(0,1,abs(dist)))/i.screenPos.w;
+			uvpos.y=1-uvpos.y;
+			// uvpos+=float2(uvpos.x/2+0.5,uvpos.y/2+0.5);
+			if(dist<0)o.Albedo=o.Albedo*(1-_Reflection)+tex2D(_BackgroundTexture,uvpos).rgb*_Reflection;
+			// lerp(o.Albedo,tex2D(_BackgroundTexture,i.screenPos.xy+scrmod).rgb,_Reflection*depth);
 			float alb=tex2D(_Noise,value).rgb;
 			float mod=tex2D(_Noise,i.worldPos.xy).rgb;
 			float f=abs(sin(_Time.y+mod*4))*alb*2-1;
 			if(f>1-_Shine)o.Albedo+=f*_Shinyness;
-			o.Alpha=_WaterColor.a;
-			o.Alpha=saturate((LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r)-i.screenPos.w)/_Fadeout);
+			o.Alpha=depth;
 		}
         ENDCG
     }
-    FallBack "Diffuse"
+    // FallBack "Diffuse"
 }
