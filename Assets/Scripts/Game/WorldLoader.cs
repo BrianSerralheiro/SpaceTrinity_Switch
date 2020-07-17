@@ -62,11 +62,7 @@ public class WorldLoader : MonoBehaviour
     }
     void Step2(){
         if(request==null){
-            request=Resources.LoadAsync<AudioClip>("Art/"+ EnemySpawner.world.bgs[0].name);
-        }
-        else if(request.isDone){
-           EnemySpawner.mundo= request.asset as Texture;
-            request=null;
+           //colocar loading correspondente
             update=Step3;
         }
     }

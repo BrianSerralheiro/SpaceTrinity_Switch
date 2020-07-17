@@ -6,7 +6,8 @@ public class PropSpawner : MonoBehaviour
 {
     List<BGProp> props=new List<BGProp>();
     List<Transform> objects=new List<Transform>();
-    float distance=-24,speed;
+    float distance=-24,speed,maxDistance;
+    Queue<float> distances=new Queue<float>();
     int prev=-1;
     void Start()
     {
@@ -26,6 +27,8 @@ public class PropSpawner : MonoBehaviour
             }while(i==prev);
             prev=i;
             Transform t=Instantiate(props[i].prefab).transform;
+            if(objects.Count==0)maxDistance=props[i].distance;
+            else distances.Enqueue(props[i].distance);
             objects.Add(t);
             t.position=props[i].Position(distance);
             distance+=props[i].distance;
@@ -35,13 +38,10 @@ public class PropSpawner : MonoBehaviour
         {
             t.Translate(0,-speed*Time.deltaTime,0,Space.World);
         }
-        foreach (Transform t in objects)
-        {
-            if(t.position.y<-Scaler.sizeY-15){
-                objects.Remove(t);
-                Destroy(t.gameObject);
-                break;
-            }
+        if(objects.Count>0 && objects[0].position.y<-maxDistance-10){
+            Destroy(objects[0].gameObject);
+            objects.RemoveAt(0);
+            maxDistance=distances.Dequeue();
         }
     }
 }

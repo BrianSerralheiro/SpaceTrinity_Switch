@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
-	public Material bg;
 	[TextArea]
 	public string wave;
 	public static int[] points=new int[2];
@@ -50,9 +49,6 @@ public class EnemySpawner : MonoBehaviour {
 		freeze=false;
 		FinalBoss.last=false;
 		SoundManager.Play(1);
-		bg.mainTexture=world.bgs[0];
-		bg.mainTextureOffset=Vector2.zero;
-		bg.color=Color.white;
 		points[0]=0;
 		points[1]=0;
 	}
@@ -81,13 +77,6 @@ public class EnemySpawner : MonoBehaviour {
 			Spawn(world.Boss).Position(0);
 		}
 		if(timer>0 && !boss) timer-=Time.deltaTime;
-		Vector2 v= bg.mainTextureOffset;
-		if(!freeze)v.y+=Time.deltaTime*world.scroll/100f;
-		if(world.loopWorld)
-			{if(v.y>1) v.y-=1;}
-		else
-			if(v.y>0.9f) v.y=0.9f;
-		bg.mainTextureOffset=v;
 	}
 
 	public void Chose(string s)

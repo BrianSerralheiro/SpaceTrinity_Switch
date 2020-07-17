@@ -8,6 +8,6 @@ public struct BGProp
     public float position,variant,distance;
     public bool manual;
     public Vector3 Position(float f){
-        return new Vector3(position+Random.Range(-variant,variant),Scaler.sizeY+5+f,1);
+        return new Vector3(position+Random.Range(-variant,variant),Scaler.sizeY+10+f,1);
     }
 }
