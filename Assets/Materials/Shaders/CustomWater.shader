@@ -10,7 +10,7 @@
 		_Distortion("Distortion",Range(0,1))=0
 		_Direction("Direction",Range(0,1))=0
 		_Reflection("Reflection",Range(0,1))=0.5
-		_FoamThicness ("Foam Thiccness",Range(0.0,0.1))=0.05
+		_FoamThicness ("Foam Thiccness",Range(0.0,1))=0.05
 		_FoamGradient ("Foam Gradient",Range(0.0,0.4))=0.1
 		_Drift ("Drift , Wave Speed",Vector)=(0,0,0,0)
 		_Scale ("Scale",float)=2
@@ -59,20 +59,29 @@
 		float _Fadeout;
 		sampler2D _CameraDepthTexture;
 
+		float waveSample(float2 p){
+			return cos(p.x*_Direction+p.y*(1-_Direction))*_Distortion+tex2Dlod(_Noise,float4(p.xy/10,0,0)).rgb*(1-_Distortion);
+		}
+		float calculateNormal(float wave,float2 pos,float2 mod){
+			float past=waveSample(pos-mod);
+			float future=waveSample(pos+mod);
+			float dif1=future-wave;
+			float dif2=wave-past;
+			return (dif1+dif2)*5;
+		}
 		void vert(inout appdata_full v) {
             if(_Wave>0){
         		float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 				float2 p=(worldPos.xy-_Drift.zw*_Time.y)/_Scale;
-				float wave=cos(p.x*_Direction+p.y*(1-_Direction))*_Distortion+tex2Dlod(_Noise,float4(p.xy/10,0,0)).rgb*(1-_Distortion);
+				float mod=1/_Scale;
+				float wave=waveSample(p);
 				// v.vertex.xyz+=sin(_Time.z)*v.normal;
 				worldPos.z-=wave*_Wave;
 				// v.normal*=lerp(float3(0,1,0),float3(1,0,0),(wave+1)/2);
-				float3 unvertex=v.vertex;
 				v.vertex=mul(unity_WorldToObject,worldPos);
-				// v.normal=-normalize(v.vertex-unvertex);
+				v.normal=normalize(float3(calculateNormal(wave,p,float2(mod,0)),1,-calculateNormal(wave,p,float2(0,mod))));
 			}
         }
-
         float3 voronoiNoise(float2 value){
 			float2 baseCell = floor(value);
 
@@ -121,11 +130,12 @@
 		}
         void surf (Input i, inout SurfaceOutputStandard o) {
 			float2 value = (i.worldPos.xy-_Drift.xy*_Time.y) / _Scale;
-			float3 noise = voronoiNoise(value);
+			float bouce=cos((i.worldPos.y+_Time.x)/_Scale+_Time.y*_Bounce);
+			float noise =waveSample((i.worldPos.xy+bouce-_Drift.zw*_Time.y)/_Scale);
 			
-			if(noise.z>_FoamThicness+_FoamGradient)o.Albedo=_WaterColor;
-			else if(noise.z<_FoamThicness) o.Albedo = _FoamColor;
-			else o.Albedo=lerp(_FoamColor,_WaterColor,(noise.z-_FoamThicness)/_FoamGradient).rgb;
+			// if(1-noise<_FoamThicness)o.Albedo=_FoamColor;
+			// else if(noise>1-_FoamThicness) o.Albedo = _FoamColor;
+			o.Albedo=lerp(_WaterColor,_FoamColor,clamp(_FoamThicness*noise*2-1,0,1));
 			// float dist=LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r)-i.screenPos.w;
 			float depth=saturate((LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r)-i.screenPos.w)/_Fadeout);
 			float2 uv=i.screenPos.xy/i.screenPos.w;
@@ -133,16 +143,17 @@
 			float wave=tex2D(_Noise,p).rgb;
 			float4 scrmod=float4(wave*-(uv.x-0.5)*2,wave*-(uv.y-0.5)*2,0,0);
 			float dist=LinearEyeDepth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos+scrmod)).r)-i.screenPos.w;
-			float2 uvpos=(i.screenPos.xy+scrmod.xy*clamp(0,1,abs(dist)))/i.screenPos.w;
+			float2 uvpos=(i.screenPos.xy+scrmod.xy*clamp(abs(dist),0,1))/i.screenPos.w;
 			uvpos.y=1-uvpos.y;
 			// uvpos+=float2(uvpos.x/2+0.5,uvpos.y/2+0.5);
 			if(dist<0)o.Albedo=o.Albedo*(1-_Reflection)+tex2D(_BackgroundTexture,uvpos).rgb*_Reflection;
 			// lerp(o.Albedo,tex2D(_BackgroundTexture,i.screenPos.xy+scrmod).rgb,_Reflection*depth);
-			float alb=tex2D(_Noise,value).rgb;
-			float mod=tex2D(_Noise,i.worldPos.xy/_Scale*5).rgb;
-			float f=abs(sin(_Time.y+mod*4))*alb*2-1;
-			if(f>1-_Shine)o.Albedo+=f*_Shinyness;
+			float alb=(tex2D(_Noise,value).rgb*2-1)/10+1;
+			float mod=tex2D(_Noise,(i.worldPos.xy-_Drift.xy*_Time.y)/_Scale).rgb;
+			float f=alb*noise;
+			if(f>1-_Shine)o.Emission=f*_Shinyness;
 			o.Alpha=depth;
+			// o.Emission=f*_Shinyness;
 		}
         ENDCG
     }
