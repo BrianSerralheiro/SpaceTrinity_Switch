@@ -29,7 +29,7 @@
             "_BackgroundTexture"
         }
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows alpha vertex:vert
+        #pragma surface surf StandardSpecular fullforwardshadows alpha vertex:vert
 		
         #pragma target 3.0
 
@@ -69,12 +69,13 @@
 			float dif2=wave-past;
 			return (dif1+dif2)*5;
 		}
-		void vert(inout appdata_full v) {
+		void vert(inout appdata_full v){
             if(_Wave>0){
         		float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 				float2 p=(worldPos.xy-_Drift.zw*_Time.y)/_Scale;
 				float mod=1/_Scale;
-				float wave=waveSample(p);
+				float bounce=0;//cos(_Time.y*_Bounce)/2+0.5;
+				float wave=waveSample(p)*bounce+waveSample(ComputeScreenPos(v.vertex).xy-_Drift.zw*_Time.y)*(1-bounce);
 				// v.vertex.xyz+=sin(_Time.z)*v.normal;
 				worldPos.z-=wave*_Wave;
 				// v.normal*=lerp(float3(0,1,0),float3(1,0,0),(wave+1)/2);
@@ -128,10 +129,10 @@
 			float random = closestCell*0.1;
     		return float3(minDistToCell, random, minEdgeDistance);
 		}
-        void surf (Input i, inout SurfaceOutputStandard o) {
+        void surf (Input i, inout SurfaceOutputStandardSpecular o) {
 			float2 value = (i.worldPos.xy-_Drift.xy*_Time.y) / _Scale;
-			float bouce=cos((i.worldPos.y+_Time.x)/_Scale+_Time.y*_Bounce);
-			float noise =waveSample((i.worldPos.xy+bouce-_Drift.zw*_Time.y)/_Scale);
+			float bounce=cos(_Time.y*_Bounce)/2+0.5;
+			float noise =waveSample((i.worldPos.xy-_Drift.zw*_Time.y)/_Scale)*bounce+waveSample(i.screenPos.xy-_Drift.zw*_Time.y)*(1-bounce);
 			
 			// if(1-noise<_FoamThicness)o.Albedo=_FoamColor;
 			// else if(noise>1-_FoamThicness) o.Albedo = _FoamColor;
@@ -151,7 +152,7 @@
 			float alb=(tex2D(_Noise,value).rgb*2-1)/10+1;
 			float mod=tex2D(_Noise,(i.worldPos.xy-_Drift.xy*_Time.y)/_Scale).rgb;
 			float f=alb*noise;
-			if(f>1-_Shine)o.Emission=f*_Shinyness;
+			if(f>_Shine)o.Specular=f*_Shinyness;
 			o.Alpha=depth;
 			// o.Emission=f*_Shinyness;
 		}
