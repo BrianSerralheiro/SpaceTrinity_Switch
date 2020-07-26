@@ -146,9 +146,9 @@ Shader "Marc Sureda/StylizedWater" {
             }
             float4 frag(VertexOutput i) : COLOR {
                 #if UNITY_UV_STARTS_AT_TOP
-                    float grabSign = -_ProjectionParams.x;
-                #else
                     float grabSign = _ProjectionParams.x;
+                #else
+                    float grabSign = -_ProjectionParams.x;
                 #endif
                 i.normalDir = normalize(i.normalDir);
                 i.screenPos = float4( i.screenPos.xy / i.screenPos.w, 0, 0 );

@@ -7,8 +7,9 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Geometry" "Queue"="Geometry"}
         LOD 200
+        ZWrite On
 
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows vertex:vert
@@ -37,7 +38,6 @@
         {
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
             o.Albedo = c.rgb;
-            o.Alpha = c.a;
         }
         ENDCG
     }
