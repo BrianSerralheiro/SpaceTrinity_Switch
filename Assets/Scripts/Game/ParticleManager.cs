@@ -67,6 +67,7 @@ public class ParticleManager : MonoBehaviour {
 	}
 	public static void Emit(int i,Vector3 p,int c)
 	{
+		// if(p.x<-Scaler.sizeX/2-2 || p.x>Scaler.sizeX/2+2 || p.y<-Scaler.sizeY-2 || p.y>Scaler.sizeY+2)return;
 		if(i<0)
 		{
 			return;
