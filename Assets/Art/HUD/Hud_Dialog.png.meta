@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 8274774325124986924
     second: Hud_Dialog_0
+  - first:
+      213: -9017141789300326971
+    second: Hud_Dialog_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -92,10 +95,10 @@ TextureImporter:
       name: Hud_Dialog_0
       rect:
         serializedVersion: 2
-        x: 271
-        y: 36
-        width: 1524
-        height: 554
+        x: 544
+        y: 456
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,8 +106,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f3a70c726ce91341bb79d6fa0c01e6d
+      spriteID: cf03ae946c5a5234ca9db81fd7cc8c06
       internalID: 8274774325124986924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hud_Dialog_1
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 72
+        width: 3023
+        height: 1109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9777b201ad8a7f841b5623d727410979
+      internalID: -9017141789300326971
       vertices: []
       indices: 
       edges: []
