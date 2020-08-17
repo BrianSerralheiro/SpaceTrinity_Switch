@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 312ffd909f12d8142a5d41a6f4bbfb97
+guid: be0e8fe479bfa904bbf6ba558a8d0efd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9050624780332080154
-    second: boss6_0
+      213: 2850981791210154303
+    second: prot_3_verde_rework_Raiva_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -89,13 +89,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss6_0
+      name: prot_3_verde_rework_Raiva_0
       rect:
         serializedVersion: 2
-        x: 48
+        x: 318
         y: 0
-        width: 1776
-        height: 2605
+        width: 976
+        height: 2339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,8 +103,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db06347b8dd47ba4bb25e26f907d0991
-      internalID: 9050624780332080154
+      spriteID: 0417b84da0db4e84ca5cb517d0eb3423
+      internalID: 2850981791210154303
       vertices: []
       indices: 
       edges: []

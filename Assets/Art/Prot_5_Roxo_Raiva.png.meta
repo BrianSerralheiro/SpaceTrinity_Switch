@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 312ffd909f12d8142a5d41a6f4bbfb97
+guid: 6410e096bea523c4a9272df456bb9149
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9050624780332080154
-    second: boss6_0
+      213: 3040454618822579048
+    second: Prot_5_Roxo_Raiva_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -89,13 +89,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss6_0
+      name: Prot_5_Roxo_Raiva_0
       rect:
         serializedVersion: 2
-        x: 48
+        x: 222
         y: 0
-        width: 1776
-        height: 2605
+        width: 1052
+        height: 2339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,8 +103,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db06347b8dd47ba4bb25e26f907d0991
-      internalID: 9050624780332080154
+      spriteID: 0ad5c7e82f8aa0649ad4917a8a5c8b56
+      internalID: 3040454618822579048
       vertices: []
       indices: 
       edges: []

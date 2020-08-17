@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 312ffd909f12d8142a5d41a6f4bbfb97
+guid: fd67bf67d5ea26e47b4815da8d6cd582
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9050624780332080154
-    second: boss6_0
+      213: -4653677084927753928
+    second: boss3_feliz_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -89,13 +89,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss6_0
+      name: boss3_feliz_0
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 0
-        width: 1776
-        height: 2605
+        width: 1654
+        height: 2339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,8 +103,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db06347b8dd47ba4bb25e26f907d0991
-      internalID: 9050624780332080154
+      spriteID: f33abca2d7c7cb249a1d969c6a8368a5
+      internalID: -4653677084927753928
       vertices: []
       indices: 
       edges: []
