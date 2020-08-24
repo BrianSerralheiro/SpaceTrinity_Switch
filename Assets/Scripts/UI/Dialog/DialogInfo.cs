@@ -68,7 +68,7 @@ public struct Speech
 public struct Character{
     public Sprite picture;
     public bool lit;
-    [Range(-1.2f,1.2f)]
+    [Range(-2,2)]
     public float proportion;
     [Range(0,1)]
     public float position;
