@@ -21,9 +21,15 @@ public class DialogEditor : Editor
         {
             Rect rect=new Rect(x+w-h*5,y,h*2,h);
             ShowDialog(p.GetArrayElementAtIndex(i),"Dialog "+(i+1));
-            GUI.Button(rect,"/\\");
+            if(GUI.Button(rect,"/\\")){
+                p.MoveArrayElement(i,i-1);
+                p.serializedObject.ApplyModifiedProperties();
+            }
             rect.x+=h*2;
-            GUI.Button(rect,"\\/");
+            if(GUI.Button(rect,"\\/")){
+                p.MoveArrayElement(i,i+1);
+                p.serializedObject.ApplyModifiedProperties();
+            }
             rect.x+=h*2;
             rect.width=h;
             if(GUI.Button(rect,"x")){
@@ -107,8 +113,16 @@ public class DialogEditor : Editor
         {
             SerializedProperty entry=prop.GetArrayElementAtIndex(i);
             x+=10;
-            entry.isExpanded=EditorGUI.Foldout(new Rect(x,y,w-h*2,h),entry.isExpanded,"Speech "+i);
+            entry.isExpanded=EditorGUI.Foldout(new Rect(x,y,w-h*4,h),entry.isExpanded,"Speech "+i);
             y+=h;
+            if(GUI.Button(new Rect(x+w-h*3,y-h,h,h),"/\\")){
+                prop.MoveArrayElement(i,i-1);
+                prop.serializedObject.ApplyModifiedProperties();
+            }
+            if(GUI.Button(new Rect(x+w-h*4,y-h,h,h),"\\/")){
+                prop.MoveArrayElement(i,i+1);
+                prop.serializedObject.ApplyModifiedProperties();
+            }
             if(GUI.Button(new Rect(x+w-h*2,y-h,h,h),"X")){
                 prop.DeleteArrayElementAtIndex(i);
                 prop.serializedObject.ApplyModifiedProperties();
@@ -157,6 +171,8 @@ public class DialogEditor : Editor
             EditorGUI.PropertyField(new Rect(x,y,dw,h),entry.FindPropertyRelative("name"),GUIContent.none);
             EditorGUI.PropertyField(new Rect(x+dw,y,w-dw,h),entry.FindPropertyRelative("text"),GUIContent.none);
             if(EditorGUI.EndChangeCheck())entry.serializedObject.ApplyModifiedPropertiesWithoutUndo();
+            y+=h;
+            GUI.Box(new Rect(0,y,w+h*2,h),"");
             y+=h;
         }
         //y+=h;
