@@ -6,7 +6,7 @@ using UnityEditor;
 public class DialogEditor : Editor
 {
     float x,y,w,h;
-    Vector2 pos;
+    Vector2 pos,scroll;
     public override void OnInspectorGUI(){
         h=EditorGUIUtility.singleLineHeight;
         w=EditorGUIUtility.currentViewWidth-20;
@@ -138,6 +138,7 @@ public class DialogEditor : Editor
             if(chars.isExpanded)y+=h;
             float sw=w/4,sx=x,sy=y;
             EditorGUI.BeginChangeCheck();
+            if(chars.isExpanded)scroll=GUI.BeginScrollView(new Rect(x,y,w,h*6),scroll,new Rect(x,y,sw*(chars.arraySize+1),h*5));
             for (int j = 0; j < chars.arraySize && chars.isExpanded; j++)
             {
                 sy=y;
@@ -150,17 +151,18 @@ public class DialogEditor : Editor
                 sy+=h;
                 EditorGUI.PropertyField(new Rect(sx,sy,sw,h),c.FindPropertyRelative("position"),GUIContent.none);
                 sy+=h;
-                if(GUI.Button(new Rect(sx,sy,sw,h),"remove"))chars.DeleteArrayElementAtIndex(j);
+                if(GUI.Button(new Rect(sx,sy,sw,h),"remove"+j))chars.DeleteArrayElementAtIndex(j);
                 
                 sy+=h;
                 sx+=sw;
 
             }
             if(EditorGUI.EndChangeCheck())chars.serializedObject.ApplyModifiedProperties();
-            if(chars.isExpanded && GUI.Button(new Rect(sx,y,sw,h),"Add Actor")){
+            if(chars.isExpanded && GUI.Button(new Rect(sx,y,sw,h),"Add Actor"+chars.arraySize)){
                 chars.InsertArrayElementAtIndex(chars.arraySize);
                 chars.serializedObject.ApplyModifiedProperties();
             }
+            if(chars.isExpanded)GUI.EndScrollView();
             y=sy+h;
             x-=20;
             float dw=w/3;
