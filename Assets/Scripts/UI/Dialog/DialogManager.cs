@@ -5,19 +5,20 @@ using LanguagePack;
 public class DialogManager : MonoBehaviour
 {
     [SerializeField]
-    bool auto;
+    string auto;
     [SerializeField]
     Text nameText,speechText;
     [SerializeField]
     Image[] actors;
+    float[] vibrations;
     [SerializeField]
     Color lit,unlit;
     [SerializeField]
     [Range(0.1f,1)]
     float  speed=1;
     [SerializeField]
-    [Range(0.5f,2)]
-    float expand=2;
+    [Range(0.5f,10)]
+    float expand=5;
     [SerializeField]
     int cps=15;
     [SerializeField]
@@ -36,14 +37,13 @@ public class DialogManager : MonoBehaviour
     void Awake()
     {
         manager=this;
+        vibrations=new float[actors.Length];
     }
     void OnEnable(){
-        // dialogInfo=EnemySpawner.world.begining;
         if(!dialogInfo){
             gameObject.SetActive(false);
             return;
         }
-        //spawner.SetActive(false);
         dialogInfo.id=0;
         Ship.paused=true;
         dialog=dialogInfo.Next();
@@ -54,7 +54,7 @@ public class DialogManager : MonoBehaviour
     void OnDisable()
     {
         Ship.paused=false;
-        if(auto)Loader.Scene("MenuSelection");
+        if(!string.IsNullOrWhiteSpace(auto))Loader.Scene(auto);
     }
     void Update()
     {
@@ -77,11 +77,13 @@ public class DialogManager : MonoBehaviour
         } 
         for (int i = 0; i < actors.Length; i++)
         {
-            if(actors[i].sprite){
+            if(actors[i].enabled){
                 float f=speech.characters[i].proportion;
                 actors[i].transform.localScale=Vector3.MoveTowards(actors[i].transform.localScale,new Vector3(f,Mathf.Abs(f)),Time.unscaledDeltaTime*expand);
                 Vector3 pos=actors[i].transform.position;
                 pos.x=Mathf.MoveTowards(pos.x,speech.characters[i].position*Screen.width,speed*Screen.width*Time.unscaledDeltaTime);
+                actors[i].rectTransform.pivot=Vector2.MoveTowards(actors[i].rectTransform.pivot,new Vector2(0.5f+Mathf.Sin(vibrations[i]*15)/20f,0.5f-Mathf.Abs(f)/20),Time.unscaledDeltaTime*2);
+                if(Mathf.Abs(pos.x-speech.characters[i].position*Screen.width)<0.1)vibrations[i]=Mathf.MoveTowards(vibrations[i],0,Time.unscaledDeltaTime*2);
                 actors[i].transform.position=pos;
             }
         }
@@ -98,14 +100,14 @@ public class DialogManager : MonoBehaviour
             else{
                 if(!actors[i].enabled){
                     Vector3 pos=actors[i].transform.position;
-                    pos.x=(Mathf.Round(speech.characters[i].position)*2-0.5f)*Screen.width;
+                    pos.x=(Mathf.Round(speech.characters[i].position)*2-0.5f)*(float)Screen.width;
                     actors[i].transform.position=pos;
                 }
-                float f=speech.characters[i].proportion;
-                actors[i].transform.localScale=new Vector3(f,Mathf.Abs(f));
+                vibrations[i]=speech.characters[i].shake?1:0;
                 actors[i].enabled=true;
                 actors[i].sprite=speech.characters[i].picture;
                 actors[i].color=speech.characters[i].lit?lit:unlit;
+                if(!speech.characters[i].lit)actors[i].transform.SetSiblingIndex(0);
             }
         }
     }

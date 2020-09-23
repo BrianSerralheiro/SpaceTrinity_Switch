@@ -145,7 +145,8 @@ public class DialogEditor : Editor
                 SerializedProperty c=chars.GetArrayElementAtIndex(j);
                 EditorGUI.PropertyField(new Rect(sx,sy,sw,h),c.FindPropertyRelative("picture"),GUIContent.none);
                 sy+=h;
-                EditorGUI.PropertyField(new Rect(sx,sy,sw,h),c.FindPropertyRelative("lit"),GUIContent.none);
+                EditorGUI.PropertyField(new Rect(sx,sy,sw/2,h),c.FindPropertyRelative("lit"),GUIContent.none);
+                EditorGUI.PropertyField(new Rect(sx+sw/2,sy,sw,h),c.FindPropertyRelative("shake"),GUIContent.none);
                 sy+=h;
                 EditorGUI.PropertyField(new Rect(sx,sy,sw,h),c.FindPropertyRelative("proportion"),GUIContent.none);
                 sy+=h;

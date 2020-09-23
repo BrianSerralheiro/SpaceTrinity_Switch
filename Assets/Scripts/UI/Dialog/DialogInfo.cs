@@ -67,7 +67,7 @@ public struct Speech
 [System.Serializable]
 public struct Character{
     public Sprite picture;
-    public bool lit;
+    public bool lit,shake;
     [Range(-2,2)]
     public float proportion;
     [Range(0,1)]

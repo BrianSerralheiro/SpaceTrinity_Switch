@@ -22,6 +22,6 @@ public class DialogTest : MonoBehaviour
         Ship.player1=(int)player1;
         Ship.player2=(int)player2-1;
         enabled=false;
-        Debug.Log(Ship.player1);
+        // Debug.Log(Ship.player1);
     }
 }
