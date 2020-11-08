@@ -61,6 +61,8 @@ public class DialogManager : MonoBehaviour
         charCount+=cps*Time.unscaledDeltaTime;
         if(speechText.text.Length<(int)charCount && charCount<=fulltext.Length+1)
             speechText.text=fulltext.Substring(0,(int)charCount);
+        if(charCount>=fulltext.Length)
+            speechText.text=fulltext;
         if(PlayerInput.GetKeyShotDown(0)){
             if(charCount>fulltext.Length){
                 if(dialog.HasSpeech())Speech(dialog.GetSpeech());
