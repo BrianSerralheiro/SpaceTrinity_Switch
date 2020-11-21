@@ -33,9 +33,11 @@ public struct Dialog{
         id=0;
     }
     bool CanShow(){
+        bool b=false;
         foreach (DialogCondition condition in conditions)
         {
-            if(!condition.Met())return false;
+            if(!condition.Met(b))return false;
+            b=true;
         }
         return true;
     }
@@ -80,11 +82,11 @@ public struct DialogCondition{
     }
     public Type conditionType;
     public int id;
-    public bool Met(){
+    public bool Met(bool b){
         switch (conditionType)
         {
             case Type.ship:
-                return Ship.player1==id || Ship.player2==id;
+                return !b? Ship.player1==id : Ship.player2==id;
             case Type.boss:
                 return !Locks.Boss(id);
             default:
