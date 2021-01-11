@@ -7,6 +7,8 @@ public class DialogEditor : Editor
 {
     float x,y,w,h;
     Vector2 pos,scroll;
+    static Speech copiedSpeech;
+    static bool copied;
     public override void OnInspectorGUI(){
         h=EditorGUIUtility.singleLineHeight;
         w=EditorGUIUtility.currentViewWidth-20;
@@ -113,8 +115,15 @@ public class DialogEditor : Editor
         {
             SerializedProperty entry=prop.GetArrayElementAtIndex(i);
             x+=10;
-            entry.isExpanded=EditorGUI.Foldout(new Rect(x,y,w-h*4,h),entry.isExpanded,"Speech "+i);
+            entry.isExpanded=EditorGUI.Foldout(new Rect(x,y,w-h*6,h),entry.isExpanded,"Speech "+i);
             y+=h;
+            if(copied && GUI.Button(new Rect(x+w-h*6,y-h,h,h),"p")){
+                PasteSpeech(entry);
+                prop.serializedObject.ApplyModifiedProperties();
+            }
+            if(GUI.Button(new Rect(x+w-h*5,y-h,h,h),"c")){
+                CopySpeech(entry);
+            }
             if(GUI.Button(new Rect(x+w-h*3,y-h,h,h),"/\\")){
                 prop.MoveArrayElement(i,i-1);
                 prop.serializedObject.ApplyModifiedProperties();
@@ -146,7 +155,7 @@ public class DialogEditor : Editor
                 EditorGUI.PropertyField(new Rect(sx,sy,sw,h),c.FindPropertyRelative("picture"),GUIContent.none);
                 sy+=h;
                 EditorGUI.PropertyField(new Rect(sx,sy,sw/2,h),c.FindPropertyRelative("lit"),GUIContent.none);
-                EditorGUI.PropertyField(new Rect(sx+sw/2,sy,sw,h),c.FindPropertyRelative("shake"),GUIContent.none);
+                EditorGUI.PropertyField(new Rect(sx+sw/2,sy,sw/2,h),c.FindPropertyRelative("shake"),GUIContent.none);
                 sy+=h;
                 EditorGUI.PropertyField(new Rect(sx,sy,sw,h),c.FindPropertyRelative("proportion"),GUIContent.none);
                 sy+=h;
@@ -184,5 +193,43 @@ public class DialogEditor : Editor
             prop.serializedObject.ApplyModifiedProperties();
         }
         y+=h;
+    }
+    void CopySpeech(SerializedProperty prop){
+        Speech newSpeech;
+        newSpeech.name=prop.FindPropertyRelative("name").stringValue;
+        newSpeech.text=prop.FindPropertyRelative("text").stringValue;
+        SerializedProperty chars=prop.FindPropertyRelative("characters");
+        newSpeech.characters=new Character[chars.arraySize];
+        for (int j = 0; j < chars.arraySize && chars.isExpanded; j++)
+        {
+            SerializedProperty c=chars.GetArrayElementAtIndex(j);
+            Character newChar;
+            newChar.picture=c.FindPropertyRelative("picture").objectReferenceValue as Sprite;
+            newChar.lit=c.FindPropertyRelative("lit").boolValue;
+            newChar.shake=c.FindPropertyRelative("shake").boolValue;
+            newChar.proportion=c.FindPropertyRelative("proportion").floatValue;
+            newChar.position=c.FindPropertyRelative("position").floatValue;
+            newSpeech.characters[j]=newChar;
+        }
+        copiedSpeech=newSpeech;
+        copied=true;
+    }
+    void PasteSpeech(SerializedProperty prop){
+        prop.FindPropertyRelative("name").stringValue=copiedSpeech.name;
+        prop.FindPropertyRelative("text").stringValue=copiedSpeech.text;
+        SerializedProperty chars=prop.FindPropertyRelative("characters");
+        chars.arraySize=copiedSpeech.characters.Length;
+        for (int j = 0; j < chars.arraySize && chars.isExpanded; j++)
+        {
+            SerializedProperty c=chars.GetArrayElementAtIndex(j);
+            Character character=copiedSpeech.characters[j];
+            c.FindPropertyRelative("picture").objectReferenceValue=character.picture;
+            c.FindPropertyRelative("lit").boolValue=character.lit;
+            c.FindPropertyRelative("shake").boolValue=character.shake;
+            c.FindPropertyRelative("proportion").floatValue=character.proportion;
+            c.FindPropertyRelative("position").floatValue=character.position;
+            c.serializedObject.ApplyModifiedProperties();
+        }
+        copied=false;
     }
 }
