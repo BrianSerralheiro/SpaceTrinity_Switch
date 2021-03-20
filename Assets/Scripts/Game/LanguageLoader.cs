@@ -49,6 +49,7 @@ public static class Language
         while(s!=null)
         {
             int i=s.IndexOf("=");
+            // Debug.Log(s);
             dialog.Add(s.Substring(0,i),s.Substring(i+1,s.Length-i-1));
             s=reader.ReadLine();
         }
