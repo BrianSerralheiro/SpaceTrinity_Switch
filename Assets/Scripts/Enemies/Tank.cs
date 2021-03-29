@@ -19,6 +19,16 @@ public class Tank : EnemyBase
         shotId=ei.bulletsID[0];
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];
+        WindZone zone=gameObject.AddComponent<WindZone>();
+        zone.radius=1;
+        zone.windMain=5;
+        zone.windTurbulence=0;
+        zone.mode=WindZoneMode.Spherical;
+    }
+	public override void Position(int i)
+	{
+		base.Position(i);
+        transform.Translate(0,0,1,Space.World);
     }
     void Start()
     {
@@ -57,18 +67,18 @@ public class Tank : EnemyBase
         float s=v.x>transform.position.x+2?2:v.x+2<transform.position.x?-1:0;
         speed=Mathf.MoveTowards(speed,s,Time.deltaTime/2);
         transform.rotation=Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0,0,-15*s),7*Time.deltaTime);
-        // v-=turret.position;
-        // v.z=0;
-        // v=Vector3.Cross(-turret.up,v);
-        // turret.Rotate(v*Time.deltaTime*100);
-        turret.rotation = Quaternion.Euler(0,0,Mathf.RoundToInt(Vector2.SignedAngle(Vector3.down,v-turret.position)/15)*15);
+        v-=turret.position;
+        v.z=0;
+        v=Vector3.Cross(-turret.up,v);
+        turret.Rotate(v*Time.deltaTime*100);
+        // turret.rotation = Quaternion.Euler(0,0,Mathf.RoundToInt(Vector2.SignedAngle(Vector3.down,v-turret.position)/15)*15);
 
         if(timer<=0)Shot();
     }
     void Shot()
     {
         GameObject go=new GameObject("enemybullet");
-        go.transform.position=transform.position-turret.up*2;
+        go.transform.position=transform.position-turret.up*2+Vector3.back;
         go.transform.localScale=Vector3.one*2;
         Bullet bu=go.AddComponent<Bullet>();
         bu.owner="enemy";
@@ -80,6 +90,11 @@ public class Tank : EnemyBase
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;
         timer=2;
+        WindZone zone=go.AddComponent<WindZone>();
+        zone.radius=1f;
+        zone.windMain=100;
+        zone.windTurbulence=0;
+        zone.mode=WindZoneMode.Spherical;
     }
     void OnCollisionStay2D(Collision2D col)
     {

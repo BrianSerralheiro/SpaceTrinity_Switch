@@ -19,6 +19,11 @@ public class BigTurret : EnemyBase
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];
     }
+    public override void Position(int i)
+	{
+		base.Position(i);
+        transform.Translate(0,0,1,Space.World);
+    }
     void Start()
     {
         _renderer=turret.GetComponent<SpriteRenderer>();
@@ -28,7 +33,7 @@ public class BigTurret : EnemyBase
         if(Ship.paused)return;
         base.Update();
         timer-=Time.deltaTime;
-        transform.Translate(0,-Time.deltaTime*2,0);
+        transform.Translate(0,-Time.deltaTime*5,0);
         if(cicles>0){
             Vector3 v=GetPlayer(turret.position).position-turret.position;
             v.z=0;

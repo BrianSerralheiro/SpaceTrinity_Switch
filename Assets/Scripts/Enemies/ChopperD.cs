@@ -11,6 +11,11 @@ public class ChopperD : EnemyBase
         go.AddComponent<SpriteRenderer>().sprite=ei.sprites[1];
         helix=go.AddComponent<Helix>();
         fallSpeed=-8;
+        WindZone zone=gameObject.AddComponent<WindZone>();
+        zone.radius=5;
+        zone.windMain=5;
+        zone.windTurbulence=0;
+        zone.mode=WindZoneMode.Spherical;
     }
     new void Update()
     {

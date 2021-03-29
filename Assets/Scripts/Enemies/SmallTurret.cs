@@ -3,7 +3,7 @@
 public class SmallTurret : EnemyBase
 {
     Transform turret,lid;
-    float timer,delay=0.1f,reload=2;
+    float timer=1,delay=0.1f,reload=2;
     int shotId,counter,shots=4,dir;
     static int trailID,impactID;
 	public override void SetSprites(EnemyInfo ei){
@@ -28,6 +28,11 @@ public class SmallTurret : EnemyBase
         Destroy(GetComponent<Collider2D>());
         dir=Random.Range(0,8);
     }
+    public override void Position(int i)
+	{
+		base.Position(i);
+        transform.Translate(0,0,1.5f,Space.World);
+    }
     void Start()
     {
         _renderer=turret.GetComponent<SpriteRenderer>();
@@ -37,7 +42,7 @@ public class SmallTurret : EnemyBase
         if(Ship.paused)return;
         base.Update();
         timer-=Time.deltaTime;
-        transform.Translate(0,-Time.deltaTime*2,0);
+        transform.Translate(0,-Time.deltaTime*5,0);
         if(timer>reload-1){
             turret.gameObject.SetActive(false);
             lid.localPosition=Vector3.MoveTowards(lid.localPosition,Vector3.back/10f,Time.deltaTime*2);

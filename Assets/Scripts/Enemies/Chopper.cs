@@ -29,6 +29,11 @@ public class Chopper : EnemyBase
         timer=reload=enemy.reloadTime;
         if(paths==null)paths=enemy.paths;
         if(around.nodes==null)around.Set(8,new Vector3[]{new Vector3(0,0),new Vector3(Scaler.sizeX,0),new Vector3(Scaler.sizeX,-Scaler.sizeY*2-2)});
+        WindZone zone=gameObject.AddComponent<WindZone>();
+        zone.radius=5;
+        zone.windMain=5;
+        zone.windTurbulence=0;
+        zone.mode=WindZoneMode.Spherical;
     }
 	public override void Position(int i){
 		base.Position(i);

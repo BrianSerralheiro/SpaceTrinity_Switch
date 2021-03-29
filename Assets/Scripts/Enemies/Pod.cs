@@ -30,12 +30,16 @@ public class Pod : EnemyBase
         sr.flipX=true;
 
     }
-    // Update is called once per frame
+    public override void Position(int i)
+	{
+		base.Position(i);
+        transform.Translate(0,0,1,Space.World);
+    }
     new void Update()
     {
         if(Ship.paused)return;
         base.Update();
-        transform.Translate(0,-Time.deltaTime*2f,0);
+        transform.Translate(0,-Time.deltaTime*5f,0);
         timer-=Time.deltaTime;
         if(shots>0 && target && timer<0)Shot();
         if(target){
