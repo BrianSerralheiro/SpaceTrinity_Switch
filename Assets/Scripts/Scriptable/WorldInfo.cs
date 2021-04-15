@@ -6,9 +6,9 @@ public class WorldInfo : ScriptableObject
 	public string wave;
     public EnemyInfo[] enemies;
 	public ParticleSystem explosion;
+	public bool single;
 	public BGProp[] props;
 	public EnemyInfo subBoss;
-	public bool loopWorld=true;
 	public float scroll=60;
 	[Range(0,10)]
 	public float lightIntensity=1;
