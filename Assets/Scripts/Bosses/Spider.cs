@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Spider : EnemyBase {
 
@@ -13,6 +13,8 @@ public class Spider : EnemyBase {
 	Del update;
 	private Vector3 vector = new Vector3 ();
 	private float dir = 1;
+	private int randX;
+	private bool goCenter, atCenter;
 
 	public override void SetSprites (EnemyInfo ei) {
 		info = ei;
@@ -145,9 +147,15 @@ public class Spider : EnemyBase {
 	}
 
 	public void RamdomizeUpdate (int randomNum) {
-		if (randomNum == 1) update = Charge;
-		else if (randomNum == 2) update = Spawning;
-		else if (randomNum == 3) update = Bite;
+		randX = (int) Random.Range (0, 1);
+		goCenter = false;
+		if (randomNum <= 50) {
+			update = Charge;
+		} else if (randomNum <= 75) {
+			update = Bite;
+		} else {
+			update = Spawning;
+		}
 	}
 
 	void Charge () {
@@ -155,8 +163,20 @@ public class Spider : EnemyBase {
 		if (timer > 0) {
 			timer -= Time.deltaTime;
 			if (timer < 2.5 && charges < 0) {
-				Shoot ();
-				charges++;
+				if (transform.position.y < Scaler.sizeY) transform.Translate (0, Time.deltaTime * speed, 0);
+				if (randX == 1) {
+					if (transform.position.x > -Scaler.sizeX) transform.Translate (0, Time.deltaTime * -speed, 0);
+					else {
+						Shoot ();
+						charges++;
+					}
+				} else {
+					if (transform.position.x < Scaler.sizeX) transform.Translate (0, Time.deltaTime * speed, 0);
+					else {
+						Shoot ();
+						charges++;
+					}
+				}
 			}
 			if (transform.position.y < Scaler.sizeY) transform.Translate (0, Time.deltaTime * speed, 0);
 			if ((int) Time.time % 5 == 0) dir *= -1;
@@ -190,7 +210,7 @@ public class Spider : EnemyBase {
 				spawns = 0;
 				target = GetPlayer ();
 				//update = Spawning;
-				RamdomizeUpdate ((int) Random.Range (1, 3));
+				RamdomizeUpdate ((int) Random.Range (1, 100));
 			} else {
 				timer = 3;
 			}
@@ -200,7 +220,8 @@ public class Spider : EnemyBase {
 	void Bite () {
 		if (!bitting) {
 			spawns = 0;
-			update = Spawning;
+			//update = Spawning;
+			RamdomizeUpdate ((int) Random.Range (1, 100));
 			return;
 		}
 		headCrystal.Add (Time.deltaTime);
@@ -218,11 +239,21 @@ public class Spider : EnemyBase {
 			timer = 2;
 			spawns = 0;
 			//update = Spawning;
-			RamdomizeUpdate ((int) Random.Range (1, 3));
+			RamdomizeUpdate ((int) Random.Range (1, 100));
 		}
 	}
 
 	void Spawning () {
+		if (transform.position.y < Scaler.sizeY) transform.Translate (0, Time.deltaTime * speed, 0);
+		if (transform.position.x <= 0 && !goCenter) {
+			transform.Translate (Time.deltaTime * speed, 0, 0);
+		}
+		if (transform.position.x >= 0 && !goCenter) {
+			transform.Translate (Time.deltaTime * -speed, 0, 0);
+		}
+		if (transform.position.x < 0.1 && transform.position.x > 0.1 && !goCenter) {
+			goCenter = true;
+		}
 		headCrystal.Min (Time.deltaTime);
 		rot[6].z = Mathf.PingPong (timer, 1) * 25f;
 		rot[7].z = -rot[6].z;
@@ -242,7 +273,7 @@ public class Spider : EnemyBase {
 		}
 		if (spawns > 4) {
 			//update = Charge;
-			RamdomizeUpdate ((int) Random.Range (1, 3));
+			RamdomizeUpdate ((int) Random.Range (1, 100));
 			back.localScale = Vector3.one;
 			charges = -1;
 		}
