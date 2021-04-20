@@ -17,7 +17,7 @@ public class PropSpawner : MonoBehaviour
         {
             if(!prop.manual)props.Add(prop);
         }
-        if(EnemySpawner.world){
+        if(EnemySpawner.world.single){
             Instantiate(props[0].prefab);
             enabled=false;
         }
