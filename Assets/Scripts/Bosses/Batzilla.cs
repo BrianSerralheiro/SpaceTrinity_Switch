@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 
 public class Batzilla : EnemyBase {
-	private Transform torso,head,target,chunk;
+	private Transform torso,head,target,moon;
 	private Transform[] arms=new Transform[2];
 	private SpriteRenderer headRenderer,torsoRenderer;
 	private Core dark;
 	private TrailRenderer[] slash=new TrailRenderer[2];
 	private Vector3 slashscl=new Vector3(5000,0,0),slashrot=new Vector3(0,0,0);
-	private Quaternion chunkRot=Quaternion.identity;
 	private float timer=1.5f,time=0,torsoAngle,armSpeed=30,offset;
 	private float[] armAngle=new float[2];
 	private Vector3 hor=new Vector3(2,0),ver=new Vector3(0,2,0.01f),armOffset=new Vector3(0,0.1f);
@@ -80,8 +79,8 @@ public class Batzilla : EnemyBase {
 		go.transform.parent=arms[1];
 		go.transform.localPosition=new Vector3(4,1,0.01f);
 
-		chunk=PropSpawner.ManualSpawn(1);
-		chunk.position=Vector3.up*12;
+		moon=PropSpawner.ManualSpawn(1);
+		moon.position=Vector3.up*12;
 
 		go=new GameObject("dark");
 		Texture2D t=new Texture2D(1,1);
@@ -204,9 +203,7 @@ public class Batzilla : EnemyBase {
 	new void Update () {
 		if(Ship.paused) return;
 		base.Update();
-		chunk.position=Vector3.MoveTowards(chunk.position,Vector3.zero,Time.deltaTime/2);
-		chunk.rotation=Quaternion.RotateTowards(chunk.rotation,chunkRot,15*Time.deltaTime);
-		if(chunk.rotation==chunkRot)chunkRot=Quaternion.Euler(Random.Range(-15f,15),Random.Range(-45f,45),0);
+		moon.position=Vector3.MoveTowards(moon.position,Vector3.zero,Time.deltaTime/2);
 		update?.Invoke();
 		ParticleManager.Emit(waveID,transform.position-transform.up*3,transform.up,1);
 		if(torso){
