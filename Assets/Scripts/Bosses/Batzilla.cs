@@ -41,7 +41,7 @@ public class Batzilla : EnemyBase {
 		torsoRenderer.sprite=ei.sprites[2];
 		torso=go.transform;
 		torso.parent=trans;
-		go.transform.localPosition=new Vector3(0,-0.3f,0.01f);
+		go.transform.localPosition=new Vector3(0,-0.3f,0);
 		go=new GameObject("head");
 		headRenderer=go.AddComponent<SpriteRenderer>();
 		headRenderer.sprite=ei.sprites[3];
@@ -116,6 +116,10 @@ public class Batzilla : EnemyBase {
 		if(transform.position.y<Scaler.sizeY/2){
             transform.Translate(0,Time.deltaTime*3,0);
             if(transform.position.y>Scaler.sizeY/2)time=Time.time+2;
+        }
+		if(arms[0].localPosition==-hor+ver+armOffset*offset){
+            if(offset==1)offset=-1;
+            else offset=1;
         }
 		else if(time<Time.time){
 			switch (Random.Range(0,3))
@@ -210,8 +214,8 @@ public class Batzilla : EnemyBase {
 			arms[0].localRotation=Quaternion.RotateTowards(arms[0].localRotation,Quaternion.Euler(0,0,armAngle[0]),armSpeed*Time.deltaTime);
 			arms[1].localRotation=Quaternion.RotateTowards(arms[1].localRotation,Quaternion.Euler(0,0,armAngle[1]),armSpeed*Time.deltaTime);
 			torso.localRotation=Quaternion.RotateTowards(torso.localRotation,Quaternion.Euler(0,0,torsoAngle),armSpeed*Time.deltaTime);
-			arms[0].localPosition=Vector3.MoveTowards(arms[0].localPosition,-hor+ver+armOffset*offset,Time.deltaTime/2);
-			arms[1].localPosition=Vector3.MoveTowards(arms[1].localPosition,hor+ver+armOffset*offset,Time.deltaTime/2);
+			arms[0].localPosition=Vector3.MoveTowards(arms[0].localPosition,-hor+ver+armOffset*offset,Time.deltaTime/5);
+			arms[1].localPosition=Vector3.MoveTowards(arms[1].localPosition,hor+ver+armOffset*offset,Time.deltaTime/5);
 		}
 	}
 	protected override void Die(){
