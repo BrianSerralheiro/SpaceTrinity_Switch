@@ -29,6 +29,11 @@ public class Nun : EnemyBase
             wings[i].localScale=Vector3.one*(1-i/2*0.2f);
             wings[i].localPosition=new Vector3(-0.25f+i%2*0.5f,0.4f-i/2*0.6f,0.1f);
         }
+        WindZone zone=gameObject.AddComponent<WindZone>();
+        zone.radius=3;
+        zone.windMain=3;
+        zone.windTurbulence=10;
+        zone.mode=WindZoneMode.Spherical;
     }
     new void Update()
     {

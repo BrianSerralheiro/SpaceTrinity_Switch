@@ -19,6 +19,9 @@ public class Bomber : EnemyBase {
 		shotID=ei.bulletsID[0];
 		if(!trail)trail=ei.particles[2].gameObject;
 		bomb=ei.sprites[1];
+        Destroy(GetComponent<BoxCollider2D>());
+        gameObject.AddComponent<PolygonCollider2D>();
+        gameObject.layer=9;
 	}
 
 	public override void Position(int i)

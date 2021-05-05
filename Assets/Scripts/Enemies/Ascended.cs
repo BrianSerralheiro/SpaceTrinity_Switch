@@ -9,6 +9,12 @@ public class Ascended : EnemyBase
         transform.localScale=new Vector3(1,-1,1);
         fallSpeed=-6;
         Instantiate(ei.particles[0],transform);
+        GameObject go =new GameObject("col");
+        go.transform.SetParent(transform,false);
+        CapsuleCollider cap=go.AddComponent<CapsuleCollider>();
+        cap.height=4;
+        cap.radius=1f;
+        cap.direction=1;
     }
     new void Update()
     {

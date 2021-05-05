@@ -14,6 +14,9 @@ public class Satelite : EnemyBase
         trailID=ei.particleID[0];
         impactID=ei.particleID[1];
         fallSpeed=-2;
+        Destroy(GetComponent<BoxCollider2D>());
+        gameObject.AddComponent<PolygonCollider2D>();
+        gameObject.layer=9;
     }
     new void Update()
     {
