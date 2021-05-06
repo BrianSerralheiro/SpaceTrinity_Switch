@@ -15,6 +15,7 @@ public class Spider : EnemyBase {
 	private float dir = 1;
 	private int randX;
 	private bool goCenter, atCenter;
+	private int chargeChance = 50, spawnChance; 
 
 	public override void SetSprites (EnemyInfo ei) {
 		info = ei;
@@ -149,11 +150,10 @@ public class Spider : EnemyBase {
 	public void RamdomizeUpdate (int randomNum) {
 		randX = (int) Random.Range (0, 1);
 		goCenter = false;
-		if (randomNum <= 50) {
+		spawnChance = 100-chargeChance;
+		if (randomNum <= chargeChance) {
 			update = Charge;
-		} else if (randomNum <= 75) {
-			update = Bite;
-		} else {
+		} else if (randomNum <= chargeChance + spawnChance) {
 			update = Spawning;
 		}
 	}
