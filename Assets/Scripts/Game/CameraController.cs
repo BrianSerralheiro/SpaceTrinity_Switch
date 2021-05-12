@@ -8,10 +8,11 @@ public class CameraController : MonoBehaviour
     {
         if(Ship.player2==-1)update=Single;
         else update=Double;
-        GetComponent<Camera>().depthTextureMode=DepthTextureMode.Depth;
+        // GetComponent<Camera>().depthTextureMode=DepthTextureMode.Depth;
         Light l=gameObject.GetComponentInChildren<Light>();
         l.intensity=EnemySpawner.world.lightIntensity;
         l.color=EnemySpawner.world.lightColor;
+        enabled=!EnemySpawner.world.fixedCamera;
     }
     void Single(){
         Vector3 v=transform.position;
