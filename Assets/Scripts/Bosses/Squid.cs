@@ -124,42 +124,41 @@ public class Squid : EnemyBase {
 		timer -= Time.deltaTime;
 		float x = GetPlayer (transform.position).position.x;
 		//transform.Translate ((x > transform.position.x?2: -2) * Time.deltaTime, Mathf.Cos (time) / 2 * Time.deltaTime, 0);
-		if (Vector3.Distance (transform.position, Vector3.zero) > 0.2) {
+		if (transform.position.y < Scaler.sizeY) transform.Translate (0, Time.deltaTime * 6, 0);
+		if (Vector3.Distance (transform.position, new Vector3 (0, transform.position.y)) > 1) {
 			if (transform.position.x < 1) transform.Translate (Time.deltaTime * 6, 0, 0);
 			else if (transform.position.x > 1) transform.Translate (-Time.deltaTime * 6, 0, 0);
-			if (transform.position.y < 1) transform.Translate (0, Time.deltaTime * 6, 0);
-			else if (transform.position.y > 1) transform.Translate (0, -Time.deltaTime * 6, 0);
-		}
-		time += Time.deltaTime;
-		lids[side].localPosition = Vector3.MoveTowards (lids[side].localPosition, offsetX + offsetY, Time.deltaTime);
-		for (int i = 1; i < tentacleSize; i++) {
-			tentacle[0, i].localRotation = Quaternion.RotateTowards (tentacle[0, i].localRotation, Quaternion.Euler (0, 0, Mathf.Cos (Time.time + i * -45) * 15), Time.deltaTime * 30);
-			tentacle[1, i].localRotation = Quaternion.RotateTowards (tentacle[1, i].localRotation, Quaternion.Euler (0, 0, Mathf.Cos (Time.time + i * -45) * -15), Time.deltaTime * 30);
-		}
-		if (timer < 0) {
-			switch (Random.Range (0, 4)) {
-				case 0:
-					side = Random.Range (0, 2);
-					timer = 3;
-					update = Punch;
-					break;
-				case 1:
-					update = Laser;
-					timer = 5;
-					collider.enabled = false;
-					line.enabled = true;
-					line.widthMultiplier = 0;
-					break;
-				case 2:
-					side = Random.Range (0, 2);
-					Load ();
-					update = Missile;
-					timer = 2;
-					break;
-				case 3:
-					update = ChargeAttack;
-					timer = 3;
-					break;
+		} else {
+			time += Time.deltaTime;
+			lids[side].localPosition = Vector3.MoveTowards (lids[side].localPosition, offsetX + offsetY, Time.deltaTime);
+			for (int i = 1; i < tentacleSize; i++) {
+				tentacle[0, i].localRotation = Quaternion.RotateTowards (tentacle[0, i].localRotation, Quaternion.Euler (0, 0, Mathf.Cos (Time.time + i * -45) * 15), Time.deltaTime * 30);
+				tentacle[1, i].localRotation = Quaternion.RotateTowards (tentacle[1, i].localRotation, Quaternion.Euler (0, 0, Mathf.Cos (Time.time + i * -45) * -15), Time.deltaTime * 30);
+			}
+			if (timer < 0) {
+				switch (Random.Range (0, 4)) {
+					case 0:
+						update = ChargeAttack;
+						timer = 3;
+						break;
+					case 1:
+						update = Laser;
+						timer = 5;
+						collider.enabled = false;
+						line.enabled = true;
+						line.widthMultiplier = 0;
+						break;
+					case 2:
+						side = Random.Range (0, 2);
+						Load ();
+						update = Missile;
+						timer = 2;
+						break;
+					case 3:
+						update = ChargeAttack;
+						timer = 3;
+						break;
+				}
 			}
 		}
 	}
@@ -169,22 +168,25 @@ public class Squid : EnemyBase {
 		print ("Distancia Alvo: " + Vector3.Distance (transform.position, targetX));
 		if (transform.position.y < Scaler.sizeY) transform.Translate (0, Time.deltaTime * 2, 0);
 		else {
-			if (Vector3.Distance (transform.position, targetX) < 1) {
-				for (int i = 1; i < tentacleSize; i++) {
-					tentacle[0, i].localRotation = Quaternion.RotateTowards (tentacle[0, i].localRotation, Quaternion.Euler (0, 0, 0), Time.deltaTime * 90);
-					tentacle[1, i].localRotation = Quaternion.RotateTowards (tentacle[1, i].localRotation, Quaternion.Euler (0, 0, 0), Time.deltaTime * 90);
-				}
-				update = ChargeDash;
-			} else {
+			if (Vector3.Distance (transform.position, targetX) > 2) {
 				if (transform.position.x < GetPlayer ().position.x) transform.Translate (Time.deltaTime * 6, 0, 0);
 				else if (transform.position.x > GetPlayer ().position.x) transform.Translate (-Time.deltaTime * 6, 0, 0);
+			} else {
+				for (int i = 1; i < tentacleSize; i++) {
+					tentacle[0, i].localRotation = Quaternion.RotateTowards (tentacle[0, i].localRotation, Quaternion.Euler (0, 0, 180), Time.deltaTime * 90);
+					tentacle[1, i].localRotation = Quaternion.RotateTowards (tentacle[1, i].localRotation, Quaternion.Euler (0, 0, 180), Time.deltaTime * 90);
+				}
+				update = ChargeDash;
 			}
 		}
 	}
 
 	void ChargeDash () {
 		if (transform.position.y > GetPlayer ().position.y) transform.Translate (0, -Time.deltaTime * 10, 0);
-		else update = Punch;
+		else {
+			update = Punch;
+			timer = 2;
+		}
 	}
 
 	void Punch () {

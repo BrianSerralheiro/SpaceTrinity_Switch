@@ -39,7 +39,7 @@ public class SquidSille : EnemyBase {
         //transform.position=Vector3.MoveTowards(transform.position,target,Time.deltaTime*6);
         transform.Translate (0, Time.deltaTime * 12, 0);
         if (Vector3.Distance (transform.position, target) < 0.5) {
-            Shot (8);
+            Shot (4);
             Die ();
         }
     }
