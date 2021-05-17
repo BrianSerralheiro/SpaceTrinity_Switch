@@ -21,7 +21,7 @@ public class Squid : EnemyBase {
 		SoundManager.Play (2);
 		damageEffect = true;
 		EnemySpawner.boss = true;
-		SetHP (1200, ei.lifeproportion);
+		SetHP (1000, ei.lifeproportion);
 		GameObject go;
 		SpriteRenderer sr;
 		tentacle = new Transform[2, tentacleSize];
@@ -182,7 +182,7 @@ public class Squid : EnemyBase {
 	}
 
 	void ChargeDash () {
-		if (transform.position.y > GetPlayer ().position.y) transform.Translate (0, -Time.deltaTime * 10, 0);
+		if (transform.position.y > GetPlayer ().position.y) transform.Translate (0, -Time.deltaTime * 9, 0);
 		else {
 			update = Punch;
 			timer = 2;
