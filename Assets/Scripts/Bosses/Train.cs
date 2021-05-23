@@ -18,7 +18,7 @@ public class Train : EnemyBase {
 
     public override void SetSprites (EnemyInfo ei) {
         proportion = ei.lifeproportion;
-        SetHP (200, ei.lifeproportion);
+        SetHP (150, ei.lifeproportion);
         name += "Boss";
         damageEffect = true;
         paths = ((MultiPathEnemy) ei).paths;
@@ -85,7 +85,7 @@ public class Train : EnemyBase {
                 SetHP (200, proportion);
                 if (int.TryParse (_renderer.name.Substring (5, 1), out i)) {
                     if (i % 3 == 0) action += Bomb;
-                    if (i % 3 == 1) SetHP (100, proportion);
+                    if (i % 3 == 1) SetHP (85, proportion);
                     if (i % 3 == 2) action += Shot;
                 }
             }
