@@ -102,9 +102,11 @@ public class Fortress : EnemyBase {
     }
 
     void Movement () {
+        dirX = dirX == 0 ? 4 : dirX;
+        dirY = dirY == 0 ? 2 : dirY;
         if (transform.position.x < -10) dirX = Random.Range (2, 4);
         if (transform.position.x > 10) dirX = Random.Range (-2, -4);
-        if (transform.position.y < 0) dirY = Random.Range (2, 4);
+        if (transform.position.y < 1) dirY = Random.Range (2, 4);
         if (transform.position.y > 5) dirY = Random.Range (-2, -4);
         transform.Translate (Time.deltaTime * dirX, Time.deltaTime * dirY, 0);
     }
