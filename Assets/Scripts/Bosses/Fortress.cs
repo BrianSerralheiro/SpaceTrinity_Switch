@@ -8,6 +8,7 @@ public class Fortress : EnemyBase {
     MiniTurret[] turrets = new MiniTurret[4];
     Transform cannon, target;
     Transform[] tracks = new Transform[4];
+    [SerializeField][Range (1, 100)] float radius = 10, turbulence = 10;
 
     void Start () {
         transform.localScale = new Vector3 (.7f, .7f, .7f);
@@ -247,6 +248,11 @@ public class Fortress : EnemyBase {
         bu.impactID = impactID;
         bu.bulletSpeed = 12;
         bu.owner = name;
+        WindZone zone = game.AddComponent<WindZone> ();
+        zone.radius = radius;
+        zone.windMain = radius;
+        zone.windTurbulence = turbulence;
+        zone.mode = WindZoneMode.Spherical;
         game.transform.position = transform.position - Vector3.forward / 10;
         game.transform.rotation = Quaternion.Euler (0, 0, f);
     }
@@ -263,6 +269,11 @@ public class Fortress : EnemyBase {
             bu.impactID = impactID;
             bu.bulletSpeed = 10;
             bu.owner = name;
+            WindZone zone = game.AddComponent<WindZone> ();
+            zone.radius = radius;
+            zone.windMain = radius;
+            zone.windTurbulence = turbulence;
+            zone.mode = WindZoneMode.Spherical;
             game.transform.position = cannon.position - cannon.up * 5 + (flag?cannon.right: -cannon.right) - Vector3.forward / 10;
             flag = !flag;
             game.transform.up = -cannon.up;
@@ -281,6 +292,11 @@ public class Fortress : EnemyBase {
         bu.impactID = impactID;
         bu.bulletSpeed = 8;
         bu.owner = name;
+        WindZone zone = game.AddComponent<WindZone> ();
+        zone.radius = radius;
+        zone.windMain = radius;
+        zone.windTurbulence = turbulence;
+        zone.mode = WindZoneMode.Spherical;
         game.transform.position = transform.position - Vector3.up * 4 - Vector3.forward / 10;
         game.transform.localScale = Vector3.one * 5;
         game.transform.up = Vector3.down;
