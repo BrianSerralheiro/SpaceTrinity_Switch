@@ -20,7 +20,7 @@ public class Fortress : EnemyBase {
     }
 
     public override void SetSprites (EnemyInfo ei) {
-        SetHP (2000, ei.lifeproportion);
+        SetHP (2500, ei.lifeproportion);
         BossWarning.Show ();
         name += "Boss";
         SoundManager.Play (2);
