@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
 public class Train : EnemyBase {
     [SerializeField]
     BulletPath path;
@@ -8,8 +9,8 @@ public class Train : EnemyBase {
     [SerializeField]
     Queue<Vector3> pos = new Queue<Vector3> ();
     public Vector3[] vec;
-    float queueTime, proportion, time;
-    int shotID, pathID, nextPath, trailID, impactID;
+    float queueTime, proportion, time, timerPicker = 10;
+    int shotID, pathID, nextPath, trailID, impactID, thatCar;
     Core lights;
     public List<Transform> cars = new List<Transform> ();
     [SerializeField]
@@ -30,6 +31,7 @@ public class Train : EnemyBase {
         impactID = ei.particleID[1];
         action = Movement;
         action += Shot;
+        action += RandomicCarPicker;
         GameObject go = new GameObject ("lights");
         lights = go.AddComponent<Core> ().Set (ei.sprites[9], Color.clear);
         go.transform.parent = transform;
@@ -76,12 +78,15 @@ public class Train : EnemyBase {
                 _renderer = GetComponent<SpriteRenderer> ();
                 lights = _renderer.GetComponentInChildren<Core> ();
                 action = Movement;
+                action += RandomicCarPicker;
                 //ANGRY MODE
             } else {
                 int i = Random.Range (0, cars.Count);
                 _renderer = cars[i].GetComponent<SpriteRenderer> ();
                 lights = _renderer.GetComponentInChildren<Core> ();
+                thatCar = i;
                 action = Movement;
+                action += RandomicCarPicker;
                 SetHP (200, proportion);
                 if (int.TryParse (_renderer.name.Substring (5, 1), out i)) {
                     if (i % 3 == 0) action += Bomb;
@@ -92,9 +97,35 @@ public class Train : EnemyBase {
         } else {
             time = Time.time + 3;
             action = Dying;
+            action += RandomicCarPicker;
             ParticleManager.Emit (1, transform.position, 1, 2);
             GetComponent<BoxCollider2D> ().enabled = false;
             Locks.Boss (2, true);
+        }
+    }
+
+    void RandomicCarPicker () {
+        timerPicker -= 1 * Time.deltaTime;
+        if (timerPicker < 1) {
+            //_renderer = cars[thatCar].GetComponent<SpriteRenderer> ();
+            //lights = _renderer.GetComponentInChildren<Core> ();
+            lights.Set (timerPicker);
+        }
+        if (cars.Count > 0 && timerPicker < 0) {
+            queueTime = 0;
+            timerPicker = 10;
+            _renderer.color = Color.white;
+            int i = Random.Range (0, cars.Count);
+            _renderer = cars[i].GetComponent<SpriteRenderer> ();
+            lights = _renderer.GetComponentInChildren<Core> ();
+            action = Movement;
+            action += RandomicCarPicker;
+            SetHP (150, proportion);
+            if (int.TryParse (_renderer.name.Substring (5, 1), out i)) {
+                if (i % 3 == 0) action += Bomb;
+                if (i % 3 == 1) SetHP (85, proportion);
+                if (i % 3 == 2) action += Shot;
+            }
         }
     }
 
