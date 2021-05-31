@@ -87,7 +87,7 @@ public class Train : EnemyBase {
                 thatCar = i;
                 action = Movement;
                 action += RandomicCarPicker;
-                SetHP (200, proportion);
+                SetHP (150, proportion);
                 if (int.TryParse (_renderer.name.Substring (5, 1), out i)) {
                     if (i % 3 == 0) action += Bomb;
                     if (i % 3 == 1) SetHP (85, proportion);
