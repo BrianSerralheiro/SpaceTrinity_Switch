@@ -78,7 +78,7 @@ public class Train : EnemyBase {
                 _renderer = GetComponent<SpriteRenderer> ();
                 lights = _renderer.GetComponentInChildren<Core> ();
                 action = Movement;
-                action += RandomicCarPicker;
+                //action += RandomicCarPicker;
                 //ANGRY MODE
             } else {
                 int i = Random.Range (0, cars.Count);
