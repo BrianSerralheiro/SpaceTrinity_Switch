@@ -73,7 +73,9 @@ public class Train : EnemyBase {
             // }
             ParticleManager.Emit (1, _renderer.transform.position, 1);
             Destroy (_renderer.gameObject);
-            nextPath = cars.Count / (paths.Length - 1);
+            //nextPath = cars.Count / (paths.Length - 1);
+            nextPath = 9-cars.Count;
+            print ("Actual Path: " + nextPath);
             if (cars.Count == 0) {
                 _renderer = GetComponent<SpriteRenderer> ();
                 lights = _renderer.GetComponentInChildren<Core> ();
