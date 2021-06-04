@@ -6,6 +6,7 @@ public class Core : MonoBehaviour {
 	public Color color;
 	public Color white=Color.white;
 	private float value,time,delta;
+	public Sprite sprite{set{if(render)render.sprite=value;}}
 	public void Start()
 	{
 		render=gameObject.GetComponent<SpriteRenderer>();

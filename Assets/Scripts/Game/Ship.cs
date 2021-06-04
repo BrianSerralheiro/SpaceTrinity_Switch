@@ -230,15 +230,14 @@ public class Ship : MonoBehaviour {
 		|| col.gameObject.name.Contains("gr")
 		|| col.gameObject.name=="drone"
 		||col.otherCollider.name=="laser") return;
+		immuneTime=1f;
 		if(shielded)
 		{
 			shielded=false;
-			immuneTime=0.5f;
 			return;
 		}
 		onDamage?.Invoke(this);
 		damageTimer=1;
-		immuneTime=1f;
 		if(--hp<=0)
 		{
 			damageTimer = 0;
@@ -273,8 +272,8 @@ public class Ship : MonoBehaviour {
 		onRevive?.Invoke(this);
 		InGame_HUD.shipHealth[input.id] =1;
 		reviveTimer=1;
+		_renderer.color=Color.white;
 		transform.position=new Vector3(0,-Scaler.sizeY-2,-0.1f);
-		//paused=false;
 	}
 	public void Shield()
 	{
@@ -334,6 +333,8 @@ public class Ship : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha1))OnLevel(1);
 		if(Input.GetKeyDown(KeyCode.Alpha2))OnLevel(2);
 		if(Input.GetKey(KeyCode.Alpha3))OnLevel(3);
+		if(Input.GetKeyDown(KeyCode.LeftShift))GetComponent<Collider2D>().enabled=false;
+		if(Input.GetKeyDown(KeyCode.LeftControl))shielded=true;
 		if(Input.GetKeyDown(KeyCode.Space) && special.Finished())Special();
 #endregion
 		if(PlayerInput.GetKeySpecialDown(input.id) && InGame_HUD.special[input.id]>=special.cost && special.Finished())Special();
@@ -354,7 +355,7 @@ public class Ship : MonoBehaviour {
 			_renderer.color = Color.Lerp(Color.white,Color.red,damageTimer);
 		}
 		Vector3 v =input.GetAxis();
-		_renderer.sprite = v.x >= 0.99f  ? skin.right :  v.x <= -0.99f ? skin.left : skin.iddle;
+		shield.sprite=_renderer.sprite = v.x >= 0.99f  ? skin.right :  v.x <= -0.99f ? skin.left : skin.iddle;
 		if(v.sqrMagnitude>0)v/=Mathf.Abs(v.normalized.x)+Mathf.Abs(v.normalized.y);
 		v *= Time.deltaTime * speed;
 		if(transform.position.x+v.x>Scaler.sizeX/2)v.x=Scaler.sizeX/2-transform.position.x;
