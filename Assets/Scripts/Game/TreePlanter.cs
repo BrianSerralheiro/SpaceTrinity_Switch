@@ -10,7 +10,7 @@ public class TreePlanter : MonoBehaviour
     Vector2Int cellCount;
     [SerializeField]
     Vector2 gridArea;
-    [SerializeField][Range(0.1f,1)]
+    [SerializeField][Range(0,1)]
     float maxOffset,minScale=1,maxScale=1;
     [SerializeField][Range(0,360)]
     float minAngle,maxAngle;
