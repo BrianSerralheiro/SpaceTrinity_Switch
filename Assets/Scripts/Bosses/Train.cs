@@ -65,6 +65,7 @@ public class Train : EnemyBase {
         if (cars.Count > 0) {
             cars.Remove (_renderer.transform);
             pos.Dequeue ();
+            timerPicker = 10;
             queueTime = 0;
             // using(Queue<Vector3>.Enumerator e=pos.GetEnumerator()){
             //     e.MoveNext();
@@ -226,12 +227,13 @@ public class Train : EnemyBase {
         transform.Translate (0, -Time.deltaTime * path.speed, 0);
         Vector3 vector = Vector3.Cross (-transform.up, path.GetNode () - transform.position);
         transform.Rotate (vector * 60 * Time.deltaTime);
-        if (Vector3.Distance (transform.position, path.GetNode ()) < 1.5f) {
+        if (Vector3.Distance (transform.position, path.GetNode ()) < 2.2f) {
             path.Next ();
             if (path.Finished ()) {
                 if (pathID != nextPath) {
                     pathID = nextPath;
-                    path = paths[paths.Length - 1 - pathID];
+                    //path = paths[paths.Length - 1 - pathID];
+                    path = paths[pathID];
                     path = BulletPath.Upscale (path);
                     if (cars.Count == 0) path.speed = 10;
                 } else path.Restart ();
