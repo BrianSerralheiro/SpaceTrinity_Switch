@@ -11,7 +11,7 @@ public class Batzilla : EnemyBase {
 	private float[] armAngle = new float[2];
 	private Vector3 hor = new Vector3 (2, 0), ver = new Vector3 (0, 2, 0.01f), armOffset = new Vector3 (0, 0.1f);
 	private EnemyInfo bat;
-	private int shotId, armID, waveID, eyes, trailID, impactID;
+	private int stunID, shotId, armID, waveID, eyes, trailID, impactID;
 	private bool colliders {
 		set {
 			foreach (Collider2D col in GetComponentsInChildren<Collider2D> ()) {
@@ -91,6 +91,7 @@ public class Batzilla : EnemyBase {
 		go.transform.position = new Vector3 (0, 0, -0.09f);
 		bat = (ei as CarrierInfo).spawnable;
 		shotId = ei.bulletsID[0];
+		stunID = ei.bulletsID[2];
 		waveID = ei.particleID[0];
 		eyes = ei.particleID[1];
 		trailID = ei.particleID[2];
@@ -98,8 +99,8 @@ public class Batzilla : EnemyBase {
 		update = Intro;
 	}
 
-	void Awake () { 
-		
+	void Awake () {
+
 	}
 
 	void Intro () {
@@ -156,6 +157,10 @@ public class Batzilla : EnemyBase {
 				dark.Set (1);
 				colliders = false;
 				ParticleManager.Emit (eyes, target.position + Vector3.up * 3, 1);
+				GameObject go = new GameObject ("webshot");
+				go.transform.position = target.position + Vector3.up * 3;
+				go.AddComponent<WebShot> ().Set (stunID, go.transform.position, 0, 3, 3, 0, "enemy");
+				EnemySpawner.AddPost(go);
 			}
 		} else {
 			if (time < Time.time + 1f) {
