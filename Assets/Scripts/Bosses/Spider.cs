@@ -15,7 +15,7 @@ public class Spider : EnemyBase {
 	private float dir = 1;
 	private int randX;
 	private bool goCenter, atCenter;
-	private int chargeChance = 50, spawnChance; 
+	private int chargeChance = 50, spawnChance;
 
 	public override void SetSprites (EnemyInfo ei) {
 		info = ei;
@@ -47,11 +47,15 @@ public class Spider : EnemyBase {
 
 			go = new GameObject ("Back Crystal");
 			crystal = go.AddComponent<Core> ().Set (info.sprites[2], new Color (0.4f, 0f, 0.4f));
+			crystal.white = new Color (.1f, 0f, .1f);
+			EnemySpawner.AddPost (go);
 			go.transform.parent = transform;
 			go.transform.localPosition = new Vector3 (0, -0.8f, -0.1f);
 
 			go = new GameObject ("Head Crystal");
 			headCrystal = go.AddComponent<Core> ().Set (info.sprites[3], new Color (0.4f, 0f, 0.4f));
+			headCrystal.white = new Color (.1f, 0f, .1f);
+			EnemySpawner.AddPost (go);
 			go.transform.parent = transform;
 			go.transform.localPosition = new Vector3 (0, -3.74f, -0.1f);
 
@@ -150,7 +154,7 @@ public class Spider : EnemyBase {
 	public void RamdomizeUpdate (int randomNum) {
 		randX = (int) Random.Range (0, 1);
 		goCenter = false;
-		spawnChance = 100-chargeChance;
+		spawnChance = 100 - chargeChance;
 		if (randomNum <= chargeChance) {
 			update = Charge;
 		} else if (randomNum <= chargeChance + spawnChance) {
