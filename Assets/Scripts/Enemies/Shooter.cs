@@ -36,7 +36,9 @@ public class Shooter : EnemyBase
 		go.AddComponent<SpriteRenderer>().sprite=ei.sprites[4];
 		armR=go.transform;
 		go=new GameObject("crystal");
-		crystal=go.AddComponent<Core>().Set(ei.sprites[5],new Color(0.4f,0f,0.4f));
+		crystal=go.AddComponent<Core>().Set(ei.sprites[5],Color.black);
+		crystal.white=new Color(0.8f,0f,0.8f);
+		EnemySpawner.AddPost(go);
 		crystal.transform.parent=armL.parent=armR.parent=legL.parent=legR.parent=transform;
 		armL.localPosition=new Vector3(0.4f,-1f,0.1f);
 		armR.localPosition=new Vector3(-0.4f,-1f,0.1f);
@@ -85,7 +87,7 @@ public class Shooter : EnemyBase
 	}
 	void Shooting(){
 		Vector3 v=path.GetNode0(transform.position.x>0);
-		if(transform.position.x>0)v.x*=-1;
+		// if(transform.position.x>0)v.x*=-1;
 		transform.Rotate(Vector3.Cross(v,transform.up)*Time.deltaTime*30f);
 		shoottimer-=Time.deltaTime;
 		if(shoottimer<-shotDelay) 
@@ -101,7 +103,7 @@ public class Shooter : EnemyBase
 			else
 			movement=SlowFall;
 		}
-		crystal.Set(Mathf.Lerp(0,1,-shoottimer/shotDelay));
+		crystal.Min(Time.deltaTime*2);
 		vector.Set(0,0,Mathf.PingPong(Time.time*67.5f,45f));
 	}
 	protected override void SlowFall(){
@@ -113,6 +115,7 @@ public class Shooter : EnemyBase
 	void Shoot()
 	{
 		// SoundManager.PlayEffects(12, 0.5f, 0.8f);
+		crystal.Set(2);
 		GameObject go = new GameObject("enemybullet");
 		go.AddComponent<SpriteRenderer>().sprite=Bullet.sprites[shootId];
 		go.AddComponent<BoxCollider2D>();

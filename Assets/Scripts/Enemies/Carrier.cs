@@ -15,7 +15,9 @@ public class Carrier : EnemyBase {
 		points = 150;
 		legs=new Transform[6];
 		GameObject go = new GameObject("crystal");
-		crystal=go.AddComponent<Core>().Set(ei.sprites[7],new Color(0.4f,0f,0.4f));
+		crystal=go.AddComponent<Core>().Set(ei.sprites[7],Color.black);
+		crystal.white=new Color(0.4f,0f,0.4f);
+		EnemySpawner.AddPost(go);
 		for(int i = 1; i<7; i++)
 		{
 			go = new GameObject("leg"+i);
@@ -32,7 +34,7 @@ public class Carrier : EnemyBase {
 		legs[5].localPosition=new Vector3(-1.8f,5.8f,0.1f);
 		crystal.transform.parent=transform;
 		crystal.transform.rotation=transform.rotation;
-		crystal.transform.localPosition=new Vector3(0,6.2f);
+		crystal.transform.localPosition=new Vector3(0,6.2f,-0.1f);
 		div=(ei as CarrierInfo).spawnable;
 	}
 	new void Update()

@@ -7,13 +7,12 @@ public class ItemDrop : MonoBehaviour
 	private int id,playerID;
 	private bool set;
 	private SpriteRenderer _renderer;
-	private Sprite[] sprite=new Sprite[2];
+	private Core core;
 	private Vector3 dir;
 	public static int spriteId;
 	void Start () 
 	{
 		dir =  new Vector3(Random.value,-2 - Random.value, 0);
-		//Set(Random.Range(0 , 2));
 	}
 	public void Set(int i,int j)
 	{
@@ -21,12 +20,13 @@ public class ItemDrop : MonoBehaviour
 		set=true;
 		id = i;
 		playerID=j;
+		EnemySpawner.AddPost(gameObject);
 		_renderer= GetComponent<SpriteRenderer>();
-		i=(id==2?2+(j==1?Ship.player2:Ship.player1):id)*2;
-		sprite[0] = Bullet.sprites[spriteId+i];
-		sprite[1] = Bullet.sprites[spriteId+i+1];
-		_renderer.sprite = sprite[0];
+		_renderer.color=Color.black;
+		i=(id==2?2+(j==1?Ship.player2:Ship.player1):id);
+		_renderer.sprite = Bullet.sprites[spriteId+i];
 		gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
+		core=gameObject.AddComponent<Core>().Set(Color.black,new Color(0.2f,0.2f,0.2f));
 	}
 	void Update () 
 	{
@@ -36,7 +36,7 @@ public class ItemDrop : MonoBehaviour
 		if(transform.position.x<-Scaler.sizeX/2f+2)dir.x=Mathf.Abs(dir.x);
 		transform.Translate(dir * Time.deltaTime * 3);
 		if(transform.position.y<-Scaler.sizeY)dir.Set(Random.value,0.5f + Random.value,0);
-		_renderer.sprite=Bullet.blink ? sprite[0]:sprite[1];
+		core.Set((Mathf.Cos(Time.time*5)+1)/2f);
 	}
 
 	void OnTriggerEnter2D (Collider2D other)

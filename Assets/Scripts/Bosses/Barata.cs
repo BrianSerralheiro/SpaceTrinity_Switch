@@ -30,7 +30,9 @@ public class Barata : EnemyBase {
 		wingR.localPosition=new Vector3(-1.4f,3.8f,-0.1f);
 		legs=new Transform[12];
 		go = new GameObject("crystal");
-		crystal=go.AddComponent<Core>().Set(ei.sprites[15],new Color(0.4f,0f,0.4f));
+		crystal=go.AddComponent<Core>().Set(ei.sprites[15],Color.black);
+		crystal.white=new Color(0.4f,0f,0.4f);
+		EnemySpawner.AddPost(go);
 		for(int i = 3; i<15; i++)
 		{
 			go = new GameObject("leg"+(i-3));

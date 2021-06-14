@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 public class EnemySpawner : MonoBehaviour {
-	[TextArea]
-	public string wave;
 	public static int[] points=new int[2];
 	public static bool boss,freeze;
 	private int counter;
 	public float timer;
-	private int scroll=60;
-	private float transfer=1;
-	
-	[SerializeField]
-	private GameObject credits;
-
 	public WorldInfo world1;
 	public static WorldInfo world;
-	public static Texture mundo;
-
+	public static Material bloomMaterial;
+	public static PostProcessProfile postProfile;
+	[SerializeField]
+	Material bloomSpriteMaterial;
+	[SerializeField]
+	PostProcessProfile post;
 	/*
 	Level Design
 	World 1: 
@@ -49,10 +46,18 @@ public class EnemySpawner : MonoBehaviour {
 		freeze=false;
 		FinalBoss.last=false;
 		SoundManager.Play(1);
+		bloomMaterial=bloomSpriteMaterial;
+		postProfile=post;
 		points[0]=0;
 		points[1]=0;
 	}
-
+	public static void AddPost(GameObject go){
+		PostProcessVolume pp=go.AddComponent<PostProcessVolume>();
+		pp.isGlobal=true;
+		pp.profile=postProfile;
+		go.GetComponent<SpriteRenderer>().sharedMaterial=bloomMaterial;
+		go.layer=9;
+	}
 	void OnDestroy()
 	{
 		Cash.totalCash += points[0]/200;
