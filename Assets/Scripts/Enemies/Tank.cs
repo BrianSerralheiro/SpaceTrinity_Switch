@@ -88,7 +88,7 @@ public class Tank : EnemyBase
         bu.impactID=impactID;
         SpriteRenderer s=go.AddComponent<SpriteRenderer>();
         s.sprite=Bullet.sprites[shotId];
-        s.color=Color.gray/5f;
+        s.color=Color.white/5f;
         EnemySpawner.AddPost(go);
         go.AddComponent<BoxCollider2D>();
         go.transform.up=-turret.up;
