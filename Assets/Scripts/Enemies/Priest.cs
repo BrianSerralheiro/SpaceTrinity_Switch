@@ -47,7 +47,7 @@ public class Priest : EnemyBase
 		t.SetPixels(new Color[]{Color.white});
 		t.Apply(false);
 		light=g.AddComponent<Core>().Set(Sprite.Create(t,new Rect(0,0,1,1),new Vector2(0.5f,0.5f)),new Color(1f,1f,1f,0f));
-        light.white = new Color(1,1,1,0.6f);
+        light.white = new Color(1,1,1,0.3f);
 		// light.white=new Color(0f,0f,0f,1f);
 		g.transform.localScale=new Vector3(5000,5000);
 		g.transform.position=new Vector3(0,0,-0.1f);

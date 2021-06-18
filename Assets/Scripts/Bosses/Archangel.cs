@@ -22,14 +22,16 @@ public class Archangel : EnemyBase
 		damageEffect = true;
 		EnemySpawner.boss=true;
 		SetHP(1800,ei.lifeproportion);
+        Color white=new Color(.8f,.8f,.8f,1);
         GameObject go=new GameObject("halobig");
         SpriteRenderer sr=go.AddComponent<SpriteRenderer>();
         sr.sprite=ei.sprites[1];
+        sr.color=white;
         halo=go.transform;
         halo.parent=transform;
         halo.Translate(0,0,1);
-        GetComponent<SpriteRenderer>().color=Color.blue;
-        gameObject.AddComponent<Core>().Set(Color.white,Color.clear);
+        GetComponent<SpriteRenderer>().color=white;
+        gameObject.AddComponent<Core>().Set(white,Color.clear);
         face=ei.sprites[2];
         for(int i = 0; i < 2; i++)
         {
@@ -37,7 +39,7 @@ public class Archangel : EnemyBase
             sr=go.AddComponent<SpriteRenderer>();
             sr.sprite=ei.sprites[3];
             sr.flipX=i==1;
-            go.AddComponent<Core>().Set(Color.white,Color.clear);
+            go.AddComponent<Core>().Set(white,Color.clear);
             go.transform.parent=transform;
             go.transform.Translate(0,-3,0.5f);
             go.transform.Rotate(0,0,35*(i==0?1:-1));
@@ -45,7 +47,8 @@ public class Archangel : EnemyBase
         }
         go=new GameObject("chin");
         chin=go.AddComponent<Core>().Set(ei.sprites[4],Color.clear);
-        chin.white=new Color(0,1,1);
+        chin.white=Color.black;
+        EnemySpawner.AddPost(go);
         go.transform.parent=transform;
         go.transform.Translate(0,-3.37f,0.01f);
         Instantiate(ei.particles[4],go.transform).transform.localPosition=new Vector3(0,-1);
@@ -99,7 +102,8 @@ public class Archangel : EnemyBase
         if(timer>5){
             gameObject.AddComponent<PolygonCollider2D>();
             update=Creating;
-            chin.Set(Color.white,chin.white);
+            chin.Set(new Color(0,.4f,.4f),Color.black);
+            chin.Set(0);
         }
     }
     void Shot(){
@@ -262,8 +266,9 @@ public class Archangel : EnemyBase
         LineRenderer ring=go.AddComponent<LineRenderer>();
         ring.loop=true;
         ring.positionCount=30;
-        ring.material=material;
-        ring.startColor=ring.endColor=new Color(1,1,0.8f);
+        // ring.material=material;
+        EnemySpawner.AddPost(go);
+        ring.startColor=ring.endColor=new Color(.1f,.1f,.0f);
         float rad=2*Mathf.PI/ring.positionCount;
         // ring.widthMultiplier=0.1f;
         ring.useWorldSpace=false;

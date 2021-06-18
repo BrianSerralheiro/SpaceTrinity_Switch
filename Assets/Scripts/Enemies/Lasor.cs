@@ -14,13 +14,16 @@ public class Lasor : EnemyBase
 		laser=Instantiate(ei.particles[0].gameObject,transform);
 		points = 120;
 		GameObject go = laser.gameObject;
+		EnemySpawner.AddPost(go);
 		go.name="enemylaser";
 		collider=go.AddComponent<BoxCollider2D>();
 		collider.enabled=false;
 		collider.size=new Vector2(2,30);
 		collider.offset=new Vector2(0,-15);
 		go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(ei.sprites[4],new Color(0.5f,0.1f,0.05f));
+		core=go.AddComponent<Core>().Set(ei.sprites[4],Color.black);
+		core.white=new Color(0.5f,0.1f,0.05f);
+		EnemySpawner.AddPost(go);
 		core.transform.parent=transform;
 		core.transform.localPosition=new Vector3(0,1.86f);
 	}

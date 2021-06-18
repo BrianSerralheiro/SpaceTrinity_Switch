@@ -16,9 +16,11 @@ public class Launcher : EnemyBase
 		rocketSprite=ei.sprites[1];
 		rocketTrail=ei.particleID[0];
 		GameObject go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
+		core=go.AddComponent<Core>().Set(ei.sprites[3],Color.black);
+		core.white=new Color(0.5f,0.1f,0.05f);
+		EnemySpawner.AddPost(go);
 		core.transform.parent=transform;
-		core.transform.localPosition=new Vector3(0,0.22f);
+		core.transform.localPosition=new Vector3(0,0.22f,-0.1f);
 	}
 	public override void Position(int i){
 		base.Position(i);

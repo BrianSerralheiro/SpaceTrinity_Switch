@@ -5,7 +5,6 @@ public class Grabber : EnemyBase {
 	private float timer;
 	private Core core;
 	float vector;
-	Vector3 local;
 	BulletPath path;
 	static BulletPath[] paths;
 	Vector3 position;
@@ -24,9 +23,11 @@ public class Grabber : EnemyBase {
 		armL.localPosition=new Vector3(0.6f,-0.6f,-0.1f);
 		armR.localPosition=new Vector3(-0.6f,-0.6f,-0.1f);
 		go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(ei.sprites[3],new Color(0.5f,0.1f,0.05f));
+		core=go.AddComponent<Core>().Set(ei.sprites[3],Color.black);
+		EnemySpawner.AddPost(go);
+		core.white=new Color(0.5f,0.1f,0.05f);
 		core.transform.parent=transform;
-		core.transform.localPosition=new Vector3(0,-0.18f);
+		core.transform.localPosition=new Vector3(0,-0.18f,-0.1f);
 		if(paths==null)paths=(ei as MultiPathEnemy).paths;
 		shotId=ei.bulletsID[0];
 	}
@@ -52,7 +53,7 @@ public class Grabber : EnemyBase {
 		}
 		if(timer>0 && grabed){
 			timer-=Time.deltaTime;
-			grabed.transform.localPosition=local;
+			grabed.transform.position=transform.position-transform.up*.8f;
 			if(timer<=0 || grabed.reviveTimer>0){
 				grabed.transform.parent=null;
 				grabed.transform.rotation=Quaternion.identity;

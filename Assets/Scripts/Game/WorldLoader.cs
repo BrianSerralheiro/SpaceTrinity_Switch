@@ -43,7 +43,7 @@ public class WorldLoader : MonoBehaviour
     void Update()
     {
         update?.Invoke();
-        boss.transform.Translate(-Time.deltaTime*200,0,0);
+        boss.transform.Translate(-Time.deltaTime*Screen.width/4,0,0);
         text.text = "Loading";
         for (int i = 0; i < Mathf.CeilToInt(Time.time * 3 % 3); i++)
         {
@@ -116,8 +116,10 @@ public class WorldLoader : MonoBehaviour
         update=Step6;
     }
     void Step6(){
-        SceneManager.LoadSceneAsync("cen");
-        update=null;
+        if(boss.transform.position.x<Screen.width/3){
+            SceneManager.LoadSceneAsync("cen");
+            update=null;
+        }
     }
     public static void BossSong(Setter s){
         bossMusic=s;

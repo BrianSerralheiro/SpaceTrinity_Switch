@@ -23,6 +23,7 @@ public class LastStage : MonoBehaviour
     }
     void Update()
     {
+        if(menu.transform.position!=Vector3.zero)return;
         if(Input.GetKeyDown(KeyCode.Space))Locks.Boss(6,true);
         if(PlayerInput.GetKeySpecial(0)){
             if(PlayerInput.GetKeySpecialDown(0)){

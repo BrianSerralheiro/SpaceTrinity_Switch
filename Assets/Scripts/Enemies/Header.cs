@@ -15,11 +15,15 @@ public class Header : EnemyBase {
 		SetHP(70,ei.lifeproportion);
 		points=180;
 		GameObject go=new GameObject("eyes");
-		eyes=go.AddComponent<Core>().Set(ei.sprites[1],new Color(0.4f,0f,0f));
+		eyes=go.AddComponent<Core>().Set(ei.sprites[1],Color.black);
+		eyes.white=new Color(0.5f,0f,0f);
+		EnemySpawner.AddPost(go);
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,-0.28f);
 		go=new GameObject("core");
-		core=go.AddComponent<Core>().Set(ei.sprites[2],new Color(0.4f,0f,0f));
+		core=go.AddComponent<Core>().Set(ei.sprites[2],Color.black);
+		core.white=new Color(1f,0f,0f);
+		EnemySpawner.AddPost(go);
 		go.transform.parent=transform;
 		go.transform.localPosition=new Vector3(0,0.42f);
 		movement=Pathing;

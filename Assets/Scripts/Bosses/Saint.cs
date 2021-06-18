@@ -17,6 +17,8 @@ public class Saint : EnemyBase
 	{
         if(!miracle)miracle=((CarrierInfo)ei).spawnable;
         SetHP(1000,ei.lifeproportion);
+        Color color=new Color(0.9f,0.9f,0.9f);
+        GetComponent<SpriteRenderer>().color=color;
         points=800;
         name+="Boss";
         EnemySpawner.boss=true;
@@ -27,6 +29,7 @@ public class Saint : EnemyBase
             g=new GameObject("wing"+i);
             SpriteRenderer sp=g.AddComponent<SpriteRenderer>();
             sp.sprite=ei.sprites[1];
+            sp.color=color;
             sp.flipX=i%2==1;
             Transform t=g.transform;
             t.parent=transform;
@@ -36,7 +39,9 @@ public class Saint : EnemyBase
             t.Translate(0,1,0,Space.World);
             g=new GameObject("ligh"+i);
             sp=g.AddComponent<SpriteRenderer>();
+            EnemySpawner.AddPost(g);
             sp.sprite=ei.sprites[2];
+            sp.color=Color.white/20f;
             sp.flipX=i%2==1;
             sp.maskInteraction=SpriteMaskInteraction.VisibleOutsideMask;
             g.transform.parent=t;
@@ -51,8 +56,9 @@ public class Saint : EnemyBase
         line.positionCount=positions.Length;
         line.enabled=false;
         line.material=Priest.material;
+        EnemySpawner.AddPost(g);
         Gradient gradient=new Gradient();
-		gradient.SetKeys(new GradientColorKey[]{new GradientColorKey(new Color(1,1,0.8f),0)},new GradientAlphaKey[]{new GradientAlphaKey(1,0.5f),new GradientAlphaKey(0,1)});
+		gradient.SetKeys(new GradientColorKey[]{new GradientColorKey(new Color(.2f,.2f,0.15f),0)},new GradientAlphaKey[]{new GradientAlphaKey(1,0.5f),new GradientAlphaKey(0,1)});
 		line.colorGradient=gradient;
         timer=Time.time+5;
         for (int i = 0; i < positions.Length; i++)

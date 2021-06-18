@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour {
 		PostProcessVolume pp=go.AddComponent<PostProcessVolume>();
 		pp.isGlobal=true;
 		pp.profile=postProfile;
-		go.GetComponent<SpriteRenderer>().sharedMaterial=bloomMaterial;
+		go.GetComponent<Renderer>().sharedMaterial=bloomMaterial;
 		go.layer=9;
 	}
 	void OnDestroy()

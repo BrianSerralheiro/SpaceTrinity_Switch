@@ -6,7 +6,6 @@ public class Round : EnemyBase
 	private float shoottimer = 1.4f;
 	public static int shootId,trailID,impactID;
 	public static Material shotMaterial;
-
 	private int shootCount;
 	public override void SetSprites(EnemyInfo ei)
 	{

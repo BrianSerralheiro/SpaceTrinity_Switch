@@ -23,6 +23,7 @@ public class TransitionDrawer : PropertyDrawer
         if(flow.vector3Value==Vector3.one)flow.vector3Value=Vector3.up;
         if(flow.vector3Value.x==1)flowType=FlowType.right;
         if(flow.vector3Value.x==-1)flowType=FlowType.left;
+        if(flow.vector3Value.y==1)flowType=FlowType.up;
         if(flow.vector3Value.y==-1)flowType=FlowType.down;
         if(flow.vector3Value.z==1)flowType=FlowType.expand;
         if(flow.vector3Value.z==-1)flowType=FlowType.shrink;
