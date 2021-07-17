@@ -23,6 +23,7 @@ public class MissileSpecial : MonoBehaviour
     void OnDisable()
     {
         explosion.transform.position=transform.position;
-        explosion.gameObject.SetActive(true);
+        Instantiate(explosion).gameObject.SetActive(true);
+        // explosion.gameObject.SetActive(true);
     }
 }

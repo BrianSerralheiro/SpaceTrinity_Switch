@@ -43,7 +43,8 @@ public class WorldLoader : MonoBehaviour
     void Update()
     {
         update?.Invoke();
-        boss.transform.Translate(-Time.deltaTime*Screen.width/4,0,0);
+        if(boss.transform.position.x>Screen.width/3)
+            boss.transform.Translate(-Time.deltaTime*Screen.width/5,0,0);
         text.text = "Loading";
         for (int i = 0; i < Mathf.CeilToInt(Time.time * 3 % 3); i++)
         {

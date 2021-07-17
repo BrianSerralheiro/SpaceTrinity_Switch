@@ -34,6 +34,12 @@ public class DialogManager : MonoBehaviour
             if(value)manager.gameObject.SetActive(true);
         }
     }
+    public static int extras{
+        set{
+            if(value<0 || value>=EnemySpawner.world.extras)return;
+            open=EnemySpawner.world.extraDialogs[value];
+        }
+    }
     void Awake()
     {
         manager=this;

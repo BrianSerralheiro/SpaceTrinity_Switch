@@ -17,6 +17,8 @@ public class WorldInfo : ScriptableObject
 	public Sprite bossFace;
 	public EnemyInfo drone;
 	public DialogInfo  begining,end;
+	public DialogInfo[]  extraDialogs;
+	public int extras{get=>extraDialogs!=null?extraDialogs.Length:0;}
 	[HideInInspector]
 	public string songName;
 	[HideInInspector]
