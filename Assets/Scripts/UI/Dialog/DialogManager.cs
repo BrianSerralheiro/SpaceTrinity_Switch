@@ -97,6 +97,7 @@ public class DialogManager : MonoBehaviour
         }
     }
     void Speech(Speech s){
+        speechText.fontSize=(int)(speechText.rectTransform.rect.height/4f);
         speech=s;
         fulltext=Language.GetDialog(s.text);
         charCount=0;
