@@ -12,12 +12,6 @@ public class Ship : MonoBehaviour {
 	[SerializeField]
 	private int maxhp = 1;
 	private int hp;
-	[SerializeField]
-	private string[] falas;
-	[SerializeField]
-	private float[] sizes;
-	[SerializeField]
-	private Sprite[] charPics;
 	private Vector3 offset = Vector3.up;
 	[SerializeField]
 	private float speed=5f;
@@ -25,8 +19,6 @@ public class Ship : MonoBehaviour {
 	private static bool _paused;
 	[SerializeField]
 	private Core shield;
-	[SerializeField]
-	private Material specialMat;
 	[SerializeField]
 	private SpecialInfo special;
 	public static int[] continues=new int[2];
@@ -201,20 +193,11 @@ public class Ship : MonoBehaviour {
 		}
 		hp=maxhp;
 		onRevive?.Invoke(this);
-		// specialMat.mainTexture=specials[0];
-		// DialogBox.Texts(falas,sizes);
-		// DialogBox.Chars(charPics);
-		falas=null;
-		charPics=null;
-		sizes=null;
 		if(skinID[id]!=-1 && Locks.Skin(id*3+skinID[id]))
 		{
 			skin=skins[input.id];
 			ParticleSystem.MainModule main = trail.main;
 			main.startColor=colors[skinID[id]];
-			// specialMat.mainTexture=specials[skinID[id]+1];
-			specialMat=null;
-			// specials=null;
 			colors=null;
 		}
 		EnemyBase.players[input.id]=transform;

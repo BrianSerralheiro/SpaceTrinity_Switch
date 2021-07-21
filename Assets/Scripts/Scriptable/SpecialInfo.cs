@@ -7,7 +7,7 @@ public struct SpecialInfo
     private bool followShip,lockShot;
     [Range(0.1f,1)]
     public float cost;
-    public float damageInterval,speed,rotationAround,rotationSelf,duration,imuneTime;
+    public float damageInterval,speed,rotationAround,rotationSelf,rotationSelfY,duration,imuneTime;
     public int damage;
     private float time;
     private Transform transform,ship;
@@ -42,6 +42,7 @@ public struct SpecialInfo
             transform.position=ship.position+v*offSet.y;
         }
         if(rotationSelf!=0)transform.Rotate(0,0,rotationSelf*Time.deltaTime,Space.Self);
+        if(rotationSelfY!=0)transform.Rotate(0,rotationSelfY*Time.deltaTime,0,Space.Self);
         if(speed!=0)transform.Translate(Vector3.up*speed*Time.deltaTime,Space.World);
         if(damageInterval>0)collider.enabled=Time.time%damageInterval>damageInterval/2;
         if(time<Time.time)gameObject.SetActive(false);
