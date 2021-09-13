@@ -9,11 +9,17 @@ public struct SpecialInfo
     public float cost;
     public float damageInterval,speed,rotationAround,rotationSelf,rotationSelfY,duration,imuneTime;
     public int damage;
+    private int impactId;
     private float time;
     private Transform transform,ship;
     [SerializeField]
     private GameObject gameObject;
+    [SerializeField]
+    private ParticleSystem impact;
     private Collider2D collider;
+    public void Register(){
+        if(impact)impactId=ParticleManager.Register(impact);
+    }
     public void Start(Transform t) {
         if(gameObject)gameObject.SetActive(true);
         else gameObject=new GameObject("playerbullet");
@@ -23,6 +29,7 @@ public struct SpecialInfo
         bu.enabled=false;
         bu.bulletSpeed=0;
         bu.owner=t.name;
+        bu.impactID=impactId;
         bu.Timer(10);
         // renderer=gameObject.AddComponent<SpriteRenderer>();
         // renderer.sprite=sprites[0];

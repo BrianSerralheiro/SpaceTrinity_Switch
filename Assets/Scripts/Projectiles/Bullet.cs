@@ -49,7 +49,8 @@ public class Bullet : MonoBehaviour {
 	{
 		if(!col.collider.name.Contains("laser") && !col.collider.name.Contains("bullet") && col.gameObject.name.Substring(0,3)!=owner.Substring(0,3)){
 			if(!pierce)Destroy(gameObject);
-			ParticleManager.Emit(impactID,transform.position,1);
+			
+			ParticleManager.Emit(impactID,col.contacts[0].point,1);
 		}
 	}
 	

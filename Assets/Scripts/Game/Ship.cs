@@ -191,6 +191,7 @@ public class Ship : MonoBehaviour {
 		{
 			gun.Load(id);
 		}
+		special.Register();
 		hp=maxhp;
 		onRevive?.Invoke(this);
 		if(skinID[id]!=-1 && Locks.Skin(id*3+skinID[id]))

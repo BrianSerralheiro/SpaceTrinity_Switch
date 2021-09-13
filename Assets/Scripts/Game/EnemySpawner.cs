@@ -8,11 +8,8 @@ public class EnemySpawner : MonoBehaviour {
 	public WorldInfo world1;
 	public static WorldInfo world;
 	public static Material bloomMaterial;
-	public static PostProcessProfile postProfile;
 	[SerializeField]
 	Material bloomSpriteMaterial;
-	[SerializeField]
-	PostProcessProfile post;
 	/*
 	Level Design
 	World 1: 
@@ -47,14 +44,10 @@ public class EnemySpawner : MonoBehaviour {
 		FinalBoss.last=false;
 		SoundManager.Play(1);
 		bloomMaterial=bloomSpriteMaterial;
-		postProfile=post;
 		points[0]=0;
 		points[1]=0;
 	}
 	public static void AddPost(GameObject go){
-		PostProcessVolume pp=go.AddComponent<PostProcessVolume>();
-		pp.isGlobal=true;
-		pp.profile=postProfile;
 		go.GetComponent<Renderer>().sharedMaterial=bloomMaterial;
 		go.layer=9;
 	}
