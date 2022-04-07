@@ -61,6 +61,9 @@ public class EnemySpawner : MonoBehaviour {
 	void Update()
 	{
 		if(Ship.paused) return;
+#region FORCE BOSS ONLY
+			if(!boss)Spawn(world.Boss).Position(0);
+#endregion
 		do
 		{
 			if(timer<=0 && counter<world.wave.Length && !boss)
